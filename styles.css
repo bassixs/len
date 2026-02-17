@@ -697,6 +697,7 @@ button {
     object-fit: cover;
     transform: scale(1.05);
     transition: transform 8s ease;
+    pointer-events: none;
 }
 
 .hero:hover .hero-video {
