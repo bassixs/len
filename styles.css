@@ -1814,45 +1814,7 @@ button {
 
 
 
-.footer-contact-item {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 0.8rem;
-    font-size: 0.88rem;
-}
 
-.footer-contact-item i {
-    color: var(--c-sage-light);
-    width: 18px;
-    text-align: center;
-}
-
-.footer-contact-item a {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.footer-contact-item a:hover {
-    color: var(--c-sage-pale);
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: var(--space-md);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.82rem;
-    color: rgba(255, 255, 255, 0.4);
-}
-
-.footer-bottom a {
-    color: rgba(255, 255, 255, 0.4);
-}
-
-.footer-bottom a:hover {
-    color: var(--c-sage-pale);
-}
 
 /* ===== PAGE HERO (inner pages) ===== */
 .page-hero {
