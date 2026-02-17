@@ -1257,13 +1257,13 @@ button {
 }
 
 .about-scroll-layout {
-    max-width: 1200px;
+    max-width: 1000px;
     width: 100%;
     margin: 0 auto;
     padding: 0 2rem;
     display: grid;
-    grid-template-columns: 1fr 280px 1fr;
-    gap: 3rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
     align-items: center;
 }
 
@@ -1293,16 +1293,7 @@ button {
     font-size: 0.95rem;
 }
 
-/* 3D Model */
-.about-scroll-spool-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.about-scroll-spool-wrap model-viewer {
-    background: transparent;
-}
+/* 3D Model - Removed */
 
 /* Features */
 .about-scroll-features {
@@ -2753,15 +2744,6 @@ button {
     .about-scroll-layout {
         grid-template-columns: 1fr;
         text-align: center;
-    }
-
-    .about-scroll-spool-wrap {
-        order: -1;
-    }
-
-    .about-scroll-spool-wrap model-viewer {
-        width: 220px !important;
-        height: 300px !important;
     }
 
     .about-scroll-container {

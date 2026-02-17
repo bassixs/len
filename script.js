@@ -402,13 +402,10 @@ if (contactForm) {
 // ===== ABOUT SECTION — SCROLL-DRIVEN ANIMATIONS =====
 (function () {
     const aboutSection = document.querySelector('.about-scroll-container');
-    const flower = document.getElementById('aboutFlower');
     const info = document.querySelector('.about-scroll-info');
     const features = document.querySelectorAll('.about-scroll-feature');
 
-    if (!aboutSection || !flower) return;
-
-    let lastProgress = 0;
+    if (!aboutSection) return;
 
     function handleAboutScroll() {
         const rect = aboutSection.getBoundingClientRect();
@@ -419,12 +416,6 @@ if (contactForm) {
         const scrolled = -rect.top;
         const scrollRange = sectionHeight - viewportH;
         const progress = Math.max(0, Math.min(1, scrolled / scrollRange));
-
-        // Control model-viewer rotation speed based on scroll velocity
-        const delta = Math.abs(progress - lastProgress);
-        const speed = Math.min(120, 20 + delta * 5000); // 20-120 deg/s
-        flower.setAttribute('rotation-per-second', speed + 'deg');
-        lastProgress = progress;
 
         // Show info panel when entering section
         if (progress > 0.05) {
