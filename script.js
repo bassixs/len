@@ -399,43 +399,4 @@ if (contactForm) {
 }
 
 
-// ===== ABOUT SECTION — SCROLL-DRIVEN ANIMATIONS =====
-(function () {
-    const aboutSection = document.querySelector('.about-scroll-container');
-    const info = document.querySelector('.about-scroll-info');
-    const features = document.querySelectorAll('.about-scroll-feature');
 
-    if (!aboutSection) return;
-
-    function handleAboutScroll() {
-        const rect = aboutSection.getBoundingClientRect();
-        const sectionHeight = aboutSection.offsetHeight;
-        const viewportH = window.innerHeight;
-
-        // Calculate scroll progress within the section (0 to 1)
-        const scrolled = -rect.top;
-        const scrollRange = sectionHeight - viewportH;
-        const progress = Math.max(0, Math.min(1, scrolled / scrollRange));
-
-        // Show info panel when entering section
-        if (progress > 0.05) {
-            info.classList.add('visible');
-        } else {
-            info.classList.remove('visible');
-        }
-
-        // Progressively show features
-        features.forEach((feature, i) => {
-            const threshold = 0.15 + (i * 0.2); // 0.15, 0.35, 0.55, 0.75
-            if (progress > threshold) {
-                feature.classList.add('visible');
-                feature.style.transitionDelay = '0s';
-            } else {
-                feature.classList.remove('visible');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', handleAboutScroll, { passive: true });
-    handleAboutScroll(); // Initial check
-})();
