@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Корзина и оформление заказа — нжен ЛЁН.">
+    <title>Оформление заказа — нжен ЛЁН</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <header class="header scrolled" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="нжен ЛЁН" class="logo-image" onerror="this.onerror=null; this.src='images/logo.svg'" style="height: 40px; width: auto; display: block;">
+            </a>
+            <nav class="nav" id="nav">
+                <!-- Mega menu snippet (simplified for brevity in this HTML) -->
+                <a href="catalog.html">Каталог</a>
+                <a href="new.html">Новинки</a>
+                <a href="services.html">Пошив</a>
+                <a href="about.html">О нас</a>
+                <a href="contacts.html">Контакты</a>
+            </nav>
+            <div class="header-right">
+                <a href="tel:+79533319449" class="header-phone"><i class="fas fa-phone"></i>+7 (953) 331-94-49</a>
+                <div class="burger" id="burger"><span></span><span></span><span></span></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero" style="padding-bottom:var(--space-md)">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="index.html">Главная</a><span>/</span><span>Оформление заказа</span>
+            </div>
+            <h1 class="page-hero-title">Оформление заказа</h1>
+        </div>
+    </section>
+
+    <section class="section checkout-page">
+        <div class="container">
+            <form class="checkout-grid" id="checkoutForm">
+                <!-- LEFT COLUMN: CART & DETAILS -->
+                <div class="checkout-main">
+
+                    <div class="checkout-block reveal">
+                        <h2 class="checkout-block-title">Ваш заказ</h2>
+                        <div class="cart-items">
+                            <div class="cart-item">
+                                <div class="cart-item-image">
+                                    <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=200&q=80"
+                                        alt="Платье">
+                                </div>
+                                <div class="cart-item-info">
+                                    <h3 class="cart-item-name">Платье льняное «Лаванда»</h3>
+                                    <div class="cart-item-meta">Размер: M | Цвет: Бежевый</div>
+                                    <div class="cart-item-qty">
+                                        <button type="button" class="qty-btn"
+                                            onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value) - 1)">−</button>
+                                        <input type="number" value="1" min="1" max="10" class="qty-input">
+                                        <button type="button" class="qty-btn"
+                                            onclick="this.nextElementSibling.value = Math.min(10, parseInt(this.previousElementSibling.value) + 1)">+</button>
+                                    </div>
+                                </div>
+                                <div class="cart-item-price-wrapper">
+                                    <div class="cart-item-price">4 800 ₽</div>
+                                    <button type="button" class="cart-item-remove"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <!-- More items can be added dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="checkout-block reveal reveal-delay-1">
+                        <h2 class="checkout-block-title">Данные покупателя</h2>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="name">Имя и фамилия *</label>
+                                <input type="text" id="name" class="form-control" required placeholder="Иван Иванов">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Телефон *</label>
+                                <input type="tel" id="phone" class="form-control" required
+                                    placeholder="+7 (___) ___-__-__">
+                            </div>
+                            <div class="form-group" style="grid-column: 1 / -1;">
+                                <label for="email">E-mail (для чека и трек-номера) *</label>
+                                <input type="email" id="email" class="form-control" required
+                                    placeholder="example@mail.ru">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checkout-block reveal reveal-delay-2">
+                        <h2 class="checkout-block-title">Доставка</h2>
+                        <div class="delivery-methods">
+                            <label class="delivery-method">
+                                <input type="radio" name="delivery" value="cdek" checked>
+                                <div class="delivery-method-content">
+                                    <span class="delivery-method-name">СДЭК (до пункта выдачи)</span>
+                                    <span class="delivery-method-price">от 350 ₽</span>
+                                </div>
+                            </label>
+                            <label class="delivery-method">
+                                <input type="radio" name="delivery" value="post">
+                                <div class="delivery-method-content">
+                                    <span class="delivery-method-name">Почта России</span>
+                                    <span class="delivery-method-price">от 300 ₽</span>
+                                </div>
+                            </label>
+                            <label class="delivery-method">
+                                <input type="radio" name="delivery" value="courier">
+                                <div class="delivery-method-content">
+                                    <span class="delivery-method-name">Курьером до двери (СДЭК)</span>
+                                    <span class="delivery-method-price">от 600 ₽</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 1rem;">
+                            <label for="address">Адрес доставки / Пункт выдачи *</label>
+                            <input type="text" id="address" class="form-control" required
+                                placeholder="Город, улица, дом, квартира">
+                            <small class="form-text">Для ПВЗ СДЭК укажите адрес пункта и город.</small>
+                        </div>
+                    </div>
+
+                    <div class="checkout-block reveal">
+                        <h2 class="checkout-block-title">Комментарий к заказу</h2>
+                        <div class="form-group">
+                            <textarea id="comment" class="form-control" rows="3"
+                                placeholder="Ваши пожелания или особенности доставки..."></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN: SUMMARY -->
+                <div class="checkout-sidebar reveal">
+                    <div class="checkout-summary-box">
+                        <h3 class="checkout-summary-title">Итого</h3>
+
+                        <div class="checkout-summary-line">
+                            <span>Товары (1)</span>
+                            <span>4 800 ₽</span>
+                        </div>
+                        <div class="checkout-summary-line">
+                            <span>Скидка</span>
+                            <span style="color:var(--c-sage-dark)">0 ₽</span>
+                        </div>
+                        <div class="checkout-summary-line">
+                            <span>Доставка</span>
+                            <span id="deliveryCostText">Рассчитывается</span>
+                        </div>
+
+                        <div class="checkout-summary-total">
+                            <span>К оплате</span>
+                            <span id="totalPriceText">4 800 ₽</span>
+                        </div>
+
+                        <div class="checkout-promo">
+                            <input type="text" placeholder="Промокод" class="form-control">
+                            <button type="button" class="btn btn-outline" style="padding: 0 1rem;">Применить</button>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Перейти к оплате</button>
+
+                        <div class="checkout-agreement">
+                            Нажимая кнопку, вы соглашаетесь с <a href="#">Политикой конфиденциальности</a> и правилами
+                            продажи.
+                        </div>
+                    </div>
+
+                    <!-- GIFT WIDGET -->
+                    <div class="gift-widget reveal">
+                        <div class="gift-icon"><i class="fas fa-gift"></i></div>
+                        <div class="gift-content">
+                            <h4>Подарочная упаковка</h4>
+                            <p>Добавить карточку и ленту?</p>
+                            <label class="gift-checkbox">
+                                <input type="checkbox" id="giftWrap">
+                                <span class="checkmark"></span>
+                                + 300 ₽
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/logo.png" alt="нжен ЛЁН" class="logo-image" onerror="this.onerror=null; this.src='images/logo.svg'" style="height: 30px; width: auto; margin-bottom: 1rem;">
+                    <p class="footer-brand-desc">Натуральный лён, вдохновлённый природой. Создаём с любовью и заботой о
+                        вашем комфорте с 2010 года.</p>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Каталог</h4>
+                    <ul class="footer-links">
+                        <li><a href="category.html?cat=home-textile">Домашний текстиль</a></li>
+                        <li><a href="category.html?cat=women">Женская одежда</a></li>
+                        <li><a href="category.html?cat=men">Мужская одежда</a></li>
+                        <li><a href="new.html">Новинки</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Покупателям</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">О компании</a></li>
+                        <li><a href="delivery.html">Доставка и оплата</a></li>
+                        <li><a href="services.html">Пошив на заказ</a></li>
+                        <li><a href="blog.html">Льняной блог</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <h4 class="footer-col-title">Контакты</h4>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+79533319449">+7 (953) 331-94-49</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2010–2026 «нжен ЛЁН»</span>
+                <div class="footer-bottom-links">
+                    <a href="#">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        // Simple mock for form submission to redirect to thanks.html
+        document.getElementById('checkoutForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            window.location.href = 'thanks.html';
+        });
+    </script>
+</body>
+
+</html>

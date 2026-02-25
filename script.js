@@ -398,5 +398,51 @@ if (contactForm) {
     });
 }
 
+// ===== MODAL LOGIC =====
+const callModal = document.getElementById('callModal');
+const callModalClose = document.getElementById('callModalClose');
+const callModalOverlay = document.getElementById('callModalOverlay');
 
+document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+        if(window.innerWidth > 768) {
+            e.preventDefault();
+            if(callModal) {
+                callModal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+    });
+});
 
+function closeModal() {
+    if(callModal) {
+        callModal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+}
+
+if(callModalClose) callModalClose.addEventListener('click', closeModal);
+if(callModalOverlay) callModalOverlay.addEventListener('click', closeModal);
+document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeModal();
+});
+
+const callFormHero = document.getElementById('callFormHero');
+if(callFormHero) {
+    callFormHero.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = callFormHero.querySelector('button');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Принято!';
+        btn.disabled = true;
+        setTimeout(() => {
+            closeModal();
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                callFormHero.reset();
+            }, 300);
+        }, 1500);
+    });
+}

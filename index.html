@@ -20,8 +20,9 @@
     <header class="header hero-visible" id="header">
         <div class="header-inner">
             <a href="index.html" class="logo">
-                <div class="logo-icon">Н</div>
-                <div class="logo-text">нжен <span>ЛЁН</span></div>
+                <img src="images/logo.png" alt="нжен ЛЁН" class="logo-image"
+                    onerror="this.onerror=null; this.src='images/logo.svg'"
+                    style="height: 40px; width: auto; display: block;">
             </a>
             <nav class="nav" id="nav">
                 <div class="nav-item-dropdown">
@@ -236,8 +237,9 @@
                         <div class="product-card-image">
                             <img src="images/product.dressproduct.dress.png" alt="Льняное платье">
                             <div class="product-badges"><span class="badge badge-new">NEW</span></div>
-                            <div class="product-quick-view"><a href="product.html"
-                                    class="product-quick-btn">Подробнее</a></div>
+                            <div class="product-sizes"><span class="size-item available">42</span><span
+                                    class="size-item available">44</span><span
+                                    class="size-item available">46</span><span class="size-item">48</span></div>
                         </div>
                         <div class="product-card-info">
                             <h3 class="product-card-name">Платье льняное «Лаванда»</h3>
@@ -253,8 +255,10 @@
                         <div class="product-card-image">
                             <img src="images/product.shirt.png" alt="Рубашка мужская">
                             <div class="product-badges"><span class="badge badge-hit">HIT</span></div>
-                            <div class="product-quick-view"><a href="product.html"
-                                    class="product-quick-btn">Подробнее</a></div>
+                            <div class="product-sizes"><span class="size-item available">48</span><span
+                                    class="size-item available">50</span><span
+                                    class="size-item available">52</span><span class="size-item available">54</span>
+                            </div>
                         </div>
                         <div class="product-card-info">
                             <h3 class="product-card-name">Сорочка мужская «Классика»</h3>
@@ -349,112 +353,72 @@
     <!-- ===== ABOUT ===== -->
     <section class="section about-section" id="about">
         <div class="container">
-            <div class="about-grid">
-                <!-- Left: Content -->
-                <div class="about-content reveal">
-                    <div class="about-label">О компании</div>
-                    <h2 class="about-title">Магазин «нжен ЛЁН» — традиции и современность</h2>
-                    <p class="about-text">Мы создали собственное производство изделий из натурального льна. С 2010 года
-                        мы продвигаем экологичную моду и качественный текстиль для дома.</p>
+            <div class="about-editorial">
+                <div class="about-editorial-image reveal">
+                    <img src="images/about.png" alt="нжен ЛЁН">
                 </div>
-
-                <!-- Right: Feature Cards -->
-                <div class="about-features reveal reveal-delay-1">
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-leaf"></i></div>
-                        <div class="feature-info">
-                            <h4>100% натуральный</h4>
-                            <p>Только экологически чистый лён без синтетических примесей</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-scissors"></i></div>
-                        <div class="feature-info">
-                            <h4>Своё производство</h4>
-                            <p>Контроль качества на каждом этапе</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-truck-fast"></i></div>
-                        <div class="feature-info">
-                            <h4>Доставка по РФ</h4>
-                            <p>Быстрая и бесплатная доставка</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-ruler-combined"></i></div>
-                        <div class="feature-info">
-                            <h4>Индивидуальный пошив</h4>
-                            <p>По вашим размерам и пожеланиям</p>
-                        </div>
-                    </div>
+                <div class="about-editorial-text reveal reveal-delay-2">
+                    <div class="label-tag">О бренде</div>
+                    <h2 class="editorial-title">Традиции и<br>современность</h2>
+                    <div class="editorial-divider"></div>
+                    <p class="editorial-desc">Мы создали собственное производство изделий из натурального льна. С 2010
+                        года мы продвигаем экологичную моду и качественный текстиль для дома.</p>
+                    <p class="editorial-desc">Наш подход — это внимание к деталям, использование только 100% умягченного
+                        льна без примесей и любовь к естественной красоте. Мы верим, что настоящая роскошь кроется в
+                        простоте и осознанном потреблении.</p>
+                    <a href="about.html" class="btn btn-outline-dark" style="margin-top: 1.5rem;">Подробнее о нас</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== ADVANTAGES ===== -->
-    <section class="section advantages">
+    <!-- ===== PHILOSOPHY ===== -->
+    <section class="section philosophy">
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-title">Почему выбирают нас</h2>
-                <p class="section-subtitle">Доверие тысяч покупателей по всей России</p>
+                <h2 class="section-title">Наши ценности</h2>
+                <p class="section-subtitle">Основа нашего подхода к созданию экологичных изделий</p>
             </div>
-            <div class="advantages-grid">
-                <div class="advantage-card reveal reveal-delay-1">
-                    <div class="advantage-icon"><i class="fas fa-seedling"></i></div>
-                    <h3 class="advantage-title">Экологичность</h3>
-                    <p class="advantage-desc">Все изделия из 100% натурального льна без синтетических примесей</p>
+            <div class="philosophy-grid">
+                <div class="phil-card phil-large reveal">
+                    <img src="images/collection.fabrics.jpg" alt="Ткани" class="phil-img">
+                    <div class="phil-content">
+                        <h3>Только 100% лён</h3>
+                        <p>Никакой синтетики и примесей</p>
+                    </div>
                 </div>
-                <div class="advantage-card reveal reveal-delay-2">
-                    <div class="advantage-icon"><i class="fas fa-award"></i></div>
-                    <h3 class="advantage-title">Качество</h3>
-                    <p class="advantage-desc">Собственное производство с контролем на каждом этапе</p>
+                <div class="phil-card phil-small reveal reveal-delay-1">
+                    <div class="phil-number">14</div>
+                    <div class="phil-text">Лет создаём<br>уют для вас</div>
                 </div>
-                <div class="advantage-card reveal reveal-delay-3">
-                    <div class="advantage-icon"><i class="fas fa-tags"></i></div>
-                    <h3 class="advantage-title">Выгодные цены</h3>
-                    <p class="advantage-desc">Без посредников — напрямую от производителя</p>
-                </div>
-                <div class="advantage-card reveal reveal-delay-4">
-                    <div class="advantage-icon"><i class="fas fa-heart"></i></div>
-                    <h3 class="advantage-title">Забота о клиенте</h3>
-                    <p class="advantage-desc">Индивидуальный подход, консультации и помощь с выбором</p>
+                <div class="phil-card phil-small phil-dark reveal reveal-delay-2">
+                    <div class="phil-icon"><i class="fas fa-scissors"></i></div>
+                    <div class="phil-text">Собственное<br>производство</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===== CTA BANNER ===== -->
-    <section class="cta-banner" id="contacts">
+    <section class="cta-banner-solid" id="contacts">
         <div class="container">
-            <div class="cta-card reveal">
-                <h2 class="cta-title">Остались вопросы?</h2>
-                <p class="cta-text">Мы всегда на связи и готовы помочь с выбором идеальных изделий для вашего дома и
-                    гардероба</p>
+            <div class="cta-solid-content reveal">
+                <h2 class="cta-solid-title">Остались вопросы?</h2>
+                <p class="cta-solid-text">Мы всегда на связи и готовы помочь с выбором идеальных изделий для вашего дома
+                    и гардероба. Оставьте заявку, и наш менеджер проконсультирует вас.</p>
 
-                <div class="cta-actions">
-                    <a href="contacts.html" class="btn btn-primary">
-                        Написать нам <i class="fas fa-paper-plane"></i>
-                    </a>
-                </div>
+                <form class="cta-solid-form" id="ctaForm">
+                    <input type="text" placeholder="Ваше имя" required class="cta-input">
+                    <input type="tel" placeholder="+7 (___) ___-__-__" required class="cta-input">
+                    <button type="submit" class="btn btn-dark">Отправить</button>
+                </form>
 
-                <div class="cta-contacts-grid">
-                    <a href="tel:+79533319449" class="cta-contact-link">
-                        <div class="cta-icon"><i class="fas fa-phone"></i></div>
-                        <span>+7 (953) 331-94-49</span>
-                    </a>
-                    <a href="mailto:info@njen-linen.com" class="cta-contact-link">
-                        <div class="cta-icon"><i class="fas fa-envelope"></i></div>
-                        <span>info@njen-linen.com</span>
-                    </a>
-                    <a href="https://tlgg.ru/njenLinen" class="cta-contact-link" target="_blank">
-                        <div class="cta-icon"><i class="fab fa-telegram"></i></div>
-                        <span>Telegram</span>
-                    </a>
+                <div class="cta-solid-links">
+                    <a href="mailto:info@njen-linen.com">info@njen-linen.com</a>
+                    <span class="divider">•</span>
+                    <a href="https://tlgg.ru/njenLinen" target="_blank">Telegram</a>
+                    <span class="divider">•</span>
+                    <a href="tel:+79533319449">+7 (953) 331-94-49</a>
                 </div>
             </div>
         </div>
@@ -464,7 +428,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="logo-text">нжен <span>ЛЁН</span></div>
+                    <img src="images/logo.png" alt="нжен ЛЁН" class="logo-image"
+                        onerror="this.onerror=null; this.src='images/logo.svg'"
+                        style="height: 30px; width: auto; margin-bottom: 1rem;">
                     <p class="footer-brand-desc">Натуральный лён, вдохновлённый природой. Создаём с любовью и заботой о
                         вашем комфорте с 2010 года.</p>
                     <div class="footer-social">
@@ -517,6 +483,27 @@
             </div>
         </div>
     </footer>
+    <!-- MODAL: Request Call -->
+    <div class="modal" id="callModal">
+        <div class="modal-overlay" id="callModalOverlay"></div>
+        <div class="modal-container reveal">
+            <button class="modal-close" id="callModalClose"><i class="fas fa-times"></i></button>
+            <h3 class="modal-title">Заказать звонок</h3>
+            <p class="modal-desc">Оставьте свои данные, и мы перезвоним вам в течение 15 минут.</p>
+            <form class="modal-form" id="callFormHero">
+                <div class="form-group">
+                    <label>Ваше имя</label>
+                    <input type="text" class="form-control" required placeholder="Имя">
+                </div>
+                <div class="form-group">
+                    <label>Телефон</label>
+                    <input type="tel" class="form-control" required placeholder="+7 (___) ___-__-__">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block"
+                    style="margin-top: 1rem; width: 100%; justify-content: center;">Перезвоните мне</button>
+            </form>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

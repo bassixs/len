@@ -14,8 +14,7 @@
     <header class="header scrolled" id="header">
         <div class="header-inner">
             <a href="index.html" class="logo">
-                <div class="logo-icon">Н</div>
-                <div class="logo-text">нжен <span>ЛЁН</span></div>
+                <img src="images/logo.png" alt="нжен ЛЁН" class="logo-image" onerror="this.onerror=null; this.src='images/logo.svg'" style="height: 40px; width: auto; display: block;">
             </a>
             <nav class="nav" id="nav">
                 <div class="nav-item-dropdown">
@@ -230,7 +229,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="logo-text">нжен <span>ЛЁН</span></div>
+                    <img src="images/logo.png" alt="нжен ЛЁН" class="logo-image" onerror="this.onerror=null; this.src='images/logo.svg'" style="height: 30px; width: auto; margin-bottom: 1rem;">
                     <p class="footer-brand-desc">Натуральный лён, вдохновлённый природой. Создаём с любовью и заботой о
                         вашем комфорте с 2010 года.</p>
                     <div class="footer-social">
@@ -289,6 +288,11 @@
             const params = new URLSearchParams(window.location.search);
             const cat = params.get('cat') || 'women';
 
+            // ======================================================
+            // ДАННЫЕ ТОВАРОВ — чтобы добавить новые товары, просто
+            // добавьте объект { name, price, type, img, badge? } 
+            // в массив products нужной категории.
+            // ======================================================
             const categories = {
                 'home-textile': {
                     title: 'Домашний текстиль',
@@ -296,40 +300,150 @@
                     filters: ['Все', 'Для кухни', 'Для столовой', 'Для спальни', 'Для бани'],
                     filterKeys: ['all', 'kitchen', 'dining', 'bedroom', 'bath'],
                     products: [
-                        { name: 'Полотенце кухонное «Травы»', price: '690 ₽', type: 'kitchen', badge: 'NEW', img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80' },
-                        { name: 'Скатерть «Прованс»', price: '3 200 ₽', type: 'dining', badge: 'HIT', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80' },
-                        { name: 'Комплект постельный «Натур»', price: '7 800 ₽', type: 'bedroom', badge: 'NEW', img: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&q=80' },
-                        { name: 'Полотенце банное «Spa»', price: '1 200 ₽', type: 'bath', img: 'https://images.unsplash.com/photo-1600369671854-5b14f2e79d13?w=600&q=80' },
-                        { name: 'Салфетки столовые, 6 шт.', price: '1 800 ₽', type: 'dining', img: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=600&q=80' },
-                        { name: 'Наволочка «Лён Натур»', price: '980 ₽', type: 'bedroom', badge: 'NEW', img: 'https://images.unsplash.com/photo-1631049035182-249067d7618e?w=600&q=80' }
+                        { name: 'Салфетка Есения кофейная', price: '490 ₽', type: 'dining', badge: 'HIT', img: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=600&q=80' },
+                        { name: 'Полотенце банное Клевер 55х100', price: '1 350 ₽', type: 'bath', badge: 'NEW', img: 'https://images.unsplash.com/photo-1600369671854-5b14f2e79d13?w=600&q=80' },
+                        { name: 'Полотенце банное Воздух 55х100', price: '1 280 ₽', type: 'bath', img: 'https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=600&q=80' },
+                        { name: 'Полотенце Лесная индюшка бежевый', price: '590 ₽', type: 'kitchen', img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80' },
+                        { name: 'Наволочка декоративная Диагональ', price: '890 ₽', type: 'bedroom', badge: 'NEW', img: 'https://images.unsplash.com/photo-1631049035182-249067d7618e?w=600&q=80' },
+                        { name: 'Полотенце Матрица клетка', price: '520 ₽', type: 'kitchen', img: 'https://images.unsplash.com/photo-1563291074-2bf8677ac0e5?w=600&q=80' },
+                        { name: 'Полотенце банное Имитация-1 серый 80х145', price: '1 680 ₽', type: 'bath', badge: 'HIT', img: 'https://images.unsplash.com/photo-1600369671854-5b14f2e79d13?w=600&q=80' },
+                        { name: 'Полотенце Воскресенье тёплый бежевый', price: '540 ₽', type: 'kitchen', img: 'https://images.unsplash.com/photo-1563291074-2bf8677ac0e5?w=600&q=80' },
+                        { name: 'Наволочка Тасте Арина какао', price: '780 ₽', type: 'bedroom', img: 'https://images.unsplash.com/photo-1631049035182-249067d7618e?w=600&q=80' },
+                        { name: 'Полотенце махровое Эмилия 50х90', price: '1 150 ₽', type: 'bath', img: 'https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=600&q=80' },
+                        { name: 'Полотенце банное Прибой 55х115', price: '1 390 ₽', type: 'bath', badge: 'NEW', img: 'https://images.unsplash.com/photo-1600369671854-5b14f2e79d13?w=600&q=80' },
+                        { name: 'Полотенце банное Камуфляж 60х120', price: '1 450 ₽', type: 'bath', img: 'https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=600&q=80' },
+                        { name: 'Полотенце банное Абстракция-1', price: '1 320 ₽', type: 'bath', img: 'https://images.unsplash.com/photo-1600369671854-5b14f2e79d13?w=600&q=80' },
+                        { name: 'Наволочка стёганная Диагональ', price: '1 190 ₽', type: 'bedroom', img: 'https://images.unsplash.com/photo-1631049035182-249067d7618e?w=600&q=80' },
+                        { name: 'Скатерть с мережкой Азия прямоугольная', price: '3 900 ₽', type: 'dining', badge: 'HIT', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80' },
+                        { name: 'Скатерть с мережкой Есения кофейная', price: '3 600 ₽', type: 'dining', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80' },
+                        { name: 'Скатерть с мережкой Геометрика', price: '3 800 ₽', type: 'dining', badge: 'NEW', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80' },
+                        { name: 'Полотенце махровое Папоротник-2 50х90', price: '1 090 ₽', type: 'bath', img: 'https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=600&q=80' },
+                        { name: 'Полотенце махровое Княжна 50х90', price: '1 120 ₽', type: 'bath', img: 'https://images.unsplash.com/photo-1600369671854-5b14f2e79d13?w=600&q=80' },
+                        { name: 'Полотенце Весенний кролик горчичный', price: '480 ₽', type: 'kitchen', badge: 'NEW', img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80' },
+                        { name: 'Полотенце банное Блики-1 80х135', price: '1 580 ₽', type: 'bath', img: 'https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=600&q=80' },
+                        { name: 'Наволочка декоративная Хризантемы', price: '920 ₽', type: 'bedroom', img: 'https://images.unsplash.com/photo-1631049035182-249067d7618e?w=600&q=80' },
+                        { name: 'Покрывало Диагональ 215х230', price: '8 900 ₽', type: 'bedroom', badge: 'HIT', img: 'https://images.unsplash.com/photo-1631049035182-249067d7618e?w=600&q=80' },
+                        { name: 'Набор полотенец из 4-х штук Олива', price: '1 250 ₽', type: 'kitchen', img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80' },
+                        { name: 'Комплект постельного белья Арина-какао', price: '9 800 ₽', type: 'bedroom', badge: 'NEW', img: 'https://images.unsplash.com/photo-1631049035182-249067d7618e?w=600&q=80' },
+                        { name: 'Полотенце махровое Самба-4 67х140', price: '1 750 ₽', type: 'bath', img: 'https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=600&q=80' },
+                        { name: 'Полотенце махровое Самба-3 67х140', price: '1 750 ₽', type: 'bath', img: 'https://images.unsplash.com/photo-1600369671854-5b14f2e79d13?w=600&q=80' },
+                        { name: 'Полотенце махровое Сонет-5 67х140', price: '1 680 ₽', type: 'bath', img: 'https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=600&q=80' },
+                        { name: 'Полотенце махровое Эмилия 67х140', price: '1 790 ₽', type: 'bath', badge: 'HIT', img: 'https://images.unsplash.com/photo-1600369671854-5b14f2e79d13?w=600&q=80' },
+                        { name: 'Полотенце Послание', price: '490 ₽', type: 'kitchen', img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80' },
+                        { name: 'Скатерть с мережкой Прованс прямоугольная', price: '4 200 ₽', type: 'dining', badge: 'NEW', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80' },
+                        { name: 'Набор полотенец из 3-х штук Лето прованса', price: '980 ₽', type: 'kitchen', img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80' },
+                        { name: 'Полотенце Василиса 3', price: '460 ₽', type: 'kitchen', img: 'https://images.unsplash.com/photo-1563291074-2bf8677ac0e5?w=600&q=80' },
+                        { name: 'Комплект постельного белья полоса ваниль', price: '8 500 ₽', type: 'bedroom', img: 'https://images.unsplash.com/photo-1631049035182-249067d7618e?w=600&q=80' },
+                        { name: 'Набор полотенец из 3-х штук Кофеман', price: '980 ₽', type: 'kitchen', badge: 'NEW', img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80' },
+                        { name: 'Набор полотенец из 3-х штук Подсолнух', price: '980 ₽', type: 'kitchen', img: 'https://images.unsplash.com/photo-1563291074-2bf8677ac0e5?w=600&q=80' },
+                        { name: 'Набор полотенец из 4-х штук Конюшина', price: '1 250 ₽', type: 'kitchen', img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80' },
+                        { name: 'Полотенце махровое Сонет-2 67х140', price: '1 680 ₽', type: 'bath', img: 'https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=600&q=80' },
+                        { name: 'Наволочка Тасте Мята-ваниль', price: '780 ₽', type: 'bedroom', img: 'https://images.unsplash.com/photo-1631049035182-249067d7618e?w=600&q=80' },
+                        { name: 'Пододеяльник Тасте Серый туман', price: '4 500 ₽', type: 'bedroom', img: 'https://images.unsplash.com/photo-1631049035182-249067d7618e?w=600&q=80' },
+                        { name: 'Наволочка Тасте Серый туман', price: '780 ₽', type: 'bedroom', img: 'https://images.unsplash.com/photo-1631049035182-249067d7618e?w=600&q=80' },
+                        { name: 'Рушник Каравайное 49х150', price: '890 ₽', type: 'kitchen', badge: 'HIT', img: 'https://images.unsplash.com/photo-1563291074-2bf8677ac0e5?w=600&q=80' },
+                        { name: 'Полотенце Загадка фиолетовый', price: '520 ₽', type: 'kitchen', img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80' },
+                        { name: 'Набор полотенец из 3-х штук Бариста', price: '980 ₽', type: 'kitchen', img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80' },
+                        { name: 'Набор полотенец из 3-х штук Ярмарка', price: '980 ₽', type: 'kitchen', img: 'https://images.unsplash.com/photo-1563291074-2bf8677ac0e5?w=600&q=80' },
+                        { name: 'Комплект постельного белья полосы голубые зелёные', price: '8 500 ₽', type: 'bedroom', badge: 'NEW', img: 'https://images.unsplash.com/photo-1631049035182-249067d7618e?w=600&q=80' },
+                        { name: 'Полотенце банное Суфле гороховый 70х140', price: '1 490 ₽', type: 'bath', img: 'https://images.unsplash.com/photo-1600369671854-5b14f2e79d13?w=600&q=80' },
+                        { name: 'Полотенце банное Суфле серо-голубой 70х140', price: '1 490 ₽', type: 'bath', img: 'https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=600&q=80' },
+                        { name: 'Полотенце Весенний кролик оливковый', price: '480 ₽', type: 'kitchen', img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80' },
+                        { name: 'Полотенце Сервиз тёплый бежевый', price: '490 ₽', type: 'kitchen', img: 'https://images.unsplash.com/photo-1563291074-2bf8677ac0e5?w=600&q=80' },
+                        { name: 'Дорожка Есения кофейная 50х140', price: '1 200 ₽', type: 'dining', img: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=600&q=80' }
                     ]
                 },
                 'women': {
                     title: 'Женская одежда',
-                    subtitle: 'Элегантные льняные платья, блузки и костюмы',
-                    filters: ['Все', 'Платья', 'Блузки', 'Брюки', 'Юбки'],
-                    filterKeys: ['all', 'dress', 'blouse', 'pants', 'skirt'],
+                    subtitle: 'Элегантные льняные платья, блузки, джемперы и жакеты',
+                    filters: ['Все', 'Джемперы', 'Жакеты', 'Юбки', 'Топы'],
+                    filterKeys: ['all', 'sweater', 'jacket', 'skirt', 'top'],
                     products: [
-                        { name: 'Платье льняное «Лаванда»', price: '4 800 ₽', type: 'dress', badge: 'NEW', img: 'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=600&q=80' },
-                        { name: 'Блузка «Прованс»', price: '3 600 ₽', type: 'blouse', badge: 'HIT', img: 'https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80' },
-                        { name: 'Брюки «Летний бриз»', price: '3 400 ₽', type: 'pants', badge: 'NEW', img: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80' },
-                        { name: 'Сарафан «Солнце»', price: '4 200 ₽', type: 'dress', badge: 'NEW', img: 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80' },
-                        { name: 'Юбка «Маркиза»', price: '2 800 ₽', oldPrice: '3 500 ₽', type: 'skirt', badge: 'SALE', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80' },
-                        { name: 'Рубашка «Натурель»', price: '3 100 ₽', type: 'blouse', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80' }
+                        { name: 'Джемпер Д330 лимонный', price: '4 200 ₽', type: 'sweater', badge: 'NEW', img: 'https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80' },
+                        { name: 'Платье-сарафан П099Т розовая пудра', price: '5 800 ₽', type: 'top', badge: 'HIT', img: 'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=600&q=80' },
+                        { name: 'Джемпер Д330 белый', price: '4 200 ₽', type: 'sweater', img: 'https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80' },
+                        { name: 'Жакет Ж144Т цветной', price: '5 400 ₽', type: 'jacket', badge: 'NEW', img: 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80' },
+                        { name: 'Джемпер Д332 золотистый', price: '4 500 ₽', type: 'sweater', img: 'https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80' },
+                        { name: 'Жакет Ж148Т ментол', price: '5 200 ₽', type: 'jacket', badge: 'HIT', img: 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80' },
+                        { name: 'Жакет Ж148Т небесный', price: '5 200 ₽', type: 'jacket', img: 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80' },
+                        { name: 'Жакет Ж148Т чёрный', price: '5 200 ₽', type: 'jacket', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80' },
+                        { name: 'Жакет Ж148Т серый меланж', price: '5 200 ₽', type: 'jacket', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80' },
+                        { name: 'Жакет Ж152ТВ латте', price: '5 600 ₽', type: 'jacket', badge: 'NEW', img: 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80' },
+                        { name: 'Жакет Ж152ТВ бриз', price: '5 600 ₽', type: 'jacket', img: 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80' },
+                        { name: 'Жакет Ж148Т серо-голубой', price: '5 200 ₽', type: 'jacket', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80' },
+                        { name: 'Жакет Ж140Т пыльная роза', price: '4 900 ₽', type: 'jacket', badge: 'HIT', img: 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80' },
+                        { name: 'Юбка-Брюки Б043Т ментол', price: '3 800 ₽', type: 'skirt', badge: 'NEW', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80' },
+                        { name: 'Джемпер Д336Т зелёный чай', price: '4 600 ₽', type: 'sweater', img: 'https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80' },
+                        { name: 'Джемпер Д331 оливковый', price: '4 300 ₽', type: 'sweater', img: 'https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80' },
+                        { name: 'Джемпер Д336Т белый', price: '4 600 ₽', type: 'sweater', badge: 'NEW', img: 'https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80' },
+                        { name: 'Жакет Ж150Т ёлочка-олива', price: '5 300 ₽', type: 'jacket', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80' },
+                        { name: 'Топ 2.203 муссон', price: '2 900 ₽', type: 'top', img: 'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=600&q=80' },
+                        { name: 'Юбка 1/29 петроль', price: '3 600 ₽', type: 'skirt', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80' },
+                        { name: 'Юбка 1/29 корица', price: '3 600 ₽', type: 'skirt', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80' },
+                        { name: 'Юбка 1.27 корица', price: '3 400 ₽', type: 'skirt', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80' },
+                        { name: 'Блуза 2.226 лавандовый', price: '3 800 ₽', type: 'top', badge: 'NEW', img: 'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=600&q=80' },
+                        { name: 'Блуза 2.226 флоксовый', price: '3 800 ₽', type: 'top', img: 'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=600&q=80' },
+                        { name: 'Блуза 2.226 чёрный', price: '3 800 ₽', type: 'top', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80' },
+                        { name: 'Юбка-Брюки Б043ТВ пудра', price: '3 900 ₽', type: 'skirt', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80' },
+                        { name: 'Юбка-Брюки Б043Т графит меланж', price: '3 800 ₽', type: 'skirt', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80' },
+                        { name: 'Юбка-Брюки Б043ТВ каштан', price: '3 900 ₽', type: 'skirt', badge: 'HIT', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80' },
+                        { name: 'Юбка-Брюки Б043ТВ серый меланж', price: '3 900 ₽', type: 'skirt', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80' },
+                        { name: 'Джемпер Д321 жемчужный', price: '4 100 ₽', type: 'sweater', img: 'https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80' },
+                        { name: 'Джемпер Д324 земляничный', price: '4 400 ₽', type: 'sweater', badge: 'NEW', img: 'https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80' },
+                        { name: 'Блуза S 25.2 белый', price: '4 100 ₽', type: 'top', img: 'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=600&q=80' },
+                        { name: 'Юбка 1/28 чёрный', price: '3 500 ₽', type: 'skirt', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80' },
+                        { name: 'Платье S 25.6 антрацит', price: '5 900 ₽', type: 'top', badge: 'NEW', img: 'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=600&q=80' },
+                        { name: 'Топ 2.252 розовый', price: '2 800 ₽', type: 'top', img: 'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=600&q=80' },
+                        { name: 'Сарафан 2.251 чёрный', price: '5 200 ₽', type: 'top', badge: 'HIT', img: 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80' },
+                        { name: 'Сарафан 2.251 маджента', price: '5 200 ₽', type: 'top', img: 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80' },
+                        { name: 'Платье 2.237 чайная роза', price: '5 600 ₽', type: 'top', badge: 'NEW', img: 'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=600&q=80' },
+                        { name: 'Платье 2.237 маджента', price: '5 600 ₽', type: 'top', img: 'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=600&q=80' },
+                        { name: 'Юбка Ю086ТВ бежевый', price: '3 400 ₽', type: 'skirt', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80' },
+                        { name: 'Брюки Б062ТВ латте', price: '4 200 ₽', type: 'skirt', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80' },
+                        { name: 'Блузка Ж149Т лайм', price: '4 800 ₽', type: 'jacket', badge: 'NEW', img: 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80' }
                     ]
                 },
                 'men': {
                     title: 'Мужская одежда',
-                    subtitle: 'Сорочки, брюки и пиджаки из натурального льна',
-                    filters: ['Все', 'Сорочки', 'Брюки', 'Пиджаки', 'Шорты'],
+                    subtitle: 'Сорочки, брюки, пиджаки и шорты из натурального льна',
+                    filters: ['Все', 'Рубашки', 'Брюки', 'Пиджаки', 'Шорты'],
                     filterKeys: ['all', 'shirt', 'pants', 'blazer', 'shorts'],
                     products: [
-                        { name: 'Сорочка «Классик»', price: '3 900 ₽', type: 'shirt', badge: 'HIT', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80' },
-                        { name: 'Брюки «Элегант»', price: '4 200 ₽', type: 'pants', badge: 'NEW', img: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80' },
-                        { name: 'Пиджак «Лён Премиум»', price: '7 500 ₽', type: 'blazer', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80' },
-                        { name: 'Шорты «Бриз»', price: '2 400 ₽', type: 'shorts', badge: 'NEW', img: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=600&q=80' },
-                        { name: 'Сорочка «Натур»', price: '3 600 ₽', type: 'shirt', img: 'https://images.unsplash.com/photo-1598033129183-c4f50c736c10?w=600&q=80' },
-                        { name: 'Брюки «Лёгкие»', price: '3 800 ₽', type: 'pants', badge: 'SALE', oldPrice: '4 500 ₽', img: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&q=80' }
+                        { name: 'Жакет 4004 джинс', price: '7 200 ₽', type: 'blazer', badge: 'NEW', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80' },
+                        { name: 'Рубашка 2010 умбра', price: '4 500 ₽', type: 'shirt', badge: 'HIT', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80' },
+                        { name: 'Рубашка 2010 джинс', price: '4 500 ₽', type: 'shirt', img: 'https://images.unsplash.com/photo-1598033129183-c4f50c736c10?w=600&q=80' },
+                        { name: 'Жакет 4002 чёрный', price: '7 500 ₽', type: 'blazer', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80' },
+                        { name: 'Жакет 4002 корица', price: '7 500 ₽', type: 'blazer', badge: 'HIT', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80' },
+                        { name: 'Брюки 3010 муссон', price: '4 200 ₽', type: 'pants', badge: 'NEW', img: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&q=80' },
+                        { name: 'Рубашка 2012 муссон', price: '4 800 ₽', type: 'shirt', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80' },
+                        { name: 'Брюки 3010 зелёный опал', price: '4 200 ₽', type: 'pants', img: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&q=80' },
+                        { name: 'Брюки 3010 деним', price: '4 200 ₽', type: 'pants', img: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80' },
+                        { name: 'Шорты 3011 фисташковый', price: '3 200 ₽', type: 'shorts', badge: 'NEW', img: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=600&q=80' },
+                        { name: 'Шорты 3011 голубой меланж', price: '3 200 ₽', type: 'shorts', img: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=600&q=80' },
+                        { name: 'Брюки 3003 зелёный опал', price: '3 900 ₽', type: 'pants', img: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&q=80' },
+                        { name: 'Брюки 3003 деним', price: '3 900 ₽', type: 'pants', badge: 'HIT', img: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80' },
+                        { name: 'Рубашка 2012 фисташковый', price: '4 800 ₽', type: 'shirt', badge: 'NEW', img: 'https://images.unsplash.com/photo-1598033129183-c4f50c736c10?w=600&q=80' },
+                        { name: 'Рубашка 2012 белый', price: '4 800 ₽', type: 'shirt', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80' },
+                        { name: 'Рубашка Амиго натуральный', price: '3 900 ₽', type: 'shirt', img: 'https://images.unsplash.com/photo-1598033129183-c4f50c736c10?w=600&q=80' },
+                        { name: 'Рубашка 2006 петроль', price: '4 300 ₽', type: 'shirt', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80' },
+                        { name: 'Жакет 5002 умбра', price: '8 200 ₽', type: 'blazer', badge: 'NEW', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80' },
+                        { name: 'Рубашка 2001 лиловый', price: '3 600 ₽', type: 'shirt', img: 'https://images.unsplash.com/photo-1598033129183-c4f50c736c10?w=600&q=80' },
+                        { name: 'Рубашка 2008 белый', price: '4 100 ₽', type: 'shirt', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80' },
+                        { name: 'Рубашка 2006 голубой', price: '4 300 ₽', type: 'shirt', img: 'https://images.unsplash.com/photo-1598033129183-c4f50c736c10?w=600&q=80' },
+                        { name: 'Рубашка 2002 жёлтый', price: '3 800 ₽', type: 'shirt', badge: 'NEW', img: 'https://images.unsplash.com/photo-1598033129183-c4f50c736c10?w=600&q=80' },
+                        { name: 'Рубашка 2008 лиловый', price: '4 100 ₽', type: 'shirt', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80' },
+                        { name: 'Рубашка Френд натуральный', price: '4 200 ₽', type: 'shirt', img: 'https://images.unsplash.com/photo-1598033129183-c4f50c736c10?w=600&q=80' },
+                        { name: 'Брюки 3008 корица', price: '4 000 ₽', type: 'pants', img: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&q=80' },
+                        { name: 'Брюки 3001 антрацит', price: '3 800 ₽', type: 'pants', badge: 'HIT', img: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80' },
+                        { name: 'Брюки 3003 черничный', price: '3 900 ₽', type: 'pants', img: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&q=80' },
+                        { name: 'Рубашка 2008 натуральный', price: '4 100 ₽', type: 'shirt', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80' },
+                        { name: 'Рубашка 2001 муссон', price: '3 600 ₽', type: 'shirt', badge: 'NEW', img: 'https://images.unsplash.com/photo-1598033129183-c4f50c736c10?w=600&q=80' },
+                        { name: 'Рубашка 2002 голубой', price: '3 800 ₽', type: 'shirt', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80' },
+                        { name: 'Рубашка 2002 белый', price: '3 800 ₽', type: 'shirt', img: 'https://images.unsplash.com/photo-1598033129183-c4f50c736c10?w=600&q=80' },
+                        { name: 'Брюки 3008 индиго', price: '4 000 ₽', type: 'pants', badge: 'NEW', img: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80' },
+                        { name: 'Брюки 3003 натуральный', price: '3 900 ₽', type: 'pants', img: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&q=80' },
+                        { name: 'Брюки 3003 умбра', price: '3 900 ₽', type: 'pants', img: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80' },
+                        { name: 'Рубашка 2006 голубой меланж', price: '4 300 ₽', type: 'shirt', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80' }
                     ]
                 },
                 'socks': {
@@ -338,22 +452,41 @@
                     filters: ['Все', 'Мужские', 'Женские'],
                     filterKeys: ['all', 'men', 'women'],
                     products: [
-                        { name: 'Носки мужские «Классик»', price: '450 ₽', type: 'men', badge: 'HIT', img: 'https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=600&q=80' },
-                        { name: 'Носки женские «Комфорт»', price: '420 ₽', type: 'women', badge: 'NEW', img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80' },
-                        { name: 'Носки мужские «Спорт»', price: '490 ₽', type: 'men', img: 'https://images.unsplash.com/photo-1582966772680-860e372bb5ae?w=600&q=80' },
-                        { name: 'Носки женские «Элегант»', price: '480 ₽', type: 'women', img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80' }
+                        { name: 'Носки женские Орнамент бежевый', price: '390 ₽', type: 'women', badge: 'HIT', img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80' },
+                        { name: 'Носки женские Ромашки натуральный', price: '420 ₽', type: 'women', badge: 'NEW', img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80' },
+                        { name: 'Носки женские Ромашки мята', price: '420 ₽', type: 'women', img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80' },
+                        { name: 'Носки мужские Резинка бежевый', price: '350 ₽', type: 'men', img: 'https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=600&q=80' },
+                        { name: 'Носки женские серый Ромбики', price: '380 ₽', type: 'women', img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80' },
+                        { name: 'Носки мужские Спорт белые', price: '370 ₽', type: 'men', badge: 'NEW', img: 'https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=600&q=80' },
+                        { name: 'Носки женские Ромашки голубой', price: '420 ₽', type: 'women', img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80' },
+                        { name: 'Носки мужские Полоса бежевый', price: '340 ₽', type: 'men', img: 'https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=600&q=80' },
+                        { name: 'Носки мужские Дорожка бежевый', price: '340 ₽', type: 'men', badge: 'HIT', img: 'https://images.unsplash.com/photo-1582966772680-860e372bb5ae?w=600&q=80' },
+                        { name: 'Носки женские Линия здоровья', price: '450 ₽', type: 'women', badge: 'HIT', img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80' },
+                        { name: 'Носки женские серый Пирамида', price: '380 ₽', type: 'women', img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80' },
+                        { name: 'Носки мужские чёрный р.31', price: '360 ₽', type: 'men', img: 'https://images.unsplash.com/photo-1582966772680-860e372bb5ae?w=600&q=80' }
                     ]
                 },
                 'gifts': {
                     title: 'Подарки и сувениры',
                     subtitle: 'Оригинальные льняные подарки, игрушки и сувениры ручной работы',
-                    filters: ['Все', 'Игрушки', 'Сувениры', 'Подарочные наборы'],
-                    filterKeys: ['all', 'toys', 'souvenirs', 'sets'],
+                    filters: ['Все', 'Игрушки', 'Сувениры', 'Подарки'],
+                    filterKeys: ['all', 'toys', 'souvenirs', 'gifts'],
                     products: [
-                        { name: 'Игрушка «Льняной зайка»', price: '1 200 ₽', type: 'toys', badge: 'HIT', img: 'https://images.unsplash.com/photo-1563396983906-b3795482a59a?w=600&q=80' },
-                        { name: 'Подарочный набор «Уют»', price: '3 500 ₽', type: 'sets', badge: 'NEW', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238f4e1?w=600&q=80' },
-                        { name: 'Сувенир «Льняная кукла»', price: '890 ₽', type: 'souvenirs', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80' },
-                        { name: 'Подарочный набор «Relax»', price: '4 200 ₽', type: 'sets', badge: 'NEW', img: 'https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=600&q=80' }
+                        { name: 'Свинка-модель', price: '890 ₽', type: 'toys', badge: 'HIT', img: 'https://images.unsplash.com/photo-1563396983906-b3795482a59a?w=600&q=80' },
+                        { name: 'Домовёнок натуральный', price: '750 ₽', type: 'souvenirs', badge: 'NEW', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80' },
+                        { name: 'Домовёнок рыжий', price: '750 ₽', type: 'souvenirs', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80' },
+                        { name: 'Овечка Агния', price: '690 ₽', type: 'toys', img: 'https://images.unsplash.com/photo-1563396983906-b3795482a59a?w=600&q=80' },
+                        { name: 'Барашек Боря', price: '690 ₽', type: 'toys', badge: 'HIT', img: 'https://images.unsplash.com/photo-1563396983906-b3795482a59a?w=600&q=80' },
+                        { name: 'Змей', price: '590 ₽', type: 'toys', img: 'https://images.unsplash.com/photo-1563396983906-b3795482a59a?w=600&q=80' },
+                        { name: 'Котёнок мальчик в цветном', price: '720 ₽', type: 'toys', badge: 'NEW', img: 'https://images.unsplash.com/photo-1563396983906-b3795482a59a?w=600&q=80' },
+                        { name: 'Котёнок девочка в цветном', price: '720 ₽', type: 'toys', img: 'https://images.unsplash.com/photo-1563396983906-b3795482a59a?w=600&q=80' },
+                        { name: 'Зайка девочка', price: '680 ₽', type: 'toys', img: 'https://images.unsplash.com/photo-1563396983906-b3795482a59a?w=600&q=80' },
+                        { name: 'Мишка в шортах', price: '780 ₽', type: 'toys', badge: 'HIT', img: 'https://images.unsplash.com/photo-1563396983906-b3795482a59a?w=600&q=80' },
+                        { name: 'Слоник в тёмном', price: '850 ₽', type: 'toys', img: 'https://images.unsplash.com/photo-1563396983906-b3795482a59a?w=600&q=80' },
+                        { name: 'Поросёнок', price: '590 ₽', type: 'toys', img: 'https://images.unsplash.com/photo-1563396983906-b3795482a59a?w=600&q=80' },
+                        { name: 'Петушок', price: '620 ₽', type: 'souvenirs', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80' },
+                        { name: 'Кукла Бабушка', price: '950 ₽', type: 'souvenirs', badge: 'NEW', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80' },
+                        { name: 'Три Медведя', price: '1 800 ₽', type: 'gifts', badge: 'HIT', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238f4e1?w=600&q=80' }
                     ]
                 },
                 'accessories': {
@@ -362,22 +495,53 @@
                     filters: ['Все', 'Украшения', 'Сумки', 'Головные уборы'],
                     filterKeys: ['all', 'jewelry', 'bags', 'hats'],
                     products: [
-                        { name: 'Сумка-шопер «Эко»', price: '2 400 ₽', type: 'bags', badge: 'HIT', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80' },
-                        { name: 'Панама «Лето»', price: '1 800 ₽', type: 'hats', badge: 'NEW', img: 'https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?w=600&q=80' },
-                        { name: 'Бусы льняные «Натура»', price: '980 ₽', type: 'jewelry', img: 'https://images.unsplash.com/photo-1515562141589-67f0d569b6c0?w=600&q=80' },
-                        { name: 'Клатч «Прованс»', price: '2 900 ₽', type: 'bags', badge: 'NEW', img: 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=600&q=80' }
+                        { name: 'Головной убор ГУ29 латте', price: '1 600 ₽', type: 'hats', badge: 'NEW', img: 'https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?w=600&q=80' },
+                        { name: 'Головной убор ГУ29 терракот', price: '1 600 ₽', type: 'hats', img: 'https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?w=600&q=80' },
+                        { name: 'Бусы А30', price: '890 ₽', type: 'jewelry', badge: 'HIT', img: 'https://images.unsplash.com/photo-1515562141589-67f0d569b6c0?w=600&q=80' },
+                        { name: 'Бандана ГУ15 серый меланж', price: '980 ₽', type: 'hats', img: 'https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?w=600&q=80' },
+                        { name: 'Бусы А31', price: '950 ₽', type: 'jewelry', badge: 'NEW', img: 'https://images.unsplash.com/photo-1515562141589-67f0d569b6c0?w=600&q=80' },
+                        { name: 'Сумка СТ315 халва', price: '2 800 ₽', type: 'bags', badge: 'HIT', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80' },
+                        { name: 'Головной убор ГУ29 авокадо', price: '1 600 ₽', type: 'hats', badge: 'NEW', img: 'https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?w=600&q=80' },
+                        { name: 'Сумка СТ315 серый меланж', price: '2 800 ₽', type: 'bags', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80' },
+                        { name: 'Сумка СВ320 серый меланж', price: '3 200 ₽', type: 'bags', img: 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=600&q=80' },
+                        { name: 'Сумка СВ320 песочный', price: '3 200 ₽', type: 'bags', badge: 'NEW', img: 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=600&q=80' },
+                        { name: 'Сумка из ротанга', price: '3 900 ₽', type: 'bags', badge: 'HIT', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80' },
+                        { name: 'Кепка женская ГУ21 графит', price: '1 400 ₽', type: 'hats', img: 'https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?w=600&q=80' },
+                        { name: 'Сумка из ротанга 70', price: '4 200 ₽', type: 'bags', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80' }
                     ]
                 },
                 'fabrics': {
                     title: 'Льняные ткани',
                     subtitle: 'Натуральные льняные ткани для пошива одежды и домашнего текстиля',
-                    filters: ['Все', 'Однотонные', 'С рисунком', 'Смесовые'],
-                    filterKeys: ['all', 'solid', 'pattern', 'blend'],
+                    filters: ['Все', 'Постельные', 'Декоративные', 'Костюмные'],
+                    filterKeys: ['all', 'bedding', 'decorative', 'costume'],
                     products: [
-                        { name: 'Лён натуральный, 1 м', price: '890 ₽', type: 'solid', badge: 'HIT', img: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80' },
-                        { name: 'Лён с принтом «Цветы», 1 м', price: '1 200 ₽', type: 'pattern', badge: 'NEW', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
-                        { name: 'Лён-хлопок, 1 м', price: '750 ₽', type: 'blend', img: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80' },
-                        { name: 'Лён отбеленный, 1 м', price: '960 ₽', type: 'solid', img: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80' }
+                        { name: 'Ткань для постельного белья полоса голубая', price: '590 ₽/м', type: 'bedding', badge: 'HIT', img: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80' },
+                        { name: 'Ткань для постельного белья полоса бежевая', price: '590 ₽/м', type: 'bedding', img: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80' },
+                        { name: 'Ткань декоративная полоса бежевая', price: '480 ₽/м', type: 'decorative', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Ткань декоративная', price: '450 ₽/м', type: 'decorative', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Ткань декоративная жёлтая', price: '480 ₽/м', type: 'decorative', badge: 'NEW', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Ткань для постельного белья Арина', price: '620 ₽/м', type: 'bedding', img: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80' },
+                        { name: 'Ткань костюмная Чёрная 145см', price: '890 ₽/м', type: 'costume', badge: 'HIT', img: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80' },
+                        { name: 'Ткань костюмная Цветы 145см', price: '950 ₽/м', type: 'costume', badge: 'NEW', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Ткань полотенечная 145см', price: '420 ₽/м', type: 'decorative', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Холст полотенечный Кофе коричневый', price: '380 ₽/м', type: 'decorative', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Холст полотенечный Кофе бордо', price: '380 ₽/м', type: 'decorative', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Холст полотенечный Кофейное зерно', price: '380 ₽/м', type: 'decorative', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Ткань декоративная дорожка широкая', price: '520 ₽/м', type: 'decorative', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Ткань декоративная полоса белая', price: '480 ₽/м', type: 'decorative', img: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80' },
+                        { name: 'Ткань декоративная лайм', price: '490 ₽/м', type: 'decorative', badge: 'NEW', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Ткань декоративная серая полоса', price: '480 ₽/м', type: 'decorative', img: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80' },
+                        { name: 'Ткань для постельного полоса мелкая', price: '610 ₽/м', type: 'bedding', img: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80' },
+                        { name: 'Ткань бытовая Есения голубая', price: '350 ₽/м', type: 'decorative', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Ткань декоративная Эталон', price: '520 ₽/м', type: 'decorative', badge: 'HIT', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Ткань декоративная Лимон', price: '490 ₽/м', type: 'decorative', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Ткань декоративная Коралл', price: '490 ₽/м', type: 'decorative', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Ткань бытовая Тедди', price: '380 ₽/м', type: 'decorative', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Ткань бытовая Есения коричневая', price: '350 ₽/м', type: 'decorative', img: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80' },
+                        { name: 'Ткань бытовая Курочка', price: '350 ₽/м', type: 'decorative', badge: 'NEW', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Ткань бытовая Кошки', price: '350 ₽/м', type: 'decorative', img: 'https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?w=600&q=80' },
+                        { name: 'Ткань декоративная Небесный', price: '490 ₽/м', type: 'decorative', img: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80' }
                     ]
                 }
             };
@@ -405,9 +569,15 @@
                 const delay = i > 0 ? ' reveal-delay-' + ((i % 4) || '') : '';
                 const badges = p.badge ? '<div class="product-badges"><span class="badge badge-' + p.badge.toLowerCase() + '">' + p.badge + '</span></div>' : '';
                 const oldPrice = p.oldPrice ? '<span class="price-old">' + p.oldPrice + '</span>' : '';
+
+                let sizesHtml = '';
+                if (['women', 'men'].includes(cat)) {
+                    sizesHtml = '<div class="product-sizes"><span class="size-item available">42</span><span class="size-item available">44</span><span class="size-item available">46</span><span class="size-item">48</span></div>';
+                }
+
                 return '<div class="product-card reveal' + delay + '" data-type="' + p.type + '">' +
-                    '<div class="product-card-image"><img src="' + p.img + '" alt="' + p.name + '">' + badges +
-                    '<div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a></div></div>' +
+                    '<div class="product-card-image"><img src="' + p.img + '" alt="' + p.name + '">' + badges + sizesHtml +
+                    '</div>' +
                     '<div class="product-card-info"><h3 class="product-card-name">' + p.name + '</h3>' +
                     '<div class="product-card-price"><span class="price-current">' + p.price + '</span>' + oldPrice + '</div></div></div>';
             }).join('');
