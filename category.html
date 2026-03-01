@@ -14,7 +14,9 @@
     <header class="header scrolled" id="header">
         <div class="header-inner">
             <a href="index.html" class="logo">
-                <img src="images/logo.png" alt="нжен ЛЁН" class="logo-image" onerror="this.onerror=null; this.src='images/logo.svg'" style="height: 40px; width: auto; display: block;">
+                <img src="images/logo.png" alt="нжен ЛЁН" class="logo-image"
+                    onerror="this.onerror=null; this.src='images/logo.svg'"
+                    style="height: 40px; width: auto; display: block;">
             </a>
             <nav class="nav" id="nav">
                 <div class="nav-item-dropdown">
@@ -95,41 +97,51 @@
         </div>
     </header>
 
-    <section class="page-hero">
+    <div class="ch-ref-header">
         <div class="container">
-            <div class="breadcrumbs">
-                <a href="index.html">Главная</a><span>/</span><a href="catalog.html">Каталог</a><span>/</span><span
-                    id="categoryTitle">Женская одежда</span>
+            <div class="ch-ref-breadcrumbs">
+                <a href="index.html">ГЛАВНАЯ СТРАНИЦА</a> / <a href="catalog.html">КАТАЛОГ</a> / <span class="active"
+                    id="categoryTitle">ДОМАШНИЙ ТЕКСТИЛЬ</span>
             </div>
-            <h1 class="page-hero-title" id="categoryPageTitle">Женская одежда</h1>
-            <p class="page-hero-subtitle" id="categorySubtitle">Элегантные льняные платья, блузки и костюмы</p>
-        </div>
-    </section>
 
-    <section class="section category-page">
-        <div class="container">
-            <div class="category-toolbar reveal">
-                <div class="category-filters">
-                    <button class="filter-btn active" data-filter="all">Все</button>
-                    <button class="filter-btn" data-filter="dress">Платья</button>
-                    <button class="filter-btn" data-filter="blouse">Блузки</button>
-                    <button class="filter-btn" data-filter="pants">Брюки</button>
-                    <button class="filter-btn" data-filter="skirt">Юбки</button>
+            <div class="ch-ref-title-wrap">
+                <h1 class="ch-ref-title" id="categoryPageTitle">ЛЬНЯНОЙ ТЕКСТИЛЬ ДЛЯ КУХНИ</h1>
+                <span class="ch-ref-count">(34 товара)</span>
+            </div>
+
+            <div class="ch-ref-toolbar">
+                <div class="ch-ref-subcats">
+                    <a href="catalog.html" class="ch-ref-subcat-back"><i class="fas fa-chevron-left"></i> ВСЁ
+                        <span>(410)</span></a>
+                    <a href="#" class="ch-ref-subcat active" data-filter="dress">СКАТЕРТИ <span>(8)</span></a>
+                    <a href="#" class="ch-ref-subcat" data-filter="blouse">РАННЕРЫ <span>(7)</span></a>
+                    <a href="#" class="ch-ref-subcat" data-filter="pants">САЛФЕТКИ <span>(11)</span></a>
+                    <a href="#" class="ch-ref-subcat" data-filter="skirt">ФАРТУКИ <span>(6)</span></a>
+                    <a href="#" class="ch-ref-subcat" data-filter="all">МЕШОЧКИ <span>(1)</span></a>
                 </div>
-                <div class="category-sort">
-                    <select id="sortSelect">
-                        <option value="popular">По популярности</option>
-                        <option value="price-asc">Цена: по возрастанию</option>
-                        <option value="price-desc">Цена: по убыванию</option>
-                        <option value="new">Новинки</option>
-                    </select>
-                </div>
-                <div class="category-view">
-                    <button class="view-btn active" data-view="grid" title="Сетка"><i
-                            class="fas fa-grid-2"></i></button>
-                    <button class="view-btn" data-view="list" title="Список"><i class="fas fa-list"></i></button>
+
+                <div class="ch-ref-filters">
+                    <div class="ch-ref-dropdown">
+                        ВСЕ ТОВАРЫ <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="ch-ref-dropdown">
+                        ЦЕНА <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="ch-ref-dropdown">
+                        ЦВЕТ <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="ch-ref-view">
+                        ОТОБРАЖЕНИЕ
+                        <button class="active" data-view="grid" title="Сетка 3 колонки">3</button>
+                        <button data-view="grid4" title="Сетка 4 колонки">4</button>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <section class="section category-page" style="padding-top: 0;">
+        <div class="container">
 
             <div class="category-products-grid" id="categoryGrid">
                 <div class="product-card reveal" data-type="dress">
@@ -229,7 +241,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <img src="images/logo.png" alt="нжен ЛЁН" class="logo-image" onerror="this.onerror=null; this.src='images/logo.svg'" style="height: 30px; width: auto; margin-bottom: 1rem;">
+                    <img src="images/logo.png" alt="нжен ЛЁН" class="logo-image"
+                        onerror="this.onerror=null; this.src='images/logo.svg'"
+                        style="height: 30px; width: auto; margin-bottom: 1rem;">
                     <p class="footer-brand-desc">Натуральный лён, вдохновлённый природой. Создаём с любовью и заботой о
                         вашем комфорте с 2010 года.</p>
                     <div class="footer-social">
