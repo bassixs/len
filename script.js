@@ -446,3 +446,27 @@ if(callFormHero) {
         }, 1500);
     });
 }
+
+// ===== FAQ ACCORDION =====
+const faqQuestions = document.querySelectorAll('.faq-question');
+
+if (faqQuestions.length > 0) {
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            const isActive = question.classList.contains('active');
+            
+            // Close all others
+            document.querySelectorAll('.faq-question').forEach(q => {
+                q.classList.remove('active');
+                q.nextElementSibling.style.maxHeight = null;
+            });
+
+            // Toggle current
+            if (!isActive) {
+                question.classList.add('active');
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+        });
+    });
+}
