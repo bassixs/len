@@ -145,59 +145,20 @@ revealElements.forEach(el => {
     revealObserver.observe(el);
 });
 
-// ===== PARALLAX HERO BACKGROUND =====
-const heroBg = document.querySelector('.hero-bg');
 
-function handleParallax() {
-    if (!heroBg) return;
-    const scrollY = window.scrollY;
-    const heroHeight = heroSection ? heroSection.offsetHeight : 0;
 
-    if (scrollY < heroHeight) {
-        const parallaxOffset = scrollY * 0.4;
-        heroBg.style.transform = `scale(1.05) translateY(${parallaxOffset}px)`;
-    }
-}
 
-window.addEventListener('scroll', handleParallax, { passive: true });
 
-// ===== COUNTER ANIMATION FOR "15+" BADGE =====
-function animateCounter(element, target, duration = 2000) {
-    let start = 0;
-    const startTime = performance.now();
 
-    function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
 
-        // Ease out cubic
-        const ease = 1 - Math.pow(1 - progress, 3);
-        const current = Math.round(start + (target - start) * ease);
 
-        element.textContent = current + '+';
 
-        if (progress < 1) {
-            requestAnimationFrame(update);
-        }
-    }
 
-    requestAnimationFrame(update);
-}
 
-// Observe the counter element
-const counterEl = document.querySelector('.about-image-badge .big');
-if (counterEl) {
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounter(counterEl, 15, 1500);
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
 
-    counterObserver.observe(counterEl);
-}
+
+
+
 
 // ===== PRELOAD IMAGES =====
 function preloadImage(src) {
@@ -231,14 +192,17 @@ document.addEventListener('keydown', (e) => {
 
 
 // ===== PRODUCT PAGE — GALLERY =====
-const mainImage = document.getElementById('mainImage');
+const mainImage = document.getElementById('productMainImg');
 const thumbs = document.querySelectorAll('.thumb');
 const galleryPrev = document.getElementById('galleryPrev');
 const galleryNext = document.getElementById('galleryNext');
 
 if (mainImage && thumbs.length > 0) {
     let currentIndex = 0;
-    const images = Array.from(thumbs).map(t => t.dataset.src);
+    const images = Array.from(thumbs).map(t => {
+        const img = t.querySelector('img');
+        return img ? img.src.replace(/w=200/, 'w=800') : '';
+    });
 
     function setActiveThumb(index) {
         thumbs.forEach(t => t.classList.remove('active'));
