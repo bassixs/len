@@ -405,9 +405,9 @@ const callModalOverlay = document.getElementById('callModalOverlay');
 
 document.querySelectorAll('a[href^="tel:"]').forEach(link => {
     link.addEventListener('click', (e) => {
-        if(window.innerWidth > 768) {
+        if (window.innerWidth > 768) {
             e.preventDefault();
-            if(callModal) {
+            if (callModal) {
                 callModal.classList.add('open');
                 document.body.style.overflow = 'hidden';
             }
@@ -416,20 +416,20 @@ document.querySelectorAll('a[href^="tel:"]').forEach(link => {
 });
 
 function closeModal() {
-    if(callModal) {
+    if (callModal) {
         callModal.classList.remove('open');
         document.body.style.overflow = '';
     }
 }
 
-if(callModalClose) callModalClose.addEventListener('click', closeModal);
-if(callModalOverlay) callModalOverlay.addEventListener('click', closeModal);
+if (callModalClose) callModalClose.addEventListener('click', closeModal);
+if (callModalOverlay) callModalOverlay.addEventListener('click', closeModal);
 document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') closeModal();
 });
 
 const callFormHero = document.getElementById('callFormHero');
-if(callFormHero) {
+if (callFormHero) {
     callFormHero.addEventListener('submit', (e) => {
         e.preventDefault();
         const btn = callFormHero.querySelector('button');
@@ -455,7 +455,7 @@ if (faqQuestions.length > 0) {
         question.addEventListener('click', () => {
             const answer = question.nextElementSibling;
             const isActive = question.classList.contains('active');
-            
+
             // Close all others
             document.querySelectorAll('.faq-question').forEach(q => {
                 q.classList.remove('active');
@@ -467,6 +467,39 @@ if (faqQuestions.length > 0) {
                 question.classList.add('active');
                 answer.style.maxHeight = answer.scrollHeight + "px";
             }
+        });
+    });
+}
+
+// ===== ABOUT PAGE — BRUTAL MINIMALISM CURSOR IMAGE =====
+const cursorContainer = document.getElementById('cursor-img-container');
+const hoverWords = document.querySelectorAll('.hover-img-word');
+
+if (cursorContainer && hoverWords.length > 0) {
+    let imgEl = cursorContainer.querySelector('img');
+    if (!imgEl) {
+        imgEl = document.createElement('img');
+        cursorContainer.appendChild(imgEl);
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        requestAnimationFrame(() => {
+            cursorContainer.style.left = e.clientX + 'px';
+            cursorContainer.style.top = e.clientY + 'px';
+        });
+    });
+
+    hoverWords.forEach(word => {
+        word.addEventListener('mouseenter', () => {
+            const imgSrc = word.getAttribute('data-img');
+            if (imgSrc) {
+                imgEl.src = imgSrc;
+                cursorContainer.classList.add('active');
+            }
+        });
+
+        word.addEventListener('mouseleave', () => {
+            cursorContainer.classList.remove('active');
         });
     });
 }
