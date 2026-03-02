@@ -1,0 +1,70 @@
+/* ===== BUTTONS ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 2.2rem;
+    border-radius: 50px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: var(--c-sage);
+    color: var(--c-white);
+    box-shadow: 0 4px 20px rgba(107, 127, 62, 0.3);
+}
+
+.btn-primary:hover {
+    background: var(--c-sage-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(107, 127, 62, 0.4);
+}
+
+.btn-outline {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: var(--c-white);
+    backdrop-filter: blur(10px);
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+.btn-outline-dark {
+    border: 2px solid var(--c-sage);
+    color: var(--c-sage);
+}
+
+.btn-outline-dark:hover {
+    background: var(--c-sage);
+    color: var(--c-white);
+    transform: translateY(-2px);
+}
+
+.btn-dark {
+    background: var(--c-dark);
+    color: var(--c-white);
+}
+
+.btn-dark:hover {
+    background: #444;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn i {
+    font-size: 1rem;
+    transition: transform var(--transition-fast);
+}
+
+.btn:hover i {
+    transform: translateX(4px);
+}
