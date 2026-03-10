@@ -91,6 +91,13 @@ button {
     font-family: inherit;
 }
 
+/* Accessibility Focus States */
+:focus-visible {
+    outline: 2px solid var(--c-sage);
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
 .container {
     max-width: var(--max-width);
     margin: 0 auto;
