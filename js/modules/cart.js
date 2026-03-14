@@ -1,14 +1,14 @@
 export function initCart() {
     updateCartIcon();
+    initMiniCart();
 
     // Attach to add to cart buttons
     const addToCartBtns = document.querySelectorAll('.add-to-cart-btn, .btn-primary:not(a)'); 
     // Need a specific class or ID, let's use .add-to-cart-btn
     addToCartBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            // Need to parse product data from DOM or data attributes
-            // Let's assume a structure or simply add a dummy product for now to prove concept
-            const card = e.target.closest('.product-card') || e.target.closest('.product-info') || e.target.closest('.product-detail-grid');
+            // Support both old grid layout and new split-screen layout
+            const card = e.target.closest('.product-card') || e.target.closest('.product-info') || e.target.closest('.product-info-sticky') || e.target.closest('.product-detail-grid');
             if (!card) return;
 
             let product = {
@@ -19,17 +19,26 @@ export function initCart() {
                 quantity: 1
             };
 
-            const nameEl = card.querySelector('.product-card-name, .product-title');
+            const nameEl = card.querySelector('.product-card-name, .product-title, .product-title-premium');
             if (nameEl) product.name = nameEl.textContent.trim();
 
-            const priceEl = card.querySelector('.price-current, .product-price');
+            const priceEl = card.querySelector('.price-current, .product-price, .product-price-premium');
             if (priceEl) {
                 // Parse integer from string like '3 400 ₽'
                 product.price = parseInt(priceEl.textContent.replace(/\D/g, ''), 10) || 0;
             }
 
-            // For product page, image is in .product-gallery, which is a sibling of .product-info
-            const imgEl = card.querySelector('img') || (card.closest('.product-detail-grid') && card.closest('.product-detail-grid').querySelector('#productMainImg'));
+            // For product page, image is in gallery, which is outside info block
+            const formContainer = e.target.closest('.product-split'); // new layout
+            const gridContainer = e.target.closest('.product-detail-grid'); // old layout
+            
+            let imgEl = card.querySelector('img'); // For catalog cards
+            if (!imgEl && formContainer) {
+                imgEl = formContainer.querySelector('#productMainImg');
+            } else if (!imgEl && gridContainer) {
+                imgEl = gridContainer.querySelector('#productMainImg');
+            }
+            
             if (imgEl) product.img = imgEl.src;
 
             // Simple ID generation based on name to prevent duplicates if same product added
@@ -37,21 +46,111 @@ export function initCart() {
 
             addToCart(product);
             
-            // Show feedback (e.g., text change)
-            const originalText = btn.textContent;
-            btn.textContent = 'В корзине';
-            btn.classList.add('btn-success');
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.classList.remove('btn-success');
-            }, 2000);
+            // Show feedback using toast and minicart instead of button text
+            showToast(`«${product.name}» добавлено в корзину`);
+            openMiniCart();
         });
     });
 
     // Render cart on cart page
-    if (document.querySelector('.cart-items')) {
+    if (document.querySelector('.cart-items:not(.cart-drawer-items)')) {
         renderCartPage();
     }
+}
+
+// ===== TOAST & MINICART LOGIC =====
+
+function showToast(message) {
+    let container = document.getElementById('toastContainer');
+    if (!container) return; // Assuming it's in modals.html
+
+    const toast = document.createElement('div');
+    toast.className = 'toast reveal'; // simple animation class
+    toast.innerHTML = `<i class="fas fa-check-circle"></i> <span>${message}</span>`;
+    
+    container.appendChild(toast);
+    
+    // Trigger reflow for animation
+    setTimeout(() => toast.style.opacity = '1', 10);
+
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300); // Wait for fade out
+    }, 3000);
+}
+
+function initMiniCart() {
+    const cartLinks = document.querySelectorAll('.header-cart');
+    const overlay = document.getElementById('cartOverlay');
+    const closeBtn = document.getElementById('cartDrawerClose');
+
+    cartLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Only prevent default and open drawer if not on cart page
+            if (!window.location.pathname.includes('cart.html')) {
+                e.preventDefault();
+                openMiniCart();
+            }
+        });
+    });
+
+    if (overlay) overlay.addEventListener('click', closeMiniCart);
+    if (closeBtn) closeBtn.addEventListener('click', closeMiniCart);
+}
+
+function openMiniCart() {
+    const drawer = document.getElementById('cartDrawer');
+    const overlay = document.getElementById('cartOverlay');
+    if (drawer && overlay) {
+        renderMiniCart();
+        drawer.classList.add('open');
+        overlay.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeMiniCart() {
+    const drawer = document.getElementById('cartDrawer');
+    const overlay = document.getElementById('cartOverlay');
+    if (drawer && overlay) {
+        drawer.classList.remove('open');
+        overlay.classList.remove('visible');
+        document.body.style.overflow = '';
+    }
+}
+
+function renderMiniCart() {
+    const container = document.getElementById('cartDrawerItems');
+    const totalEl = document.getElementById('cartDrawerTotal');
+    if (!container) return;
+
+    const cart = getCart();
+    
+    if (cart.length === 0) {
+        container.innerHTML = '<div class="cart-drawer-empty">Ваша корзина пуста</div>';
+        if (totalEl) totalEl.textContent = '0 ₽';
+        return;
+    }
+
+    let html = '';
+    let total = 0;
+
+    cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        html += `
+            <div class="cart-drawer-item">
+                <img src="${item.img}" alt="${item.name}" class="cart-drawer-img">
+                <div class="cart-drawer-info">
+                    <h4 class="cart-drawer-name">${item.name}</h4>
+                    <div class="cart-drawer-price">${formatPrice(item.price)} x ${item.quantity}</div>
+                </div>
+            </div>
+        `;
+    });
+
+    container.innerHTML = html;
+    if (totalEl) totalEl.textContent = formatPrice(total);
 }
 
 export function getCart() {
@@ -78,9 +177,10 @@ export function removeFromCart(id) {
     let cart = getCart();
     cart = cart.filter(item => item.id !== id);
     saveCart(cart);
-    if (document.querySelector('.cart-items')) {
+    if (document.querySelector('.cart-items:not(.cart-drawer-items)')) {
         renderCartPage();
     }
+    renderMiniCart();
 }
 
 export function updateQuantity(id, quantity) {
@@ -93,9 +193,10 @@ export function updateQuantity(id, quantity) {
     if (item) {
         item.quantity = quantity;
         saveCart(cart);
-        if (document.querySelector('.cart-items')) {
+        if (document.querySelector('.cart-items:not(.cart-drawer-items)')) {
             renderCartPage();
         }
+        renderMiniCart();
     }
 }
 
@@ -114,7 +215,7 @@ export function updateCartIcon() {
 }
 
 export function renderCartPage() {
-    const cartContainer = document.querySelector('.cart-items');
+    const cartContainer = document.querySelector('.cart-items:not(.cart-drawer-items)');
     const summarySubtotal = document.getElementById('cart-subtotal');
     const summaryTotal = document.getElementById('cart-total');
     if (!cartContainer) return;
@@ -126,7 +227,7 @@ export function renderCartPage() {
         if (summarySubtotal) summarySubtotal.textContent = '0 ₽';
         if (summaryTotal) summaryTotal.textContent = '0 ₽';
         // Disable checkout button
-        const checkoutBtn = document.querySelector('.cart-summary .btn');
+        const checkoutBtn = document.querySelector('.checkout-summary-box .btn');
         if (checkoutBtn) {
             checkoutBtn.disabled = true;
             checkoutBtn.style.opacity = '0.5';
@@ -143,18 +244,22 @@ export function renderCartPage() {
         total += itemTotal;
         html += `
             <div class="cart-item" data-id="${item.id}">
-                <img src="${item.img}" alt="${item.name}" class="cart-item-image">
+                <div class="cart-item-image">
+                    <img src="${item.img}" alt="${item.name}">
+                </div>
                 <div class="cart-item-info">
-                    <h3 class="cart-item-title">${item.name}</h3>
-                    <div class="cart-item-price">${formatPrice(item.price)}</div>
+                    <h3 class="cart-item-name">${item.name}</h3>
+                    <div class="cart-item-meta"></div>
+                    <div class="cart-item-qty">
+                        <button class="qty-btn minus" aria-label="Уменьшить">−</button>
+                        <input type="number" class="qty-input" value="${item.quantity}" min="1" aria-label="Количество">
+                        <button class="qty-btn plus" aria-label="Увеличить">+</button>
+                    </div>
                 </div>
-                <div class="cart-item-quantity">
-                    <button class="qty-btn minus" aria-label="Уменьшить">-</button>
-                    <input type="number" class="qty-input" value="${item.quantity}" min="1" aria-label="Количество">
-                    <button class="qty-btn plus" aria-label="Увеличить">+</button>
+                <div class="cart-item-price-wrapper">
+                    <div class="cart-item-price">${formatPrice(itemTotal)}</div>
+                    <button class="cart-item-remove" aria-label="Удалить"><i class="fas fa-times"></i></button>
                 </div>
-                <div class="cart-item-total">${formatPrice(itemTotal)}</div>
-                <button class="cart-item-remove" aria-label="Удалить"><i class="fas fa-trash-alt"></i></button>
             </div>
         `;
     });
@@ -165,7 +270,7 @@ export function renderCartPage() {
     if (summaryTotal) summaryTotal.textContent = formatPrice(total);
     
     // Re-enable checkout button
-    const checkoutBtn = document.querySelector('.cart-summary .btn');
+    const checkoutBtn = document.querySelector('.checkout-summary-box .btn');
     if (checkoutBtn) {
         checkoutBtn.disabled = false;
         checkoutBtn.style.opacity = '1';
@@ -177,7 +282,7 @@ export function renderCartPage() {
 }
 
 function attachCartPageListeners() {
-    const cartContainer = document.querySelector('.cart-items');
+    const cartContainer = document.querySelector('.cart-items:not(.cart-drawer-items)');
     if (!cartContainer) return;
 
     cartContainer.querySelectorAll('.cart-item').forEach(itemEl => {

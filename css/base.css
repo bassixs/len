@@ -22,6 +22,7 @@
     /* Основной текст (темно-серый) */
     --c-text-light: #888888;
     --c-text-muted: #B0B0B0;
+    --c-border: rgba(0, 0, 0, 0.08);
     --c-white: #FFFFFF;
     --c-gold: #D4B982;
     --c-red-sale: #C85A5A;

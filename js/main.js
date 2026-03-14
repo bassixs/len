@@ -8,11 +8,12 @@ import { initCart } from './modules/cart.js';
 
 // Initialize all modules when the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize common components
     initNavigation();
+    initCart();
+    initProductPage();
     initSliders();
     initAnimations();
-    initProductPage();
     initCatalog();
     initForms();
-    initCart();
 });

@@ -18,3 +18,25 @@
         </form>
     </div>
 </div>
+
+<!-- ===== MINI-CART DRAWER ===== -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+        <h3 class="cart-drawer-title">Ваша корзина</h3>
+        <button class="cart-drawer-close" id="cartDrawerClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-drawer-items" id="cartDrawerItems">
+        <!-- Items render here via JS -->
+    </div>
+    <div class="cart-drawer-footer">
+        <div class="cart-drawer-total">
+            <span>Итого:</span>
+            <span id="cartDrawerTotal">0 ₽</span>
+        </div>
+        <a href="cart.html" class="btn btn-primary btn-block">В корзину и оформление</a>
+    </div>
+</div>
+
+<!-- ===== TOAST NOTIFICATION CONTAINER ===== -->
+<div class="toast-container" id="toastContainer"></div>

@@ -81,4 +81,37 @@ export function initNavigation() {
             if (sidebar) sidebar.classList.remove('mobile-open');
         }
     });
+    // Close mega menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-item-dropdown')) {
+            const dropdown = document.querySelector('.nav-item-dropdown.active');
+            if (dropdown) dropdown.classList.remove('active');
+        }
+    });
+
+    highlightActiveLink();
+}
+
+function highlightActiveLink() {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav a:not(.nav-link-dropdown)');
+    
+    // Check main links
+    navLinks.forEach(link => {
+        const linkPath = new URL(link.href).pathname;
+        if (currentPath === linkPath || (currentPath === '/' && linkPath.endsWith('index.html'))) {
+            // Check if it's explicitly not just base URL due to query params
+            if (window.location.search) {
+               // Ignore exact match if url has query params for category, we'll handle that differently if needed
+               // but for simple top level links it's fine.
+            }
+            link.classList.add('active');
+        }
+    });
+
+    // We can also highlight dropdown parent if we are on a category page
+    if (currentPath.includes('catalog.html') || currentPath.includes('category.html') || currentPath.includes('product.html')) {
+         const dropdownLink = document.querySelector('.nav-link-dropdown');
+         if (dropdownLink) dropdownLink.classList.add('active');
+    }
 }

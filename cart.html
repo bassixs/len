@@ -181,10 +181,30 @@
     {{> footer }}
     {{> modals }}
     <script type="module" src="/js/main.js"></script>
-    <script>
-        // Simple mock for form submission to redirect to thanks.html
+    <script type="module">
+        import { getCart, saveCart, updateCartIcon } from '/js/modules/cart.js';
+
         document.getElementById('checkoutForm').addEventListener('submit', function (e) {
             e.preventDefault();
+            
+            const cart = getCart();
+            if (cart.length === 0) {
+                alert('Ваша корзина пуста! Пожалуйста, добавьте товары перед оформлением.');
+                return;
+            }
+
+            // Simple validation example (HTML5 actually handles `required` for us)
+            const phone = document.getElementById('phone').value;
+            if (phone.length < 10) {
+                alert('Пожалуйста, введите корректный номер телефона.');
+                return;
+            }
+
+            // "Process" order and clear cart
+            saveCart([]);
+            updateCartIcon();
+            
+            // Redirect to thanks page
             window.location.href = 'thanks.html';
         });
     </script>

@@ -130,21 +130,6 @@
                 </div>
                 <div class="product-card reveal" data-type="skirt">
                     <div class="product-card-image">
-                        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80" alt="Юбка">
-                        <div class="product-badges"><span class="badge badge-sale">SALE</span></div>
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="product-card-info">
-                        <h3 class="product-card-name">Юбка «Маркиза»</h3>
-                        <div class="product-card-price"><span class="price-current">2 800 ₽</span><span
-                                class="price-old">3 500 ₽</span></div>
-                        <div class="product-colors"><span class="color-dot" style="background:#D4C8B4"></span><span
-                                class="color-dot" style="background:#7B8F6B"></span></div>
-                    </div>
-                </div>
-                <div class="product-card reveal reveal-delay-1" data-type="blouse">
-                    <div class="product-card-image">
                         <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80"
                             alt="Рубашка">
                         <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
@@ -187,50 +172,6 @@
 
             // Update breadcrumbs & headings
             document.getElementById('categoryTitle').textContent = data.title;
-            document.getElementById('categoryPageTitle').textContent = data.title;
-            document.getElementById('categorySubtitle').textContent = data.subtitle;
-
-            // Update filter buttons
-            const filtersContainer = document.querySelector('.category-filters');
-            filtersContainer.innerHTML = data.filters.map((f, i) =>
-                '<button class="filter-btn' + (i === 0 ? ' active' : '') + '" data-filter="' + data.filterKeys[i] + '">' + f + '</button>'
-            ).join('');
-
-            // Update product grid
-            const grid = document.getElementById('categoryGrid');
-            grid.innerHTML = data.products.map((p, i) => {
-                const delay = i > 0 ? ' reveal-delay-' + ((i % 4) || '') : '';
-                const badges = p.badge ? '<div class="product-badges"><span class="badge badge-' + p.badge.toLowerCase() + '">' + p.badge + '</span></div>' : '';
-                const oldPrice = p.oldPrice ? '<span class="price-old">' + p.oldPrice + '</span>' : '';
-
-                let sizesHtml = '';
-                if (['women', 'men'].includes(cat)) {
-                    sizesHtml = '<div class="product-sizes"><span class="size-item available">42</span><span class="size-item available">44</span><span class="size-item available">46</span><span class="size-item">48</span></div>';
-                }
-
-                return '<div class="product-card reveal' + delay + '" data-type="' + p.type + '">' +
-                    '<div class="product-card-image"><img src="' + p.img + '" alt="' + p.name + '">' + badges + sizesHtml +
-                    '</div>' +
-                    '<div class="product-card-info"><h3 class="product-card-name">' + p.name + '</h3>' +
-                    '<div class="product-card-price"><span class="price-current">' + p.price + '</span>' + oldPrice + '</div></div></div>';
-            }).join('');
-
-            // Re-init filter buttons
-            filtersContainer.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    filtersContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    const filter = this.dataset.filter;
-                    grid.querySelectorAll('.product-card').forEach(card => {
-                        card.style.display = (filter === 'all' || card.dataset.type === filter) ? '' : 'none';
-                    });
-                });
-            });
-
-            // Trigger reveal animations
-            grid.querySelectorAll('.reveal').forEach(el => {
-                setTimeout(() => el.classList.add('visible'), 100);
-            });
         })();
     </script>
 </body>

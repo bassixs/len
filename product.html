@@ -7,7 +7,7 @@
     <meta name="description" content="Товар из натурального льна — нжен ЛЁН. Описание, фото, характеристики.">
     <title>Товар — нжен ЛЁН</title>
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <link rel="stylesheet" href="styles.css?v=2.0">
+    <link rel="stylesheet" href="/styles.css?v=3.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,146 +27,110 @@
 
     <section class="section product-page">
         <div class="container">
-            <div class="product-detail-grid">
-                <div class="product-gallery reveal">
-                    <div class="product-main-image" id="mainImage">
-                        <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=800&q=80"
-                            alt="Платье льняное «Лаванда»" id="productMainImg">
-                    </div>
-                    <div class="product-thumbs" id="thumbs">
-                        <div class="thumb active"><img
-                                src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=200&q=80"
-                                alt="Фото 1"></div>
-                        <div class="thumb"><img
-                                src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=200&q=80"
-                                alt="Фото 2"></div>
-                        <div class="thumb"><img
-                                src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=200&q=80"
-                                alt="Фото 3"></div>
-                        <div class="thumb"><img
-                                src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=200&q=80"
-                                alt="Фото 4"></div>
-                    </div>
+            <div class="product-split">
+                <!-- LEFT: GALLERY -->
+                <div class="product-gallery-stack reveal">
+                    <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=1000&q=80" alt="Платье льняное «Лаванда» - вид спереди" id="productMainImg">
+                    <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=1000&q=80" alt="Детали ткани" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=1000&q=80" alt="Вид сзади" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=1000&q=80" alt="Образ целиком" loading="lazy">
                 </div>
-                <div class="product-info reveal reveal-delay-1">
-                    <h1 class="product-title">Платье льняное «Лаванда»</h1>
-                    <div class="product-price-block">
-                        <span class="product-price">4 800 ₽</span>
-                    </div>
-                    <div class="product-description">
-                        <p>Элегантное платье из 100% натурального льна. Идеально подходит для тёплого времени года.
-                            Мягкая, дышащая ткань обеспечивает комфорт в течение всего дня.</p>
-                    </div>
-                    <div class="product-options">
-                        <div class="option-group">
-                            <label>Цвет:</label>
-                            <div class="color-selector" id="colorSelector">
-                                <span class="color-option active" style="background:#C4A882" data-color="Бежевый"
-                                    title="Бежевый"></span>
-                                <span class="color-option" style="background:#7B8F6B" data-color="Зелёный"
-                                    title="Зелёный"></span>
-                                <span class="color-option" style="background:#E8DDD0" data-color="Молочный"
-                                    title="Молочный"></span>
-                            </div>
-                            <span class="color-name" id="colorName">Бежевый</span>
-                        </div>
-                        <div class="option-group">
-                            <label>Размер:</label>
-                            <div class="size-selector" id="sizeSelector">
-                                <button class="size-btn" data-size="XS">XS</button>
-                                <button class="size-btn" data-size="S">S</button>
-                                <button class="size-btn active" data-size="M">M</button>
-                                <button class="size-btn" data-size="L">L</button>
-                                <button class="size-btn" data-size="XL">XL</button>
-                                <button class="size-btn" data-size="XXL">XXL</button>
-                            </div>
-                        </div>
-                        <div class="option-group">
-                            <label>Количество:</label>
-                            <div class="quantity-selector">
-                                <button class="qty-btn" id="qtyMinus">−</button>
-                                <input type="number" value="1" min="1" max="10" id="qtyInput">
-                                <button class="qty-btn" id="qtyPlus">+</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-actions">
-                        <button class="btn btn-primary btn-large add-to-cart-btn"><i class="fas fa-shopping-bag"></i> Добавить в
-                            корзину</button>
-                        <button class="btn btn-outline"><i class="fas fa-heart"></i></button>
-                    </div>
-                    <div class="product-features">
-                        <div class="product-feature"><i class="fas fa-leaf"></i> 100% натуральный лён</div>
-                        <div class="product-feature"><i class="fas fa-truck"></i> Бесплатная доставка от 5 000 ₽</div>
-                        <div class="product-feature"><i class="fas fa-undo"></i> Обмен и возврат 14 дней</div>
-                        <div class="product-feature"><i class="fas fa-scissors"></i> Возможен пошив по меркам</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="section" style="background:var(--c-cream);">
-        <div class="container">
-            <div class="product-tabs">
-                <div class="tab-nav" id="tabsNav">
-                    <button class="tab-btn active" data-tab="description">Описание</button>
-                    <button class="tab-btn" data-tab="characteristics">Характеристики</button>
-                    <button class="tab-btn" data-tab="care">Уход</button>
-                    <button class="tab-btn" data-tab="delivery-tab">Доставка</button>
-                </div>
-                <div class="tabs-content">
-                    <div class="tab-panel active" id="tab-description">
-                        <h3>О товаре</h3>
-                        <p>Платье «Лаванда» — это воплощение нежности и элегантности. Выполнено из 100% натурального
-                            европейского льна высшего качества. Приятная текстура ткани делает платье невероятно
-                            комфортным для ежедневного ношения.</p>
-                        <p>Классический силуэт подчёркивает фигуру, а натуральные оттенки гармонично дополняют любой
-                            образ. Идеально для летних прогулок, встреч с друзьями и офисного дресс-кода.</p>
-                    </div>
-                    <div class="tab-panel" id="tab-characteristics">
-                        <h3>Характеристики</h3>
-                        <table class="specs-table">
-                            <tr>
-                                <td>Состав</td>
-                                <td>100% лён</td>
-                            </tr>
-                            <tr>
-                                <td>Тип ткани</td>
-                                <td>Льняное полотно</td>
-                            </tr>
-                            <tr>
-                                <td>Страна производства</td>
-                                <td>Россия</td>
-                            </tr>
-                            <tr>
-                                <td>Длина</td>
-                                <td>Миди</td>
-                            </tr>
-                            <tr>
-                                <td>Сезон</td>
-                                <td>Весна-Лето</td>
-                            </tr>
-                            <tr>
-                                <td>Уход</td>
-                                <td>Машинная стирка 30°C</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="tab-panel" id="tab-care">
-                        <h3>Уход за изделием</h3>
-                        <ul>
-                            <li>Машинная стирка при температуре не выше 30°C</li>
-                            <li>Не использовать отбеливатель</li>
-                            <li>Гладить при средней температуре (до 200°C)</li>
-                            <li>Сушить в расправленном виде</li>
-                            <li>Допускается химчистка</li>
-                        </ul>
-                    </div>
-                    <div class="tab-panel" id="tab-delivery-tab">
-                        <h3>Доставка и оплата</h3>
-                        <p>Мы доставляем заказы по всей России. Бесплатная доставка при заказе от 5 000 ₽.</p>
-                        <p><a href="delivery.html">Подробнее о доставке и оплате →</a></p>
+                <!-- RIGHT: INFO & ACTIONS -->
+                <div class="product-info-sticky reveal reveal-delay-1">
+                    <div class="product-info-inner">
+                        <h1 class="product-title-premium">Платье льняное «Лаванда»</h1>
+                        <div class="product-price-premium">4 800 ₽</div>
+                        
+                        <p class="product-desc-premium">
+                            Элегантное платье из 100% натурального европейского льна высшего качества. 
+                            Классический силуэт подчёркивает фигуру, а дышащая текстура ткани делает платье невероятно комфортным для ежедневного ношения.
+                        </p>
+
+                        <form class="product-form" id="addToCartForm">
+                            <div class="option-group">
+                                <div class="option-label-wrap">
+                                    <span class="option-label">Цвет <span id="colorName">Бежевый</span></span>
+                                </div>
+                                <div class="size-selector" id="colorSelector">
+                                    <span class="color-dot active" style="background:#C4A882" data-color="Бежевый" title="Бежевый"></span>
+                                    <span class="color-dot" style="background:#7B8F6B" data-color="Зелёный" title="Зелёный"></span>
+                                    <span class="color-dot" style="background:#E8DDD0" data-color="Молочный" title="Молочный"></span>
+                                </div>
+                            </div>
+                            
+                            <div class="option-group">
+                                <div class="option-label-wrap">
+                                    <span class="option-label">Размер</span>
+                                    <a href="#" class="size-guide-link">Таблица размеров</a>
+                                </div>
+                                <div class="size-selector" id="sizeSelector">
+                                    <button type="button" class="size-btn" data-size="XS">XS</button>
+                                    <button type="button" class="size-btn" data-size="S">S</button>
+                                    <button type="button" class="size-btn active" data-size="M">M</button>
+                                    <button type="button" class="size-btn" data-size="L">L</button>
+                                </div>
+                            </div>
+
+                            <div class="product-actions-premium">
+                                <div class="quantity-selector-premium">
+                                    <button type="button" class="qty-btn" id="qtyMinus">−</button>
+                                    <input type="number" value="1" min="1" max="10" id="qtyInput">
+                                    <button type="button" class="qty-btn" id="qtyPlus">+</button>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-premium add-to-cart-btn">В КОРЗИНУ</button>
+                                <button type="button" class="btn-wishlist"><i class="far fa-heart"></i></button>
+                            </div>
+                        </form>
+
+                        <div class="product-accordions">
+                            <div class="accordion">
+                                <button class="accordion-head" type="button">Описание <i class="fas fa-plus"></i></button>
+                                <div class="accordion-body">
+                                    <div class="accordion-body-inner">
+                                        Натуральные оттенки гармонично дополняют любой образ. Идеально для летних прогулок, встреч с друзьями и офисного дресс-кода. Лён обладает высокой терморегуляцией, отводит влагу и позволяет коже дышать.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion">
+                                <button class="accordion-head" type="button">Характеристики <i class="fas fa-plus"></i></button>
+                                <div class="accordion-body">
+                                    <div class="accordion-body-inner">
+                                        <table class="specs-table">
+                                            <tr><td>Состав</td><td>100% умягченный лён</td></tr>
+                                            <tr><td>Плотность</td><td>185 г/м²</td></tr>
+                                            <tr><td>Длина</td><td>Миди (115 см)</td></tr>
+                                            <tr><td>Производство</td><td>Собственный цех (Россия)</td></tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion">
+                                <button class="accordion-head" type="button">Уход <i class="fas fa-plus"></i></button>
+                                <div class="accordion-body">
+                                    <div class="accordion-body-inner">
+                                        Чтобы лён служил долго и сохранял свой благородный вид:
+                                        <ul>
+                                            <li>Машинная деликатная стирка при 30°C жидкими средствами</li>
+                                            <li>Не использовать отбеливатель и жесткий отжим</li>
+                                            <li>Сушить в расправленном виде вдали от прямых солнечных лучей</li>
+                                            <li>Гладить слегка влажным с изнаночной стороны</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion">
+                                <button class="accordion-head" type="button">Доставка и возврат <i class="fas fa-plus"></i></button>
+                                <div class="accordion-body">
+                                    <div class="accordion-body-inner">
+                                        <p><strong>Бесплатная доставка курьером СДЭК</strong> при заказе от 5 000 ₽.</p>
+                                        <p>Стандартная доставка транспортными компаниями (СДЭК, Почта России) рассчитывается в корзине.</p>
+                                        <p>Вернуть не подошедший товар можно в течение 14 дней с момента получения при сохранении товарного вида и бирок.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
