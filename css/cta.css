@@ -1,6 +1,6 @@
 /* ===== CTA BANNER ===== */
 .cta-banner {
-    background: url('images/hero_bg_main.png') center/cover fixed no-repeat;
+    background: url('images/hero_bg_main.webp') center/cover fixed no-repeat;
     padding: 120px 0;
     position: relative;
     /* Light overlay to ensure text readability if needed, but glass card handles it */
@@ -222,7 +222,7 @@
 
 .cta-banner {
     /* Darker, richer background to make the glass effect pop */
-    background: linear-gradient(135deg, rgba(160, 175, 130, 0.6) 0%, rgba(107, 127, 62, 0.6) 100%), url('images/hero_texture.png') center/repeat fixed;
+    background: linear-gradient(135deg, rgba(160, 175, 130, 0.6) 0%, rgba(107, 127, 62, 0.6) 100%), url('images/hero_texture.webp') center/repeat fixed;
     padding: 120px 0;
     position: relative;
 }
