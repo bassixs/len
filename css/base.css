@@ -36,10 +36,12 @@
     --space-xxl: 6rem;
     --max-width: 1280px;
     --header-height: 80px;
-    --shadow-soft: 0 4px 20px rgba(107, 127, 62, 0.08);
-    --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.08);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(107, 127, 62, 0.04);
+    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.04), 0 12px 24px rgba(107, 127, 62, 0.06);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.04), 0 16px 40px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.04), 0 20px 48px rgba(107, 127, 62, 0.08);
     --radius: 20px;
+    --radius-xs: 8px;
     --radius-sm: 12px;
     --radius-lg: 28px;
     --transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -130,7 +132,7 @@ button {
     font-weight: 300;
     max-width: 560px;
     margin: 0 auto;
-    line-height: 1.7;
+    line-height: 1.65;
 }
 
 .section-footer {

@@ -38,10 +38,11 @@
 }
 
 .product-price-premium {
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1.75rem;
+    font-weight: 600;
     color: var(--c-sage-dark);
     margin-bottom: 2rem;
+    letter-spacing: -0.02em;
 }
 
 .product-desc-premium {
@@ -128,6 +129,15 @@
     display: flex;
     gap: 1rem;
     margin-top: 2.5rem;
+}
+
+.product-actions-premium .btn-primary {
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+}
+
+.product-actions-premium .btn-primary:hover {
+    box-shadow: 0 8px 28px rgba(107, 127, 62, 0.35);
 }
 
 .quantity-selector-premium {

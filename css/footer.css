@@ -14,6 +14,11 @@
     margin-bottom: 4rem;
 }
 
+.footer-grid > div:not(:first-child) {
+    padding-left: 1rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .footer-brand .logo-text {
     margin-bottom: 1.2rem;
     color: var(--c-white);
@@ -160,6 +165,13 @@
         grid-template-columns: 1fr;
         gap: 2.5rem;
         text-align: center;
+    }
+
+    .footer-grid > div:not(:first-child) {
+        padding-left: 0;
+        border-left: none;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .footer-social {

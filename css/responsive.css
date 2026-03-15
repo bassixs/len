@@ -377,6 +377,7 @@
     padding: 2.5rem;
     margin-bottom: 2rem;
     box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .checkout-block-title {
@@ -566,7 +567,8 @@ textarea.form-control {
 .delivery-method {
     display: flex;
     align-items: center;
-    padding: 1rem 1.2rem;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
     border: 1px solid var(--c-cream-dark);
     border-radius: var(--radius-sm);
     cursor: pointer;
@@ -579,13 +581,32 @@ textarea.form-control {
 }
 
 .delivery-method input[type="radio"] {
-    margin-right: 1rem;
+    flex-shrink: 0;
     accent-color: var(--c-sage-dark);
     width: 18px;
     height: 18px;
 }
 
-.delivery-method input[type="radio"]:checked+.delivery-method-content {
+.delivery-method-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(107, 127, 62, 0.08);
+    color: var(--c-sage-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.delivery-method:has(input[type="radio"]:checked) .delivery-method-icon {
+    background: var(--c-sage);
+    color: var(--c-white);
+}
+
+.delivery-method:has(input[type="radio"]:checked) .delivery-method-content {
     font-weight: 500;
 }
 
@@ -645,13 +666,19 @@ textarea.form-control {
 .checkout-summary-total {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 1.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid var(--c-cream-dark);
-    font-size: 1.2rem;
-    font-weight: 600;
+    border-top: 2px solid var(--c-cream-dark);
+    font-size: 1.35rem;
+    font-weight: 700;
     color: var(--c-dark);
     margin-bottom: 1.5rem;
+}
+
+.checkout-summary-total span:last-child {
+    color: var(--c-sage-dark);
+    font-size: 1.5rem;
 }
 
 .checkout-promo {
@@ -682,6 +709,13 @@ textarea.form-control {
     gap: 1rem;
     box-shadow: var(--shadow-sm);
     border: 1px dashed var(--c-sage-light);
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.gift-widget:hover,
+.gift-widget:has(input:checked) {
+    background: rgba(107, 127, 62, 0.03);
+    border-color: var(--c-sage-muted);
 }
 
 .gift-icon {

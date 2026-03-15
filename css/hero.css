@@ -40,8 +40,7 @@
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(42, 42, 42, 0.3);
-    /* Soft dark overlay to make white text readable */
+    background: linear-gradient(to top, rgba(42, 42, 42, 0.5) 0%, rgba(42, 42, 42, 0.2) 40%, rgba(42, 42, 42, 0.15) 100%);
 }
 
 .hero-content {

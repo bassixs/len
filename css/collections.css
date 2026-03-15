@@ -15,6 +15,12 @@
     border-radius: var(--radius);
     overflow: hidden;
     cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.collection-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
 }
 
 .collection-card-bg {
