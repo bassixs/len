@@ -157,7 +157,7 @@
 
             let categories = {};
             try {
-                const response = await fetch('/data/categories.json');
+                const response = await fetch('data/categories.json');
                 categories = await response.json();
             } catch (error) {
                 console.error('Error fetching categories:', error);

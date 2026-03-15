@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Корзина и оформление заказа — нжен ЛЁН.">
-    <title>Оформление заказа — нжен ЛЁН</title>
+    <meta name="description" content="Корзина и оформление заказа — Нжен ЛЁН.">
+    <title>Оформление заказа — Нжен ЛЁН</title>
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="stylesheet" href="styles.css?v=2.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -34,28 +34,7 @@
                     <div class="checkout-block reveal">
                         <h2 class="checkout-block-title">Ваш заказ</h2>
                         <div class="cart-items">
-                            <div class="cart-item">
-                                <div class="cart-item-image">
-                                    <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=200&q=80"
-                                        alt="Платье">
-                                </div>
-                                <div class="cart-item-info">
-                                    <h3 class="cart-item-name">Платье льняное «Лаванда»</h3>
-                                    <div class="cart-item-meta">Размер: M | Цвет: Бежевый</div>
-                                    <div class="cart-item-qty">
-                                        <button type="button" class="qty-btn"
-                                            onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value) - 1)">−</button>
-                                        <input type="number" value="1" min="1" max="10" class="qty-input">
-                                        <button type="button" class="qty-btn"
-                                            onclick="this.nextElementSibling.value = Math.min(10, parseInt(this.previousElementSibling.value) + 1)">+</button>
-                                    </div>
-                                </div>
-                                <div class="cart-item-price-wrapper">
-                                    <div class="cart-item-price">4 800 ₽</div>
-                                    <button type="button" class="cart-item-remove"><i class="fas fa-times"></i></button>
-                                </div>
-                            </div>
-                            <!-- More items can be added dynamically -->
+                            <!-- Список товаров подставляется из localStorage через cart.js -->
                         </div>
                     </div>
 
@@ -130,7 +109,7 @@
 
                         <div class="checkout-summary-line">
                             <span id="cart-item-count">Товары</span>
-                            <span id="cart-subtotal">4 800 ₽</span>
+                            <span id="cart-subtotal">0 ₽</span>
                         </div>
                         <div class="checkout-summary-line">
                             <span>Скидка</span>
@@ -138,12 +117,12 @@
                         </div>
                         <div class="checkout-summary-line">
                             <span>Доставка</span>
-                            <span id="deliveryCostText">Рассчитывается</span>
+                            <span id="deliveryCostText">—</span>
                         </div>
 
                         <div class="checkout-summary-total">
                             <span>К оплате</span>
-                            <span id="cart-total">4 800 ₽</span>
+                            <span id="cart-total">0 ₽</span>
                         </div>
 
                         <div class="checkout-promo">

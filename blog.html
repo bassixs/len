@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="���� �������� ����� ˨ͻ � ������ � ����, ����, ���� �� �������� ���������.">
-    <title>���� � ���� ˨�</title>
+    <meta name="description" content="Блог о натуральном льне — Нжен ЛЁН. Советы, уход, новости о льняных изделиях.">
+    <title>Блог — Нжен ЛЁН</title>
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="stylesheet" href="styles.css?v=2.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -14,99 +14,17 @@
 </head>
 
 <body>
-    <header class="header scrolled" id="header">
-        <div class="header-inner">
-            <a href="index.html" class="logo">
-                <img src="images/logo.svg" alt="���� ˨�" class="logo-image"
-                    style="height: 40px; width: auto; display: block;">
-            </a>
-            <nav class="nav" id="nav">
-                <div class="nav-item-dropdown">
-                    <a href="catalog.html" class="nav-link-dropdown">������� <i class="fas fa-chevron-down"></i></a>
-                    <div class="mega-menu">
-                        <div class="mega-menu-inner">
-                            <div class="mega-col">
-                                <h4><i class="fas fa-home"></i> �������� ��������</h4>
-                                <div class="mega-sub-group"><strong>��� �����</strong><a
-                                        href="category.html?cat=home-textile">���������</a><a
-                                        href="category.html?cat=home-textile">�������</a></div>
-                                <div class="mega-sub-group"><strong>��� ��������</strong><a
-                                        href="category.html?cat=home-textile">��������</a><a
-                                        href="category.html?cat=home-textile">��������</a><a
-                                        href="category.html?cat=home-textile">������, �������</a></div>
-                                <div class="mega-sub-group"><strong>��� �������</strong><a
-                                        href="category.html?cat=home-textile">���������</a><a
-                                        href="category.html?cat=home-textile">�������������</a><a
-                                        href="category.html?cat=home-textile">��������</a><a
-                                        href="category.html?cat=home-textile">���������� ���������</a><a
-                                        href="category.html?cat=home-textile">�����, ���������</a></div>
-                                <div class="mega-sub-group"><strong>��� ����</strong><a
-                                        href="category.html?cat=home-textile">��������� ������</a></div>
-                            </div>
-                            <div class="mega-col">
-                                <h4><i class="fas fa-female"></i> ������� ������</h4><a
-                                    href="category.html?cat=women">����������� �����</a><a
-                                    href="category.html?cat=women">������</a><a
-                                    href="category.html?cat=women">����</a><a
-                                    href="category.html?cat=women">��������</a><a
-                                    href="category.html?cat=women">������</a><a href="category.html?cat=women">�����
-                                    �������</a><a href="category.html?cat=women">��������</a><a
-                                    href="category.html?cat=women">������</a><a
-                                    href="category.html?cat=women">�����������</a><a
-                                    href="category.html?cat=women">����</a><a
-                                    href="category.html?cat=women">������</a><a href="category.html?cat=women">�����
-                                    �������</a>
-                            </div>
-                            <div class="mega-col">
-                                <h4><i class="fas fa-male"></i> ������� ������</h4><a
-                                    href="category.html?cat=men">�������</a><a href="category.html?cat=men">�����</a><a
-                                    href="category.html?cat=men">�������</a><a href="category.html?cat=men">�����</a>
-                            </div>
-                            <div class="mega-col">
-                                <h4><i class="fas fa-socks"></i> ������� �����</h4><a href="category.html?cat=socks">���
-                                    ������</a><a href="category.html?cat=socks">��� ������</a>
-                                <h4 style="margin-top:1.5rem;"><i class="fas fa-gift"></i> ������� � ��������</h4><a
-                                    href="category.html?cat=gifts">������� �������</a><a
-                                    href="category.html?cat=gifts">��������</a><a
-                                    href="category.html?cat=gifts">�������</a>
-                            </div>
-                            <div class="mega-col">
-                                <h4><i class="fas fa-bag-shopping"></i> ����������</h4><a
-                                    href="category.html?cat=accessories">���������</a><a
-                                    href="category.html?cat=accessories">�����</a><a
-                                    href="category.html?cat=accessories">��������
-                                    �����</a>
-                                <h4 style="margin-top:1.5rem;"><i class="fas fa-scissors"></i> �����</h4><a
-                                    href="category.html?cat=fabrics">������� �����</a>
-                            </div>
-                            <div class="mega-menu-banner">
-                                <div class="mega-banner-content"><span class="mega-banner-badge">�������</span>
-                                    <p>����� ����������� �� ������������ ����</p><a href="new.html"
-                                        class="btn btn-primary btn-sm">��������</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a href="new.html">�������</a><a href="services.html">�����</a><a href="about.html">� ���</a><a
-                    href="contacts.html">��������</a>
-            </nav>
-            <div class="header-right">
-                <a href="tel:+79533319449" class="header-phone"><i class="fas fa-phone"></i>+7 (953) 331-94-49</a>
-                <div class="burger" id="burger"><span></span><span></span><span></span></div>
-            </div>
-        </div>
-    </header>
+    {{> header }}
 
     <section class="dlv-hero">
         <div class="container">
             <div class="breadcrumbs">
-                <a href="index.html">�������</a>
+                <a href="index.html">Главная</a>
                 <span>/</span>
-                <span>����</span>
+                <span>Блог</span>
             </div>
-            <h1 class="dlv-hero-title">����</h1>
-            <p class="dlv-hero-subtitle">�������� ������ � ����, ���� � ����� �� ������������ �������</p>
+            <h1 class="dlv-hero-title">Блог</h1>
+            <p class="dlv-hero-subtitle">Статьи о натуральном льне, уходе за вещами и новости от Нжен ЛЁН</p>
         </div>
     </section>
 
@@ -115,138 +33,76 @@
             <div class="blog-grid">
                 <a href="#" class="blog-card reveal">
                     <div class="blog-card-image"><img
-                            src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80" alt="������">
+                            src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80" alt="Скатерть">
                     </div>
                     <div class="blog-card-body">
-                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 10 ������� 2026</div>
-                        <h3 class="blog-card-title">��� ��������� �� �������� ���������</h3>
-                        <p class="blog-card-excerpt">������� ������� ������, ����� � ������, ������� ������� ���������
-                            ������� ���� �� ������ ����.</p>
-                        <span class="blog-card-link">������ ����� <i class="fas fa-arrow-right"></i></span>
+                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 10 января 2026</div>
+                        <h3 class="blog-card-title">Как ухаживать за льняными скатертями</h3>
+                        <p class="blog-card-excerpt">Правильная стирка, глажка и хранение помогут сохранить ваши льняные изделия в идеальном состоянии долгие годы.</p>
+                        <span class="blog-card-link">Читать статью <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>
                 <a href="#" class="blog-card reveal reveal-delay-1">
                     <div class="blog-card-image"><img
-                            src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80" alt="������">
+                            src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80" alt="Ткань">
                     </div>
                     <div class="blog-card-body">
-                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 5 ������� 2026</div>
-                        <h3 class="blog-card-title">������ �����-���� 2026: �� � ����</h3>
-                        <p class="blog-card-excerpt">����� ������ ��������� ������ � ��� ������ �� ������� � ����������
-                            � ������������ �������.</p>
-                        <span class="blog-card-link">������ ����� <i class="fas fa-arrow-right"></i></span>
+                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 5 января 2026</div>
+                        <h3 class="blog-card-title">Тренды лето-осень 2026: лён в моде</h3>
+                        <p class="blog-card-excerpt">Обзор главных трендов сезона: натуральные ткани, спокойные оттенки и экологичная мода в каждой детали.</p>
+                        <span class="blog-card-link">Читать статью <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>
                 <a href="#" class="blog-card reveal reveal-delay-2">
                     <div class="blog-card-image"><img
-                            src="https://images.unsplash.com/photo-1616627561950-9f746e330187?w=600&q=80" alt="������">
+                            src="https://images.unsplash.com/photo-1616627561950-9f746e330187?w=600&q=80" alt="Постельное бельё">
                     </div>
                     <div class="blog-card-body">
-                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 28 ������ 2026</div>
-                        <h3 class="blog-card-title">������� ���������� �����: ������ ����� �����������</h3>
-                        <p class="blog-card-excerpt">5 ������ ������� �� ������� ���������� ����� � �������� ��� �
-                            ������� ������� ���.</p>
-                        <span class="blog-card-link">������ ����� <i class="fas fa-arrow-right"></i></span>
+                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 28 декабря 2025</div>
+                        <h3 class="blog-card-title">Почему постельное бельё из льна: польза для сна</h3>
+                        <p class="blog-card-excerpt">5 причин выбрать льняное постельное бельё для здорового сна и комфорта в любое время года.</p>
+                        <span class="blog-card-link">Читать статью <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>
                 <a href="#" class="blog-card reveal">
                     <div class="blog-card-image"><img
-                            src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80" alt="������">
+                            src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80" alt="Одежда">
                     </div>
                     <div class="blog-card-body">
-                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 20 ������ 2026</div>
-                        <h3 class="blog-card-title">������� ����: �� ��������� �� ����� ����</h3>
-                        <p class="blog-card-excerpt">������������� ������� ������ �� ���������� ����������, �������
-                            ����� ���������� ��� ����.</p>
-                        <span class="blog-card-link">������ ����� <i class="fas fa-arrow-right"></i></span>
+                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 20 декабря 2025</div>
+                        <h3 class="blog-card-title">Льняная одежда: как сочетать с базой гардероба</h3>
+                        <p class="blog-card-excerpt">Универсальные образы с льняными блузами, брюками и платьями для офиса и выходных.</p>
+                        <span class="blog-card-link">Читать статью <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>
                 <a href="#" class="blog-card reveal reveal-delay-1">
                     <div class="blog-card-image"><img
-                            src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&q=80" alt="������">
+                            src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&q=80" alt="Полотенца">
                     </div>
                     <div class="blog-card-body">
-                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 15 ������ 2026</div>
-                        <h3 class="blog-card-title">˸� ��� ����: �������� � ������������</h3>
-                        <p class="blog-card-excerpt">������ ������� ��������� � ������ �������� �������� ��� ���� �
-                            �����.</p>
-                        <span class="blog-card-link">������ ����� <i class="fas fa-arrow-right"></i></span>
+                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 15 декабря 2025</div>
+                        <h3 class="blog-card-title">Что выбрать: полотенца из льна или хлопка</h3>
+                        <p class="blog-card-excerpt">Сравнение материалов по впитываемости, долговечности и уходу за тканью.</p>
+                        <span class="blog-card-link">Читать статью <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>
                 <a href="#" class="blog-card reveal reveal-delay-2">
                     <div class="blog-card-image"><img
-                            src="https://images.unsplash.com/photo-1516826957135-700dedea698c?w=600&q=80" alt="������">
+                            src="https://images.unsplash.com/photo-1516826957135-700dedea698c?w=600&q=80" alt="Интерьер">
                     </div>
                     <div class="blog-card-body">
-                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 8 ������ 2026</div>
-                        <h3 class="blog-card-title">������� ������� �������: � ��� ������</h3>
-                        <p class="blog-card-excerpt">��� �� �����: ��� �������� ������� ������� � ������� ����������
-                            ���������.</p>
-                        <span class="blog-card-link">������ ����� <i class="fas fa-arrow-right"></i></span>
+                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 8 декабря 2025</div>
+                        <h3 class="blog-card-title">Лён в интерьере: идеи для уютного дома</h3>
+                        <p class="blog-card-excerpt">Как добавить льняной текстиль в декор и создать атмосферу тепла и натуральности.</p>
+                        <span class="blog-card-link">Читать статью <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <img src="images/logo.svg" alt="���� ˨�" class="logo-image"
-                        onerror="this.onerror=null; this.src='images/logo.svg'"
-                        style="height: 30px; width: auto; margin-bottom: 1rem;">
-                    <p class="footer-brand-desc">����������� ��, ������������ ��������. ������ � ������� � ������� �
-                        ����� �������� � 2010 ����.</p>
-                    <div class="footer-social">
-                        <a href="https://vk.com/njenlinen" target="_blank" title="VK"><i class="fab fa-vk"></i></a>
-                        <a href="https://tlgg.ru/njenLinen" target="_blank" title="Telegram"><i
-                                class="fab fa-telegram"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="footer-col-title">�������</h4>
-                    <ul class="footer-links">
-                        <li><a href="category.html?cat=home-textile">�������� ��������</a></li>
-                        <li><a href="category.html?cat=women">������� ������</a></li>
-                        <li><a href="category.html?cat=men">������� ������</a></li>
-                        <li><a href="new.html">�������</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer-col-title">�����������</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html">� ��������</a></li>
-                        <li><a href="delivery.html">�������� � ������</a></li>
-                        <li><a href="services.html">����� �� �����</a></li>
-                        <li><a href="blog.html">������� ����</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contacts">
-                    <h4 class="footer-col-title">��������</h4>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+79533319449">+7 (953) 331-94-49</a>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:info@njen-linen.com">info@njen-linen.com</a>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-location-dot"></i>
-                        <span>�. ������, ��. ������, �. 53</span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>� 2010�2026 ����� ˨ͻ</span>
-                <div class="footer-bottom-links">
-                    <a href="#">�������� ������������������</a>
-                    <a href="#">��������� ������</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    {{> footer }}
+    {{> modals }}
     <script type="module" src="/js/main.js"></script>
 </body>
 

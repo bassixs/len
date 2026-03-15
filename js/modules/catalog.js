@@ -38,7 +38,8 @@ export function initCatalog() {
     // ===== DYNAMIC PRODUCT RENDERING =====
     const catalogGrid = document.querySelector('.catalog-grid');
     if (catalogGrid) {
-        fetch('/data/products.json')
+        const base = import.meta.env.BASE_URL || '/';
+        fetch(`${base}data/products.json`)
             .then(response => response.json())
             .then(products => {
                 renderProducts(products, catalogGrid);

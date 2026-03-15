@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="������� �������� ����� ˨ͻ � ������ ����������� ������� �� ������������ ����.">
-    <title>������� � ���� ˨�</title>
+    <meta name="description" content="Новинки и новые поступления — Нжен ЛЁН. Изделия из натурального льна в каталоге.">
+    <title>Новинки — Нжен ЛЁН</title>
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="stylesheet" href="styles.css?v=2.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -14,106 +14,25 @@
 </head>
 
 <body>
-    <header class="header scrolled" id="header">
-        <div class="header-inner">
-            <a href="index.html" class="logo">
-                <img src="images/logo.svg" alt="���� ˨�" class="logo-image"
-                    style="height: 40px; width: auto; display: block;">
-            </a>
-            <nav class="nav" id="nav">
-                <div class="nav-item-dropdown">
-                    <a href="catalog.html" class="nav-link-dropdown">������� <i class="fas fa-chevron-down"></i></a>
-                    <div class="mega-menu">
-                        <div class="mega-menu-inner">
-                            <div class="mega-col">
-                                <h4><i class="fas fa-home"></i> �������� ��������</h4>
-                                <div class="mega-sub-group"><strong>��� �����</strong><a
-                                        href="category.html?cat=home-textile">���������</a><a
-                                        href="category.html?cat=home-textile">�������</a></div>
-                                <div class="mega-sub-group"><strong>��� ��������</strong><a
-                                        href="category.html?cat=home-textile">��������</a><a
-                                        href="category.html?cat=home-textile">��������</a><a
-                                        href="category.html?cat=home-textile">������, �������</a></div>
-                                <div class="mega-sub-group"><strong>��� �������</strong><a
-                                        href="category.html?cat=home-textile">���������</a><a
-                                        href="category.html?cat=home-textile">�������������</a><a
-                                        href="category.html?cat=home-textile">��������</a><a
-                                        href="category.html?cat=home-textile">���������� ���������</a><a
-                                        href="category.html?cat=home-textile">�����, ���������</a></div>
-                                <div class="mega-sub-group"><strong>��� ����</strong><a
-                                        href="category.html?cat=home-textile">��������� ������</a></div>
-                            </div>
-                            <div class="mega-col">
-                                <h4><i class="fas fa-female"></i> ������� ������</h4><a
-                                    href="category.html?cat=women">����������� �����</a><a
-                                    href="category.html?cat=women">������</a><a
-                                    href="category.html?cat=women">����</a><a
-                                    href="category.html?cat=women">��������</a><a
-                                    href="category.html?cat=women">������</a><a href="category.html?cat=women">�����
-                                    �������</a><a href="category.html?cat=women">��������</a><a
-                                    href="category.html?cat=women">������</a><a
-                                    href="category.html?cat=women">�����������</a><a
-                                    href="category.html?cat=women">����</a><a
-                                    href="category.html?cat=women">������</a><a href="category.html?cat=women">�����
-                                    �������</a>
-                            </div>
-                            <div class="mega-col">
-                                <h4><i class="fas fa-male"></i> ������� ������</h4><a
-                                    href="category.html?cat=men">�������</a><a href="category.html?cat=men">�����</a><a
-                                    href="category.html?cat=men">�������</a><a href="category.html?cat=men">�����</a>
-                            </div>
-                            <div class="mega-col">
-                                <h4><i class="fas fa-socks"></i> ������� �����</h4><a href="category.html?cat=socks">���
-                                    ������</a><a href="category.html?cat=socks">��� ������</a>
-                                <h4 style="margin-top:1.5rem;"><i class="fas fa-gift"></i> ������� � ��������</h4><a
-                                    href="category.html?cat=gifts">������� �������</a><a
-                                    href="category.html?cat=gifts">��������</a><a
-                                    href="category.html?cat=gifts">�������</a>
-                            </div>
-                            <div class="mega-col">
-                                <h4><i class="fas fa-bag-shopping"></i> ����������</h4><a
-                                    href="category.html?cat=accessories">���������</a><a
-                                    href="category.html?cat=accessories">�����</a><a
-                                    href="category.html?cat=accessories">��������
-                                    �����</a>
-                                <h4 style="margin-top:1.5rem;"><i class="fas fa-scissors"></i> �����</h4><a
-                                    href="category.html?cat=fabrics">������� �����</a>
-                            </div>
-                            <div class="mega-menu-banner">
-                                <div class="mega-banner-content"><span class="mega-banner-badge">�������</span>
-                                    <p>����� ����������� �� ������������ ����</p><a href="new.html"
-                                        class="btn btn-primary btn-sm">��������</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a href="new.html" class="active">�������</a><a href="services.html">�����</a><a href="about.html">�
-                    ���</a><a href="contacts.html">��������</a>
-            </nav>
-            <div class="header-right">
-                <a href="tel:+79533319449" class="header-phone"><i class="fas fa-phone"></i>+7 (953) 331-94-49</a>
-                <div class="burger" id="burger"><span></span><span></span><span></span></div>
-            </div>
-        </div>
-    </header>
+    {{> header }}
+
     <div class="ch-ref-header">
         <div class="container">
             <div class="ch-ref-breadcrumbs">
-                <a href="index.html">������� ��������</a> / <span class="active">�������</span>
+                <a href="index.html">Главная</a> / <span class="active">Новинки</span>
             </div>
 
             <div class="ch-ref-title-wrap">
-                <h1 class="ch-ref-title">�������</h1>
-                <span class="ch-ref-count">(������ �����������)</span>
+                <h1 class="ch-ref-title">Новинки</h1>
+                <span class="ch-ref-count">(новые поступления)</span>
             </div>
 
             <div class="ch-ref-toolbar">
                 <div class="ch-ref-subcats">
-                    <a href="catalog.html" class="ch-ref-subcat-back"><i class="fas fa-chevron-left"></i> � �������</a>
-                    <a href="#" class="ch-ref-subcat active" data-filter="all">��� ������� <span>(12)</span></a>
-                    <a href="#" class="ch-ref-subcat" data-filter="dress">������ <span>(4)</span></a>
-                    <a href="#" class="ch-ref-subcat" data-filter="blouse">������ <span>(3)</span></a>
+                    <a href="catalog.html" class="ch-ref-subcat-back"><i class="fas fa-chevron-left"></i> К каталогу</a>
+                    <a href="#" class="ch-ref-subcat active" data-filter="all">Все новинки <span>(12)</span></a>
+                    <a href="#" class="ch-ref-subcat" data-filter="dress">Платья <span>(4)</span></a>
+                    <a href="#" class="ch-ref-subcat" data-filter="blouse">Блузки <span>(3)</span></a>
                 </div>
             </div>
         </div>
@@ -123,189 +42,141 @@
             <div class="new-products-grid">
                 <div class="product-card reveal">
                     <div class="product-card-image">
-                        <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=600&q=80" alt="������">
+                        <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=600&q=80" alt="Платье">
                         <div class="product-badges"><span class="badge badge-new">NEW</span></div>
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">���������</a>
+                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
                         </div>
                     </div>
                     <div class="product-card-info">
-                        <h3 class="product-card-name">������ ������� ��������</h3>
-                        <div class="product-card-price"><span class="price-current">4 800 ?</span></div>
+                        <h3 class="product-card-name">Платье льняное «Лаванда»</h3>
+                        <div class="product-card-price"><span class="price-current">4 800 ₽</span></div>
                         <div class="product-colors"><span class="color-dot" style="background:#C4A882"></span><span
                                 class="color-dot" style="background:#7B8F6B"></span></div>
+                        <button type="button" class="btn btn-outline add-to-cart-btn" style="margin-top:0.5rem; width:100%;">В корзину</button>
                     </div>
                 </div>
                 <div class="product-card reveal reveal-delay-1">
                     <div class="product-card-image">
-                        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80" alt="������">
+                        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80" alt="Блузка">
                         <div class="product-badges"><span class="badge badge-new">NEW</span></div>
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">���������</a>
+                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
                         </div>
                     </div>
                     <div class="product-card-info">
-                        <h3 class="product-card-name">������ ��������</h3>
-                        <div class="product-card-price"><span class="price-current">3 600 ?</span></div>
+                        <h3 class="product-card-name">Блузка «Прованс»</h3>
+                        <div class="product-card-price"><span class="price-current">3 600 ₽</span></div>
                         <div class="product-colors"><span class="color-dot"
                                 style="background:#FFFFFF;border-color:#ddd"></span><span class="color-dot"
                                 style="background:#B8C4A8"></span></div>
+                        <button type="button" class="btn btn-outline add-to-cart-btn" style="margin-top:0.5rem; width:100%;">В корзину</button>
                     </div>
                 </div>
                 <div class="product-card reveal reveal-delay-2">
                     <div class="product-card-image">
-                        <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80" alt="�����">
+                        <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80" alt="Брюки">
                         <div class="product-badges"><span class="badge badge-new">NEW</span></div>
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">���������</a>
+                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
                         </div>
                     </div>
                     <div class="product-card-info">
-                        <h3 class="product-card-name">����� ������� ����</h3>
-                        <div class="product-card-price"><span class="price-current">3 400 ?</span></div>
+                        <h3 class="product-card-name">Брюки «Летний бриз»</h3>
+                        <div class="product-card-price"><span class="price-current">3 400 ₽</span></div>
                         <div class="product-colors"><span class="color-dot" style="background:#C4B89A"></span><span
                                 class="color-dot" style="background:#6B7F5B"></span></div>
+                        <button type="button" class="btn btn-outline add-to-cart-btn" style="margin-top:0.5rem; width:100%;">В корзину</button>
                     </div>
                 </div>
                 <div class="product-card reveal reveal-delay-3">
                     <div class="product-card-image">
                         <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80"
-                            alt="�������">
+                            alt="Сарафан">
                         <div class="product-badges"><span class="badge badge-new">NEW</span><span
                                 class="badge badge-hit">HIT</span></div>
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">���������</a>
+                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
                         </div>
                     </div>
                     <div class="product-card-info">
-                        <h3 class="product-card-name">������� �������</h3>
-                        <div class="product-card-price"><span class="price-current">4 200 ?</span></div>
+                        <h3 class="product-card-name">Сарафан «Солнце»</h3>
+                        <div class="product-card-price"><span class="price-current">4 200 ₽</span></div>
                         <div class="product-colors"><span class="color-dot" style="background:#E8C4A0"></span><span
                                 class="color-dot" style="background:#B8C4A8"></span></div>
+                        <button type="button" class="btn btn-outline add-to-cart-btn" style="margin-top:0.5rem; width:100%;">В корзину</button>
                     </div>
                 </div>
                 <div class="product-card reveal">
                     <div class="product-card-image">
                         <img src="https://images.unsplash.com/photo-1616627561950-9f746e330187?w=600&q=80"
-                            alt="���������� ��������">
+                            alt="Постельный комплект">
                         <div class="product-badges"><span class="badge badge-new">NEW</span><span
                                 class="badge badge-sale">SALE</span></div>
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">���������</a>
+                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
                         </div>
                     </div>
                     <div class="product-card-info">
-                        <h3 class="product-card-name">�������� ���������� ����</h3>
-                        <div class="product-card-price"><span class="price-current">6 500 ?</span><span
-                                class="price-old">8 200 ?</span></div>
+                        <h3 class="product-card-name">Комплект постельный «Уют»</h3>
+                        <div class="product-card-price"><span class="price-current">6 500 ₽</span><span
+                                class="price-old">8 200 ₽</span></div>
                         <div class="product-colors"><span class="color-dot" style="background:#E8DDD0"></span><span
                                 class="color-dot" style="background:#B8C4A8"></span></div>
+                        <button type="button" class="btn btn-outline add-to-cart-btn" style="margin-top:0.5rem; width:100%;">В корзину</button>
                     </div>
                 </div>
                 <div class="product-card reveal reveal-delay-1">
                     <div class="product-card-image">
                         <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80"
-                            alt="�������">
+                            alt="Сорочка">
                         <div class="product-badges"><span class="badge badge-new">NEW</span></div>
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">���������</a>
+                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
                         </div>
                     </div>
                     <div class="product-card-info">
-                        <h3 class="product-card-name">������� ������� ���������</h3>
-                        <div class="product-card-price"><span class="price-current">3 200 ?</span></div>
+                        <h3 class="product-card-name">Сорочка мужская «Классика»</h3>
+                        <div class="product-card-price"><span class="price-current">3 200 ₽</span></div>
                         <div class="product-colors"><span class="color-dot"
                                 style="background:#FFFFFF;border-color:#ddd"></span><span class="color-dot"
                                 style="background:#6B7F5B"></span></div>
+                        <button type="button" class="btn btn-outline add-to-cart-btn" style="margin-top:0.5rem; width:100%;">В корзину</button>
                     </div>
                 </div>
                 <div class="product-card reveal reveal-delay-2">
                     <div class="product-card-image">
-                        <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80" alt="��������">
+                        <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80" alt="Скатерть">
                         <div class="product-badges"><span class="badge badge-new">NEW</span></div>
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">���������</a>
+                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
                         </div>
                     </div>
                     <div class="product-card-info">
-                        <h3 class="product-card-name">�������� ������� 150?220</h3>
-                        <div class="product-card-price"><span class="price-current">2 900 ?</span></div>
+                        <h3 class="product-card-name">Скатерть «Натура» 150×220</h3>
+                        <div class="product-card-price"><span class="price-current">2 900 ₽</span></div>
                         <div class="product-colors"><span class="color-dot" style="background:#F5EDE0"></span><span
                                 class="color-dot" style="background:#D4C8B4"></span></div>
+                        <button type="button" class="btn btn-outline add-to-cart-btn" style="margin-top:0.5rem; width:100%;">В корзину</button>
                     </div>
                 </div>
                 <div class="product-card reveal reveal-delay-3">
                     <div class="product-card-image">
                         <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&q=80"
-                            alt="���������">
+                            alt="Полотенца">
                         <div class="product-badges"><span class="badge badge-new">NEW</span><span
                                 class="badge badge-sale">SALE</span></div>
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">���������</a>
+                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
                         </div>
                     </div>
                     <div class="product-card-info">
-                        <h3 class="product-card-name">����� ��������� ������</h3>
-                        <div class="product-card-price"><span class="price-current">1 800 ?</span><span
-                                class="price-old">2 400 ?</span></div>
+                        <h3 class="product-card-name">Набор полотенец «Баня»</h3>
+                        <div class="product-card-price"><span class="price-current">1 800 ₽</span><span
+                                class="price-old">2 400 ₽</span></div>
                         <div class="product-colors"><span class="color-dot" style="background:#E8DDD0"></span><span
                                 class="color-dot" style="background:#A8B898"></span></div>
+                        <button type="button" class="btn btn-outline add-to-cart-btn" style="margin-top:0.5rem; width:100%;">В корзину</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <img src="images/logo.svg" alt="���� ˨�" class="logo-image"
-                        onerror="this.onerror=null; this.src='images/logo.svg'"
-                        style="height: 30px; width: auto; margin-bottom: 1rem;">
-                    <p class="footer-brand-desc">����������� ��, ������������ ��������. ������ � ������� � ������� �
-                        ����� �������� � 2010 ����.</p>
-                    <div class="footer-social">
-                        <a href="https://vk.com/njenlinen" target="_blank" title="VK"><i class="fab fa-vk"></i></a>
-                        <a href="https://tlgg.ru/njenLinen" target="_blank" title="Telegram"><i
-                                class="fab fa-telegram"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="footer-col-title">�������</h4>
-                    <ul class="footer-links">
-                        <li><a href="category.html?cat=home-textile">�������� ��������</a></li>
-                        <li><a href="category.html?cat=women">������� ������</a></li>
-                        <li><a href="category.html?cat=men">������� ������</a></li>
-                        <li><a href="new.html">�������</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer-col-title">�����������</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html">� ��������</a></li>
-                        <li><a href="delivery.html">�������� � ������</a></li>
-                        <li><a href="services.html">����� �� �����</a></li>
-                        <li><a href="blog.html">������� ����</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contacts">
-                    <h4 class="footer-col-title">��������</h4>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+79533319449">+7 (953) 331-94-49</a>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:info@njen-linen.com">info@njen-linen.com</a>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-location-dot"></i>
-                        <span>�. ������, ��. ������, �. 53</span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>� 2010�2026 ����� ˨ͻ</span>
-                <div class="footer-bottom-links">
-                    <a href="#">�������� ������������������</a>
-                    <a href="#">��������� ������</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    {{> footer }}
+    {{> modals }}
     <script type="module" src="/js/main.js"></script>
 </body>
 

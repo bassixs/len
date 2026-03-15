@@ -1,6 +1,9 @@
+const DELIVERY_PRICES = { cdek: 350, post: 300, courier: 600 };
+
 export function initCart() {
     updateCartIcon();
     initMiniCart();
+    initCartPageDelivery();
 
     // Attach to add to cart buttons
     const addToCartBtns = document.querySelectorAll('.add-to-cart-btn, .btn-primary:not(a)'); 
@@ -225,7 +228,9 @@ export function renderCartPage() {
     if (cart.length === 0) {
         cartContainer.innerHTML = '<p class="cart-empty-message">Ваша корзина пуста. <a href="catalog.html">Перейти к покупкам</a></p>';
         if (summarySubtotal) summarySubtotal.textContent = '0 ₽';
-        if (summaryTotal) summaryTotal.textContent = '0 ₽';
+        const countEl = document.getElementById('cart-item-count');
+        if (countEl) countEl.textContent = 'Товары';
+        updateCheckoutSummary(0);
         // Disable checkout button
         const checkoutBtn = document.querySelector('.checkout-summary-box .btn');
         if (checkoutBtn) {
@@ -266,8 +271,12 @@ export function renderCartPage() {
 
     cartContainer.innerHTML = html;
 
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const countEl = document.getElementById('cart-item-count');
+    if (countEl) countEl.textContent = pluralize(totalItems, 'товар', 'товара', 'товаров');
+
     if (summarySubtotal) summarySubtotal.textContent = formatPrice(total);
-    if (summaryTotal) summaryTotal.textContent = formatPrice(total);
+    updateCheckoutSummary(total);
     
     // Re-enable checkout button
     const checkoutBtn = document.querySelector('.checkout-summary-box .btn');
@@ -315,4 +324,40 @@ function attachCartPageListeners() {
 
 function formatPrice(number) {
     return new Intl.NumberFormat('ru-RU').format(number) + ' ₽';
+}
+
+function pluralize(n, one, few, many) {
+    const mod10 = n % 10, mod100 = n % 100;
+    if (mod100 >= 11 && mod100 <= 14) return `${n} ${many}`;
+    if (mod10 === 1) return `${n} ${one}`;
+    if (mod10 >= 2 && mod10 <= 4) return `${n} ${few}`;
+    return `${n} ${many}`;
+}
+
+function updateCheckoutSummary(subtotal) {
+    const deliveryEl = document.getElementById('deliveryCostText');
+    const totalEl = document.getElementById('cart-total');
+    if (subtotal === 0) {
+        if (deliveryEl) deliveryEl.textContent = '—';
+        if (totalEl) totalEl.textContent = '0 ₽';
+        return;
+    }
+    const deliveryRadios = document.querySelectorAll('input[name="delivery"]');
+    let deliveryCost = DELIVERY_PRICES.cdek;
+    if (deliveryRadios.length) {
+        const checked = document.querySelector('input[name="delivery"]:checked');
+        if (checked && DELIVERY_PRICES[checked.value] !== undefined) deliveryCost = DELIVERY_PRICES[checked.value];
+    }
+    if (deliveryEl) deliveryEl.textContent = formatPrice(deliveryCost);
+    if (totalEl) totalEl.textContent = formatPrice(subtotal + deliveryCost);
+}
+
+function initCartPageDelivery() {
+    document.querySelectorAll('input[name="delivery"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            const cart = getCart();
+            const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            updateCheckoutSummary(subtotal);
+        });
+    });
 }
