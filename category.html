@@ -33,14 +33,9 @@
             </p>
 
             <div class="ch-ref-toolbar">
-                <div class="ch-ref-subcats">
-                    <a href="catalog.html" class="ch-ref-subcat-back"><i class="fas fa-chevron-left"></i> ВСЁ
-                        <span>(410)</span></a>
-                    <a href="#" class="ch-ref-subcat active" data-filter="dress">СКАТЕРТИ <span>(8)</span></a>
-                    <a href="#" class="ch-ref-subcat" data-filter="blouse">РАННЕРЫ <span>(7)</span></a>
-                    <a href="#" class="ch-ref-subcat" data-filter="pants">САЛФЕТКИ <span>(11)</span></a>
-                    <a href="#" class="ch-ref-subcat" data-filter="skirt">ФАРТУКИ <span>(6)</span></a>
-                    <a href="#" class="ch-ref-subcat" data-filter="all">МЕШОЧКИ <span>(1)</span></a>
+                <div class="ch-ref-subcats" id="categorySubcats">
+                    <a href="catalog.html" class="ch-ref-subcat-back"><i class="fas fa-chevron-left"></i> ВСЁ <span></span></a>
+                    <!-- Вкладки подкатегорий и счётчики подставляются из category-products.js -->
                 </div>
 
                 <div class="ch-ref-filters">
@@ -69,80 +64,9 @@
             <div class="category-filters"></div>
 
             <div class="category-products-grid" id="categoryGrid">
-                <div class="product-card reveal" data-type="dress">
-                    <div class="product-card-image">
-                        <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=600&q=80" alt="Платье">
-                        <div class="product-badges"><span class="badge badge-new">NEW</span></div>
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="product-card-info">
-                        <h3 class="product-card-name">Платье льняное «Лаванда»</h3>
-                        <div class="product-card-price"><span class="price-current">4 800 ₽</span></div>
-                        <div class="product-colors"><span class="color-dot" style="background:#C4A882"></span><span
-                                class="color-dot" style="background:#7B8F6B"></span></div>
-                    </div>
-                </div>
-                <div class="product-card reveal reveal-delay-1" data-type="blouse">
-                    <div class="product-card-image">
-                        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80" alt="Блузка">
-                        <div class="product-badges"><span class="badge badge-hit">HIT</span></div>
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="product-card-info">
-                        <h3 class="product-card-name">Блузка «Прованс»</h3>
-                        <div class="product-card-price"><span class="price-current">3 600 ₽</span></div>
-                        <div class="product-colors"><span class="color-dot"
-                                style="background:#FFFFFF;border-color:#ddd"></span><span class="color-dot"
-                                style="background:#B8C4A8"></span></div>
-                    </div>
-                </div>
-                <div class="product-card reveal reveal-delay-2" data-type="pants">
-                    <div class="product-card-image">
-                        <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80" alt="Брюки">
-                        <div class="product-badges"><span class="badge badge-new">NEW</span></div>
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="product-card-info">
-                        <h3 class="product-card-name">Брюки «Летний бриз»</h3>
-                        <div class="product-card-price"><span class="price-current">3 400 ₽</span></div>
-                        <div class="product-colors"><span class="color-dot" style="background:#C4B89A"></span><span
-                                class="color-dot" style="background:#6B7F5B"></span></div>
-                    </div>
-                </div>
-                <div class="product-card reveal reveal-delay-3" data-type="dress">
-                    <div class="product-card-image">
-                        <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80"
-                            alt="Сарафан">
-                        <div class="product-badges"><span class="badge badge-new">NEW</span><span
-                                class="badge badge-hit">HIT</span></div>
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="product-card-info">
-                        <h3 class="product-card-name">Сарафан «Солнце»</h3>
-                        <div class="product-card-price"><span class="price-current">4 200 ₽</span></div>
-                        <div class="product-colors"><span class="color-dot" style="background:#E8C4A0"></span><span
-                                class="color-dot" style="background:#B8C4A8"></span></div>
-                    </div>
-                </div>
-                <div class="product-card reveal" data-type="skirt">
-                    <div class="product-card-image">
-                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80"
-                            alt="Рубашка">
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="product-card-info">
-                        <h3 class="product-card-name">Рубашка «Натурель»</h3>
-                        <div class="product-card-price"><span class="price-current">3 100 ₽</span></div>
-                        <div class="product-colors"><span class="color-dot" style="background:#F5EDE0"></span><span
-                                class="color-dot" style="background:#8A9A6B"></span></div>
-                    </div>
-                </div>
+                <!-- Товары из data/products/{cat}.json через category-products.js -->
             </div>
+            <div id="categoryPagination" class="category-pagination"></div>
         </div>
     </section>
 

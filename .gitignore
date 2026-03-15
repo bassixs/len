@@ -25,3 +25,11 @@ dist-ssr
 
 # Temporary files created by our script
 fix_encoding.ps1
+
+# Промежуточные данные: создаются при merge/парсинге, фронт использует только data/products/
+public/data/products.json
+public/data/products_migrated.json
+
+# Скрипты и документация (локально)
+scripts/
+docs/

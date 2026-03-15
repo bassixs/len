@@ -35,38 +35,54 @@ export function initCatalog() {
         });
     });
 
-    // ===== DYNAMIC PRODUCT RENDERING =====
+    // ===== DYNAMIC PRODUCT RENDERING (из data/products/index.json + preview) =====
     const catalogGrid = document.querySelector('.catalog-grid');
     if (catalogGrid) {
-        const base = import.meta.env.BASE_URL || '/';
-        fetch(`${base}data/products.json`)
+        const dataBase = import.meta.env.DEV ? '/data/products/' : (import.meta.env.BASE_URL || '/') + 'data/products/';
+        const base = import.meta.env.DEV ? '/' : (import.meta.env.BASE_URL || '/');
+        fetch(dataBase + 'index.json')
             .then(response => response.json())
-            .then(products => {
-                renderProducts(products, catalogGrid);
+            .then(index => {
+                const preview = index.preview || [];
+                const total = index.total != null ? index.total : preview.length;
+                renderProducts(preview, catalogGrid, base);
+                updateCatalogCount(total);
             })
-            .catch(error => console.error('Error loading products:', error));
+            .catch(error => {
+                console.error('Error loading catalog index:', error);
+                catalogGrid.innerHTML = '<p class="catalog-empty">Не удалось загрузить каталог. Попробуйте позже.</p>';
+            });
     }
 }
 
-function renderProducts(products, container) {
-    // Clear existing static HTML (if any, preserving the structure for the demo)
-    // container.innerHTML = ''; 
+function updateCatalogCount(total) {
+    const el = document.querySelector('.ch-count');
+    if (el && total > 0) el.textContent = `Все изделия (${total}+)`;
+}
 
-    // For this implementation, we will just append the dynamic ones to show it works
+function renderProducts(products, container, base = '') {
+    if (!Array.isArray(products) || products.length === 0) {
+        container.innerHTML = '<p class="catalog-empty">В каталоге пока нет товаров.</p>';
+        return;
+    }
+    const imgBase = base || (import.meta.env.DEV ? '/' : (import.meta.env.BASE_URL || '/'));
     const html = products.map((product, index) => {
-        const delay = (index % 4) + 1; // Simulated reveal delay
-        
+        const delay = (index % 4) + 1;
+        const imgSrc = (product.image && product.image.startsWith('http')) ? product.image : (imgBase + (product.image || 'images/product.tablecloth.webp').replace(/^\//, ''));
+        const name = escapeHtml(product.name || '');
+        const price = Number(product.price) || 0;
+
         let badgesHtml = '';
         if (product.badges && product.badges.length > 0) {
             badgesHtml = `<div class="product-badges">
-                ${product.badges.map(b => `<span class="badge badge-${b.toLowerCase()}">${b}</span>`).join('')}
+                ${product.badges.map(b => `<span class="badge badge-${String(b).toLowerCase()}">${escapeHtml(b)}</span>`).join('')}
             </div>`;
         }
 
         let sizesHtml = '';
         if (product.sizes && product.sizes.length > 0) {
             sizesHtml = `<div class="product-sizes">
-                ${product.sizes.map(s => `<span class="size-item available">${s}</span>`).join('')}
+                ${product.sizes.map(s => `<span class="size-item available">${escapeHtml(s)}</span>`).join('')}
             </div>`;
         }
 
@@ -80,23 +96,23 @@ function renderProducts(products, container) {
             </div>`;
         }
 
-        let priceHtml = `<span class="price-current">${product.price.toLocaleString('ru-RU')} ₽</span>`;
+        let priceHtml = `<span class="price-current">${price.toLocaleString('ru-RU')} ₽</span>`;
         if (product.oldPrice) {
-            priceHtml += `<span class="price-old">${product.oldPrice.toLocaleString('ru-RU')} ₽</span>`;
+            priceHtml += `<span class="price-old">${Number(product.oldPrice).toLocaleString('ru-RU')} ₽</span>`;
         }
 
         return `
             <div class="product-card reveal reveal-delay-${delay}">
                 <div class="product-card-image">
-                    <img src="${product.image}" loading="lazy" alt="${product.name}">
+                    <img src="${imgSrc}" loading="lazy" alt="${name}">
                     ${badgesHtml}
                     ${sizesHtml}
                     <div class="product-quick-view">
-                        <a href="product.html?id=${product.id}" class="product-quick-btn">Подробнее</a>
+                        <a href="product.html?id=${encodeURIComponent(product.id || '')}" class="product-quick-btn">Подробнее</a>
                     </div>
                 </div>
                 <div class="product-card-info">
-                    <h3 class="product-card-name">${product.name}</h3>
+                    <h3 class="product-card-name">${name}</h3>
                     <div class="product-card-price">${priceHtml}</div>
                     ${colorsHtml}
                 </div>
@@ -104,5 +120,12 @@ function renderProducts(products, container) {
         `;
     }).join('');
 
-    container.innerHTML = html; // Replaces static content with dynamic content
+    container.innerHTML = html;
+}
+
+function escapeHtml(s) {
+    if (s == null) return '';
+    const div = document.createElement('div');
+    div.textContent = s;
+    return div.innerHTML;
 }
