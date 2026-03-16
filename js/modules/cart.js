@@ -6,8 +6,7 @@ export function initCart() {
     initCartPageDelivery();
 
     // Attach to add to cart buttons
-    const addToCartBtns = document.querySelectorAll('.add-to-cart-btn, .btn-primary:not(a)'); 
-    // Need a specific class or ID, let's use .add-to-cart-btn
+    const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
     addToCartBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             // Support both old grid layout and new split-screen layout
@@ -15,7 +14,7 @@ export function initCart() {
             if (!card) return;
 
             let product = {
-                id: Date.now().toString(), // Should ideally be a real ID
+                id: '',
                 name: 'Product',
                 price: 0,
                 img: '',
@@ -44,8 +43,17 @@ export function initCart() {
             
             if (imgEl) product.img = imgEl.src;
 
-            // Simple ID generation based on name to prevent duplicates if same product added
-            product.id = 'prod_' + btoa(unescape(encodeURIComponent(product.name))).substring(0, 10);
+            // Prefer explicit product id from dataset or URL.
+            const datasetId = btn.dataset.productId || card.dataset.productId;
+            const urlId = new URLSearchParams(window.location.search).get('id');
+            if (datasetId) {
+                product.id = datasetId;
+            } else if (urlId) {
+                product.id = urlId;
+            } else {
+                // Deterministic fallback for legacy static cards without product id.
+                product.id = 'name_' + btoa(unescape(encodeURIComponent(product.name))).replace(/=+$/, '');
+            }
 
             addToCart(product);
             

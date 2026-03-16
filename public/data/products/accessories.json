@@ -3,72 +3,93 @@
     "id": "prod-busy-a31",
     "name": "Бусы А31",
     "price": 1450,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/accessories/jewelry/prod-busy-a31/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "accessories",
     "subCategory": "jewelry",
     "sku": "А31",
-    "url": "https://njen-linen.com/catalog/aksessuary/ukrasheniya/busy-a31/"
+    "url": "https://njen-linen.com/catalog/aksessuary/ukrasheniya/busy-a31/",
+    "gallery": [
+      "images/catalog/accessories/jewelry/prod-busy-a31/gallery-1.webp",
+      "images/catalog/accessories/jewelry/prod-busy-a31/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-busy-a30",
     "name": "Бусы А30",
     "price": 1750,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/accessories/jewelry/prod-busy-a30/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "accessories",
     "subCategory": "jewelry",
     "sku": "А30",
-    "url": "https://njen-linen.com/catalog/aksessuary/ukrasheniya/busy-a30/"
+    "url": "https://njen-linen.com/catalog/aksessuary/ukrasheniya/busy-a30/",
+    "gallery": [
+      "images/catalog/accessories/jewelry/prod-busy-a30/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-sumka-st315-halva",
     "name": "Сумка СТ315 халва",
     "price": 2050,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/accessories/bags/prod-sumka-st315-halva/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "accessories",
     "subCategory": "bags",
     "sku": "СТ315 халва",
-    "url": "https://njen-linen.com/catalog/aksessuary/sumki/sumka-st315-halva/"
+    "url": "https://njen-linen.com/catalog/aksessuary/sumki/sumka-st315-halva/",
+    "gallery": [
+      "images/catalog/accessories/bags/prod-sumka-st315-halva/gallery-1.webp",
+      "images/catalog/accessories/bags/prod-sumka-st315-halva/gallery-2.webp",
+      "images/catalog/accessories/bags/prod-sumka-st315-halva/gallery-3.webp"
+    ]
   },
   {
     "id": "prod-sumka_st315_seryy_melanzh",
     "name": "Сумка СТ315 серый меланж",
     "price": 2050,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/accessories/bags/prod-sumka_st315_seryy_melanzh/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "accessories",
     "subCategory": "bags",
     "sku": "СТ315 серый меланж",
-    "url": "https://njen-linen.com/catalog/aksessuary/sumki/sumka_st315_seryy_melanzh/"
+    "url": "https://njen-linen.com/catalog/aksessuary/sumki/sumka_st315_seryy_melanzh/",
+    "gallery": [
+      "images/catalog/accessories/bags/prod-sumka_st315_seryy_melanzh/gallery-1.webp",
+      "images/catalog/accessories/bags/prod-sumka_st315_seryy_melanzh/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-sumka_st315_khalva",
     "name": "Сумка  СТ315 халва",
     "price": 2050,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/accessories/bags/prod-sumka_st315_khalva/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "accessories",
     "subCategory": "bags",
     "sku": "СТ315 халва",
-    "url": "https://njen-linen.com/catalog/aksessuary/sumki/sumka_st315_khalva/"
+    "url": "https://njen-linen.com/catalog/aksessuary/sumki/sumka_st315_khalva/",
+    "gallery": [
+      "images/catalog/accessories/bags/prod-sumka_st315_khalva/gallery-1.webp",
+      "images/catalog/accessories/bags/prod-sumka_st315_khalva/gallery-2.webp",
+      "images/catalog/accessories/bags/prod-sumka_st315_khalva/gallery-3.webp"
+    ]
   },
   {
     "id": "prod-sumka_sv320_seryy_melanzh",
     "name": "Сумка - СВ320 серый меланж",
     "price": 2650,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/accessories/bags/prod-sumka_sv320_seryy_melanzh/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
@@ -81,104 +102,136 @@
     "id": "prod-sumka_sv320_pesochnyy",
     "name": "Сумка - СВ320 песочный",
     "price": 2650,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/accessories/bags/prod-sumka_sv320_pesochnyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "accessories",
     "subCategory": "bags",
     "sku": "СВ320 песочный",
-    "url": "https://njen-linen.com/catalog/aksessuary/sumki/sumka_sv320_pesochnyy/"
+    "url": "https://njen-linen.com/catalog/aksessuary/sumki/sumka_sv320_pesochnyy/",
+    "gallery": [
+      "images/catalog/accessories/bags/prod-sumka_sv320_pesochnyy/gallery-1.webp",
+      "images/catalog/accessories/bags/prod-sumka_sv320_pesochnyy/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-sumka_iz_rotanga_75_15kh22kh9kh125",
     "name": "Сумка из ротанга",
     "price": 5100,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/accessories/bags/prod-sumka_iz_rotanga_75_15kh22kh9kh125/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "accessories",
     "subCategory": "bags",
     "sku": "СР 18275",
-    "url": "https://njen-linen.com/catalog/aksessuary/sumki/sumka_iz_rotanga_75_15kh22kh9kh125/"
+    "url": "https://njen-linen.com/catalog/aksessuary/sumki/sumka_iz_rotanga_75_15kh22kh9kh125/",
+    "gallery": [
+      "images/catalog/accessories/bags/prod-sumka_iz_rotanga_75_15kh22kh9kh125/gallery-1.webp",
+      "images/catalog/accessories/bags/prod-sumka_iz_rotanga_75_15kh22kh9kh125/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-sumka_iz_rotanga_70_d18kh7kh125",
     "name": "Сумка из ротанга 70 18х7х125",
     "price": 2500,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/accessories/bags/prod-sumka_iz_rotanga_70_d18kh7kh125/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "accessories",
     "subCategory": "bags",
     "sku": "СР 18270",
-    "url": "https://njen-linen.com/catalog/aksessuary/sumki/sumka_iz_rotanga_70_d18kh7kh125/"
+    "url": "https://njen-linen.com/catalog/aksessuary/sumki/sumka_iz_rotanga_70_d18kh7kh125/",
+    "gallery": [
+      "images/catalog/accessories/bags/prod-sumka_iz_rotanga_70_d18kh7kh125/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-golovnoy-ubor-gu15-seryy-melanj",
     "name": "Бандана ГУ15 серый меланж",
     "price": 800,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/accessories/hats/prod-golovnoy-ubor-gu15-seryy-melanj/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "accessories",
     "subCategory": "hats",
     "sku": "ГУ15 серый меланж",
-    "url": "https://njen-linen.com/catalog/aksessuary/golovnye_ubory/golovnoy-ubor-gu15-seryy-melanj/"
+    "url": "https://njen-linen.com/catalog/aksessuary/golovnye_ubory/golovnoy-ubor-gu15-seryy-melanj/",
+    "gallery": [
+      "images/catalog/accessories/hats/prod-golovnoy-ubor-gu15-seryy-melanj/gallery-1.webp",
+      "images/catalog/accessories/hats/prod-golovnoy-ubor-gu15-seryy-melanj/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-golovnoy-ubor-gu29-terrakot",
     "name": "Головной убор ГУ29 терракот",
     "price": 1350,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/accessories/hats/prod-golovnoy-ubor-gu29-terrakot/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "accessories",
     "subCategory": "hats",
     "sku": "ГУ29 терракот",
-    "url": "https://njen-linen.com/catalog/aksessuary/golovnye_ubory/golovnoy-ubor-gu29-terrakot/"
+    "url": "https://njen-linen.com/catalog/aksessuary/golovnye_ubory/golovnoy-ubor-gu29-terrakot/",
+    "gallery": [
+      "images/catalog/accessories/hats/prod-golovnoy-ubor-gu29-terrakot/gallery-1.webp",
+      "images/catalog/accessories/hats/prod-golovnoy-ubor-gu29-terrakot/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-golovnoy-ubor-gu29-latte",
     "name": "Головной убор ГУ29 латте",
     "price": 1350,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/accessories/hats/prod-golovnoy-ubor-gu29-latte/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "accessories",
     "subCategory": "hats",
     "sku": "ГУ29 латте",
-    "url": "https://njen-linen.com/catalog/aksessuary/golovnye_ubory/golovnoy-ubor-gu29-latte/"
+    "url": "https://njen-linen.com/catalog/aksessuary/golovnye_ubory/golovnoy-ubor-gu29-latte/",
+    "gallery": [
+      "images/catalog/accessories/hats/prod-golovnoy-ubor-gu29-latte/gallery-1.webp",
+      "images/catalog/accessories/hats/prod-golovnoy-ubor-gu29-latte/gallery-2.webp",
+      "images/catalog/accessories/hats/prod-golovnoy-ubor-gu29-latte/gallery-3.webp"
+    ]
   },
   {
     "id": "prod-golovnoy-ubor-gu29-avokado",
     "name": "Головной убор ГУ29 авокадо",
     "price": 1350,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/accessories/hats/prod-golovnoy-ubor-gu29-avokado/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "accessories",
     "subCategory": "hats",
     "sku": "Головной убор ГУ29 авокадо",
-    "url": "https://njen-linen.com/catalog/aksessuary/golovnye_ubory/golovnoy-ubor-gu29-avokado/"
+    "url": "https://njen-linen.com/catalog/aksessuary/golovnye_ubory/golovnoy-ubor-gu29-avokado/",
+    "gallery": [
+      "images/catalog/accessories/hats/prod-golovnoy-ubor-gu29-avokado/gallery-1.webp",
+      "images/catalog/accessories/hats/prod-golovnoy-ubor-gu29-avokado/gallery-2.webp",
+      "images/catalog/accessories/hats/prod-golovnoy-ubor-gu29-avokado/gallery-3.webp"
+    ]
   },
   {
     "id": "prod-kepka_zhenskaya_gu_21_grafit",
     "name": "Кепка женская ГУ 21 графит",
     "price": 1030,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/accessories/hats/prod-kepka_zhenskaya_gu_21_grafit/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "accessories",
     "subCategory": "hats",
     "sku": "ГУ21графит",
-    "url": "https://njen-linen.com/catalog/aksessuary/golovnye_ubory/kepka_zhenskaya_gu_21_grafit/"
+    "url": "https://njen-linen.com/catalog/aksessuary/golovnye_ubory/kepka_zhenskaya_gu_21_grafit/",
+    "gallery": [
+      "images/catalog/accessories/hats/prod-kepka_zhenskaya_gu_21_grafit/gallery-1.webp"
+    ]
   }
 ]

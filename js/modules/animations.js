@@ -1,23 +1,42 @@
 export function initAnimations() {
-    const revealElements = document.querySelectorAll('.reveal');
-
-    if (revealElements.length > 0) {
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
         });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    });
 
-        revealElements.forEach(el => {
+    function observeReveals(root = document) {
+        root.querySelectorAll('.reveal:not(.visible)').forEach(el => {
             revealObserver.observe(el);
         });
     }
+
+    observeReveals(document);
+
+    // Observe dynamically rendered sections (catalog/category cards and other async blocks).
+    const mutationObserver = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            mutation.addedNodes.forEach(node => {
+                if (!(node instanceof HTMLElement)) return;
+                if (node.classList && node.classList.contains('reveal')) {
+                    revealObserver.observe(node);
+                } else {
+                    observeReveals(node);
+                }
+            });
+        });
+    });
+
+    mutationObserver.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
 
     // ===== PRELOAD IMAGES =====
     function preloadImage(src) {

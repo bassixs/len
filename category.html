@@ -77,25 +77,37 @@
     <script>
         (async function () {
             const params = new URLSearchParams(window.location.search);
-            const cat = params.get('cat') || 'women';
+            const cat = params.get('cat') || 'home-textile';
 
             let categories = {};
             try {
-                const response = await fetch('data/categories.json');
+                const dataUrl = new URL('data/categories.json', window.location.href);
+                const response = await fetch(dataUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
                 categories = await response.json();
             } catch (error) {
                 console.error('Error fetching categories:', error);
                 return;
             }
 
-            const data = categories[cat] || categories['women'];
+            const data = categories[cat] || categories['home-textile'];
 
             // Update page title and meta
             document.title = data.title + ' — нжен ЛЁН';
-            document.querySelector('meta[name="description"]').content = data.subtitle + ' — нжен ЛЁН';
+            const descMeta = document.querySelector('meta[name="description"]');
+            if (descMeta) {
+                descMeta.content = data.subtitle + ' — нжен ЛЁН';
+            }
 
             // Update breadcrumbs & headings
-            document.getElementById('categoryTitle').textContent = data.title;
+            const titleEl = document.getElementById('categoryTitle');
+            const h1El = document.getElementById('categoryPageTitle');
+            const subtitleEl = document.getElementById('categorySubtitle');
+            if (titleEl) titleEl.textContent = data.title;
+            if (h1El) h1El.textContent = data.title;
+            if (subtitleEl) subtitleEl.textContent = data.subtitle;
         })();
     </script>
 </body>

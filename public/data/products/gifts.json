@@ -3,33 +3,42 @@
     "id": "prod-ovechka_agniya",
     "name": "Овечка Агния",
     "price": 5000,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/gifts/toys/prod-ovechka_agniya/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "gifts",
     "subCategory": "toys",
     "sku": "ОА",
-    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/ovechka_agniya/"
+    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/ovechka_agniya/",
+    "gallery": [
+      "images/catalog/gifts/toys/prod-ovechka_agniya/gallery-1.webp",
+      "images/catalog/gifts/toys/prod-ovechka_agniya/gallery-2.webp",
+      "images/catalog/gifts/toys/prod-ovechka_agniya/gallery-3.webp"
+    ]
   },
   {
     "id": "prod-barashek_borya",
     "name": "Барашек Боря",
     "price": 5000,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/gifts/toys/prod-barashek_borya/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "gifts",
     "subCategory": "toys",
     "sku": "ББ",
-    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/barashek_borya/"
+    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/barashek_borya/",
+    "gallery": [
+      "images/catalog/gifts/toys/prod-barashek_borya/gallery-1.webp",
+      "images/catalog/gifts/toys/prod-barashek_borya/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-loshadka",
     "name": "Лошадка",
     "price": 2150,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/gifts/toys/prod-loshadka/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
@@ -42,169 +51,233 @@
     "id": "prod-kotenok_malchik_v_tsvetnom",
     "name": "Котенок мальчик в цветном",
     "price": 3250,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/gifts/toys/prod-kotenok_malchik_v_tsvetnom/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "gifts",
     "subCategory": "toys",
     "sku": "котенок",
-    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/kotenok_malchik_v_tsvetnom/"
+    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/kotenok_malchik_v_tsvetnom/",
+    "gallery": [
+      "images/catalog/gifts/toys/prod-kotenok_malchik_v_tsvetnom/gallery-1.webp",
+      "images/catalog/gifts/toys/prod-kotenok_malchik_v_tsvetnom/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-kotenok_devochka_v_tsvetnom",
     "name": "Котенок девочка в цветном",
     "price": 3250,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/gifts/toys/prod-kotenok_devochka_v_tsvetnom/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "gifts",
     "subCategory": "toys",
     "sku": "котенок",
-    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/kotenok_devochka_v_tsvetnom/"
+    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/kotenok_devochka_v_tsvetnom/",
+    "gallery": [
+      "images/catalog/gifts/toys/prod-kotenok_devochka_v_tsvetnom/gallery-1.webp",
+      "images/catalog/gifts/toys/prod-kotenok_devochka_v_tsvetnom/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-zayka_devochka",
     "name": "Зайка девочка",
     "price": 2900,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/gifts/toys/prod-zayka_devochka/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "gifts",
     "subCategory": "toys",
     "sku": "зайка",
-    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/zayka_devochka/"
+    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/zayka_devochka/",
+    "gallery": [
+      "images/catalog/gifts/toys/prod-zayka_devochka/gallery-1.webp",
+      "images/catalog/gifts/toys/prod-zayka_devochka/gallery-2.webp",
+      "images/catalog/gifts/toys/prod-zayka_devochka/gallery-3.webp",
+      "images/catalog/gifts/toys/prod-zayka_devochka/gallery-4.webp",
+      "images/catalog/gifts/toys/prod-zayka_devochka/gallery-5.webp"
+    ]
   },
   {
     "id": "prod-mishka_v_shortakh",
     "name": "Мишка в шортах",
     "price": 3800,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/gifts/toys/prod-mishka_v_shortakh/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "gifts",
     "subCategory": "toys",
     "sku": "мишка",
-    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/mishka_v_shortakh/"
+    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/mishka_v_shortakh/",
+    "gallery": [
+      "images/catalog/gifts/toys/prod-mishka_v_shortakh/gallery-1.webp",
+      "images/catalog/gifts/toys/prod-mishka_v_shortakh/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-slonik_v_temnom",
     "name": "Слоник в темном",
     "price": 3400,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/gifts/toys/prod-slonik_v_temnom/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "gifts",
     "subCategory": "toys",
     "sku": "слон",
-    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/slonik_v_temnom/"
+    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/slonik_v_temnom/",
+    "gallery": [
+      "images/catalog/gifts/toys/prod-slonik_v_temnom/gallery-1.webp",
+      "images/catalog/gifts/toys/prod-slonik_v_temnom/gallery-2.webp",
+      "images/catalog/gifts/toys/prod-slonik_v_temnom/gallery-3.webp"
+    ]
   },
   {
     "id": "prod-domovoy_naturalnyy",
     "name": "Домовенок натуральный",
     "price": 3550,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/gifts/toys/prod-domovoy_naturalnyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "gifts",
     "subCategory": "toys",
     "sku": "И20 натуральный",
-    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/domovoy_naturalnyy/"
+    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/domovoy_naturalnyy/",
+    "gallery": [
+      "images/catalog/gifts/toys/prod-domovoy_naturalnyy/gallery-1.webp",
+      "images/catalog/gifts/toys/prod-domovoy_naturalnyy/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-domovoy_ryzhiy",
     "name": "Домовенок рыжий",
     "price": 3550,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/gifts/toys/prod-domovoy_ryzhiy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "gifts",
     "subCategory": "toys",
     "sku": "И20 рыжий",
-    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/domovoy_ryzhiy/"
+    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/domovoy_ryzhiy/",
+    "gallery": [
+      "images/catalog/gifts/toys/prod-domovoy_ryzhiy/gallery-1.webp",
+      "images/catalog/gifts/toys/prod-domovoy_ryzhiy/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-svinka_",
     "name": "Свинка",
     "price": 1290,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/gifts/toys/prod-svinka_/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "gifts",
     "subCategory": "toys",
     "sku": "И 15д",
-    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/svinka_/"
+    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/svinka_/",
+    "gallery": [
+      "images/catalog/gifts/toys/prod-svinka_/gallery-1.webp",
+      "images/catalog/gifts/toys/prod-svinka_/gallery-2.webp",
+      "images/catalog/gifts/toys/prod-svinka_/gallery-3.webp",
+      "images/catalog/gifts/toys/prod-svinka_/gallery-4.webp"
+    ]
   },
   {
     "id": "prod-svinka_model",
     "name": "Свинка- модель",
     "price": 1290,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/gifts/toys/prod-svinka_model/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "gifts",
     "subCategory": "toys",
     "sku": "И 15д",
-    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/svinka_model/"
+    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/svinka_model/",
+    "gallery": [
+      "images/catalog/gifts/toys/prod-svinka_model/gallery-1.webp",
+      "images/catalog/gifts/toys/prod-svinka_model/gallery-2.webp",
+      "images/catalog/gifts/toys/prod-svinka_model/gallery-3.webp",
+      "images/catalog/gifts/toys/prod-svinka_model/gallery-4.webp",
+      "images/catalog/gifts/toys/prod-svinka_model/gallery-5.webp"
+    ]
   },
   {
     "id": "prod-porosenok",
     "name": "Поросенок",
     "price": 1250,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/gifts/toys/prod-porosenok/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "gifts",
     "subCategory": "toys",
     "sku": "И 15м",
-    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/porosenok/"
+    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/porosenok/",
+    "gallery": [
+      "images/catalog/gifts/toys/prod-porosenok/gallery-1.webp",
+      "images/catalog/gifts/toys/prod-porosenok/gallery-2.webp",
+      "images/catalog/gifts/toys/prod-porosenok/gallery-3.webp"
+    ]
   },
   {
     "id": "prod-petushok",
     "name": "Петушок",
     "price": 1400,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/gifts/toys/prod-petushok/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "gifts",
     "subCategory": "toys",
     "sku": "И89",
-    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/petushok/"
+    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/petushok/",
+    "gallery": [
+      "images/catalog/gifts/toys/prod-petushok/gallery-1.webp",
+      "images/catalog/gifts/toys/prod-petushok/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-kukla_babushka",
     "name": "Кукла Бабушка",
     "price": 2690,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/gifts/toys/prod-kukla_babushka/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "gifts",
     "subCategory": "toys",
     "sku": "И18",
-    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/kukla_babushka/"
+    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/kukla_babushka/",
+    "gallery": [
+      "images/catalog/gifts/toys/prod-kukla_babushka/gallery-1.webp",
+      "images/catalog/gifts/toys/prod-kukla_babushka/gallery-2.webp",
+      "images/catalog/gifts/toys/prod-kukla_babushka/gallery-3.webp",
+      "images/catalog/gifts/toys/prod-kukla_babushka/gallery-4.webp",
+      "images/catalog/gifts/toys/prod-kukla_babushka/gallery-5.webp"
+    ]
   },
   {
     "id": "prod-tri_medvedya",
     "name": "Три Медведя",
     "price": 10500,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/gifts/toys/prod-tri_medvedya/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "gifts",
     "subCategory": "toys",
     "sku": "Три медведя",
-    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/tri_medvedya/"
+    "url": "https://njen-linen.com/catalog/igrushki_i_suveniry_podarki/lnyanye_igrushki/tri_medvedya/",
+    "gallery": [
+      "images/catalog/gifts/toys/prod-tri_medvedya/gallery-1.webp"
+    ]
   }
 ]

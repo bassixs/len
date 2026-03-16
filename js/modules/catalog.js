@@ -38,8 +38,8 @@ export function initCatalog() {
     // ===== DYNAMIC PRODUCT RENDERING (из data/products/index.json + preview) =====
     const catalogGrid = document.querySelector('.catalog-grid');
     if (catalogGrid) {
-        const dataBase = import.meta.env.DEV ? '/data/products/' : (import.meta.env.BASE_URL || '/') + 'data/products/';
-        const base = import.meta.env.DEV ? '/' : (import.meta.env.BASE_URL || '/');
+        const base = import.meta.env.BASE_URL || '/';
+        const dataBase = (import.meta.env.BASE_URL || '/') + 'data/products/';
         fetch(dataBase + 'index.json')
             .then(response => response.json())
             .then(index => {
@@ -65,7 +65,7 @@ function renderProducts(products, container, base = '') {
         container.innerHTML = '<p class="catalog-empty">В каталоге пока нет товаров.</p>';
         return;
     }
-    const imgBase = base || (import.meta.env.DEV ? '/' : (import.meta.env.BASE_URL || '/'));
+    const imgBase = base || (import.meta.env.BASE_URL || '/');
     const html = products.map((product, index) => {
         const delay = (index % 4) + 1;
         const imgSrc = (product.image && product.image.startsWith('http')) ? product.image : (imgBase + (product.image || 'images/product.tablecloth.webp').replace(/^\//, ''));
@@ -102,7 +102,7 @@ function renderProducts(products, container, base = '') {
         }
 
         return `
-            <div class="product-card reveal reveal-delay-${delay}">
+            <div class="product-card reveal reveal-delay-${delay}" data-product-id="${escapeHtml(product.id || '')}">
                 <div class="product-card-image">
                     <img src="${imgSrc}" loading="lazy" alt="${name}">
                     ${badgesHtml}

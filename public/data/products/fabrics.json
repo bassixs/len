@@ -3,209 +3,269 @@
     "id": "prod-tkan_dlya_postelnogo_belya",
     "name": "Ткань для постельного белья полоса голубая",
     "price": 1500,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_dlya_postelnogo_belya/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "17С105- ШР голубой",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_dlya_postelnogo_belya/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_dlya_postelnogo_belya/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_dlya_postelnogo_belya/gallery-1.webp",
+      "images/catalog/fabrics/all/prod-tkan_dlya_postelnogo_belya/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-tkan_dlya_postelnogo_belya_polosa_bezh",
     "name": "Ткань для постельного белья полоса бежевая",
     "price": 1500,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_dlya_postelnogo_belya_polosa_bezh/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "17С105 - ШР бежевый",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_dlya_postelnogo_belya_polosa_bezh/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_dlya_postelnogo_belya_polosa_bezh/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_dlya_postelnogo_belya_polosa_bezh/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-tkan_dekorativnaya_polosa_bezh",
     "name": "Ткань декоративная полоса бежевая",
     "price": 750,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_dekorativnaya_polosa_bezh/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "09С482 - ШР бежевый",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_polosa_bezh/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_polosa_bezh/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_polosa_bezh/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-tkan_dekorativnaya_",
     "name": "Ткань декоративная",
     "price": 2150,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_dekorativnaya_/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "20С38 - ШР",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-tkan_dekorativnaya_zheltaya",
     "name": "Ткань декоративная желтая",
     "price": 680,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_dekorativnaya_zheltaya/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "14С211 - ШР",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_zheltaya/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_zheltaya/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_zheltaya/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-tkan_dlya_postelnogo_belya_arina",
     "name": "Ткань для постельного белья Арина",
     "price": 1600,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_dlya_postelnogo_belya_arina/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "15С52- ШР Арина",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_dlya_postelnogo_belya_arina/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_dlya_postelnogo_belya_arina/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_dlya_postelnogo_belya_arina/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-tkan_kostyumnaya_s_effektom_myatosti_chernaya_145sm",
     "name": "Ткань костюмная с эффектом мятости Черная 145см",
     "price": 995,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_kostyumnaya_s_effektom_myatosti_chernaya_145sm/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "20с161 черный",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_kostyumnaya_s_effektom_myatosti_chernaya_145sm/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_kostyumnaya_s_effektom_myatosti_chernaya_145sm/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_kostyumnaya_s_effektom_myatosti_chernaya_145sm/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-tkan_kostyumnaya_s_effektom_myatosti_tsvety_145sm",
     "name": "Ткань костюмная с эффектом мятости Цветы 145см",
     "price": 1840,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_kostyumnaya_s_effektom_myatosti_tsvety_145sm/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "08с341",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_kostyumnaya_s_effektom_myatosti_tsvety_145sm/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_kostyumnaya_s_effektom_myatosti_tsvety_145sm/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_kostyumnaya_s_effektom_myatosti_tsvety_145sm/gallery-1.webp",
+      "images/catalog/fabrics/all/prod-tkan_kostyumnaya_s_effektom_myatosti_tsvety_145sm/gallery-2.webp",
+      "images/catalog/fabrics/all/prod-tkan_kostyumnaya_s_effektom_myatosti_tsvety_145sm/gallery-3.webp"
+    ]
   },
   {
     "id": "prod-tkan_polotenechnaya_s_effektom_myatosti_145sm",
     "name": "Ткань полотенечная с эффектом мятости 145см",
     "price": 1250,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_polotenechnaya_s_effektom_myatosti_145sm/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "17с385 бежевый",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_polotenechnaya_s_effektom_myatosti_145sm/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_polotenechnaya_s_effektom_myatosti_145sm/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_polotenechnaya_s_effektom_myatosti_145sm/gallery-1.webp",
+      "images/catalog/fabrics/all/prod-tkan_polotenechnaya_s_effektom_myatosti_145sm/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-kholst_polotenechnyy_kofe_s_kruassanami_korichnevyy",
     "name": "Холст полотенечный Кофе с круассанами коричневый",
     "price": 240,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-kholst_polotenechnyy_kofe_s_kruassanami_korichnevyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "111395 коричневый",
-    "url": "https://njen-linen.com/catalog/tkani/kholst_polotenechnyy_kofe_s_kruassanami_korichnevyy/"
+    "url": "https://njen-linen.com/catalog/tkani/kholst_polotenechnyy_kofe_s_kruassanami_korichnevyy/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-kholst_polotenechnyy_kofe_s_kruassanami_korichnevyy/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-kholst_polotenechnyy_kofe_s_kruassanami_50sm_bordo",
     "name": "Холст полотенечный Кофе с круассанами 50см бордо",
     "price": 240,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-kholst_polotenechnyy_kofe_s_kruassanami_50sm_bordo/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "111395 бордо",
-    "url": "https://njen-linen.com/catalog/tkani/kholst_polotenechnyy_kofe_s_kruassanami_50sm_bordo/"
+    "url": "https://njen-linen.com/catalog/tkani/kholst_polotenechnyy_kofe_s_kruassanami_50sm_bordo/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-kholst_polotenechnyy_kofe_s_kruassanami_50sm_bordo/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-kholst_polotenechnyy_kofeynoe_zerno_50sm",
     "name": "Холст полотенечный Кофейное зерно 50см",
     "price": 240,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-kholst_polotenechnyy_kofeynoe_zerno_50sm/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "111395",
-    "url": "https://njen-linen.com/catalog/tkani/kholst_polotenechnyy_kofeynoe_zerno_50sm/"
+    "url": "https://njen-linen.com/catalog/tkani/kholst_polotenechnyy_kofeynoe_zerno_50sm/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-kholst_polotenechnyy_kofeynoe_zerno_50sm/gallery-1.webp",
+      "images/catalog/fabrics/all/prod-kholst_polotenechnyy_kofeynoe_zerno_50sm/gallery-2.webp",
+      "images/catalog/fabrics/all/prod-kholst_polotenechnyy_kofeynoe_zerno_50sm/gallery-3.webp"
+    ]
   },
   {
     "id": "prod-tkan_dekorativnaya_dorozhka_shirokaya",
     "name": "Ткань декоративная дорожка широкая",
     "price": 1220,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_dekorativnaya_dorozhka_shirokaya/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "16С79-ШР",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_dorozhka_shirokaya/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_dorozhka_shirokaya/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_dorozhka_shirokaya/gallery-1.webp",
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_dorozhka_shirokaya/gallery-2.webp",
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_dorozhka_shirokaya/gallery-3.webp",
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_dorozhka_shirokaya/gallery-4.webp",
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_dorozhka_shirokaya/gallery-5.webp"
+    ]
   },
   {
     "id": "prod-tkan_dekorativnaya_polosa_belaya",
     "name": "Ткань декоративная полоса белая",
     "price": 1220,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_dekorativnaya_polosa_belaya/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "15С699- ШР",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_polosa_belaya/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_polosa_belaya/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_polosa_belaya/gallery-1.webp",
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_polosa_belaya/gallery-2.webp",
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_polosa_belaya/gallery-3.webp"
+    ]
   },
   {
     "id": "prod-tkan_dekorativnaya_polosa",
     "name": "Ткань декоративная полоса",
     "price": 950,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_dekorativnaya_polosa/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "15С700- ШР",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_polosa/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_polosa/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_polosa/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-tkan_dekorativnaya_laym",
     "name": "Ткань декоративная лайм",
     "price": 1200,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_dekorativnaya_laym/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "15С699- ШР лайм",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_laym/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_laym/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_laym/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-tkan_dekorativnaya_seraya_polosa",
@@ -224,130 +284,163 @@
     "id": "prod-tkan_dlya_postelnogo_belya_polosa_melkaya",
     "name": "Ткань для постельного белья полоса мелкая",
     "price": 1140,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_dlya_postelnogo_belya_polosa_melkaya/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "16С134- ШР полоса мелкая",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_dlya_postelnogo_belya_polosa_melkaya/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_dlya_postelnogo_belya_polosa_melkaya/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_dlya_postelnogo_belya_polosa_melkaya/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-tkan_bytovaya_eseniya_golubaya",
     "name": "Ткань бытовая Есения голубая",
     "price": 1600,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_bytovaya_eseniya_golubaya/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "21С205- ШР Есения голубая",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_bytovaya_eseniya_golubaya/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_bytovaya_eseniya_golubaya/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_bytovaya_eseniya_golubaya/gallery-1.webp",
+      "images/catalog/fabrics/all/prod-tkan_bytovaya_eseniya_golubaya/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-tkan_bytovaya_eseniya_korichnevaya",
     "name": "Ткань бытовая Есения коричневая",
     "price": 1600,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_bytovaya_eseniya_korichnevaya/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "21С205- ШР Есения коричневая",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_bytovaya_eseniya_korichnevaya/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_bytovaya_eseniya_korichnevaya/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_bytovaya_eseniya_korichnevaya/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-tkan_dekorativnaya_etalon",
     "name": "Ткань декоративная Эталон",
     "price": 1405,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_dekorativnaya_etalon/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "10С907- ШР эталон",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_etalon/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_etalon/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_etalon/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-tkan_dekorativnaya_limon",
     "name": "Ткань декоративная Лимон",
     "price": 680,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_dekorativnaya_limon/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "14С211- ШР",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_limon/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_limon/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_limon/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-tkan_dekorativnaya_korall",
     "name": "Ткань декоративная Коралл",
     "price": 1100,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_dekorativnaya_korall/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "02С129 - ШР коралл",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_korall/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_korall/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_korall/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-tkan_bytovaya_teddi",
     "name": "Ткань бытовая Тедди",
     "price": 840,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_bytovaya_teddi/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "18С7- ШР Тедди",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_bytovaya_teddi/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_bytovaya_teddi/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_bytovaya_teddi/gallery-1.webp"
+    ]
   },
   {
     "id": "prod-tkan_bytovaya_kurochka",
     "name": "Ткань бытовая Курочка",
     "price": 840,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_bytovaya_kurochka/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "18С7- ШР Курочка",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_bytovaya_kurochka/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_bytovaya_kurochka/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_bytovaya_kurochka/gallery-1.webp",
+      "images/catalog/fabrics/all/prod-tkan_bytovaya_kurochka/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-tkan_bytovaya_koshki",
     "name": "Ткань бытовая Кошки",
     "price": 840,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_bytovaya_koshki/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "18С7- ШР Кошки",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_bytovaya_koshki/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_bytovaya_koshki/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_bytovaya_koshki/gallery-1.webp",
+      "images/catalog/fabrics/all/prod-tkan_bytovaya_koshki/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-tkan_dekorativnaya_nebesnyy",
     "name": "Ткань декоративная Небесный",
     "price": 680,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/fabrics/all/prod-tkan_dekorativnaya_nebesnyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "fabrics",
     "subCategory": "all",
     "sku": "14С211 - ШР небесный",
-    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_nebesnyy/"
+    "url": "https://njen-linen.com/catalog/tkani/tkan_dekorativnaya_nebesnyy/",
+    "gallery": [
+      "images/catalog/fabrics/all/prod-tkan_dekorativnaya_nebesnyy/gallery-1.webp"
+    ]
   }
 ]

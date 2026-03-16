@@ -6,6 +6,7 @@ import { initCatalog } from './modules/catalog.js';
 import { initCategoryProducts } from './modules/category-products.js';
 import { initForms } from './modules/forms.js';
 import { initCart } from './modules/cart.js';
+import { initProductCards } from './modules/product-cards.js';
 
 // Initialize all modules when the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,5 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initAnimations();
     initCatalog();
     initCategoryProducts();
+    initProductCards();
     initForms();
 });

@@ -3,702 +3,1179 @@
     "id": "prod-rubashka-2012-musson",
     "name": "Рубашка 2012 муссон",
     "price": 7680,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka-2012-musson/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2012 муссон",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka-2012-musson/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka-2012-musson/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka-2012-musson/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-musson/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-musson/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-musson/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-musson/gallery-5.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-musson/gallery-6.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-musson/gallery-7.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-musson/gallery-8.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-musson/gallery-9.webp"
+    ]
   },
   {
     "id": "prod-rubashka-2012-belyy",
     "name": "Рубашка 2012 белый",
     "price": 7680,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka-2012-belyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2012 белый",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka-2012-belyy/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka-2012-belyy/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka-2012-belyy/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-belyy/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-belyy/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-belyy/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-belyy/gallery-5.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-belyy/gallery-6.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-belyy/gallery-7.webp"
+    ]
   },
   {
     "id": "prod-rubashka-2012-fistashkovyy",
     "name": "Рубашка 2012 фисташковый",
     "price": 7680,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka-2012-fistashkovyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2012 фисташковый",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka-2012-fistashkovyy/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka-2012-fistashkovyy/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka-2012-fistashkovyy/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-fistashkovyy/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-fistashkovyy/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-fistashkovyy/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-fistashkovyy/gallery-5.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-fistashkovyy/gallery-6.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-fistashkovyy/gallery-7.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-fistashkovyy/gallery-8.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-fistashkovyy/gallery-9.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-fistashkovyy/gallery-10.webp",
+      "images/catalog/men/shirt/prod-rubashka-2012-fistashkovyy/gallery-11.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2002_fistashkovyy_l_xl",
     "name": "Рубашка 2002 фисташковый",
     "price": 7120,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2002_fistashkovyy_l_xl/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2002 фисташковый",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2002_fistashkovyy_l_xl/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2002_fistashkovyy_l_xl/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2002_fistashkovyy_l_xl/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_fistashkovyy_l_xl/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_fistashkovyy_l_xl/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_fistashkovyy_l_xl/gallery-4.webp"
+    ]
   },
   {
     "id": "prod-rubashka-2010-umbra",
     "name": "Рубашка 2010 умбра",
     "price": 9030,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka-2010-umbra/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2010 умбра",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka-2010-umbra/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka-2010-umbra/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka-2010-umbra/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka-2010-umbra/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka-2010-umbra/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka-2010-umbra/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka-2010-umbra/gallery-5.webp",
+      "images/catalog/men/shirt/prod-rubashka-2010-umbra/gallery-6.webp",
+      "images/catalog/men/shirt/prod-rubashka-2010-umbra/gallery-7.webp",
+      "images/catalog/men/shirt/prod-rubashka-2010-umbra/gallery-8.webp",
+      "images/catalog/men/shirt/prod-rubashka-2010-umbra/gallery-9.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2002_zheltyy",
     "name": "Рубашка 2002 желтый",
     "price": 7120,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2002_zheltyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2002 желтый",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2002_zheltyy/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2002_zheltyy/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2002_zheltyy/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_zheltyy/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_zheltyy/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_zheltyy/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_zheltyy/gallery-5.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_zheltyy/gallery-6.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_zheltyy/gallery-7.webp"
+    ]
   },
   {
     "id": "prod-rubashka-2010-dzhins",
     "name": "Рубашка 2010 джинс",
     "price": 9030,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka-2010-dzhins/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2010 джинс",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka-2010-dzhins/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka-2010-dzhins/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka-2010-dzhins/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka-2010-dzhins/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka-2010-dzhins/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka-2010-dzhins/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka-2010-dzhins/gallery-5.webp",
+      "images/catalog/men/shirt/prod-rubashka-2010-dzhins/gallery-6.webp",
+      "images/catalog/men/shirt/prod-rubashka-2010-dzhins/gallery-7.webp",
+      "images/catalog/men/shirt/prod-rubashka-2010-dzhins/gallery-8.webp",
+      "images/catalog/men/shirt/prod-rubashka-2010-dzhins/gallery-9.webp"
+    ]
   },
   {
     "id": "prod-rubashka_amigo_naturalnyy",
     "name": "Рубашка Амиго натуральный",
     "price": 5300,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_amigo_naturalnyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "Амиго натуральный",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_amigo_naturalnyy/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_amigo_naturalnyy/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_amigo_naturalnyy/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_amigo_naturalnyy/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_amigo_naturalnyy/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_amigo_naturalnyy/gallery-4.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2001_lilovyy",
     "name": "Рубашка 2001 лиловый",
     "price": 8280,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2001_lilovyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2001 лиловый",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2001_lilovyy/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2001_lilovyy/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2001_lilovyy/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2001_lilovyy/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_2001_lilovyy/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_2001_lilovyy/gallery-4.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2008_lilovyy",
     "name": "Рубашка 2008 лиловый",
     "price": 5380,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2008_lilovyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2008 лиловый",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2008_lilovyy/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2008_lilovyy/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2008_lilovyy/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_lilovyy/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_lilovyy/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_lilovyy/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_lilovyy/gallery-5.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2006_zheltyy_s_m_l_3xl",
     "name": "Рубашка 2006 светло-желтый",
     "price": 7900,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2006_zheltyy_s_m_l_3xl/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2006 желтый",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2006_zheltyy_s_m_l_3xl/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2006_zheltyy_s_m_l_3xl/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2006_zheltyy_s_m_l_3xl/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_zheltyy_s_m_l_3xl/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_zheltyy_s_m_l_3xl/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_zheltyy_s_m_l_3xl/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_zheltyy_s_m_l_3xl/gallery-5.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_zheltyy_s_m_l_3xl/gallery-6.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_zheltyy_s_m_l_3xl/gallery-7.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_zheltyy_s_m_l_3xl/gallery-8.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2007_naturalnyy",
     "name": "Рубашка 2007 натуральный",
     "price": 8130,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2007_naturalnyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2007 доллар",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2007_naturalnyy/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2007_naturalnyy/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2007_naturalnyy/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2007_naturalnyy/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_2007_naturalnyy/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_2007_naturalnyy/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka_2007_naturalnyy/gallery-5.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2002_belyy",
     "name": "Рубашка 2002 белый",
     "price": 7120,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2002_belyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2002 белый",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2002_belyy/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2002_belyy/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2002_belyy/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_belyy/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_belyy/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_belyy/gallery-4.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2004_zelenyy_opal_s_m_l_2xl",
     "name": "Рубашка 2004 зеленый опал",
     "price": 8490,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2004_zelenyy_opal_s_m_l_2xl/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2004",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2004_zelenyy_opal_s_m_l_2xl/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2004_zelenyy_opal_s_m_l_2xl/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2004_zelenyy_opal_s_m_l_2xl/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2004_zelenyy_opal_s_m_l_2xl/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_2004_zelenyy_opal_s_m_l_2xl/gallery-3.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2006_naturalnyy_l",
     "name": "Рубашка 2006 натуральный",
     "price": 7900,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2006_naturalnyy_l/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2006 натуральный",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2006_naturalnyy_l/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2006_naturalnyy_l/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2006_naturalnyy_l/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_naturalnyy_l/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_naturalnyy_l/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_naturalnyy_l/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_naturalnyy_l/gallery-5.webp"
+    ]
   },
   {
     "id": "prod-rubashka-2006-petrol",
     "name": "Рубашка 2006 петроль",
     "price": 7900,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka-2006-petrol/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2006 петроль",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka-2006-petrol/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka-2006-petrol/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka-2006-petrol/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka-2006-petrol/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka-2006-petrol/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka-2006-petrol/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka-2006-petrol/gallery-5.webp",
+      "images/catalog/men/shirt/prod-rubashka-2006-petrol/gallery-6.webp",
+      "images/catalog/men/shirt/prod-rubashka-2006-petrol/gallery-7.webp",
+      "images/catalog/men/shirt/prod-rubashka-2006-petrol/gallery-8.webp",
+      "images/catalog/men/shirt/prod-rubashka-2006-petrol/gallery-9.webp",
+      "images/catalog/men/shirt/prod-rubashka-2006-petrol/gallery-10.webp",
+      "images/catalog/men/shirt/prod-rubashka-2006-petrol/gallery-11.webp",
+      "images/catalog/men/shirt/prod-rubashka-2006-petrol/gallery-12.webp",
+      "images/catalog/men/shirt/prod-rubashka-2006-petrol/gallery-13.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2008_belyy",
     "name": "Рубашка 2008 белый",
     "price": 6210,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2008_belyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2008 белый",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2008_belyy/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2008_belyy/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2008_belyy/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_belyy/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_belyy/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_belyy/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_belyy/gallery-5.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_belyy/gallery-6.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_belyy/gallery-7.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2008_grafit",
     "name": "Рубашка 2008 графит",
     "price": 5000,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2008_grafit/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2008 графит",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2008_grafit/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2008_grafit/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2008_grafit/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_grafit/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_grafit/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_grafit/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_grafit/gallery-5.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2006_goluboy_",
     "name": "Рубашка 2006 голубой",
     "price": 7900,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2006_goluboy_/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2006 голубой",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2006_goluboy_/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2006_goluboy_/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2006_goluboy_/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_goluboy_/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_goluboy_/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_goluboy_/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_goluboy_/gallery-5.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_goluboy_/gallery-6.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_goluboy_/gallery-7.webp"
+    ]
   },
   {
     "id": "prod-rubashka_frend_naturalnyy",
     "name": "Рубашка Френд натуральный",
     "price": 4400,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_frend_naturalnyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "Френд натуральный",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_frend_naturalnyy/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_frend_naturalnyy/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_frend_naturalnyy/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_frend_naturalnyy/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_frend_naturalnyy/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_frend_naturalnyy/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka_frend_naturalnyy/gallery-5.webp",
+      "images/catalog/men/shirt/prod-rubashka_frend_naturalnyy/gallery-6.webp",
+      "images/catalog/men/shirt/prod-rubashka_frend_naturalnyy/gallery-7.webp",
+      "images/catalog/men/shirt/prod-rubashka_frend_naturalnyy/gallery-8.webp",
+      "images/catalog/men/shirt/prod-rubashka_frend_naturalnyy/gallery-9.webp",
+      "images/catalog/men/shirt/prod-rubashka_frend_naturalnyy/gallery-10.webp",
+      "images/catalog/men/shirt/prod-rubashka_frend_naturalnyy/gallery-11.webp",
+      "images/catalog/men/shirt/prod-rubashka_frend_naturalnyy/gallery-12.webp",
+      "images/catalog/men/shirt/prod-rubashka_frend_naturalnyy/gallery-13.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2008_naturalnyy",
     "name": "Рубашка 2008 натуральный",
     "price": 6210,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2008_naturalnyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2008 натуральный",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2008_naturalnyy/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2008_naturalnyy/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2008_naturalnyy/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_naturalnyy/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_naturalnyy/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_2008_naturalnyy/gallery-4.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2001_musson",
     "name": "Рубашка 2001 муссон",
     "price": 6770,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2001_musson/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2001 муссон",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2001_musson/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2001_musson/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2001_musson/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2001_musson/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_2001_musson/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_2001_musson/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka_2001_musson/gallery-5.webp",
+      "images/catalog/men/shirt/prod-rubashka_2001_musson/gallery-6.webp",
+      "images/catalog/men/shirt/prod-rubashka_2001_musson/gallery-7.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2002_goluboy",
     "name": "Рубашка 2002 голубой",
     "price": 7120,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2002_goluboy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2002 голубой",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2002_goluboy/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2002_goluboy/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2002_goluboy/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_goluboy/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_goluboy/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_goluboy/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_goluboy/gallery-5.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_goluboy/gallery-6.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2006_goluboy_melanzh",
     "name": "Рубашка 2006 голубой меланж",
     "price": 6400,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2006_goluboy_melanzh/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2006 голубой меланж",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2006_goluboy_melanzh/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2006_goluboy_melanzh/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2006_goluboy_melanzh/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_goluboy_melanzh/gallery-2.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_goluboy_melanzh/gallery-3.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_goluboy_melanzh/gallery-4.webp",
+      "images/catalog/men/shirt/prod-rubashka_2006_goluboy_melanzh/gallery-5.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2003_dollar",
     "name": "Рубашка 2003 доллар",
     "price": 7000,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2003_dollar/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2003 доллар",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2003_dollar/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2003_dollar/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2003_dollar/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2003_dollar/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-rubashka_2002_salatovyy_l_xl",
     "name": "Рубашка 2002 Салатовый",
     "price": 7120,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shirt/prod-rubashka_2002_salatovyy_l_xl/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shirt",
     "sku": "2002 салатовый",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2002_salatovyy_l_xl/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/sorochki/rubashka_2002_salatovyy_l_xl/",
+    "gallery": [
+      "images/catalog/men/shirt/prod-rubashka_2002_salatovyy_l_xl/gallery-1.webp",
+      "images/catalog/men/shirt/prod-rubashka_2002_salatovyy_l_xl/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-bryuki-3010-denim",
     "name": "Брюки 3010 деним",
     "price": 7900,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/pants/prod-bryuki-3010-denim/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "pants",
     "sku": "3010 деним",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki-3010-denim/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki-3010-denim/",
+    "gallery": [
+      "images/catalog/men/pants/prod-bryuki-3010-denim/gallery-1.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-denim/gallery-2.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-denim/gallery-3.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-denim/gallery-4.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-denim/gallery-5.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-denim/gallery-6.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-denim/gallery-7.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-denim/gallery-8.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-denim/gallery-9.webp"
+    ]
   },
   {
     "id": "prod-bryuki-3003-denim",
     "name": "Брюки 3003 деним",
     "price": 7900,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/pants/prod-bryuki-3003-denim/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "pants",
     "sku": "3003 деним",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki-3003-denim/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki-3003-denim/",
+    "gallery": [
+      "images/catalog/men/pants/prod-bryuki-3003-denim/gallery-1.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-denim/gallery-2.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-denim/gallery-3.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-denim/gallery-4.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-denim/gallery-5.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-denim/gallery-6.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-denim/gallery-7.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-denim/gallery-8.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-denim/gallery-9.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-denim/gallery-10.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-denim/gallery-11.webp"
+    ]
   },
   {
     "id": "prod-bryuki_3003_korichnevyy_melanzh_36_38",
     "name": "Брюки 3003 коричневый меланж",
     "price": 10280,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/pants/prod-bryuki_3003_korichnevyy_melanzh_36_38/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "pants",
     "sku": "3003 коричневый меланж",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3003_korichnevyy_melanzh_36_38/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3003_korichnevyy_melanzh_36_38/",
+    "gallery": [
+      "images/catalog/men/pants/prod-bryuki_3003_korichnevyy_melanzh_36_38/gallery-1.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_korichnevyy_melanzh_36_38/gallery-2.webp"
+    ]
   },
   {
     "id": "prod-bryuki_3003_chernichnyy",
     "name": "Брюки 3003 черничный",
     "price": 10280,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/pants/prod-bryuki_3003_chernichnyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "pants",
     "sku": "3003 черничный",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3003_chernichnyy/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3003_chernichnyy/",
+    "gallery": [
+      "images/catalog/men/pants/prod-bryuki_3003_chernichnyy/gallery-1.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_chernichnyy/gallery-2.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_chernichnyy/gallery-3.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_chernichnyy/gallery-4.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_chernichnyy/gallery-5.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_chernichnyy/gallery-6.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_chernichnyy/gallery-7.webp"
+    ]
   },
   {
     "id": "prod-bryuki_3003_umbra",
     "name": "Брюки 3003 умбра",
     "price": 10280,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/pants/prod-bryuki_3003_umbra/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "pants",
     "sku": "3003 умбра",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3003_umbra/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3003_umbra/",
+    "gallery": [
+      "images/catalog/men/pants/prod-bryuki_3003_umbra/gallery-1.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_umbra/gallery-2.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_umbra/gallery-3.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_umbra/gallery-4.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_umbra/gallery-5.webp"
+    ]
   },
   {
     "id": "prod-bryuki-3010-zelenyy-opal",
     "name": "Брюки 3010 зеленый опал",
     "price": 7900,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/pants/prod-bryuki-3010-zelenyy-opal/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "pants",
     "sku": "3010 зеленый опал",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki-3010-zelenyy-opal/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki-3010-zelenyy-opal/",
+    "gallery": [
+      "images/catalog/men/pants/prod-bryuki-3010-zelenyy-opal/gallery-1.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-zelenyy-opal/gallery-2.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-zelenyy-opal/gallery-3.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-zelenyy-opal/gallery-4.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-zelenyy-opal/gallery-5.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-zelenyy-opal/gallery-6.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-zelenyy-opal/gallery-7.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-zelenyy-opal/gallery-8.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-zelenyy-opal/gallery-9.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-zelenyy-opal/gallery-10.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-zelenyy-opal/gallery-11.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-zelenyy-opal/gallery-12.webp"
+    ]
   },
   {
     "id": "prod-bryuki_3008_koritsa",
     "name": "Брюки 3008 корица",
     "price": 6240,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/pants/prod-bryuki_3008_koritsa/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "pants",
     "sku": "3008 корица",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3008_koritsa/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3008_koritsa/",
+    "gallery": [
+      "images/catalog/men/pants/prod-bryuki_3008_koritsa/gallery-1.webp",
+      "images/catalog/men/pants/prod-bryuki_3008_koritsa/gallery-2.webp",
+      "images/catalog/men/pants/prod-bryuki_3008_koritsa/gallery-3.webp",
+      "images/catalog/men/pants/prod-bryuki_3008_koritsa/gallery-4.webp",
+      "images/catalog/men/pants/prod-bryuki_3008_koritsa/gallery-5.webp",
+      "images/catalog/men/pants/prod-bryuki_3008_koritsa/gallery-6.webp",
+      "images/catalog/men/pants/prod-bryuki_3008_koritsa/gallery-7.webp",
+      "images/catalog/men/pants/prod-bryuki_3008_koritsa/gallery-8.webp",
+      "images/catalog/men/pants/prod-bryuki_3008_koritsa/gallery-9.webp"
+    ]
   },
   {
     "id": "prod-bryuki_3008_indigo",
     "name": "Брюки 3008 индиго",
     "price": 7000,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/pants/prod-bryuki_3008_indigo/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "pants",
     "sku": "3008 индиго",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3008_indigo/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3008_indigo/",
+    "gallery": [
+      "images/catalog/men/pants/prod-bryuki_3008_indigo/gallery-1.webp",
+      "images/catalog/men/pants/prod-bryuki_3008_indigo/gallery-2.webp",
+      "images/catalog/men/pants/prod-bryuki_3008_indigo/gallery-3.webp"
+    ]
   },
   {
     "id": "prod-bryuki_3003_koritsa_30_32_36_38",
     "name": "Брюки 3003 корица",
     "price": 10280,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/pants/prod-bryuki_3003_koritsa_30_32_36_38/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "pants",
     "sku": "3003 корица",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3003_koritsa_30_32_36_38/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3003_koritsa_30_32_36_38/",
+    "gallery": [
+      "images/catalog/men/pants/prod-bryuki_3003_koritsa_30_32_36_38/gallery-1.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_koritsa_30_32_36_38/gallery-2.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_koritsa_30_32_36_38/gallery-3.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_koritsa_30_32_36_38/gallery-4.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_koritsa_30_32_36_38/gallery-5.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_koritsa_30_32_36_38/gallery-6.webp"
+    ]
   },
   {
     "id": "prod-bryuki_3003_naturalnyy",
     "name": "Брюки 3003 натуральный",
     "price": 10280,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/pants/prod-bryuki_3003_naturalnyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "pants",
     "sku": "3003 натуральный",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3003_naturalnyy/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3003_naturalnyy/",
+    "gallery": [
+      "images/catalog/men/pants/prod-bryuki_3003_naturalnyy/gallery-1.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_naturalnyy/gallery-2.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_naturalnyy/gallery-3.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_naturalnyy/gallery-4.webp",
+      "images/catalog/men/pants/prod-bryuki_3003_naturalnyy/gallery-5.webp"
+    ]
   },
   {
     "id": "prod-bryuki-3010-musson",
     "name": "Брюки 3010 муссон",
     "price": 7900,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/pants/prod-bryuki-3010-musson/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "pants",
     "sku": "3010 муссон",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki-3010-musson/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki-3010-musson/",
+    "gallery": [
+      "images/catalog/men/pants/prod-bryuki-3010-musson/gallery-1.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-musson/gallery-2.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-musson/gallery-3.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-musson/gallery-4.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-musson/gallery-5.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-musson/gallery-6.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-musson/gallery-7.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-musson/gallery-8.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-musson/gallery-9.webp",
+      "images/catalog/men/pants/prod-bryuki-3010-musson/gallery-10.webp"
+    ]
   },
   {
     "id": "prod-bryuki-3003-zelyenyy-opal",
     "name": "Брюки 3003 зелёный опал",
     "price": 7900,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/pants/prod-bryuki-3003-zelyenyy-opal/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "pants",
     "sku": "3003 зелёный опал",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki-3003-zelyenyy-opal/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki-3003-zelyenyy-opal/",
+    "gallery": [
+      "images/catalog/men/pants/prod-bryuki-3003-zelyenyy-opal/gallery-1.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-zelyenyy-opal/gallery-2.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-zelyenyy-opal/gallery-3.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-zelyenyy-opal/gallery-4.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-zelyenyy-opal/gallery-5.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-zelyenyy-opal/gallery-6.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-zelyenyy-opal/gallery-7.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-zelyenyy-opal/gallery-8.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-zelyenyy-opal/gallery-9.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-zelyenyy-opal/gallery-10.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-zelyenyy-opal/gallery-11.webp",
+      "images/catalog/men/pants/prod-bryuki-3003-zelyenyy-opal/gallery-12.webp"
+    ]
   },
   {
     "id": "prod-bryuki_3001_antratsit",
     "name": "Брюки 3001 антрацит",
     "price": 8920,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/pants/prod-bryuki_3001_antratsit/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "pants",
     "sku": "3001антрацит",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3001_antratsit/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3001_antratsit/",
+    "gallery": [
+      "images/catalog/men/pants/prod-bryuki_3001_antratsit/gallery-1.webp",
+      "images/catalog/men/pants/prod-bryuki_3001_antratsit/gallery-2.webp",
+      "images/catalog/men/pants/prod-bryuki_3001_antratsit/gallery-3.webp",
+      "images/catalog/men/pants/prod-bryuki_3001_antratsit/gallery-4.webp",
+      "images/catalog/men/pants/prod-bryuki_3001_antratsit/gallery-5.webp",
+      "images/catalog/men/pants/prod-bryuki_3001_antratsit/gallery-6.webp"
+    ]
   },
   {
     "id": "prod-bryuki_3001_dollar_34_38",
     "name": "Брюки 3001 доллар",
     "price": 6750,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/pants/prod-bryuki_3001_dollar_34_38/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "pants",
     "sku": "3001",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3001_dollar_34_38/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3001_dollar_34_38/",
+    "gallery": [
+      "images/catalog/men/pants/prod-bryuki_3001_dollar_34_38/gallery-1.webp",
+      "images/catalog/men/pants/prod-bryuki_3001_dollar_34_38/gallery-2.webp",
+      "images/catalog/men/pants/prod-bryuki_3001_dollar_34_38/gallery-3.webp",
+      "images/catalog/men/pants/prod-bryuki_3001_dollar_34_38/gallery-4.webp",
+      "images/catalog/men/pants/prod-bryuki_3001_dollar_34_38/gallery-5.webp",
+      "images/catalog/men/pants/prod-bryuki_3001_dollar_34_38/gallery-6.webp",
+      "images/catalog/men/pants/prod-bryuki_3001_dollar_34_38/gallery-7.webp"
+    ]
   },
   {
     "id": "prod-bryuki_3001indigo_30_32_38",
     "name": "Брюки 3001 индиго",
     "price": 7200,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/pants/prod-bryuki_3001indigo_30_32_38/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "pants",
     "sku": "3001индиго",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3001indigo_30_32_38/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/bryuki/bryuki_3001indigo_30_32_38/",
+    "gallery": [
+      "images/catalog/men/pants/prod-bryuki_3001indigo_30_32_38/gallery-1.webp",
+      "images/catalog/men/pants/prod-bryuki_3001indigo_30_32_38/gallery-2.webp",
+      "images/catalog/men/pants/prod-bryuki_3001indigo_30_32_38/gallery-3.webp",
+      "images/catalog/men/pants/prod-bryuki_3001indigo_30_32_38/gallery-4.webp",
+      "images/catalog/men/pants/prod-bryuki_3001indigo_30_32_38/gallery-5.webp",
+      "images/catalog/men/pants/prod-bryuki_3001indigo_30_32_38/gallery-6.webp",
+      "images/catalog/men/pants/prod-bryuki_3001indigo_30_32_38/gallery-7.webp",
+      "images/catalog/men/pants/prod-bryuki_3001indigo_30_32_38/gallery-8.webp",
+      "images/catalog/men/pants/prod-bryuki_3001indigo_30_32_38/gallery-9.webp",
+      "images/catalog/men/pants/prod-bryuki_3001indigo_30_32_38/gallery-10.webp"
+    ]
   },
   {
     "id": "prod-zhaket-4002-koritsa",
     "name": "Жакет 4002 корица",
     "price": 12420,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/blazer/prod-zhaket-4002-koritsa/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "blazer",
     "sku": "4002 корица",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket-4002-koritsa/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket-4002-koritsa/",
+    "gallery": [
+      "images/catalog/men/blazer/prod-zhaket-4002-koritsa/gallery-1.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-koritsa/gallery-2.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-koritsa/gallery-3.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-koritsa/gallery-4.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-koritsa/gallery-5.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-koritsa/gallery-6.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-koritsa/gallery-7.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-koritsa/gallery-8.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-koritsa/gallery-9.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-koritsa/gallery-10.webp"
+    ]
   },
   {
     "id": "prod-zhaket-4004-dzhins-",
     "name": "Жакет 4004 джинс",
     "price": 11180,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/blazer/prod-zhaket-4004-dzhins-/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "blazer",
     "sku": "4004 джинс XL",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket-4004-dzhins-/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket-4004-dzhins-/",
+    "gallery": [
+      "images/catalog/men/blazer/prod-zhaket-4004-dzhins-/gallery-1.webp",
+      "images/catalog/men/blazer/prod-zhaket-4004-dzhins-/gallery-2.webp",
+      "images/catalog/men/blazer/prod-zhaket-4004-dzhins-/gallery-3.webp",
+      "images/catalog/men/blazer/prod-zhaket-4004-dzhins-/gallery-4.webp",
+      "images/catalog/men/blazer/prod-zhaket-4004-dzhins-/gallery-5.webp",
+      "images/catalog/men/blazer/prod-zhaket-4004-dzhins-/gallery-6.webp",
+      "images/catalog/men/blazer/prod-zhaket-4004-dzhins-/gallery-7.webp",
+      "images/catalog/men/blazer/prod-zhaket-4004-dzhins-/gallery-8.webp",
+      "images/catalog/men/blazer/prod-zhaket-4004-dzhins-/gallery-9.webp"
+    ]
   },
   {
     "id": "prod-zhaket_5002_umbra",
     "name": "Жакет 5002 умбра",
     "price": 19870,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/blazer/prod-zhaket_5002_umbra/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "blazer",
     "sku": "5002 умбра",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket_5002_umbra/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket_5002_umbra/",
+    "gallery": [
+      "images/catalog/men/blazer/prod-zhaket_5002_umbra/gallery-1.webp",
+      "images/catalog/men/blazer/prod-zhaket_5002_umbra/gallery-2.webp",
+      "images/catalog/men/blazer/prod-zhaket_5002_umbra/gallery-3.webp",
+      "images/catalog/men/blazer/prod-zhaket_5002_umbra/gallery-4.webp",
+      "images/catalog/men/blazer/prod-zhaket_5002_umbra/gallery-5.webp",
+      "images/catalog/men/blazer/prod-zhaket_5002_umbra/gallery-6.webp"
+    ]
   },
   {
     "id": "prod-zhaket_4004_zelenyy_opal_l_2xl",
     "name": "Жакет 4004 зеленый опал",
     "price": 11180,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/blazer/prod-zhaket_4004_zelenyy_opal_l_2xl/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "blazer",
     "sku": "4004 зеленый опал",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket_4004_zelenyy_opal_l_2xl/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket_4004_zelenyy_opal_l_2xl/",
+    "gallery": [
+      "images/catalog/men/blazer/prod-zhaket_4004_zelenyy_opal_l_2xl/gallery-1.webp",
+      "images/catalog/men/blazer/prod-zhaket_4004_zelenyy_opal_l_2xl/gallery-2.webp",
+      "images/catalog/men/blazer/prod-zhaket_4004_zelenyy_opal_l_2xl/gallery-3.webp",
+      "images/catalog/men/blazer/prod-zhaket_4004_zelenyy_opal_l_2xl/gallery-4.webp"
+    ]
   },
   {
     "id": "prod-zhaket_5002_zelenyy_opal",
     "name": "Жакет 5002 зеленый опал",
     "price": 19870,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/blazer/prod-zhaket_5002_zelenyy_opal/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "blazer",
     "sku": "5002 зеленый опал",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket_5002_zelenyy_opal/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket_5002_zelenyy_opal/",
+    "gallery": [
+      "images/catalog/men/blazer/prod-zhaket_5002_zelenyy_opal/gallery-1.webp",
+      "images/catalog/men/blazer/prod-zhaket_5002_zelenyy_opal/gallery-2.webp",
+      "images/catalog/men/blazer/prod-zhaket_5002_zelenyy_opal/gallery-3.webp",
+      "images/catalog/men/blazer/prod-zhaket_5002_zelenyy_opal/gallery-4.webp",
+      "images/catalog/men/blazer/prod-zhaket_5002_zelenyy_opal/gallery-5.webp",
+      "images/catalog/men/blazer/prod-zhaket_5002_zelenyy_opal/gallery-6.webp"
+    ]
   },
   {
     "id": "prod-zhaket_4004_koritsa_3xl",
     "name": "Жакет 4004 корица",
     "price": 11180,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/blazer/prod-zhaket_4004_koritsa_3xl/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "blazer",
     "sku": "4004 корица",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket_4004_koritsa_3xl/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket_4004_koritsa_3xl/",
+    "gallery": [
+      "images/catalog/men/blazer/prod-zhaket_4004_koritsa_3xl/gallery-1.webp",
+      "images/catalog/men/blazer/prod-zhaket_4004_koritsa_3xl/gallery-2.webp",
+      "images/catalog/men/blazer/prod-zhaket_4004_koritsa_3xl/gallery-3.webp",
+      "images/catalog/men/blazer/prod-zhaket_4004_koritsa_3xl/gallery-4.webp",
+      "images/catalog/men/blazer/prod-zhaket_4004_koritsa_3xl/gallery-5.webp"
+    ]
   },
   {
     "id": "prod-zhaket_4004_umbra",
     "name": "Жакет 4004 умбра",
     "price": 11180,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/blazer/prod-zhaket_4004_umbra/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "blazer",
     "sku": "4004 умбра",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket_4004_umbra/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket_4004_umbra/",
+    "gallery": [
+      "images/catalog/men/blazer/prod-zhaket_4004_umbra/gallery-1.webp",
+      "images/catalog/men/blazer/prod-zhaket_4004_umbra/gallery-2.webp",
+      "images/catalog/men/blazer/prod-zhaket_4004_umbra/gallery-3.webp",
+      "images/catalog/men/blazer/prod-zhaket_4004_umbra/gallery-4.webp",
+      "images/catalog/men/blazer/prod-zhaket_4004_umbra/gallery-5.webp"
+    ]
   },
   {
     "id": "prod-zhaket-4002-chernyy",
     "name": "Жакет 4002 черный",
     "price": 12420,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/blazer/prod-zhaket-4002-chernyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "blazer",
     "sku": "4002 черный",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket-4002-chernyy/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket-4002-chernyy/",
+    "gallery": [
+      "images/catalog/men/blazer/prod-zhaket-4002-chernyy/gallery-1.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-chernyy/gallery-2.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-chernyy/gallery-3.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-chernyy/gallery-4.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-chernyy/gallery-5.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-chernyy/gallery-6.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-chernyy/gallery-7.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-chernyy/gallery-8.webp",
+      "images/catalog/men/blazer/prod-zhaket-4002-chernyy/gallery-9.webp"
+    ]
   },
   {
     "id": "prod-zhaket_5001_koritsa_",
     "name": "Жакет 5001 корица",
     "price": 16200,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/blazer/prod-zhaket_5001_koritsa_/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "blazer",
     "sku": "5001 корица",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket_5001_koritsa_/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket_5001_koritsa_/",
+    "gallery": [
+      "images/catalog/men/blazer/prod-zhaket_5001_koritsa_/gallery-1.webp",
+      "images/catalog/men/blazer/prod-zhaket_5001_koritsa_/gallery-2.webp",
+      "images/catalog/men/blazer/prod-zhaket_5001_koritsa_/gallery-3.webp",
+      "images/catalog/men/blazer/prod-zhaket_5001_koritsa_/gallery-4.webp",
+      "images/catalog/men/blazer/prod-zhaket_5001_koritsa_/gallery-5.webp"
+    ]
   },
   {
     "id": "prod-zhaket_4004_siniy_3xl",
     "name": "Жакет 4004 Синий",
     "price": 11180,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/blazer/prod-zhaket_4004_siniy_3xl/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "blazer",
     "sku": "4004синий",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket_4004_siniy_3xl/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/pidzhaki/zhaket_4004_siniy_3xl/",
+    "gallery": [
+      "images/catalog/men/blazer/prod-zhaket_4004_siniy_3xl/gallery-1.webp",
+      "images/catalog/men/blazer/prod-zhaket_4004_siniy_3xl/gallery-2.webp",
+      "images/catalog/men/blazer/prod-zhaket_4004_siniy_3xl/gallery-3.webp",
+      "images/catalog/men/blazer/prod-zhaket_4004_siniy_3xl/gallery-4.webp",
+      "images/catalog/men/blazer/prod-zhaket_4004_siniy_3xl/gallery-5.webp"
+    ]
   },
   {
     "id": "prod-3011-shorty",
     "name": "Шорты 3011 голубой меланж",
     "price": 6320,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shorts/prod-3011-shorty/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shorts",
     "sku": "3011 голубой меланж",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/shorty/3011-shorty/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/shorty/3011-shorty/",
+    "gallery": [
+      "images/catalog/men/shorts/prod-3011-shorty/gallery-1.webp",
+      "images/catalog/men/shorts/prod-3011-shorty/gallery-2.webp",
+      "images/catalog/men/shorts/prod-3011-shorty/gallery-3.webp",
+      "images/catalog/men/shorts/prod-3011-shorty/gallery-4.webp",
+      "images/catalog/men/shorts/prod-3011-shorty/gallery-5.webp",
+      "images/catalog/men/shorts/prod-3011-shorty/gallery-6.webp",
+      "images/catalog/men/shorts/prod-3011-shorty/gallery-7.webp",
+      "images/catalog/men/shorts/prod-3011-shorty/gallery-8.webp",
+      "images/catalog/men/shorts/prod-3011-shorty/gallery-9.webp",
+      "images/catalog/men/shorts/prod-3011-shorty/gallery-10.webp",
+      "images/catalog/men/shorts/prod-3011-shorty/gallery-11.webp"
+    ]
   },
   {
     "id": "prod-shorty-3011-fistashkovyy",
     "name": "Шорты 3011 фисташковый",
     "price": 6320,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shorts/prod-shorty-3011-fistashkovyy/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shorts",
     "sku": "3011 голубой меланж",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/shorty/shorty-3011-fistashkovyy/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/shorty/shorty-3011-fistashkovyy/",
+    "gallery": [
+      "images/catalog/men/shorts/prod-shorty-3011-fistashkovyy/gallery-1.webp",
+      "images/catalog/men/shorts/prod-shorty-3011-fistashkovyy/gallery-2.webp",
+      "images/catalog/men/shorts/prod-shorty-3011-fistashkovyy/gallery-3.webp",
+      "images/catalog/men/shorts/prod-shorty-3011-fistashkovyy/gallery-4.webp",
+      "images/catalog/men/shorts/prod-shorty-3011-fistashkovyy/gallery-5.webp",
+      "images/catalog/men/shorts/prod-shorty-3011-fistashkovyy/gallery-6.webp",
+      "images/catalog/men/shorts/prod-shorty-3011-fistashkovyy/gallery-7.webp",
+      "images/catalog/men/shorts/prod-shorty-3011-fistashkovyy/gallery-8.webp",
+      "images/catalog/men/shorts/prod-shorty-3011-fistashkovyy/gallery-9.webp",
+      "images/catalog/men/shorts/prod-shorty-3011-fistashkovyy/gallery-10.webp",
+      "images/catalog/men/shorts/prod-shorty-3011-fistashkovyy/gallery-11.webp"
+    ]
   },
   {
     "id": "prod-shorty_3007_dollar_32_34_36",
     "name": "Шорты 3007 доллар",
     "price": 5100,
-    "image": "images/product.tablecloth.webp",
+    "image": "images/catalog/men/shorts/prod-shorty_3007_dollar_32_34_36/main.webp",
     "badges": [],
     "sizes": [],
     "colors": [],
     "category": "men",
     "subCategory": "shorts",
     "sku": "",
-    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/shorty/shorty_3007_dollar_32_34_36/"
+    "url": "https://njen-linen.com/catalog/odezhda/dlya_muzhchin/shorty/shorty_3007_dollar_32_34_36/",
+    "gallery": [
+      "images/catalog/men/shorts/prod-shorty_3007_dollar_32_34_36/gallery-1.webp",
+      "images/catalog/men/shorts/prod-shorty_3007_dollar_32_34_36/gallery-2.webp",
+      "images/catalog/men/shorts/prod-shorty_3007_dollar_32_34_36/gallery-3.webp",
+      "images/catalog/men/shorts/prod-shorty_3007_dollar_32_34_36/gallery-4.webp"
+    ]
   }
 ]

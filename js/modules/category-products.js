@@ -3,8 +3,8 @@
  * фильтр по подкатегориям, пагинация по 24 товара.
  */
 const PER_PAGE = 24;
-const BASE = import.meta.env.DEV ? '/' : (import.meta.env.BASE_URL || '/');
-const DATA_BASE = import.meta.env.DEV ? '/data/products/' : (import.meta.env.BASE_URL || '/') + 'data/products/';
+const BASE = import.meta.env.BASE_URL || '/';
+const DATA_BASE = (import.meta.env.BASE_URL || '/') + 'data/products/';
 function categoryDataUrl(cat) {
   return DATA_BASE + encodeURIComponent(cat) + '.json';
 }
@@ -67,7 +67,7 @@ function renderCard(product) {
   const rawImg = product.image || 'images/product.tablecloth.webp';
   const img = rawImg.startsWith('http') ? rawImg : (BASE + rawImg.replace(/^\//, ''));
   return `
-    <div class="product-card reveal" data-sub="${product.subCategory || ''}">
+    <div class="product-card reveal" data-sub="${product.subCategory || ''}" data-product-id="${escapeHtml(product.id || '')}">
       <div class="product-card-image">
         <img src="${img}" loading="lazy" alt="${escapeHtml(product.name)}">
         <div class="product-quick-view">
@@ -110,8 +110,14 @@ export function initCategoryProducts() {
 
   grid.innerHTML = '<div class="category-loading">Загрузка товаров…</div>';
 
-  fetch(categoryDataUrl(cat))
-    .then(r => r.json())
+  const url = categoryDataUrl(cat);
+  fetch(url)
+    .then(r => {
+      if (!r.ok) {
+        throw new Error(`HTTP ${r.status} for ${url}`);
+      }
+      return r.json();
+    })
     .then(allProducts => {
       const products = allProducts.filter(p => (p.category || '') === cat);
       if (!products.length) {

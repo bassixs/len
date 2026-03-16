@@ -28,19 +28,14 @@
     <section class="section product-page">
         <div class="container">
             <div class="product-split">
-                <!-- LEFT: GALLERY -->
-                <div class="product-gallery-stack reveal">
-                    <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=1000&q=80" alt="Платье льняное «Лаванда» - вид спереди" id="productMainImg">
-                    <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=1000&q=80" alt="Детали ткани" loading="lazy">
-                    <img src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=1000&q=80" alt="Вид сзади" loading="lazy">
-                    <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=1000&q=80" alt="Образ целиком" loading="lazy">
-                </div>
+                <!-- LEFT: GALLERY (динамически наполняется из данных товара) -->
+                <div class="product-gallery-stack reveal" id="productGallery"></div>
 
                 <!-- RIGHT: INFO & ACTIONS -->
                 <div class="product-info-sticky reveal reveal-delay-1">
                     <div class="product-info-inner">
-                        <h1 class="product-title-premium">Платье льняное «Лаванда»</h1>
-                        <div class="product-price-premium">4 800 ₽</div>
+                        <h1 class="product-title-premium" id="productTitle">Название товара</h1>
+                        <div class="product-price-premium" id="productPrice">0 ₽</div>
                         
                         <p class="product-desc-premium">
                             Элегантное платье из 100% натурального европейского льна высшего качества. 
