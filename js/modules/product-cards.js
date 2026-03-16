@@ -42,6 +42,15 @@ async function loadAllProducts() {
     return products;
 }
 
+async function loadIndexPreview() {
+    const resp = await fetch(`${DATA_PRODUCTS_BASE}index.json`);
+    if (!resp.ok) {
+        throw new Error(`Cannot load index.json: HTTP ${resp.status}`);
+    }
+    const index = await resp.json();
+    return Array.isArray(index.preview) ? index.preview : [];
+}
+
 function createLookup(products) {
     const exact = new Map();
     products.forEach(product => {
@@ -85,25 +94,48 @@ function applyCardData(card, product, fallbackId) {
     }
 }
 
-async function enrichProductCards() {
-    const cards = Array.from(document.querySelectorAll('.product-card'));
-    if (!cards.length) return;
+function needsEnrichment(card) {
+    const quickLink = card.querySelector('.product-quick-btn');
+    const addBtn = card.querySelector('.add-to-cart-btn');
+    const img = card.querySelector('.product-card-image img');
+    const hasLegacyLink = quickLink && /product\.html(?:$|\?)/.test(quickLink.getAttribute('href') || '');
+    const missingProductId = addBtn && !addBtn.dataset.productId && !card.dataset.productId;
+    const hasPlaceholder = img && isPlaceholderImage(img.getAttribute('src'));
+    return Boolean(hasLegacyLink || missingProductId || hasPlaceholder);
+}
 
-    const products = await loadAllProducts();
-    if (!products.length) return;
-
-    const exactMap = createLookup(products);
-    const fallbackId = products[0]?.id || '';
-
+function enrichCardsFromLookup(cards, lookup, products, fallbackId) {
+    const unresolved = [];
     cards.forEach(card => {
         if (card.dataset.productId) {
             applyCardData(card, { id: card.dataset.productId }, fallbackId);
             return;
         }
         const name = cardName(card);
-        const match = findBestMatch(name, exactMap, products);
+        const match = findBestMatch(name, lookup, products);
         applyCardData(card, match, fallbackId);
+        if (!match) unresolved.push(card);
     });
+    return unresolved;
+}
+
+async function enrichProductCards() {
+    const cards = Array.from(document.querySelectorAll('.product-card')).filter(needsEnrichment);
+    if (!cards.length) return;
+
+    // Fast path: usually enough for homepage/new cards and avoids loading all category files.
+    const previewProducts = await loadIndexPreview();
+    const previewLookup = createLookup(previewProducts);
+    const previewFallbackId = previewProducts[0]?.id || '';
+    const unresolved = enrichCardsFromLookup(cards, previewLookup, previewProducts, previewFallbackId);
+    if (!unresolved.length) return;
+
+    // Fallback for legacy cards absent in preview.
+    const allProducts = await loadAllProducts();
+    if (!allProducts.length) return;
+    const allLookup = createLookup(allProducts);
+    const allFallbackId = allProducts[0]?.id || previewFallbackId;
+    enrichCardsFromLookup(unresolved, allLookup, allProducts, allFallbackId);
 }
 
 export function initProductCards() {
@@ -111,7 +143,7 @@ export function initProductCards() {
         console.error('Product cards enrich error:', err);
     });
 
-    // Some cards are rendered asynchronously (catalog/category); one extra pass keeps links consistent.
+    // One delayed pass for asynchronously rendered sections.
     setTimeout(() => {
         enrichProductCards().catch(() => {});
     }, 1200);

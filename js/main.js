@@ -12,11 +12,11 @@ import { initProductCards } from './modules/product-cards.js';
 document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initCart();
-    initProductPage();
-    initSliders();
-    initAnimations();
-    initCatalog();
-    initCategoryProducts();
-    initProductCards();
+    if (document.getElementById('productGallery')) initProductPage();
+    if (document.getElementById('productsSlider')) initSliders();
+    if (document.querySelector('.reveal')) initAnimations();
+    if (document.querySelector('.catalog-grid')) initCatalog();
+    if (document.getElementById('categoryGrid')) initCategoryProducts();
+    if (document.querySelector('.product-card')) initProductCards();
     initForms();
 });
