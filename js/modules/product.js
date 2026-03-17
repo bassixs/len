@@ -1,4 +1,5 @@
 import { normalizeProduct, formatPrice, resolveImageUrl, safeText } from './product-model.js';
+import { initAccordionGroup } from './accordion.js';
 
 const BASE = import.meta.env.BASE_URL || '/';
 const DATA_PRODUCTS_BASE = `${import.meta.env.BASE_URL || '/'}data/products/`;
@@ -22,17 +23,11 @@ export function initProductPage() {
     });
 
     // Accordion Logic
-    const accordions = document.querySelectorAll('.accordion-head');
-    accordions.forEach(acc => {
-        acc.addEventListener('click', function() {
-            this.classList.toggle('active');
-            const body = this.nextElementSibling;
-            if (this.classList.contains('active')) {
-                body.classList.add('open');
-            } else {
-                body.classList.remove('open');
-            }
-        });
+    initAccordionGroup({
+        triggerSelector: '.accordion-head',
+        triggerActiveClass: 'active',
+        bodyOpenClass: 'open',
+        closeOthers: false,
     });
 
     // Color Selector UI Logic

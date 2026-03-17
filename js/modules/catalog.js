@@ -1,4 +1,5 @@
 import { normalizeProduct, formatPrice, resolveImageUrl, safeText } from './product-model.js';
+import { openLayer, closeLayer } from './ui-shell.js';
 
 export function initCatalog() {
     // ===== CATEGORY PAGE — FILTER GROUPS =====
@@ -24,8 +25,12 @@ export function initCatalog() {
 
     if (filterToggle && filterSidebar) {
         filterToggle.addEventListener('click', () => {
-            filterSidebar.classList.toggle('mobile-open');
-            document.body.style.overflow = filterSidebar.classList.contains('mobile-open') ? 'hidden' : '';
+            const isOpen = filterSidebar.classList.contains('is-open');
+            if (isOpen) {
+                closeLayer('.category-sidebar');
+            } else {
+                openLayer('.category-sidebar');
+            }
         });
     }
 

@@ -4,11 +4,13 @@
     top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.5);
     z-index: 1000;
-    opacity: 0; visibility: hidden;
+    opacity: 0;
+    visibility: hidden;
     transition: var(--transition);
 }
-.cart-overlay.visible {
-    opacity: 1; visibility: visible;
+.cart-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
 }
 
 .cart-drawer {
@@ -20,7 +22,7 @@
     transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     box-shadow: -5px 0 30px rgba(0,0,0,0.1);
 }
-.cart-drawer.open {
+.cart-drawer.is-open {
     right: 0;
 }
 
@@ -82,10 +84,12 @@
     padding: 1rem 1.5rem; border-radius: var(--radius);
     display: flex; align-items: center; gap: 0.75rem;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    opacity: 0; transform: translateY(20px);
+    opacity: 0;
+    transform: translateY(20px);
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.toast.reveal {
+.toast.toast--visible {
+    opacity: 1;
     transform: translateY(0);
 }
 .toast i { color: var(--c-sage); font-size: 1.2rem; }

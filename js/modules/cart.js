@@ -1,3 +1,14 @@
+import { formatPrice } from './product-model.js';
+import { openLayer, closeLayer } from './ui-shell.js';
+import {
+    getCart as getStoredCart,
+    saveCart as saveStoredCart,
+    addItem,
+    removeItem,
+    updateItemQuantity,
+    cartSubtotal,
+} from './cart-service.js';
+
 const DELIVERY_PRICES = { cdek: 350, post: 300, courier: 600 };
 
 export function initCart() {
@@ -82,10 +93,10 @@ function showToast(message) {
     container.appendChild(toast);
     
     // Trigger reflow for animation
-    setTimeout(() => toast.style.opacity = '1', 10);
+    setTimeout(() => toast.classList.add('toast--visible'), 10);
 
     setTimeout(() => {
-        toast.style.opacity = '0';
+        toast.classList.remove('toast--visible');
         setTimeout(() => toast.remove(), 300); // Wait for fade out
     }, 3000);
 }
@@ -110,24 +121,14 @@ function initMiniCart() {
 }
 
 function openMiniCart() {
-    const drawer = document.getElementById('cartDrawer');
-    const overlay = document.getElementById('cartOverlay');
-    if (drawer && overlay) {
-        renderMiniCart();
-        drawer.classList.add('open');
-        overlay.classList.add('visible');
-        document.body.style.overflow = 'hidden';
-    }
+    renderMiniCart();
+    openLayer('#cartDrawer');
+    openLayer('#cartOverlay');
 }
 
 function closeMiniCart() {
-    const drawer = document.getElementById('cartDrawer');
-    const overlay = document.getElementById('cartOverlay');
-    if (drawer && overlay) {
-        drawer.classList.remove('open');
-        overlay.classList.remove('visible');
-        document.body.style.overflow = '';
-    }
+    closeLayer('#cartDrawer');
+    closeLayer('#cartOverlay');
 }
 
 function renderMiniCart() {
@@ -165,28 +166,21 @@ function renderMiniCart() {
 }
 
 export function getCart() {
-    return JSON.parse(localStorage.getItem('njen_cart')) || [];
+    return getStoredCart();
 }
 
 export function saveCart(cart) {
-    localStorage.setItem('njen_cart', JSON.stringify(cart));
+    saveStoredCart(cart);
     updateCartIcon();
 }
 
 export function addToCart(product) {
-    const cart = getCart();
-    const existing = cart.find(item => item.id === product.id);
-    if (existing) {
-        existing.quantity += 1;
-    } else {
-        cart.push(product);
-    }
+    const cart = addItem(getStoredCart(), product);
     saveCart(cart);
 }
 
 export function removeFromCart(id) {
-    let cart = getCart();
-    cart = cart.filter(item => item.id !== id);
+    const cart = removeItem(getStoredCart(), id);
     saveCart(cart);
     if (document.querySelector('.cart-items:not(.cart-drawer-items)')) {
         renderCartPage();
@@ -195,20 +189,12 @@ export function removeFromCart(id) {
 }
 
 export function updateQuantity(id, quantity) {
-    if (quantity <= 0) {
-        removeFromCart(id);
-        return;
+    const cart = updateItemQuantity(getStoredCart(), id, quantity);
+    saveCart(cart);
+    if (document.querySelector('.cart-items:not(.cart-drawer-items)')) {
+        renderCartPage();
     }
-    const cart = getCart();
-    const item = cart.find(i => i.id === id);
-    if (item) {
-        item.quantity = quantity;
-        saveCart(cart);
-        if (document.querySelector('.cart-items:not(.cart-drawer-items)')) {
-            renderCartPage();
-        }
-        renderMiniCart();
-    }
+    renderMiniCart();
 }
 
 export function updateCartIcon() {
@@ -328,10 +314,6 @@ function attachCartPageListeners() {
             removeFromCart(id);
         });
     });
-}
-
-function formatPrice(number) {
-    return new Intl.NumberFormat('ru-RU').format(number) + ' ₽';
 }
 
 function pluralize(n, one, few, many) {

@@ -1,3 +1,6 @@
+import { openLayer, closeLayer } from './ui-shell.js';
+import { initAccordionGroup } from './accordion.js';
+
 export function initForms() {
     // ===== CONTACT FORM HANDLER =====
     const contactForm = document.getElementById('contactForm');
@@ -8,12 +11,12 @@ export function initForms() {
             const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-check"></i> Отправлено!';
             btn.disabled = true;
-            btn.style.opacity = '0.7';
+            btn.classList.add('btn--submitting');
 
             setTimeout(() => {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
-                btn.style.opacity = '';
+                btn.classList.remove('btn--submitting');
                 contactForm.reset();
             }, 3000);
         });
@@ -29,8 +32,7 @@ export function initForms() {
             if (window.innerWidth > 768) {
                 e.preventDefault();
                 if (callModal) {
-                    callModal.classList.add('open');
-                    document.body.style.overflow = 'hidden';
+                    openLayer('#callModal');
                 }
             }
         });
@@ -38,16 +40,12 @@ export function initForms() {
 
     function closeModal() {
         if (callModal) {
-            callModal.classList.remove('open');
-            document.body.style.overflow = '';
+            closeLayer('#callModal');
         }
     }
 
     if (callModalClose) callModalClose.addEventListener('click', closeModal);
     if (callModalOverlay) callModalOverlay.addEventListener('click', closeModal);
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-    });
 
     const callFormHero = document.getElementById('callFormHero');
     if (callFormHero) {
@@ -69,26 +67,10 @@ export function initForms() {
     }
 
     // ===== FAQ ACCORDION =====
-    const faqQuestions = document.querySelectorAll('.faq-question');
-
-    if (faqQuestions.length > 0) {
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const isActive = question.classList.contains('active');
-
-                // Close all others
-                document.querySelectorAll('.faq-question').forEach(q => {
-                    q.classList.remove('active');
-                    q.nextElementSibling.style.maxHeight = null;
-                });
-
-                // Toggle current
-                if (!isActive) {
-                    question.classList.add('active');
-                    answer.style.maxHeight = answer.scrollHeight + "px";
-                }
-            });
-        });
-    }
+    initAccordionGroup({
+        triggerSelector: '.faq-question',
+        triggerActiveClass: 'active',
+        bodyOpenClass: 'open',
+        closeOthers: true,
+    });
 }
