@@ -6,6 +6,7 @@ import {
     addItem,
     removeItem,
     updateItemQuantity,
+    getCartTotals,
 } from './cart-service.js';
 
 const DELIVERY_PRICES = { cdek: 350, post: 300, courier: 600 };
@@ -33,6 +34,9 @@ export function initCart() {
                 price: 0,
                 img: '',
                 quantity: 1,
+                selectedSize: '',
+                selectedColor: '',
+                url: '',
             };
 
             const nameEl = card.querySelector(
@@ -72,6 +76,38 @@ export function initCart() {
                 // Deterministic fallback for legacy static cards without product id.
                 product.id =
                     'name_' + btoa(unescape(encodeURIComponent(product.name))).replace(/=+$/, '');
+            }
+
+            // Selected size (if any)
+            const activeSizeBtn =
+                card.querySelector('.size-btn.active') || document.querySelector('.size-btn.active');
+            if (activeSizeBtn) {
+                product.selectedSize =
+                    activeSizeBtn.dataset.size || activeSizeBtn.textContent.trim() || '';
+            }
+
+            // Selected color (if any)
+            const activeColorDot =
+                card.querySelector('.color-dot.active') || document.querySelector('.color-dot.active');
+            if (activeColorDot) {
+                product.selectedColor =
+                    activeColorDot.dataset.color ||
+                    activeColorDot.getAttribute('title') ||
+                    activeColorDot.style.background ||
+                    '';
+            }
+
+            // Product URL (for potential use in full cart / future features)
+            const quickLink = card.querySelector('.product-quick-btn');
+            if (quickLink && quickLink.href) {
+                product.url = quickLink.href;
+            } else if (product.id) {
+                const url = new URL(window.location.href);
+                url.pathname = url.pathname.replace(/[^/]+$/, 'product.html');
+                url.searchParams.set('id', product.id);
+                product.url = url.toString();
+            } else {
+                product.url = window.location.href;
             }
 
             addToCart(product);
@@ -158,11 +194,18 @@ function renderMiniCart() {
     cart.forEach((item) => {
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
+        const meta = [];
+        if (item.selectedSize) meta.push(`Размер: ${item.selectedSize}`);
+        if (item.selectedColor) meta.push(`Цвет: ${item.selectedColor}`);
+        const metaHtml = meta.length
+            ? `<div class="cart-drawer-meta">${meta.join(' · ')}</div>`
+            : '';
         html += `
             <div class="cart-drawer-item">
                 <img src="${item.img}" alt="${item.name}" class="cart-drawer-img">
                 <div class="cart-drawer-info">
                     <h4 class="cart-drawer-name">${item.name}</h4>
+                    ${metaHtml}
                     <div class="cart-drawer-price">${formatPrice(item.price)} x ${item.quantity}</div>
                 </div>
             </div>
@@ -249,6 +292,10 @@ export function renderCartPage() {
     cart.forEach((item) => {
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
+        const meta = [];
+        if (item.selectedSize) meta.push(`Размер: ${item.selectedSize}`);
+        if (item.selectedColor) meta.push(`Цвет: ${item.selectedColor}`);
+        const metaHtml = meta.length ? meta.join(' · ') : '';
         html += `
             <div class="cart-item" data-id="${item.id}">
                 <div class="cart-item-image">
@@ -256,7 +303,7 @@ export function renderCartPage() {
                 </div>
                 <div class="cart-item-info">
                     <h3 class="cart-item-name">${item.name}</h3>
-                    <div class="cart-item-meta"></div>
+                    <div class="cart-item-meta">${metaHtml}</div>
                     <div class="cart-item-qty">
                         <button class="qty-btn minus" aria-label="Уменьшить">−</button>
                         <input type="number" class="qty-input" value="${item.quantity}" min="1" aria-label="Количество">
@@ -333,23 +380,24 @@ function pluralize(n, one, few, many) {
     return `${n} ${many}`;
 }
 
-function updateCheckoutSummary(subtotal) {
+function updateCheckoutSummary(_subtotal) {
     const deliveryEl = document.getElementById('deliveryCostText');
     const totalEl = document.getElementById('cart-total');
-    if (subtotal === 0) {
-        if (deliveryEl) deliveryEl.textContent = '—';
-        if (totalEl) totalEl.textContent = '0 ₽';
-        return;
-    }
+    const cart = getCart();
     const deliveryRadios = document.querySelectorAll('input[name="delivery"]');
-    let deliveryCost = DELIVERY_PRICES.cdek;
+    let method = 'cdek';
     if (deliveryRadios.length) {
         const checked = document.querySelector('input[name="delivery"]:checked');
-        if (checked && DELIVERY_PRICES[checked.value] !== undefined)
-            deliveryCost = DELIVERY_PRICES[checked.value];
+        if (checked && checked.value) method = checked.value;
     }
-    if (deliveryEl) deliveryEl.textContent = formatPrice(deliveryCost);
-    if (totalEl) totalEl.textContent = formatPrice(subtotal + deliveryCost);
+    const totals = getCartTotals(cart, method, DELIVERY_PRICES);
+
+    if (deliveryEl) {
+        deliveryEl.textContent = totals.subtotal === 0 ? '—' : formatPrice(totals.delivery);
+    }
+    if (totalEl) {
+        totalEl.textContent = formatPrice(totals.total);
+    }
 }
 
 function initCartPageDelivery() {

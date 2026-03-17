@@ -18,7 +18,12 @@ export function saveCart(cart) {
 }
 
 export function addItem(cart, product) {
-    const existing = cart.find((item) => item.id === product.id);
+    const existing = cart.find(
+        (item) =>
+            item.id === product.id &&
+            item.selectedSize === product.selectedSize &&
+            item.selectedColor === product.selectedColor
+    );
     if (existing) {
         existing.quantity += 1;
     } else {
@@ -45,3 +50,21 @@ export function cartSubtotal(cart) {
 export function formatCartPrice(value) {
     return formatPrice(value);
 }
+
+export function getDeliveryCost(method, subtotal, basePrices) {
+    const prices = basePrices || { cdek: 350, post: 300, courier: 600 };
+    // Пример бизнес-логики: бесплатная доставка СДЭК от 5000 ₽
+    if (method === 'cdek' && subtotal >= 5000) {
+        return 0;
+    }
+    return prices[method] ?? prices.cdek;
+}
+
+export function getCartTotals(cart, method, basePrices) {
+    const subtotal = cartSubtotal(cart);
+    const itemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const delivery = subtotal === 0 ? 0 : getDeliveryCost(method, subtotal, basePrices);
+    const total = subtotal + delivery;
+    return { subtotal, delivery, total, itemsCount };
+}
+
