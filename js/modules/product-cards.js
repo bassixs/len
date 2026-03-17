@@ -1,3 +1,5 @@
+import { normalizeProduct, resolveImageUrl, safeText } from './product-model.js';
+
 const BASE = import.meta.env.BASE_URL || '/';
 const DATA_PRODUCTS_BASE = `${BASE}data/products/`;
 
@@ -74,7 +76,8 @@ function findBestMatch(name, exactMap, products) {
     return products.find(p => normalizeName(p.name).includes(token)) || null;
 }
 
-function applyCardData(card, product, fallbackId) {
+function applyCardData(card, rawProduct, fallbackId) {
+    const product = rawProduct ? normalizeProduct(rawProduct) : null;
     const resolvedId = product?.id || fallbackId;
     if (!resolvedId) return;
 
@@ -88,9 +91,9 @@ function applyCardData(card, product, fallbackId) {
     });
 
     const img = card.querySelector('.product-card-image img');
-    if (img && product?.image && isPlaceholderImage(img.getAttribute('src'))) {
-        img.setAttribute('src', `${BASE}${String(product.image).replace(/^\//, '')}`);
-        if (product.name) img.setAttribute('alt', product.name);
+    if (img && product && product.image && isPlaceholderImage(img.getAttribute('src'))) {
+        img.setAttribute('src', resolveImageUrl(product.image));
+        if (product.name) img.setAttribute('alt', safeText(product.name));
     }
 }
 

@@ -1,3 +1,5 @@
+import { normalizeProduct, formatPrice, resolveImageUrl, safeText } from './product-model.js';
+
 const BASE = import.meta.env.BASE_URL || '/';
 const DATA_PRODUCTS_BASE = `${import.meta.env.BASE_URL || '/'}data/products/`;
 const CATEGORY_LABELS = {
@@ -116,14 +118,14 @@ async function loadProduct(id) {
     renderProduct(product, cat);
 }
 
-function renderProduct(product, cat) {
+function renderProduct(rawProduct, cat) {
+    const product = normalizeProduct(rawProduct);
     // Заголовок и цена
     const titleEl = document.getElementById('productTitle');
     const priceEl = document.getElementById('productPrice');
     if (titleEl) titleEl.textContent = product.name || '';
     if (priceEl) {
-        const price = Number(product.price) || 0;
-        priceEl.textContent = `${price.toLocaleString('ru-RU')} ₽`;
+        priceEl.textContent = formatPrice(product.price);
     }
     document.title = `${product.name || 'Товар'} — нжен ЛЁН`;
 
@@ -142,21 +144,19 @@ function renderProduct(product, cat) {
 
     const images = [];
     if (product.image) images.push(product.image);
-    if (Array.isArray(product.gallery) && product.gallery.length) {
-        images.push(...product.gallery);
+    if (Array.isArray(rawProduct.gallery) && rawProduct.gallery.length) {
+        images.push(...rawProduct.gallery);
     }
     if (!images.length) return;
 
-    const srcs = images.map(src =>
-        src.startsWith('http') ? src : BASE + src.replace(/^\//, '')
-    );
+    const srcs = images.map(src => resolveImageUrl(src));
 
     const mainSrc = srcs[0];
     const thumbs = srcs.slice(1);
 
     const mainHtml = `
         <div class="product-main-image">
-            <img src="${mainSrc}" alt="${escapeHtml(product.name || '')}" id="productMainImg">
+            <img src="${mainSrc}" alt="${safeText(product.name || '')}" id="productMainImg">
         </div>
     `;
 
@@ -168,7 +168,7 @@ function renderProduct(product, cat) {
                     .map(
                         (src, i) =>
                             `<button class="product-thumb${i === 0 ? ' active' : ''}" type="button" data-src="${src}">
-                                <img src="${src}" alt="${escapeHtml(product.name || '')}">
+                                <img src="${src}" alt="${safeText(product.name || '')}">
                             </button>`
                     )
                     .join('')}
