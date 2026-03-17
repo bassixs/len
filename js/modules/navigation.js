@@ -8,8 +8,6 @@ export function initNavigation() {
 
     if (!header || !burger || !nav) return;
 
-    let lastScrollY = 0;
-
     function handleScroll() {
         const scrollY = window.scrollY;
         const heroHeight = heroSection ? heroSection.offsetHeight : 0;
@@ -28,12 +26,10 @@ export function initNavigation() {
             header.classList.remove('hero-visible');
         }
 
-        lastScrollY = scrollY;
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-
     // ===== MOBILE MENU =====
     bindGlobalEscOnce();
     burger.addEventListener('click', () => {
@@ -48,7 +44,7 @@ export function initNavigation() {
     });
 
     // Close mobile menu on link click
-    nav.querySelectorAll('a').forEach(link => {
+    nav.querySelectorAll('a').forEach((link) => {
         link.addEventListener('click', () => {
             burger.classList.remove('active');
             closeLayer('#nav');
@@ -56,7 +52,7 @@ export function initNavigation() {
     });
 
     // ===== SMOOTH SCROLL =====
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
@@ -71,7 +67,7 @@ export function initNavigation() {
 
             window.scrollTo({
                 top: offsetPosition,
-                behavior: 'smooth'
+                behavior: 'smooth',
             });
         });
     });
@@ -90,23 +86,27 @@ export function initNavigation() {
 function highlightActiveLink() {
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('.nav a:not(.nav-link-dropdown)');
-    
+
     // Check main links
-    navLinks.forEach(link => {
+    navLinks.forEach((link) => {
         const linkPath = new URL(link.href).pathname;
         if (currentPath === linkPath || (currentPath === '/' && linkPath.endsWith('index.html'))) {
             // Check if it's explicitly not just base URL due to query params
             if (window.location.search) {
-               // Ignore exact match if url has query params for category, we'll handle that differently if needed
-               // but for simple top level links it's fine.
+                // Ignore exact match if url has query params for category, we'll handle that differently if needed
+                // but for simple top level links it's fine.
             }
             link.classList.add('active');
         }
     });
 
     // We can also highlight dropdown parent if we are on a category page
-    if (currentPath.includes('catalog.html') || currentPath.includes('category.html') || currentPath.includes('product.html')) {
-         const dropdownLink = document.querySelector('.nav-link-dropdown');
-         if (dropdownLink) dropdownLink.classList.add('active');
+    if (
+        currentPath.includes('catalog.html') ||
+        currentPath.includes('category.html') ||
+        currentPath.includes('product.html')
+    ) {
+        const dropdownLink = document.querySelector('.nav-link-dropdown');
+        if (dropdownLink) dropdownLink.classList.add('active');
     }
 }

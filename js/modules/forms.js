@@ -27,7 +27,7 @@ export function initForms() {
     const callModalClose = document.getElementById('callModalClose');
     const callModalOverlay = document.getElementById('callModalOverlay');
 
-    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
         link.addEventListener('click', (e) => {
             if (window.innerWidth > 768) {
                 e.preventDefault();

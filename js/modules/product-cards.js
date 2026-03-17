@@ -28,11 +28,11 @@ async function loadAllProducts() {
     }
     const index = await indexResp.json();
     const categories = Array.isArray(index.categories)
-        ? index.categories.map(c => c.id).filter(Boolean)
+        ? index.categories.map((c) => c.id).filter(Boolean)
         : [];
 
     const lists = await Promise.all(
-        categories.map(async cat => {
+        categories.map(async (cat) => {
             const resp = await fetch(`${DATA_PRODUCTS_BASE}${encodeURIComponent(cat)}.json`);
             if (!resp.ok) return [];
             const list = await resp.json();
@@ -55,7 +55,7 @@ async function loadIndexPreview() {
 
 function createLookup(products) {
     const exact = new Map();
-    products.forEach(product => {
+    products.forEach((product) => {
         const key = normalizeName(product.name);
         if (key && !exact.has(key)) {
             exact.set(key, product);
@@ -69,11 +69,11 @@ function findBestMatch(name, exactMap, products) {
     if (!key) return null;
     if (exactMap.has(key)) return exactMap.get(key);
 
-    const tokens = key.split(' ').filter(t => t.length >= 4);
+    const tokens = key.split(' ').filter((t) => t.length >= 4);
     if (!tokens.length) return null;
     const sorted = tokens.sort((a, b) => b.length - a.length);
     const token = sorted[0];
-    return products.find(p => normalizeName(p.name).includes(token)) || null;
+    return products.find((p) => normalizeName(p.name).includes(token)) || null;
 }
 
 function applyCardData(card, rawProduct, fallbackId) {
@@ -82,11 +82,11 @@ function applyCardData(card, rawProduct, fallbackId) {
     if (!resolvedId) return;
 
     card.dataset.productId = resolvedId;
-    card.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    card.querySelectorAll('.add-to-cart-btn').forEach((btn) => {
         btn.dataset.productId = resolvedId;
     });
 
-    card.querySelectorAll('.product-quick-btn').forEach(link => {
+    card.querySelectorAll('.product-quick-btn').forEach((link) => {
         link.setAttribute('href', `product.html?id=${encodeURIComponent(resolvedId)}`);
     });
 
@@ -101,7 +101,8 @@ function needsEnrichment(card) {
     const quickLink = card.querySelector('.product-quick-btn');
     const addBtn = card.querySelector('.add-to-cart-btn');
     const img = card.querySelector('.product-card-image img');
-    const hasLegacyLink = quickLink && /product\.html(?:$|\?)/.test(quickLink.getAttribute('href') || '');
+    const hasLegacyLink =
+        quickLink && /product\.html(?:$|\?)/.test(quickLink.getAttribute('href') || '');
     const missingProductId = addBtn && !addBtn.dataset.productId && !card.dataset.productId;
     const hasPlaceholder = img && isPlaceholderImage(img.getAttribute('src'));
     return Boolean(hasLegacyLink || missingProductId || hasPlaceholder);
@@ -109,7 +110,7 @@ function needsEnrichment(card) {
 
 function enrichCardsFromLookup(cards, lookup, products, fallbackId) {
     const unresolved = [];
-    cards.forEach(card => {
+    cards.forEach((card) => {
         if (card.dataset.productId) {
             applyCardData(card, { id: card.dataset.productId }, fallbackId);
             return;
@@ -130,7 +131,12 @@ async function enrichProductCards() {
     const previewProducts = await loadIndexPreview();
     const previewLookup = createLookup(previewProducts);
     const previewFallbackId = previewProducts[0]?.id || '';
-    const unresolved = enrichCardsFromLookup(cards, previewLookup, previewProducts, previewFallbackId);
+    const unresolved = enrichCardsFromLookup(
+        cards,
+        previewLookup,
+        previewProducts,
+        previewFallbackId
+    );
     if (!unresolved.length) return;
 
     // Fallback for legacy cards absent in preview.
@@ -142,7 +148,7 @@ async function enrichProductCards() {
 }
 
 export function initProductCards() {
-    enrichProductCards().catch(err => {
+    enrichProductCards().catch((err) => {
         console.error('Product cards enrich error:', err);
     });
 

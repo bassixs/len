@@ -1,110 +1,116 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="О компании «нжен ЛЁН» — собственное производство изделий из натурального льна с 2010 года."
+        />
+        <title>О компании — нжен ЛЁН</title>
+        <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+        <link rel="stylesheet" href="styles.css?v=2.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="О компании «нжен ЛЁН» — собственное производство изделий из натурального льна с 2010 года.">
-    <title>О компании — нжен ЛЁН</title>
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <link rel="stylesheet" href="styles.css?v=2.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-</head>
+    <body>
+        {{> header }}
 
-<body>
-    {{> header }}
+        <!-- Brutal Minimalism Hero -->
+        <section class="brutal-hero">
+            <div class="container brutal-hero-content">
+                <h1 class="brutal-title">
+                    <span class="mask-line"><span class="mask-text">Мы</span></span>
+                    <span class="mask-line"><span class="mask-text">создаём</span></span>
+                    <span class="mask-line"><span class="mask-text">ощущение</span></span>
+                    <span class="mask-line"><span class="mask-text">дома.</span></span>
+                </h1>
+            </div>
+        </section>
 
-    <!-- Brutal Minimalism Hero -->
-    <section class="brutal-hero">
-        <div class="container brutal-hero-content">
-            <h1 class="brutal-title">
-                <span class="mask-line"><span class="mask-text">Мы</span></span>
-                <span class="mask-line"><span class="mask-text">создаём</span></span>
-                <span class="mask-line"><span class="mask-text">ощущение</span></span>
-                <span class="mask-line"><span class="mask-text">дома.</span></span>
-            </h1>
-        </div>
-    </section>
+        <!-- Manifesto with Interactive Cursor -->
+        <section class="brutal-manifesto">
+            <div class="container">
+                <div class="manifesto-grid">
+                    <div class="manifesto-block manifesto-left reveal">
+                        <div class="manifesto-block-number">01</div>
+                        <div class="manifesto-block-line"></div>
+                        <div class="manifesto-block-label">Философия</div>
+                        <p class="manifesto-block-text">
+                            Компания «нжен ЛЁН» основана коллективом единомышленников. Настоящая
+                            роскошь — это не бренды. Это фактура, чистота материалов и время,
+                            вложенное в каждый стежок.
+                        </p>
+                    </div>
 
-    <!-- Manifesto with Interactive Cursor -->
-    <section class="brutal-manifesto">
-        <div class="container">
-            <div class="manifesto-grid">
-                <div class="manifesto-block manifesto-left reveal">
-                    <div class="manifesto-block-number">01</div>
-                    <div class="manifesto-block-line"></div>
-                    <div class="manifesto-block-label">Философия</div>
-                    <p class="manifesto-block-text">
-                        Компания «нжен ЛЁН» основана коллективом единомышленников.
-                        Настоящая роскошь — это не бренды. Это фактура,
-                        чистота материалов и время, вложенное в каждый стежок.
-                    </p>
-                </div>
+                    <div class="manifesto-block manifesto-right reveal">
+                        <div class="manifesto-block-number">02</div>
+                        <div class="manifesto-block-line"></div>
+                        <div class="manifesto-block-label">Производство</div>
+                        <p class="manifesto-block-text">
+                            Вся наша одежда и домашний текстиль появляются в собственной мастерской
+                            в самом сердце льняного края России.
+                        </p>
+                    </div>
 
-                <div class="manifesto-block manifesto-right reveal">
-                    <div class="manifesto-block-number">02</div>
-                    <div class="manifesto-block-line"></div>
-                    <div class="manifesto-block-label">Производство</div>
-                    <p class="manifesto-block-text">
-                        Вся наша одежда и домашний текстиль
-                        появляются в собственной мастерской
-                        в самом сердце льняного края России.
-                    </p>
-                </div>
-
-                <div class="manifesto-block manifesto-left reveal">
-                    <div class="manifesto-block-number">03</div>
-                    <div class="manifesto-block-line"></div>
-                    <div class="manifesto-block-label">Качество</div>
-                    <p class="manifesto-block-text">
-                        Только сертифицированный европейский лён. Без компромиссов.
-                        Исключительная ручная работа.
-                    </p>
+                    <div class="manifesto-block manifesto-left reveal">
+                        <div class="manifesto-block-number">03</div>
+                        <div class="manifesto-block-line"></div>
+                        <div class="manifesto-block-label">Качество</div>
+                        <p class="manifesto-block-text">
+                            Только сертифицированный европейский лён. Без компромиссов.
+                            Исключительная ручная работа.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Marquee -->
-    <section class="brutal-marquee-section">
-        <div class="brutal-marquee">
-            <div class="brutal-marquee-inner">
-                <span>НАТУРАЛЬНЫЙ ЛЁН</span> <span class="dot">•</span>
-                <span>ЭКОЛОГИЧНОСТЬ</span> <span class="dot">•</span>
-                <span>С 2010 ГОДА</span> <span class="dot">•</span>
-                <span>БЕЗУПРЕЧНОЕ КАЧЕСТВО</span> <span class="dot">•</span>
-                <span>НЖЕН ЛЁН</span> <span class="dot">•</span>
-                <!-- Duplicate for seamless scroll -->
-                <span aria-hidden="true">НАТУРАЛЬНЫЙ ЛЁН</span> <span class="dot" aria-hidden="true">•</span>
-                <span aria-hidden="true">ЭКОЛОГИЧНОСТЬ</span> <span class="dot" aria-hidden="true">•</span>
-                <span aria-hidden="true">С 2010 ГОДА</span> <span class="dot" aria-hidden="true">•</span>
-                <span aria-hidden="true">БЕЗУПРЕЧНОЕ КАЧЕСТВО</span> <span class="dot" aria-hidden="true">•</span>
-                <span aria-hidden="true">НЖЕН ЛЁН</span> <span class="dot" aria-hidden="true">•</span>
+        <!-- Marquee -->
+        <section class="brutal-marquee-section">
+            <div class="brutal-marquee">
+                <div class="brutal-marquee-inner">
+                    <span>НАТУРАЛЬНЫЙ ЛЁН</span> <span class="dot">•</span>
+                    <span>ЭКОЛОГИЧНОСТЬ</span> <span class="dot">•</span> <span>С 2010 ГОДА</span>
+                    <span class="dot">•</span> <span>БЕЗУПРЕЧНОЕ КАЧЕСТВО</span>
+                    <span class="dot">•</span> <span>НЖЕН ЛЁН</span> <span class="dot">•</span>
+                    <!-- Duplicate for seamless scroll -->
+                    <span aria-hidden="true">НАТУРАЛЬНЫЙ ЛЁН</span>
+                    <span class="dot" aria-hidden="true">•</span>
+                    <span aria-hidden="true">ЭКОЛОГИЧНОСТЬ</span>
+                    <span class="dot" aria-hidden="true">•</span>
+                    <span aria-hidden="true">С 2010 ГОДА</span>
+                    <span class="dot" aria-hidden="true">•</span>
+                    <span aria-hidden="true">БЕЗУПРЕЧНОЕ КАЧЕСТВО</span>
+                    <span class="dot" aria-hidden="true">•</span>
+                    <span aria-hidden="true">НЖЕН ЛЁН</span>
+                    <span class="dot" aria-hidden="true">•</span>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Typographic Numbers -->
-    <section class="brutal-numbers">
-        <div class="container">
-            <h2 class="brutal-huge-text">
-                За <strong>15 лет</strong> истории<br>мы создали более <strong>800</strong> моделей<br>изделий для
-                <strong>50 000</strong><br>влюблённых клиентов.<br>И всё это — <strong>100%</strong> лён.
-            </h2>
-        </div>
-    </section>
+        <!-- Typographic Numbers -->
+        <section class="brutal-numbers">
+            <div class="container">
+                <h2 class="brutal-huge-text">
+                    За <strong>15 лет</strong> истории<br />мы создали более
+                    <strong>800</strong> моделей<br />изделий для <strong>50 000</strong
+                    ><br />влюблённых клиентов.<br />И всё это — <strong>100%</strong> лён.
+                </h2>
+            </div>
+        </section>
 
-    <!-- Next Chapter (Huge Link) -->
-    <a href="catalog.html" class="brutal-next-chapter">
-        <span class="next-text" data-text="КАТАЛОГ">КАТАЛОГ</span>
-    </a>
+        <!-- Next Chapter (Huge Link) -->
+        <a href="catalog.html" class="brutal-next-chapter">
+            <span class="next-text" data-text="КАТАЛОГ">КАТАЛОГ</span>
+        </a>
 
-    {{> footer }}
-    {{> modals }}
-    <script type="module" src="/js/main.js"></script>
-</body>
-
+        {{> footer }} {{> modals }}
+        <script type="module" src="/js/main.js"></script>
+    </body>
 </html>

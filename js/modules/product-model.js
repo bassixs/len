@@ -20,8 +20,7 @@ export function normalizeProduct(raw = {}) {
         id: String(id),
         name: String(name),
         price: Number.isFinite(Number(price)) ? Number(price) : 0,
-        oldPrice:
-            oldPrice != null && Number.isFinite(Number(oldPrice)) ? Number(oldPrice) : null,
+        oldPrice: oldPrice != null && Number.isFinite(Number(oldPrice)) ? Number(oldPrice) : null,
         image: String(image || ''),
         badges: Array.isArray(badges) ? badges.map((b) => String(b)) : [],
         sizes: Array.isArray(sizes) ? sizes.map((s) => String(s)) : [],
@@ -54,4 +53,3 @@ export function safeText(value) {
     div.textContent = String(value);
     return div.innerHTML;
 }
-

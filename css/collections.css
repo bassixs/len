@@ -15,7 +15,9 @@
     border-radius: var(--radius);
     overflow: hidden;
     cursor: pointer;
-    transition: transform var(--transition), box-shadow var(--transition);
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
 }
 
 .collection-card:hover {
@@ -148,7 +150,7 @@
     opacity: 1;
 }
 
-.category-card>* {
+.category-card > * {
     position: relative;
     z-index: 1;
 }

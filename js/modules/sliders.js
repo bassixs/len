@@ -13,14 +13,14 @@ export function initSliders() {
         sliderNext.addEventListener('click', () => {
             productsSlider.scrollBy({
                 left: scrollAmount(),
-                behavior: 'smooth'
+                behavior: 'smooth',
             });
         });
 
         sliderPrev.addEventListener('click', () => {
             productsSlider.scrollBy({
                 left: -scrollAmount(),
-                behavior: 'smooth'
+                behavior: 'smooth',
             });
         });
 

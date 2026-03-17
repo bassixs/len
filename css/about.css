@@ -89,7 +89,10 @@
     gap: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.6);
     box-shadow: 0 10px 30px -10px rgba(107, 127, 62, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s;
 }
 
 .feature-card:hover {
@@ -103,7 +106,7 @@
     height: 56px;
     min-width: 56px;
     border-radius: 50%;
-    background: #6B7C3E;
+    background: #6b7c3e;
     /* Dark Sage */
     color: white;
     display: flex;

@@ -1,18 +1,21 @@
 export function initAnimations() {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
-    });
+    const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px',
+        }
+    );
 
     function observeReveals(root = document) {
-        root.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+        root.querySelectorAll('.reveal:not(.visible)').forEach((el) => {
             revealObserver.observe(el);
         });
     }
@@ -20,9 +23,9 @@ export function initAnimations() {
     observeReveals(document);
 
     // Observe dynamically rendered sections (catalog/category cards and other async blocks).
-    const mutationObserver = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            mutation.addedNodes.forEach(node => {
+    const mutationObserver = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            mutation.addedNodes.forEach((node) => {
                 if (!(node instanceof HTMLElement)) return;
                 if (node.classList && node.classList.contains('reveal')) {
                     revealObserver.observe(node);
@@ -35,7 +38,7 @@ export function initAnimations() {
 
     mutationObserver.observe(document.body, {
         childList: true,
-        subtree: true
+        subtree: true,
     });
 
     // ===== PRELOAD IMAGES =====
@@ -49,7 +52,7 @@ export function initAnimations() {
         document.body.classList.add('loaded');
 
         // Preload collection images
-        document.querySelectorAll('.collection-card-bg').forEach(bg => {
+        document.querySelectorAll('.collection-card-bg').forEach((bg) => {
             const src = bg.style.backgroundImage.replace(/url\(['"]?/, '').replace(/['"]?\)/, '');
             if (src) preloadImage(src);
         });
@@ -73,7 +76,7 @@ export function initAnimations() {
             });
         });
 
-        hoverWords.forEach(word => {
+        hoverWords.forEach((word) => {
             word.addEventListener('mouseenter', () => {
                 const imgSrc = word.getAttribute('data-img');
                 if (imgSrc) {

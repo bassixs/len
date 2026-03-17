@@ -1,5 +1,5 @@
 /* ===== RESPONSIVE ===== */
-@media (max-width:1024px) {
+@media (max-width: 1024px) {
     .collections-grid {
         grid-template-columns: 1fr;
     }
@@ -100,7 +100,7 @@
     }
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
     .header .nav {
         display: none;
         position: fixed;
@@ -247,7 +247,7 @@
     }
 }
 
-@media (max-width:480px) {
+@media (max-width: 480px) {
     .hero {
         min-height: 500px;
     }
@@ -580,7 +580,7 @@ textarea.form-control {
     background: rgba(107, 127, 62, 0.02);
 }
 
-.delivery-method input[type="radio"] {
+.delivery-method input[type='radio'] {
     flex-shrink: 0;
     accent-color: var(--c-sage-dark);
     width: 18px;
@@ -598,19 +598,21 @@ textarea.form-control {
     justify-content: center;
     font-size: 1rem;
     flex-shrink: 0;
-    transition: background var(--transition-fast), color var(--transition-fast);
+    transition:
+        background var(--transition-fast),
+        color var(--transition-fast);
 }
 
-.delivery-method:has(input[type="radio"]:checked) .delivery-method-icon {
+.delivery-method:has(input[type='radio']:checked) .delivery-method-icon {
     background: var(--c-sage);
     color: var(--c-white);
 }
 
-.delivery-method:has(input[type="radio"]:checked) .delivery-method-content {
+.delivery-method:has(input[type='radio']:checked) .delivery-method-content {
     font-weight: 500;
 }
 
-.delivery-method:has(input[type="radio"]:checked) {
+.delivery-method:has(input[type='radio']:checked) {
     border-color: var(--c-sage);
     background: rgba(107, 127, 62, 0.04);
 }
@@ -709,7 +711,9 @@ textarea.form-control {
     gap: 1rem;
     box-shadow: var(--shadow-sm);
     border: 1px dashed var(--c-sage-light);
-    transition: background var(--transition-fast), border-color var(--transition-fast);
+    transition:
+        background var(--transition-fast),
+        border-color var(--transition-fast);
 }
 
 .gift-widget:hover,
@@ -1208,7 +1212,6 @@ textarea.form-control {
 }
 
 @media (max-width: 900px) {
-
     .split-block,
     .split-reverse {
         flex-direction: column;
@@ -1426,7 +1429,9 @@ textarea.form-control {
     border-radius: var(--radius-sm);
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    transition: transform var(--transition), box-shadow var(--transition);
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
 }
 
 .catalog-category-card:hover {
@@ -1637,7 +1642,8 @@ textarea.form-control {
 .manifesto-block.reveal {
     opacity: 0;
     transform: translateY(60px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transition:
+        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
         transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1661,7 +1667,9 @@ textarea.form-control {
 .manifesto-block .manifesto-block-text {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
 }
 
 .manifesto-block.visible .manifesto-block-number {
@@ -1728,7 +1736,9 @@ textarea.form-control {
     z-index: 9999;
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.8);
-    transition: opacity 0.3s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition:
+        opacity 0.3s ease,
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-xl);
@@ -1852,7 +1862,6 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
-
     .brutal-manifesto,
     .brutal-numbers {
         padding: 6rem 0;

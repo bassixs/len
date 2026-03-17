@@ -18,7 +18,7 @@ export function saveCart(cart) {
 }
 
 export function addItem(cart, product) {
-    const existing = cart.find(item => item.id === product.id);
+    const existing = cart.find((item) => item.id === product.id);
     if (existing) {
         existing.quantity += 1;
     } else {
@@ -28,16 +28,14 @@ export function addItem(cart, product) {
 }
 
 export function removeItem(cart, id) {
-    return cart.filter(item => item.id !== id);
+    return cart.filter((item) => item.id !== id);
 }
 
 export function updateItemQuantity(cart, id, quantity) {
     if (quantity <= 0) {
         return removeItem(cart, id);
     }
-    return cart.map(item =>
-        item.id === id ? { ...item, quantity } : item
-    );
+    return cart.map((item) => (item.id === id ? { ...item, quantity } : item));
 }
 
 export function cartSubtotal(cart) {
@@ -47,4 +45,3 @@ export function cartSubtotal(cart) {
 export function formatCartPrice(value) {
     return formatPrice(value);
 }
-

@@ -1,200 +1,317 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Товар из натурального льна — нжен ЛЁН. Описание, фото, характеристики."
+        />
+        <title>Товар — нжен ЛЁН</title>
+        <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+        <link rel="stylesheet" href="styles.css?v=2.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Товар из натурального льна — нжен ЛЁН. Описание, фото, характеристики.">
-    <title>Товар — нжен ЛЁН</title>
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <link rel="stylesheet" href="styles.css?v=2.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-</head>
+    <body>
+        {{> header }}
 
-<body>
-    {{> header }}
-
-    <section class="page-hero" style="padding-bottom:var(--space-md)">
-        <div class="container">
-            <div class="breadcrumbs">
-                <a href="index.html">Главная</a><span>/</span><a href="catalog.html">Каталог</a><span>/</span><a
-                    href="category.html?cat=women">Женская одежда</a><span>/</span><span>Платье «Лаванда»</span>
+        <section class="page-hero" style="padding-bottom: var(--space-md)">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <a href="index.html">Главная</a><span>/</span><a href="catalog.html">Каталог</a
+                    ><span>/</span><a href="category.html?cat=women">Женская одежда</a><span>/</span
+                    ><span>Платье «Лаванда»</span>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section product-page">
-        <div class="container">
-            <div class="product-split">
-                <!-- LEFT: GALLERY (динамически наполняется из данных товара) -->
-                <div class="product-gallery-stack reveal" id="productGallery"></div>
+        <section class="section product-page">
+            <div class="container">
+                <div class="product-split">
+                    <!-- LEFT: GALLERY (динамически наполняется из данных товара) -->
+                    <div class="product-gallery-stack reveal" id="productGallery"></div>
 
-                <!-- RIGHT: INFO & ACTIONS -->
-                <div class="product-info-sticky reveal reveal-delay-1">
-                    <div class="product-info-inner">
-                        <h1 class="product-title-premium" id="productTitle">Название товара</h1>
-                        <div class="product-price-premium" id="productPrice">0 ₽</div>
-                        
-                        <p class="product-desc-premium">
-                            Элегантное платье из 100% натурального европейского льна высшего качества. 
-                            Классический силуэт подчёркивает фигуру, а дышащая текстура ткани делает платье невероятно комфортным для ежедневного ношения.
-                        </p>
+                    <!-- RIGHT: INFO & ACTIONS -->
+                    <div class="product-info-sticky reveal reveal-delay-1">
+                        <div class="product-info-inner">
+                            <h1 class="product-title-premium" id="productTitle">Название товара</h1>
+                            <div class="product-price-premium" id="productPrice">0 ₽</div>
 
-                        <form class="product-form" id="addToCartForm">
-                            <div class="option-group">
-                                <div class="option-label-wrap">
-                                    <span class="option-label">Цвет <span id="colorName">Бежевый</span></span>
-                                </div>
-                                <div class="size-selector" id="colorSelector">
-                                    <span class="color-dot active" style="background:#C4A882" data-color="Бежевый" title="Бежевый"></span>
-                                    <span class="color-dot" style="background:#7B8F6B" data-color="Зелёный" title="Зелёный"></span>
-                                    <span class="color-dot" style="background:#E8DDD0" data-color="Молочный" title="Молочный"></span>
-                                </div>
-                            </div>
-                            
-                            <div class="option-group">
-                                <div class="option-label-wrap">
-                                    <span class="option-label">Размер</span>
-                                    <a href="#" class="size-guide-link">Таблица размеров</a>
-                                </div>
-                                <div class="size-selector" id="sizeSelector">
-                                    <button type="button" class="size-btn" data-size="XS">XS</button>
-                                    <button type="button" class="size-btn" data-size="S">S</button>
-                                    <button type="button" class="size-btn active" data-size="M">M</button>
-                                    <button type="button" class="size-btn" data-size="L">L</button>
-                                </div>
-                            </div>
+                            <p class="product-desc-premium">
+                                Элегантное платье из 100% натурального европейского льна высшего
+                                качества. Классический силуэт подчёркивает фигуру, а дышащая
+                                текстура ткани делает платье невероятно комфортным для ежедневного
+                                ношения.
+                            </p>
 
-                            <div class="product-actions-premium">
-                                <div class="quantity-selector-premium">
-                                    <button type="button" class="qty-btn" id="qtyMinus">−</button>
-                                    <input type="number" value="1" min="1" max="10" id="qtyInput">
-                                    <button type="button" class="qty-btn" id="qtyPlus">+</button>
+                            <form class="product-form" id="addToCartForm">
+                                <div class="option-group">
+                                    <div class="option-label-wrap">
+                                        <span class="option-label"
+                                            >Цвет <span id="colorName">Бежевый</span></span
+                                        >
+                                    </div>
+                                    <div class="size-selector" id="colorSelector">
+                                        <span
+                                            class="color-dot active"
+                                            style="background: #c4a882"
+                                            data-color="Бежевый"
+                                            title="Бежевый"
+                                        ></span>
+                                        <span
+                                            class="color-dot"
+                                            style="background: #7b8f6b"
+                                            data-color="Зелёный"
+                                            title="Зелёный"
+                                        ></span>
+                                        <span
+                                            class="color-dot"
+                                            style="background: #e8ddd0"
+                                            data-color="Молочный"
+                                            title="Молочный"
+                                        ></span>
+                                    </div>
                                 </div>
-                                <button type="button" class="btn btn-primary btn-premium add-to-cart-btn">В КОРЗИНУ</button>
-                                <button type="button" class="btn-wishlist"><i class="far fa-heart"></i></button>
-                            </div>
-                        </form>
 
-                        <div class="product-accordions">
-                            <div class="accordion">
-                                <button class="accordion-head" type="button">Описание <i class="fas fa-plus"></i></button>
-                                <div class="accordion-body">
-                                    <div class="accordion-body-inner">
-                                        Натуральные оттенки гармонично дополняют любой образ. Идеально для летних прогулок, встреч с друзьями и офисного дресс-кода. Лён обладает высокой терморегуляцией, отводит влагу и позволяет коже дышать.
+                                <div class="option-group">
+                                    <div class="option-label-wrap">
+                                        <span class="option-label">Размер</span>
+                                        <a href="#" class="size-guide-link">Таблица размеров</a>
+                                    </div>
+                                    <div class="size-selector" id="sizeSelector">
+                                        <button type="button" class="size-btn" data-size="XS">
+                                            XS
+                                        </button>
+                                        <button type="button" class="size-btn" data-size="S">
+                                            S
+                                        </button>
+                                        <button type="button" class="size-btn active" data-size="M">
+                                            M
+                                        </button>
+                                        <button type="button" class="size-btn" data-size="L">
+                                            L
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="product-actions-premium">
+                                    <div class="quantity-selector-premium">
+                                        <button type="button" class="qty-btn" id="qtyMinus">
+                                            −
+                                        </button>
+                                        <input
+                                            type="number"
+                                            value="1"
+                                            min="1"
+                                            max="10"
+                                            id="qtyInput"
+                                        />
+                                        <button type="button" class="qty-btn" id="qtyPlus">
+                                            +
+                                        </button>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        class="btn btn-primary btn-premium add-to-cart-btn"
+                                    >
+                                        В КОРЗИНУ
+                                    </button>
+                                    <button type="button" class="btn-wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </form>
+
+                            <div class="product-accordions">
+                                <div class="accordion">
+                                    <button class="accordion-head" type="button">
+                                        Описание <i class="fas fa-plus"></i>
+                                    </button>
+                                    <div class="accordion-body">
+                                        <div class="accordion-body-inner">
+                                            Натуральные оттенки гармонично дополняют любой образ.
+                                            Идеально для летних прогулок, встреч с друзьями и
+                                            офисного дресс-кода. Лён обладает высокой
+                                            терморегуляцией, отводит влагу и позволяет коже дышать.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion">
+                                    <button class="accordion-head" type="button">
+                                        Характеристики <i class="fas fa-plus"></i>
+                                    </button>
+                                    <div class="accordion-body">
+                                        <div class="accordion-body-inner">
+                                            <table class="specs-table">
+                                                <tr>
+                                                    <td>Состав</td>
+                                                    <td>100% умягченный лён</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Плотность</td>
+                                                    <td>185 г/м²</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Длина</td>
+                                                    <td>Миди (115 см)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Производство</td>
+                                                    <td>Собственный цех (Россия)</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion">
+                                    <button class="accordion-head" type="button">
+                                        Уход <i class="fas fa-plus"></i>
+                                    </button>
+                                    <div class="accordion-body">
+                                        <div class="accordion-body-inner">
+                                            Чтобы лён служил долго и сохранял свой благородный вид:
+                                            <ul>
+                                                <li>
+                                                    Машинная деликатная стирка при 30°C жидкими
+                                                    средствами
+                                                </li>
+                                                <li>
+                                                    Не использовать отбеливатель и жесткий отжим
+                                                </li>
+                                                <li>
+                                                    Сушить в расправленном виде вдали от прямых
+                                                    солнечных лучей
+                                                </li>
+                                                <li>Гладить слегка влажным с изнаночной стороны</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion">
+                                    <button class="accordion-head" type="button">
+                                        Доставка и возврат <i class="fas fa-plus"></i>
+                                    </button>
+                                    <div class="accordion-body">
+                                        <div class="accordion-body-inner">
+                                            <p>
+                                                <strong>Бесплатная доставка курьером СДЭК</strong>
+                                                при заказе от 5 000 ₽.
+                                            </p>
+                                            <p>
+                                                Стандартная доставка транспортными компаниями (СДЭК,
+                                                Почта России) рассчитывается в корзине.
+                                            </p>
+                                            <p>
+                                                Вернуть не подошедший товар можно в течение 14 дней
+                                                с момента получения при сохранении товарного вида и
+                                                бирок.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion">
-                                <button class="accordion-head" type="button">Характеристики <i class="fas fa-plus"></i></button>
-                                <div class="accordion-body">
-                                    <div class="accordion-body-inner">
-                                        <table class="specs-table">
-                                            <tr><td>Состав</td><td>100% умягченный лён</td></tr>
-                                            <tr><td>Плотность</td><td>185 г/м²</td></tr>
-                                            <tr><td>Длина</td><td>Миди (115 см)</td></tr>
-                                            <tr><td>Производство</td><td>Собственный цех (Россия)</td></tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion">
-                                <button class="accordion-head" type="button">Уход <i class="fas fa-plus"></i></button>
-                                <div class="accordion-body">
-                                    <div class="accordion-body-inner">
-                                        Чтобы лён служил долго и сохранял свой благородный вид:
-                                        <ul>
-                                            <li>Машинная деликатная стирка при 30°C жидкими средствами</li>
-                                            <li>Не использовать отбеливатель и жесткий отжим</li>
-                                            <li>Сушить в расправленном виде вдали от прямых солнечных лучей</li>
-                                            <li>Гладить слегка влажным с изнаночной стороны</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion">
-                                <button class="accordion-head" type="button">Доставка и возврат <i class="fas fa-plus"></i></button>
-                                <div class="accordion-body">
-                                    <div class="accordion-body-inner">
-                                        <p><strong>Бесплатная доставка курьером СДЭК</strong> при заказе от 5 000 ₽.</p>
-                                        <p>Стандартная доставка транспортными компаниями (СДЭК, Почта России) рассчитывается в корзине.</p>
-                                        <p>Вернуть не подошедший товар можно в течение 14 дней с момента получения при сохранении товарного вида и бирок.</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Похожие товары</h2>
-                <p class="section-subtitle">Вам также может понравиться</p>
+        <section class="section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Похожие товары</h2>
+                    <p class="section-subtitle">Вам также может понравиться</p>
+                </div>
+                <div class="new-products-grid">
+                    <div class="product-card reveal">
+                        <div class="product-card-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80"
+                                alt="Сарафан"
+                            />
+                            <div class="product-badges">
+                                <span class="badge badge-hit">HIT</span>
+                            </div>
+                            <div class="product-quick-view">
+                                <a href="product.html" class="product-quick-btn">Подробнее</a>
+                            </div>
+                        </div>
+                        <div class="product-card-info">
+                            <h3 class="product-card-name">Сарафан «Солнце»</h3>
+                            <div class="product-card-price">
+                                <span class="price-current">4 200 ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card reveal reveal-delay-1">
+                        <div class="product-card-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80"
+                                alt="Блузка"
+                            />
+                            <div class="product-quick-view">
+                                <a href="product.html" class="product-quick-btn">Подробнее</a>
+                            </div>
+                        </div>
+                        <div class="product-card-info">
+                            <h3 class="product-card-name">Блузка «Прованс»</h3>
+                            <div class="product-card-price">
+                                <span class="price-current">3 600 ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card reveal reveal-delay-2">
+                        <div class="product-card-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80"
+                                alt="Брюки"
+                            />
+                            <div class="product-badges">
+                                <span class="badge badge-new">NEW</span>
+                            </div>
+                            <div class="product-quick-view">
+                                <a href="product.html" class="product-quick-btn">Подробнее</a>
+                            </div>
+                        </div>
+                        <div class="product-card-info">
+                            <h3 class="product-card-name">Брюки «Летний бриз»</h3>
+                            <div class="product-card-price">
+                                <span class="price-current">3 400 ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card reveal reveal-delay-3">
+                        <div class="product-card-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80"
+                                alt="Юбка"
+                            />
+                            <div class="product-badges">
+                                <span class="badge badge-sale">SALE</span>
+                            </div>
+                            <div class="product-quick-view">
+                                <a href="product.html" class="product-quick-btn">Подробнее</a>
+                            </div>
+                        </div>
+                        <div class="product-card-info">
+                            <h3 class="product-card-name">Юбка «Маркиза»</h3>
+                            <div class="product-card-price">
+                                <span class="price-current">2 800 ₽</span
+                                ><span class="price-old">3 500 ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="new-products-grid">
-                <div class="product-card reveal">
-                    <div class="product-card-image">
-                        <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80"
-                            alt="Сарафан">
-                        <div class="product-badges"><span class="badge badge-hit">HIT</span></div>
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="product-card-info">
-                        <h3 class="product-card-name">Сарафан «Солнце»</h3>
-                        <div class="product-card-price"><span class="price-current">4 200 ₽</span></div>
-                    </div>
-                </div>
-                <div class="product-card reveal reveal-delay-1">
-                    <div class="product-card-image">
-                        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80" alt="Блузка">
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="product-card-info">
-                        <h3 class="product-card-name">Блузка «Прованс»</h3>
-                        <div class="product-card-price"><span class="price-current">3 600 ₽</span></div>
-                    </div>
-                </div>
-                <div class="product-card reveal reveal-delay-2">
-                    <div class="product-card-image">
-                        <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80" alt="Брюки">
-                        <div class="product-badges"><span class="badge badge-new">NEW</span></div>
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="product-card-info">
-                        <h3 class="product-card-name">Брюки «Летний бриз»</h3>
-                        <div class="product-card-price"><span class="price-current">3 400 ₽</span></div>
-                    </div>
-                </div>
-                <div class="product-card reveal reveal-delay-3">
-                    <div class="product-card-image">
-                        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80" alt="Юбка">
-                        <div class="product-badges"><span class="badge badge-sale">SALE</span></div>
-                        <div class="product-quick-view"><a href="product.html" class="product-quick-btn">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="product-card-info">
-                        <h3 class="product-card-name">Юбка «Маркиза»</h3>
-                        <div class="product-card-price"><span class="price-current">2 800 ₽</span><span
-                                class="price-old">3 500 ₽</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    {{> footer }}
-    {{> modals }}
-    <script type="module" src="/js/main.js"></script>
-</body>
-
+        {{> footer }} {{> modals }}
+        <script type="module" src="/js/main.js"></script>
+    </body>
 </html>

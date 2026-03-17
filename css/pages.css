@@ -78,7 +78,7 @@
     direction: rtl;
 }
 
-.about-story-grid.reverse>* {
+.about-story-grid.reverse > * {
     direction: ltr;
 }
 
@@ -543,7 +543,7 @@
     cursor: pointer;
 }
 
-.filter-option input[type="checkbox"] {
+.filter-option input[type='checkbox'] {
     accent-color: var(--c-sage);
     width: 16px;
     height: 16px;
@@ -937,7 +937,9 @@
     border: none;
     border-bottom: 2px solid transparent;
     margin-bottom: -2px;
-    transition: color 0.2s ease, border-bottom-color 0.2s ease;
+    transition:
+        color 0.2s ease,
+        border-bottom-color 0.2s ease;
     cursor: pointer;
 }
 
@@ -1248,7 +1250,7 @@
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
 }
 
-.dlv-payment-card>i {
+.dlv-payment-card > i {
     font-size: 1.4rem;
     color: var(--c-sage);
     margin-bottom: 1.2rem;

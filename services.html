@@ -1,232 +1,347 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Услуги индивидуального пошива из льна — нжен ЛЁН. Пошив по вашим размерам и дизайну."
+        />
+        <title>Услуги по пошиву — нжен ЛЁН</title>
+        <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+        <link rel="stylesheet" href="styles.css?v=2.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Услуги индивидуального пошива из льна — нжен ЛЁН. Пошив по вашим размерам и дизайну.">
-    <title>Услуги по пошиву — нжен ЛЁН</title>
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <link rel="stylesheet" href="styles.css?v=2.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-</head>
+    <body>
+        {{> header }}
 
-<body>
-    {{> header }}
-
-    <section class="services-hero-modern">
-        <div class="container services-hero-modern-inner">
-            <div class="services-hero-text">
-                <div class="breadcrumbs">
-                    <a href="index.html">Главная</a>
-                    <span>/</span>
-                    <span>Пошив на заказ</span>
+        <section class="services-hero-modern">
+            <div class="container services-hero-modern-inner">
+                <div class="services-hero-text">
+                    <div class="breadcrumbs">
+                        <a href="index.html">Главная</a>
+                        <span>/</span>
+                        <span>Пошив на заказ</span>
+                    </div>
+                    <span class="label-tag reveal">Премиум услуга</span>
+                    <h1 class="services-hero-title reveal reveal-delay-1">Индивидуальный пошив</h1>
+                    <p class="services-hero-subtitle reveal reveal-delay-2">
+                        Создаём уникальные изделия из натурального льна премиум-качества по вашим
+                        личным меркам и пожеланиям.
+                    </p>
+                    <div class="services-hero-actions reveal reveal-delay-3">
+                        <a href="contacts.html" class="btn btn-primary">Обсудить заказ</a>
+                        <a
+                            href="#process"
+                            class="btn btn-outline"
+                            style="border-color: var(--c-sage); color: var(--c-sage-dark)"
+                            >Как мы работаем</a
+                        >
+                    </div>
                 </div>
-                <span class="label-tag reveal">Премиум услуга</span>
-                <h1 class="services-hero-title reveal reveal-delay-1">Индивидуальный пошив</h1>
-                <p class="services-hero-subtitle reveal reveal-delay-2">Создаём уникальные изделия из натурального льна
-                    премиум-качества по вашим личным меркам и пожеланиям.</p>
-                <div class="services-hero-actions reveal reveal-delay-3">
-                    <a href="contacts.html" class="btn btn-primary">Обсудить заказ</a>
-                    <a href="#process" class="btn btn-outline"
-                        style="border-color: var(--c-sage); color: var(--c-sage-dark);">Как мы работаем</a>
+                <div class="services-hero-visual reveal reveal-delay-2">
+                    <div class="hero-visual-main">
+                        <img
+                            src="/images/hero_texture.webp"
+                            alt="Фактура льна"
+                            class="visual-img"
+                        />
+                    </div>
+                    <div class="hero-visual-accent">
+                        <img
+                            src="images/cta_fabrics.webp"
+                            alt="Процесс пошива"
+                            class="visual-img"
+                        />
+                    </div>
                 </div>
             </div>
-            <div class="services-hero-visual reveal reveal-delay-2">
-                <div class="hero-visual-main">
-                    <img src="/images/hero_texture.webp" alt="Фактура льна" class="visual-img">
-                </div>
-                <div class="hero-visual-accent">
-                    <img src="images/cta_fabrics.webp" alt="Процесс пошива" class="visual-img">
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section category-split-section">
-        <div class="container">
-            <div class="split-block">
-                <div class="split-image reveal">
-                    <img src="/images/collection.women.webp" alt="Пошив одежды"
-                        style="border-radius: var(--radius); width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5;">
+        <section class="section category-split-section">
+            <div class="container">
+                <div class="split-block">
+                    <div class="split-image reveal">
+                        <img
+                            src="/images/collection.women.webp"
+                            alt="Пошив одежды"
+                            style="
+                                border-radius: var(--radius);
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                aspect-ratio: 4/5;
+                            "
+                        />
+                    </div>
+                    <div class="split-content reveal reveal-delay-1">
+                        <span class="label-tag">Одежда</span>
+                        <h2 class="split-title">Идеальная посадка по вашей фигуре</h2>
+                        <p class="split-text">
+                            Мы шьём платья, сорочки, брюки и жакеты, которые учитывают все
+                            особенности вашей фигуры. Вы сами выбираете плотность льна, цвет и
+                            детали декора.
+                        </p>
+                        <ul class="about-list">
+                            <li>
+                                <i class="fas fa-check"></i> Точное снятие мерок онлайн или в ателье
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i> Пошив по нашим лекалам или вашим фото
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i> Идеальная посадка с первой примерки
+                            </li>
+                        </ul>
+                        <a href="contacts.html" class="btn btn-outline" style="margin-top: 1.5rem"
+                            >Рассчитать стоимость</a
+                        >
+                    </div>
                 </div>
-                <div class="split-content reveal reveal-delay-1">
-                    <span class="label-tag">Одежда</span>
-                    <h2 class="split-title">Идеальная посадка по вашей фигуре</h2>
-                    <p class="split-text">Мы шьём платья, сорочки, брюки и жакеты, которые учитывают все особенности
-                        вашей фигуры. Вы сами выбираете плотность льна, цвет и детали декора.</p>
-                    <ul class="about-list">
-                        <li><i class="fas fa-check"></i> Точное снятие мерок онлайн или в ателье</li>
-                        <li><i class="fas fa-check"></i> Пошив по нашим лекалам или вашим фото</li>
-                        <li><i class="fas fa-check"></i> Идеальная посадка с первой примерки</li>
-                    </ul>
-                    <a href="contacts.html" class="btn btn-outline" style="margin-top: 1.5rem;">Рассчитать стоимость</a>
-                </div>
-            </div>
 
-            <div class="split-block split-reverse" style="margin-top: var(--space-xl);">
-                <div class="split-image reveal">
-                    <img src="images/product.bedding.webp" alt="Домашний текстиль"
-                        style="border-radius: var(--radius); width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5;">
-                </div>
-                <div class="split-content reveal reveal-delay-1">
-                    <span class="label-tag">Текстиль</span>
-                    <h2 class="split-title">Лён для вашего уникального интерьера</h2>
-                    <p class="split-text">Шьём постельное бельё, скатерти, шторы и салфетки нестандартных размеров из
-                        смягчённого льна. Создайте гармонию в вашем доме.</p>
-                    <ul class="about-list">
-                        <li><i class="fas fa-check"></i> Любые размеры простыней и пододеяльников</li>
-                        <li><i class="fas fa-check"></i> Скатерти для больших, круглых или овальных столов</li>
-                        <li><i class="fas fa-check"></i> Декоративные мережки и вышивка</li>
-                    </ul>
-                    <a href="category.html?cat=home-textile" class="btn btn-outline"
-                        style="margin-top: 1.5rem;">Смотреть каталог тканей</a>
+                <div class="split-block split-reverse" style="margin-top: var(--space-xl)">
+                    <div class="split-image reveal">
+                        <img
+                            src="images/product.bedding.webp"
+                            alt="Домашний текстиль"
+                            style="
+                                border-radius: var(--radius);
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                aspect-ratio: 4/5;
+                            "
+                        />
+                    </div>
+                    <div class="split-content reveal reveal-delay-1">
+                        <span class="label-tag">Текстиль</span>
+                        <h2 class="split-title">Лён для вашего уникального интерьера</h2>
+                        <p class="split-text">
+                            Шьём постельное бельё, скатерти, шторы и салфетки нестандартных размеров
+                            из смягчённого льна. Создайте гармонию в вашем доме.
+                        </p>
+                        <ul class="about-list">
+                            <li>
+                                <i class="fas fa-check"></i> Любые размеры простыней и
+                                пододеяльников
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i> Скатерти для больших, круглых или
+                                овальных столов
+                            </li>
+                            <li><i class="fas fa-check"></i> Декоративные мережки и вышивка</li>
+                        </ul>
+                        <a
+                            href="category.html?cat=home-textile"
+                            class="btn btn-outline"
+                            style="margin-top: 1.5rem"
+                            >Смотреть каталог тканей</a
+                        >
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section" style="background:var(--c-cream-light);">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Дополнительные услуги</h2>
-                <p class="section-subtitle">Мы также предлагаем ряд специализированных услуг</p>
+        <section class="section" style="background: var(--c-cream-light)">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Дополнительные услуги</h2>
+                    <p class="section-subtitle">Мы также предлагаем ряд специализированных услуг</p>
+                </div>
+                <div
+                    class="services-grid"
+                    style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))"
+                >
+                    <div class="service-card reveal">
+                        <div class="service-card-icon"><i class="fas fa-ruler"></i></div>
+                        <h3>Подгонка по фигуре</h3>
+                        <p>
+                            Корректировка готовых изделий под ваши индивидуальные размеры для
+                            идеальной посадки.
+                        </p>
+                    </div>
+                    <div class="service-card reveal reveal-delay-1">
+                        <div class="service-card-icon"><i class="fas fa-paint-brush"></i></div>
+                        <h3>Вышивка и декор</h3>
+                        <p>
+                            Нанесение вышивки, инициалов, монограмм и декоративных элементов ручной
+                            работы.
+                        </p>
+                    </div>
+                    <div class="service-card reveal reveal-delay-2">
+                        <div class="service-card-icon"><i class="fas fa-briefcase"></i></div>
+                        <h3>Корпоративные заказы</h3>
+                        <p>
+                            Пошив униформы и текстиля для ресторанов, отелей с нанесением логотипа.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                <div class="service-card reveal">
-                    <div class="service-card-icon"><i class="fas fa-ruler"></i></div>
-                    <h3>Подгонка по фигуре</h3>
-                    <p>Корректировка готовых изделий под ваши индивидуальные размеры для идеальной посадки.</p>
-                </div>
-                <div class="service-card reveal reveal-delay-1">
-                    <div class="service-card-icon"><i class="fas fa-paint-brush"></i></div>
-                    <h3>Вышивка и декор</h3>
-                    <p>Нанесение вышивки, инициалов, монограмм и декоративных элементов ручной работы.</p>
-                </div>
-                <div class="service-card reveal reveal-delay-2">
-                    <div class="service-card-icon"><i class="fas fa-briefcase"></i></div>
-                    <h3>Корпоративные заказы</h3>
-                    <p>Пошив униформы и текстиля для ресторанов, отелей с нанесением логотипа.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section timeline-section" id="process">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="label-tag">Как мы работаем</span>
-                <h2 class="section-title">4 шага к вашей идеальной вещи</h2>
-                <p class="section-subtitle">Процесс создания вещи по индивидуальным меркам понятен и прозрачен</p>
-            </div>
-
-            <div class="process-timeline">
-                <div class="process-step reveal">
-                    <div class="step-number">01</div>
-                    <div class="step-icon"><i class="fas fa-comments"></i></div>
-                    <h3>Идея и обсуждение</h3>
-                    <p>Вы описываете свои пожелания, показываете фото или эскиз. Мы помогаем подобрать идеальную
-                        плотность и цвет льна.</p>
-                </div>
-                <div class="process-step reveal reveal-delay-1">
-                    <div class="step-number">02</div>
-                    <div class="step-icon"><i class="fas fa-tape"></i></div>
-                    <h3>Снятие мерок</h3>
-                    <p>Мы высылаем подробную видео-инструкцию, как правильно снять мерки самостоятельно, или приглашаем
-                        вас в ателье.</p>
-                </div>
-                <div class="process-step reveal reveal-delay-2">
-                    <div class="step-number">03</div>
-                    <div class="step-icon"><i class="fas fa-cut"></i></div>
-                    <h3>Раскрой и пошив</h3>
-                    <p>Наши мастера приступают к созданию изделия. В среднем процесс пошива занимает от 7 до 14 рабочих
-                        дней.</p>
-                </div>
-                <div class="process-step reveal reveal-delay-3">
-                    <div class="step-number">04</div>
-                    <div class="step-icon"><i class="fas fa-box-open"></i></div>
-                    <h3>Примерка и доставка</h3>
-                    <p>Готовое изделие бережно упаковывается и отправляется вам курьерской службой в любую точку России.
+        <section class="section timeline-section" id="process">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="label-tag">Как мы работаем</span>
+                    <h2 class="section-title">4 шага к вашей идеальной вещи</h2>
+                    <p class="section-subtitle">
+                        Процесс создания вещи по индивидуальным меркам понятен и прозрачен
                     </p>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- FAQ Section -->
-    <section class="section faq-section" style="background:var(--c-cream);">
-        <div class="container">
-            <div class="faq-grid">
-                <div class="faq-header reveal">
-                    <span class="label-tag">Вопросы</span>
-                    <h2 class="section-title" style="text-align: left; margin-bottom: 1rem;">Частые вопросы</h2>
-                    <p class="section-subtitle" style="text-align: left; margin: 0 0 2rem 0;">Всё, что нужно знать об
-                        индивидуальном пошиве</p>
-                    <a href="contacts.html" class="btn btn-primary" style="margin-top: 1rem;"><i
-                            class="fas fa-envelope"></i> Задать свой вопрос</a>
-                </div>
-                <div class="faq-list">
-                    <div class="faq-item reveal reveal-delay-1">
-                        <button class="faq-question">Сколько времени занимает отшив заказа? <i
-                                class="fas fa-plus"></i></button>
-                        <div class="faq-answer">
-                            <p>Стандартный срок исполнения заказа — 7-14 рабочих дней после согласования всех деталей и
-                                внесения предоплаты. Срок может быть увеличен для сложных изделий (например, с ручной
-                                вышивкой) или в период высокой загрузки.</p>
-                        </div>
+                <div class="process-timeline">
+                    <div class="process-step reveal">
+                        <div class="step-number">01</div>
+                        <div class="step-icon"><i class="fas fa-comments"></i></div>
+                        <h3>Идея и обсуждение</h3>
+                        <p>
+                            Вы описываете свои пожелания, показываете фото или эскиз. Мы помогаем
+                            подобрать идеальную плотность и цвет льна.
+                        </p>
                     </div>
-                    <div class="faq-item reveal reveal-delay-2">
-                        <button class="faq-question">Взимается ли предоплата за индивидуальный заказ? <i
-                                class="fas fa-plus"></i></button>
-                        <div class="faq-answer">
-                            <p>Да, для запуска заказа в работу мы берём предоплату в размере 50% от стоимости изделия.
-                                Оставшаяся часть оплачивается после готовности перед отправкой.</p>
-                        </div>
+                    <div class="process-step reveal reveal-delay-1">
+                        <div class="step-number">02</div>
+                        <div class="step-icon"><i class="fas fa-tape"></i></div>
+                        <h3>Снятие мерок</h3>
+                        <p>
+                            Мы высылаем подробную видео-инструкцию, как правильно снять мерки
+                            самостоятельно, или приглашаем вас в ателье.
+                        </p>
                     </div>
-                    <div class="faq-item reveal reveal-delay-3">
-                        <button class="faq-question">Можно ли принести свою ткань? <i class="fas fa-plus"></i></button>
-                        <div class="faq-answer">
-                            <p>Мы работаем преимущественно с тканями из нашего каталога, так как уверены в их качестве,
-                                усадке и экологичности. Однако в индивидуальных случаях мы можем обсудить пошив из
-                                материала заказчика (если это 100% натуральный лён).</p>
-                        </div>
+                    <div class="process-step reveal reveal-delay-2">
+                        <div class="step-number">03</div>
+                        <div class="step-icon"><i class="fas fa-cut"></i></div>
+                        <h3>Раскрой и пошив</h3>
+                        <p>
+                            Наши мастера приступают к созданию изделия. В среднем процесс пошива
+                            занимает от 7 до 14 рабочих дней.
+                        </p>
                     </div>
-                    <div class="faq-item reveal reveal-delay-4">
-                        <button class="faq-question">Что, если вещь не подойдет по размеру? <i
-                                class="fas fa-plus"></i></button>
-                        <div class="faq-answer">
-                            <p>Если мерки были сняты корректно, изделие сядет идеально. Но если возникла необходимость в
-                                легкой корректировке (укоротить длину или немного ушить), мы берем эти расходы на себя.
-                                Важно: изделия, сшитые по индивидуальным меркам, обмену и возврату не подлежат (согласно
-                                законодательству).</p>
-                        </div>
+                    <div class="process-step reveal reveal-delay-3">
+                        <div class="step-number">04</div>
+                        <div class="step-icon"><i class="fas fa-box-open"></i></div>
+                        <h3>Примерка и доставка</h3>
+                        <p>
+                            Готовое изделие бережно упаковывается и отправляется вам курьерской
+                            службой в любую точку России.
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="cta-banner"
-        style="background: none; text-align: center; border-top: 1px solid rgba(107, 127, 62, 0.1);">
-        <div class="container">
-            <h2 class="cta-title" style="color: var(--c-dark);">Хотите заказать пошив?</h2>
-            <p class="cta-text" style="color: var(--c-text-light); margin: 0 auto 2rem auto; max-width: 600px;">
-                Свяжитесь с нами — обсудим ваш заказ и подберём идеальную ткань</p>
-            <div class="cta-buttons" style="justify-content: center;">
-                <a href="contacts.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Написать нам</a>
-                <a href="tel:+79533319449" class="btn btn-outline"
-                    style="border-color: var(--c-sage); color: var(--c-sage-dark);"><i class="fas fa-phone"></i>
-                    Позвонить</a>
+        <!-- FAQ Section -->
+        <section class="section faq-section" style="background: var(--c-cream)">
+            <div class="container">
+                <div class="faq-grid">
+                    <div class="faq-header reveal">
+                        <span class="label-tag">Вопросы</span>
+                        <h2 class="section-title" style="text-align: left; margin-bottom: 1rem">
+                            Частые вопросы
+                        </h2>
+                        <p class="section-subtitle" style="text-align: left; margin: 0 0 2rem 0">
+                            Всё, что нужно знать об индивидуальном пошиве
+                        </p>
+                        <a href="contacts.html" class="btn btn-primary" style="margin-top: 1rem"
+                            ><i class="fas fa-envelope"></i> Задать свой вопрос</a
+                        >
+                    </div>
+                    <div class="faq-list">
+                        <div class="faq-item reveal reveal-delay-1">
+                            <button class="faq-question">
+                                Сколько времени занимает отшив заказа? <i class="fas fa-plus"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>
+                                    Стандартный срок исполнения заказа — 7-14 рабочих дней после
+                                    согласования всех деталей и внесения предоплаты. Срок может быть
+                                    увеличен для сложных изделий (например, с ручной вышивкой) или в
+                                    период высокой загрузки.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="faq-item reveal reveal-delay-2">
+                            <button class="faq-question">
+                                Взимается ли предоплата за индивидуальный заказ?
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>
+                                    Да, для запуска заказа в работу мы берём предоплату в размере
+                                    50% от стоимости изделия. Оставшаяся часть оплачивается после
+                                    готовности перед отправкой.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="faq-item reveal reveal-delay-3">
+                            <button class="faq-question">
+                                Можно ли принести свою ткань? <i class="fas fa-plus"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>
+                                    Мы работаем преимущественно с тканями из нашего каталога, так
+                                    как уверены в их качестве, усадке и экологичности. Однако в
+                                    индивидуальных случаях мы можем обсудить пошив из материала
+                                    заказчика (если это 100% натуральный лён).
+                                </p>
+                            </div>
+                        </div>
+                        <div class="faq-item reveal reveal-delay-4">
+                            <button class="faq-question">
+                                Что, если вещь не подойдет по размеру? <i class="fas fa-plus"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>
+                                    Если мерки были сняты корректно, изделие сядет идеально. Но если
+                                    возникла необходимость в легкой корректировке (укоротить длину
+                                    или немного ушить), мы берем эти расходы на себя. Важно:
+                                    изделия, сшитые по индивидуальным меркам, обмену и возврату не
+                                    подлежат (согласно законодательству).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    {{> footer }}
-    {{> modals }}
-    <script type="module" src="/js/main.js"></script>
-</body>
+        <section
+            class="cta-banner"
+            style="
+                background: none;
+                text-align: center;
+                border-top: 1px solid rgba(107, 127, 62, 0.1);
+            "
+        >
+            <div class="container">
+                <h2 class="cta-title" style="color: var(--c-dark)">Хотите заказать пошив?</h2>
+                <p
+                    class="cta-text"
+                    style="color: var(--c-text-light); margin: 0 auto 2rem auto; max-width: 600px"
+                >
+                    Свяжитесь с нами — обсудим ваш заказ и подберём идеальную ткань
+                </p>
+                <div class="cta-buttons" style="justify-content: center">
+                    <a href="contacts.html" class="btn btn-primary"
+                        ><i class="fas fa-envelope"></i> Написать нам</a
+                    >
+                    <a
+                        href="tel:+79533319449"
+                        class="btn btn-outline"
+                        style="border-color: var(--c-sage); color: var(--c-sage-dark)"
+                        ><i class="fas fa-phone"></i> Позвонить</a
+                    >
+                </div>
+            </div>
+        </section>
 
+        {{> footer }} {{> modals }}
+        <script type="module" src="/js/main.js"></script>
+    </body>
 </html>

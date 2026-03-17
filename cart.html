@@ -1,195 +1,238 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Корзина и оформление заказа — Нжен ЛЁН." />
+        <title>Оформление заказа — Нжен ЛЁН</title>
+        <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+        <link rel="stylesheet" href="styles.css?v=2.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Корзина и оформление заказа — Нжен ЛЁН.">
-    <title>Оформление заказа — Нжен ЛЁН</title>
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <link rel="stylesheet" href="styles.css?v=2.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-</head>
+    <body>
+        {{> header }}
 
-<body>
-    {{> header }}
-
-    <section class="page-hero" style="padding-bottom:var(--space-md)">
-        <div class="container">
-            <div class="breadcrumbs">
-                <a href="index.html">Главная</a><span>/</span><span>Оформление заказа</span>
+        <section class="page-hero" style="padding-bottom: var(--space-md)">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <a href="index.html">Главная</a><span>/</span><span>Оформление заказа</span>
+                </div>
+                <h1 class="page-hero-title">Оформление заказа</h1>
             </div>
-            <h1 class="page-hero-title">Оформление заказа</h1>
-        </div>
-    </section>
+        </section>
 
-    <section class="section checkout-page">
-        <div class="container">
-            <form class="checkout-grid" id="checkoutForm">
-                <!-- LEFT COLUMN: CART & DETAILS -->
-                <div class="checkout-main">
-
-                    <div class="checkout-block reveal">
-                        <h2 class="checkout-block-title">Ваш заказ</h2>
-                        <div class="cart-items">
-                            <!-- Список товаров подставляется из localStorage через cart.js -->
+        <section class="section checkout-page">
+            <div class="container">
+                <form class="checkout-grid" id="checkoutForm">
+                    <!-- LEFT COLUMN: CART & DETAILS -->
+                    <div class="checkout-main">
+                        <div class="checkout-block reveal">
+                            <h2 class="checkout-block-title">Ваш заказ</h2>
+                            <div class="cart-items">
+                                <!-- Список товаров подставляется из localStorage через cart.js -->
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="checkout-block reveal reveal-delay-1">
-                        <h2 class="checkout-block-title">Данные покупателя</h2>
-                        <div class="form-grid">
+                        <div class="checkout-block reveal reveal-delay-1">
+                            <h2 class="checkout-block-title">Данные покупателя</h2>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="name">Имя и фамилия *</label>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        class="form-control"
+                                        required
+                                        placeholder="Иван Иванов"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Телефон *</label>
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        class="form-control"
+                                        required
+                                        placeholder="+7 (___) ___-__-__"
+                                    />
+                                </div>
+                                <div class="form-group" style="grid-column: 1 / -1">
+                                    <label for="email">E-mail (для чека и трек-номера) *</label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        class="form-control"
+                                        required
+                                        placeholder="example@mail.ru"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="checkout-block reveal reveal-delay-2">
+                            <h2 class="checkout-block-title">Доставка</h2>
+                            <div class="delivery-methods">
+                                <label class="delivery-method">
+                                    <input type="radio" name="delivery" value="cdek" checked />
+                                    <span class="delivery-method-icon" aria-hidden="true"
+                                        ><i class="fas fa-box"></i
+                                    ></span>
+                                    <div class="delivery-method-content">
+                                        <span class="delivery-method-name"
+                                            >СДЭК (до пункта выдачи)</span
+                                        >
+                                        <span class="delivery-method-price">от 350 ₽</span>
+                                    </div>
+                                </label>
+                                <label class="delivery-method">
+                                    <input type="radio" name="delivery" value="post" />
+                                    <span class="delivery-method-icon" aria-hidden="true"
+                                        ><i class="fas fa-envelope"></i
+                                    ></span>
+                                    <div class="delivery-method-content">
+                                        <span class="delivery-method-name">Почта России</span>
+                                        <span class="delivery-method-price">от 300 ₽</span>
+                                    </div>
+                                </label>
+                                <label class="delivery-method">
+                                    <input type="radio" name="delivery" value="courier" />
+                                    <span class="delivery-method-icon" aria-hidden="true"
+                                        ><i class="fas fa-truck"></i
+                                    ></span>
+                                    <div class="delivery-method-content">
+                                        <span class="delivery-method-name"
+                                            >Курьером до двери (СДЭК)</span
+                                        >
+                                        <span class="delivery-method-price">от 600 ₽</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="form-group" style="margin-top: 1rem">
+                                <label for="address">Адрес доставки / Пункт выдачи *</label>
+                                <input
+                                    type="text"
+                                    id="address"
+                                    class="form-control"
+                                    required
+                                    placeholder="Город, улица, дом, квартира"
+                                />
+                                <small class="form-text"
+                                    >Для ПВЗ СДЭК укажите адрес пункта и город.</small
+                                >
+                            </div>
+                        </div>
+
+                        <div class="checkout-block reveal">
+                            <h2 class="checkout-block-title">Комментарий к заказу</h2>
                             <div class="form-group">
-                                <label for="name">Имя и фамилия *</label>
-                                <input type="text" id="name" class="form-control" required placeholder="Иван Иванов">
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Телефон *</label>
-                                <input type="tel" id="phone" class="form-control" required
-                                    placeholder="+7 (___) ___-__-__">
-                            </div>
-                            <div class="form-group" style="grid-column: 1 / -1;">
-                                <label for="email">E-mail (для чека и трек-номера) *</label>
-                                <input type="email" id="email" class="form-control" required
-                                    placeholder="example@mail.ru">
+                                <textarea
+                                    id="comment"
+                                    class="form-control"
+                                    rows="3"
+                                    placeholder="Ваши пожелания или особенности доставки..."
+                                ></textarea>
                             </div>
                         </div>
                     </div>
 
-                    <div class="checkout-block reveal reveal-delay-2">
-                        <h2 class="checkout-block-title">Доставка</h2>
-                        <div class="delivery-methods">
-                            <label class="delivery-method">
-                                <input type="radio" name="delivery" value="cdek" checked>
-                                <span class="delivery-method-icon" aria-hidden="true"><i class="fas fa-box"></i></span>
-                                <div class="delivery-method-content">
-                                    <span class="delivery-method-name">СДЭК (до пункта выдачи)</span>
-                                    <span class="delivery-method-price">от 350 ₽</span>
-                                </div>
-                            </label>
-                            <label class="delivery-method">
-                                <input type="radio" name="delivery" value="post">
-                                <span class="delivery-method-icon" aria-hidden="true"><i class="fas fa-envelope"></i></span>
-                                <div class="delivery-method-content">
-                                    <span class="delivery-method-name">Почта России</span>
-                                    <span class="delivery-method-price">от 300 ₽</span>
-                                </div>
-                            </label>
-                            <label class="delivery-method">
-                                <input type="radio" name="delivery" value="courier">
-                                <span class="delivery-method-icon" aria-hidden="true"><i class="fas fa-truck"></i></span>
-                                <div class="delivery-method-content">
-                                    <span class="delivery-method-name">Курьером до двери (СДЭК)</span>
-                                    <span class="delivery-method-price">от 600 ₽</span>
-                                </div>
-                            </label>
+                    <!-- RIGHT COLUMN: SUMMARY -->
+                    <div class="checkout-sidebar reveal">
+                        <div class="checkout-summary-box">
+                            <h3 class="checkout-summary-title">Итого</h3>
+
+                            <div class="checkout-summary-line">
+                                <span id="cart-item-count">Товары</span>
+                                <span id="cart-subtotal">0 ₽</span>
+                            </div>
+                            <div class="checkout-summary-line">
+                                <span>Скидка</span>
+                                <span style="color: var(--c-sage-dark)">0 ₽</span>
+                            </div>
+                            <div class="checkout-summary-line">
+                                <span>Доставка</span>
+                                <span id="deliveryCostText">—</span>
+                            </div>
+
+                            <div class="checkout-summary-total">
+                                <span>К оплате</span>
+                                <span id="cart-total">0 ₽</span>
+                            </div>
+
+                            <div class="checkout-promo">
+                                <input type="text" placeholder="Промокод" class="form-control" />
+                                <button
+                                    type="button"
+                                    class="btn btn-outline"
+                                    style="padding: 0 1rem"
+                                >
+                                    Применить
+                                </button>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Перейти к оплате
+                            </button>
+
+                            <div class="checkout-agreement">
+                                Нажимая кнопку, вы соглашаетесь с
+                                <a href="#">Политикой конфиденциальности</a> и правилами продажи.
+                            </div>
                         </div>
 
-                        <div class="form-group" style="margin-top: 1rem;">
-                            <label for="address">Адрес доставки / Пункт выдачи *</label>
-                            <input type="text" id="address" class="form-control" required
-                                placeholder="Город, улица, дом, квартира">
-                            <small class="form-text">Для ПВЗ СДЭК укажите адрес пункта и город.</small>
-                        </div>
-                    </div>
-
-                    <div class="checkout-block reveal">
-                        <h2 class="checkout-block-title">Комментарий к заказу</h2>
-                        <div class="form-group">
-                            <textarea id="comment" class="form-control" rows="3"
-                                placeholder="Ваши пожелания или особенности доставки..."></textarea>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- RIGHT COLUMN: SUMMARY -->
-                <div class="checkout-sidebar reveal">
-                    <div class="checkout-summary-box">
-                        <h3 class="checkout-summary-title">Итого</h3>
-
-                        <div class="checkout-summary-line">
-                            <span id="cart-item-count">Товары</span>
-                            <span id="cart-subtotal">0 ₽</span>
-                        </div>
-                        <div class="checkout-summary-line">
-                            <span>Скидка</span>
-                            <span style="color:var(--c-sage-dark)">0 ₽</span>
-                        </div>
-                        <div class="checkout-summary-line">
-                            <span>Доставка</span>
-                            <span id="deliveryCostText">—</span>
-                        </div>
-
-                        <div class="checkout-summary-total">
-                            <span>К оплате</span>
-                            <span id="cart-total">0 ₽</span>
-                        </div>
-
-                        <div class="checkout-promo">
-                            <input type="text" placeholder="Промокод" class="form-control">
-                            <button type="button" class="btn btn-outline" style="padding: 0 1rem;">Применить</button>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary btn-block">Перейти к оплате</button>
-
-                        <div class="checkout-agreement">
-                            Нажимая кнопку, вы соглашаетесь с <a href="#">Политикой конфиденциальности</a> и правилами
-                            продажи.
+                        <!-- GIFT WIDGET -->
+                        <div class="gift-widget reveal">
+                            <div class="gift-icon"><i class="fas fa-gift"></i></div>
+                            <div class="gift-content">
+                                <h4>Подарочная упаковка</h4>
+                                <p>Добавить карточку и ленту?</p>
+                                <label class="gift-checkbox">
+                                    <input type="checkbox" id="giftWrap" />
+                                    <span class="checkmark"></span>
+                                    + 300 ₽
+                                </label>
+                            </div>
                         </div>
                     </div>
+                </form>
+            </div>
+        </section>
 
-                    <!-- GIFT WIDGET -->
-                    <div class="gift-widget reveal">
-                        <div class="gift-icon"><i class="fas fa-gift"></i></div>
-                        <div class="gift-content">
-                            <h4>Подарочная упаковка</h4>
-                            <p>Добавить карточку и ленту?</p>
-                            <label class="gift-checkbox">
-                                <input type="checkbox" id="giftWrap">
-                                <span class="checkmark"></span>
-                                + 300 ₽
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </section>
+        <!-- FOOTER -->
+        {{> footer }} {{> modals }}
+        <script type="module" src="/js/main.js"></script>
+        <script type="module">
+            import { getCart, saveCart, updateCartIcon } from '/js/modules/cart.js';
 
-    <!-- FOOTER -->
-    {{> footer }}
-    {{> modals }}
-    <script type="module" src="/js/main.js"></script>
-    <script type="module">
-        import { getCart, saveCart, updateCartIcon } from '/js/modules/cart.js';
+            document.getElementById('checkoutForm').addEventListener('submit', function (e) {
+                e.preventDefault();
 
-        document.getElementById('checkoutForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            
-            const cart = getCart();
-            if (cart.length === 0) {
-                alert('Ваша корзина пуста! Пожалуйста, добавьте товары перед оформлением.');
-                return;
-            }
+                const cart = getCart();
+                if (cart.length === 0) {
+                    alert('Ваша корзина пуста! Пожалуйста, добавьте товары перед оформлением.');
+                    return;
+                }
 
-            // Simple validation example (HTML5 actually handles `required` for us)
-            const phone = document.getElementById('phone').value;
-            if (phone.length < 10) {
-                alert('Пожалуйста, введите корректный номер телефона.');
-                return;
-            }
+                // Simple validation example (HTML5 actually handles `required` for us)
+                const phone = document.getElementById('phone').value;
+                if (phone.length < 10) {
+                    alert('Пожалуйста, введите корректный номер телефона.');
+                    return;
+                }
 
-            // "Process" order and clear cart
-            saveCart([]);
-            updateCartIcon();
-            
-            // Redirect to thanks page
-            window.location.href = 'thanks.html';
-        });
-    </script>
-</body>
+                // "Process" order and clear cart
+                saveCart([]);
+                updateCartIcon();
 
+                // Redirect to thanks page
+                window.location.href = 'thanks.html';
+            });
+        </script>
+    </body>
 </html>

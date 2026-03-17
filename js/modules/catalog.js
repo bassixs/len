@@ -3,7 +3,7 @@ import { openLayer, closeLayer } from './ui-shell.js';
 
 export function initCatalog() {
     // ===== CATEGORY PAGE — FILTER GROUPS =====
-    document.querySelectorAll('.filter-group-title').forEach(title => {
+    document.querySelectorAll('.filter-group-title').forEach((title) => {
         title.addEventListener('click', () => {
             const body = title.nextElementSibling;
             if (body) body.classList.toggle('open');
@@ -35,9 +35,9 @@ export function initCatalog() {
     }
 
     // ===== CATEGORY PAGE — VIEW TOGGLE =====
-    document.querySelectorAll('.view-btn').forEach(btn => {
+    document.querySelectorAll('.view-btn').forEach((btn) => {
         btn.addEventListener('click', () => {
-            document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.view-btn').forEach((b) => b.classList.remove('active'));
             btn.classList.add('active');
         });
     });
@@ -48,8 +48,8 @@ export function initCatalog() {
         const base = import.meta.env.BASE_URL || '/';
         const dataBase = (import.meta.env.BASE_URL || '/') + 'data/products/';
         fetch(dataBase + 'index.json')
-            .then(response => response.json())
-            .then(index => {
+            .then((response) => response.json())
+            .then((index) => {
                 const preview = Array.isArray(index.preview) ? index.preview : [];
                 const total = Number.isFinite(Number(index.total))
                     ? Number(index.total)
@@ -57,9 +57,10 @@ export function initCatalog() {
                 renderProducts(preview, catalogGrid, base);
                 updateCatalogCount(total);
             })
-            .catch(error => {
+            .catch((error) => {
                 console.error('Error loading catalog index:', error);
-                catalogGrid.innerHTML = '<p class="catalog-empty">Не удалось загрузить каталог. Попробуйте позже.</p>';
+                catalogGrid.innerHTML =
+                    '<p class="catalog-empty">Не удалось загрузить каталог. Попробуйте позже.</p>';
             });
     }
 }
@@ -87,7 +88,7 @@ function renderProducts(products, container) {
                 badgesHtml = `<div class="product-badges">
                 ${product.badges
                     .map(
-                        b =>
+                        (b) =>
                             `<span class="badge badge-${safeText(String(b).toLowerCase())}">${safeText(
                                 b
                             )}</span>`
@@ -100,7 +101,7 @@ function renderProducts(products, container) {
             if (product.sizes.length > 0) {
                 sizesHtml = `<div class="product-sizes">
                 ${product.sizes
-                    .map(s => `<span class="size-item available">${safeText(s)}</span>`)
+                    .map((s) => `<span class="size-item available">${safeText(s)}</span>`)
                     .join('')}
             </div>`;
             }
@@ -109,7 +110,7 @@ function renderProducts(products, container) {
             if (product.colors.length > 0) {
                 colorsHtml = `<div class="product-colors">
                 ${product.colors
-                    .map(color => {
+                    .map((color) => {
                         const c = String(color).trim();
                         const isWhite = c.toUpperCase() === '#FFFFFF';
                         const extraStyle = isWhite ? 'border-color:#ddd' : '';

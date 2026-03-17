@@ -2,30 +2,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --c-sage: #9CA986;
+    --c-sage: #9ca986;
     /* Смягченный зеленый (шалфей) */
-    --c-sage-dark: #7A8764;
-    --c-sage-light: #B4C0A0;
-    --c-sage-muted: #C5CEB6;
-    --c-sage-pale: #E1E6D8;
-    --c-cream: #F4F1E1;
+    --c-sage-dark: #7a8764;
+    --c-sage-light: #b4c0a0;
+    --c-sage-muted: #c5ceb6;
+    --c-sage-pale: #e1e6d8;
+    --c-cream: #f4f1e1;
     /* Песочный/льняной */
-    --c-cream-dark: #E8E4D3;
-    --c-cream-light: #F9F7EF;
-    --c-warm-white: #FCFAFA;
+    --c-cream-dark: #e8e4d3;
+    --c-cream-light: #f9f7ef;
+    --c-warm-white: #fcfafa;
     /* Почти белый для главного фона */
-    --c-bg-section: #F3F1EC;
+    --c-bg-section: #f3f1ec;
     /* Мягкий фон для секций */
-    --c-dark: #2A2A2A;
+    --c-dark: #2a2a2a;
     /* Мягкий черный */
     --c-text: #404040;
     /* Основной текст (темно-серый) */
     --c-text-light: #888888;
-    --c-text-muted: #B0B0B0;
+    --c-text-muted: #b0b0b0;
     --c-border: rgba(0, 0, 0, 0.08);
-    --c-white: #FFFFFF;
-    --c-gold: #D4B982;
-    --c-red-sale: #C85A5A;
+    --c-white: #ffffff;
+    --c-gold: #d4b982;
+    --c-red-sale: #c85a5a;
     --ff-heading: 'Cormorant Garamond', Georgia, serif;
     --ff-body: 'Inter', -apple-system, sans-serif;
     --space-xs: 0.5rem;
@@ -166,7 +166,9 @@ button {
 .reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
 }
 
 .reveal.visible {
@@ -202,64 +204,62 @@ button {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px)
+        transform: translateY(30px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0)
+        transform: translateY(0);
     }
 }
 
 @keyframes fadeInDown {
     from {
         opacity: 0;
-        transform: translateY(-20px)
+        transform: translateY(-20px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0)
+        transform: translateY(0);
     }
 }
 
 @keyframes float {
-
     0%,
     100% {
-        transform: translateX(-50%) translateY(0)
+        transform: translateX(-50%) translateY(0);
     }
 
     50% {
-        transform: translateX(-50%) translateY(-10px)
+        transform: translateX(-50%) translateY(-10px);
     }
 }
 
 @keyframes scrollLine {
     0% {
         opacity: 0;
-        height: 0
+        height: 0;
     }
 
     50% {
         opacity: 1;
-        height: 40px
+        height: 40px;
     }
 
     100% {
         opacity: 0;
-        height: 40px
+        height: 40px;
     }
 }
 
 @keyframes pulse {
-
     0%,
     100% {
-        transform: scale(1)
+        transform: scale(1);
     }
 
     50% {
-        transform: scale(1.05)
+        transform: scale(1.05);
     }
 }

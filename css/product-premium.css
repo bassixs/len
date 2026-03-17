@@ -95,7 +95,8 @@
 
 /* REFINED SELECTORS */
 .product-page .color-dot {
-    width: 30px; height: 30px;
+    width: 30px;
+    height: 30px;
     margin-right: 0.5rem;
 }
 
@@ -106,14 +107,17 @@
 }
 
 .size-btn {
-    width: 45px; height: 45px;
+    width: 45px;
+    height: 45px;
     border: 1px solid var(--c-border);
     background: transparent;
     border-radius: 50%;
     font-size: 0.9rem;
     cursor: pointer;
     transition: all var(--transition-fast);
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .size-btn:hover {
     border-color: var(--c-sage-dark);
@@ -151,15 +155,25 @@
 }
 
 .quantity-selector-premium .qty-btn {
-    width: 35px; height: 35px;
-    background: transparent; border: none;
-    font-size: 1.2rem; cursor: pointer; color: var(--c-text);
+    width: 35px;
+    height: 35px;
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--c-text);
 }
 .quantity-selector-premium .qty-input {
-    width: 40px; text-align: center; border: none; background: transparent;
-    font-size: 1rem; font-weight: 500;
+    width: 40px;
+    text-align: center;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    font-weight: 500;
 }
-.quantity-selector-premium .qty-input:focus { outline: none; }
+.quantity-selector-premium .qty-input:focus {
+    outline: none;
+}
 
 .btn-premium {
     flex-grow: 1;
@@ -170,14 +184,17 @@
 }
 
 .btn-wishlist {
-    width: 54px; height: 54px;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
     border: 1px solid var(--c-border);
     background: var(--c-white);
     color: var(--c-text);
     font-size: 1.2rem;
     cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all var(--transition);
 }
 .btn-wishlist:hover {
@@ -236,7 +253,8 @@
     line-height: 1.6;
 }
 .accordion-body-inner ul {
-    padding-left: 1.2rem; margin-top: 0.5rem;
+    padding-left: 1.2rem;
+    margin-top: 0.5rem;
 }
 .accordion-body-inner li {
     margin-bottom: 0.4rem;

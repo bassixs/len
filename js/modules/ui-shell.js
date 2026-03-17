@@ -21,7 +21,7 @@ export function closeLayer(selector) {
 }
 
 export function closeAllLayers() {
-    OPEN_LAYERS.forEach(selector => {
+    OPEN_LAYERS.forEach((selector) => {
         const el = document.querySelector(selector);
         if (el) el.classList.remove('is-open');
     });
@@ -33,10 +33,9 @@ let escBound = false;
 export function bindGlobalEscOnce() {
     if (escBound) return;
     escBound = true;
-    document.addEventListener('keydown', e => {
+    document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeAllLayers();
         }
     });
 }
-

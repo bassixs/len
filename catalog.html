@@ -1,177 +1,260 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Каталог изделий из натурального льна — нжен ЛЁН. Одежда, текстиль, аксессуары."
+        />
+        <title>Каталог — нжен ЛЁН</title>
+        <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+        <link rel="stylesheet" href="styles.css?v=2.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Каталог изделий из натурального льна — нжен ЛЁН. Одежда, текстиль, аксессуары.">
-    <title>Каталог — нжен ЛЁН</title>
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <link rel="stylesheet" href="styles.css?v=2.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-</head>
+    <body>
+        {{> header }}
 
-<body>
-    {{> header }}
-
-    <section class="catalog-hero-minimal">
-        <div class="container">
-            <h1 class="ch-title reveal">Каталог</h1>
-            <p class="ch-count reveal reveal-delay-1">Все изделия (120+)</p>
-            <div class="ch-toolbar reveal reveal-delay-2">
-                <a href="catalog.html" class="ch-subcat active">Все категории</a>
-                <a href="category.html?cat=home-textile" class="ch-subcat">Домашний текстиль</a>
-                <a href="category.html?cat=women" class="ch-subcat">Женская одежда</a>
-                <a href="category.html?cat=men" class="ch-subcat">Мужская одежда</a>
-                <a href="category.html?cat=accessories" class="ch-subcat">Аксессуары</a>
-                <a href="category.html?cat=gifts" class="ch-subcat">Подарки</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="catalog-grid">
-                <div class="product-card reveal">
-                    <div class="product-card-image">
-                        <img src="images/product.dress.webp" alt="Льняное платье" loading="lazy">
-                        <div class="product-badges"><span class="badge badge-new">NEW</span></div>
-                        <div class="product-sizes">
-                            <span class="size-item available">42</span>
-                            <span class="size-item available">44</span>
-                            <span class="size-item available">46</span>
-                            <span class="size-item">48</span>
-                        </div>
-                    </div>
-                    <div class="product-card-info">
-                        <h3 class="product-card-name">Платье льняное «Лаванда»</h3>
-                        <div class="product-card-price"><span class="price-current">4 800 ₽</span></div>
-                        <div class="product-colors">
-                            <span class="color-dot" style="background:#C4A882"></span>
-                            <span class="color-dot" style="background:#7B8F6B"></span>
-                            <span class="color-dot" style="background:#E8DDD0"></span>
-                        </div>
-                        <button type="button" class="btn btn-outline add-to-cart-btn" style="margin-top:0.5rem; width:100%;">В корзину</button>
-                    </div>
-                </div>
-
-                <div class="product-card reveal reveal-delay-1">
-                    <div class="product-card-image">
-                        <img src="images/product.shirt.webp" alt="Рубашка мужская" loading="lazy">
-                        <div class="product-badges"><span class="badge badge-hit">HIT</span></div>
-                        <div class="product-sizes">
-                            <span class="size-item available">48</span>
-                            <span class="size-item available">50</span>
-                            <span class="size-item available">52</span>
-                            <span class="size-item available">54</span>
-                        </div>
-                    </div>
-                    <div class="product-card-info">
-                        <h3 class="product-card-name">Сорочка мужская «Классика»</h3>
-                        <div class="product-card-price"><span class="price-current">3 200 ₽</span></div>
-                        <div class="product-colors">
-                            <span class="color-dot" style="background:#FFFFFF; border-color:#ddd"></span>
-                            <span class="color-dot" style="background:#6B7F5B"></span>
-                            <span class="color-dot" style="background:#C4B89A"></span>
-                        </div>
-                        <button type="button" class="btn btn-outline add-to-cart-btn" style="margin-top:0.5rem; width:100%;">В корзину</button>
-                    </div>
-                </div>
-
-                <div class="product-card reveal reveal-delay-2">
-                    <div class="product-card-image">
-                        <img src="images/product.bedding.webp" alt="Постельный комплект" loading="lazy">
-                        <div class="product-badges">
-                            <span class="badge badge-new">NEW</span>
-                            <span class="badge badge-sale">SALE</span>
-                        </div>
-                        <div class="product-quick-view">
-                            <a href="product.html" class="product-quick-btn">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="product-card-info">
-                        <h3 class="product-card-name">Комплект постельный «Уют»</h3>
-                        <div class="product-card-price">
-                            <span class="price-current">6 500 ₽</span>
-                            <span class="price-old">8 200 ₽</span>
-                        </div>
-                        <div class="product-colors">
-                            <span class="color-dot" style="background:#E8DDD0"></span>
-                            <span class="color-dot" style="background:#B8C4A8"></span>
-                        </div>
-                        <button type="button" class="btn btn-outline add-to-cart-btn" style="margin-top:0.5rem; width:100%;">В корзину</button>
-                    </div>
-                </div>
-
-                <div class="product-card reveal">
-                    <div class="product-card-image">
-                        <img src="images/product.tablecloth.webp" alt="Скатерть льняная" loading="lazy">
-                        <div class="product-badges"><span class="badge badge-hit">HIT</span></div>
-                        <div class="product-quick-view">
-                            <a href="product.html" class="product-quick-btn">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="product-card-info">
-                        <h3 class="product-card-name">Скатерть «Натура» 150×220</h3>
-                        <div class="product-card-price"><span class="price-current">2 900 ₽</span></div>
-                        <div class="product-colors">
-                            <span class="color-dot" style="background:#F5EDE0"></span>
-                            <span class="color-dot" style="background:#D4C8B4"></span>
-                        </div>
-                        <button type="button" class="btn btn-outline add-to-cart-btn" style="margin-top:0.5rem; width:100%;">В корзину</button>
-                    </div>
-                </div>
-
-                <div class="product-card reveal reveal-delay-1">
-                    <div class="product-card-image">
-                        <img src="images/product.blouse.webp" alt="Блузка льняная" loading="lazy">
-                        <div class="product-badges"><span class="badge badge-new">NEW</span></div>
-                        <div class="product-quick-view">
-                            <a href="product.html" class="product-quick-btn">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="product-card-info">
-                        <h3 class="product-card-name">Блузка «Прованс»</h3>
-                        <div class="product-card-price"><span class="price-current">3 600 ₽</span></div>
-                        <div class="product-colors">
-                            <span class="color-dot" style="background:#FFFFFF; border-color:#ddd"></span>
-                            <span class="color-dot" style="background:#B8C4A8"></span>
-                            <span class="color-dot" style="background:#E8C4A0"></span>
-                        </div>
-                        <button type="button" class="btn btn-outline add-to-cart-btn" style="margin-top:0.5rem; width:100%;">В корзину</button>
-                    </div>
-                </div>
-
-                <div class="product-card reveal reveal-delay-2">
-                    <div class="product-card-image">
-                        <img src="images/towels.webp" alt="Полотенце льняное" loading="lazy">
-                        <div class="product-badges"><span class="badge badge-sale">SALE</span></div>
-                        <div class="product-quick-view">
-                            <a href="product.html" class="product-quick-btn">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="product-card-info">
-                        <h3 class="product-card-name">Набор полотенец «Баня»</h3>
-                        <div class="product-card-price">
-                            <span class="price-current">1 800 ₽</span>
-                            <span class="price-old">2 400 ₽</span>
-                        </div>
-                        <div class="product-colors">
-                            <span class="color-dot" style="background:#E8DDD0"></span>
-                            <span class="color-dot" style="background:#A8B898"></span>
-                        </div>
-                        <button type="button" class="btn btn-outline add-to-cart-btn" style="margin-top:0.5rem; width:100%;">В корзину</button>
-                    </div>
+        <section class="catalog-hero-minimal">
+            <div class="container">
+                <h1 class="ch-title reveal">Каталог</h1>
+                <p class="ch-count reveal reveal-delay-1">Все изделия (120+)</p>
+                <div class="ch-toolbar reveal reveal-delay-2">
+                    <a href="catalog.html" class="ch-subcat active">Все категории</a>
+                    <a href="category.html?cat=home-textile" class="ch-subcat">Домашний текстиль</a>
+                    <a href="category.html?cat=women" class="ch-subcat">Женская одежда</a>
+                    <a href="category.html?cat=men" class="ch-subcat">Мужская одежда</a>
+                    <a href="category.html?cat=accessories" class="ch-subcat">Аксессуары</a>
+                    <a href="category.html?cat=gifts" class="ch-subcat">Подарки</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    {{> footer }}
-    {{> modals }}
-    <script type="module" src="/js/main.js"></script>
-</body>
+        <section class="section">
+            <div class="container">
+                <div class="catalog-grid">
+                    <div class="product-card reveal">
+                        <div class="product-card-image">
+                            <img
+                                src="images/product.dress.webp"
+                                alt="Льняное платье"
+                                loading="lazy"
+                            />
+                            <div class="product-badges">
+                                <span class="badge badge-new">NEW</span>
+                            </div>
+                            <div class="product-sizes">
+                                <span class="size-item available">42</span>
+                                <span class="size-item available">44</span>
+                                <span class="size-item available">46</span>
+                                <span class="size-item">48</span>
+                            </div>
+                        </div>
+                        <div class="product-card-info">
+                            <h3 class="product-card-name">Платье льняное «Лаванда»</h3>
+                            <div class="product-card-price">
+                                <span class="price-current">4 800 ₽</span>
+                            </div>
+                            <div class="product-colors">
+                                <span class="color-dot" style="background: #c4a882"></span>
+                                <span class="color-dot" style="background: #7b8f6b"></span>
+                                <span class="color-dot" style="background: #e8ddd0"></span>
+                            </div>
+                            <button
+                                type="button"
+                                class="btn btn-outline add-to-cart-btn"
+                                style="margin-top: 0.5rem; width: 100%"
+                            >
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
 
+                    <div class="product-card reveal reveal-delay-1">
+                        <div class="product-card-image">
+                            <img
+                                src="images/product.shirt.webp"
+                                alt="Рубашка мужская"
+                                loading="lazy"
+                            />
+                            <div class="product-badges">
+                                <span class="badge badge-hit">HIT</span>
+                            </div>
+                            <div class="product-sizes">
+                                <span class="size-item available">48</span>
+                                <span class="size-item available">50</span>
+                                <span class="size-item available">52</span>
+                                <span class="size-item available">54</span>
+                            </div>
+                        </div>
+                        <div class="product-card-info">
+                            <h3 class="product-card-name">Сорочка мужская «Классика»</h3>
+                            <div class="product-card-price">
+                                <span class="price-current">3 200 ₽</span>
+                            </div>
+                            <div class="product-colors">
+                                <span
+                                    class="color-dot"
+                                    style="background: #ffffff; border-color: #ddd"
+                                ></span>
+                                <span class="color-dot" style="background: #6b7f5b"></span>
+                                <span class="color-dot" style="background: #c4b89a"></span>
+                            </div>
+                            <button
+                                type="button"
+                                class="btn btn-outline add-to-cart-btn"
+                                style="margin-top: 0.5rem; width: 100%"
+                            >
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-card reveal reveal-delay-2">
+                        <div class="product-card-image">
+                            <img
+                                src="images/product.bedding.webp"
+                                alt="Постельный комплект"
+                                loading="lazy"
+                            />
+                            <div class="product-badges">
+                                <span class="badge badge-new">NEW</span>
+                                <span class="badge badge-sale">SALE</span>
+                            </div>
+                            <div class="product-quick-view">
+                                <a href="product.html" class="product-quick-btn">Подробнее</a>
+                            </div>
+                        </div>
+                        <div class="product-card-info">
+                            <h3 class="product-card-name">Комплект постельный «Уют»</h3>
+                            <div class="product-card-price">
+                                <span class="price-current">6 500 ₽</span>
+                                <span class="price-old">8 200 ₽</span>
+                            </div>
+                            <div class="product-colors">
+                                <span class="color-dot" style="background: #e8ddd0"></span>
+                                <span class="color-dot" style="background: #b8c4a8"></span>
+                            </div>
+                            <button
+                                type="button"
+                                class="btn btn-outline add-to-cart-btn"
+                                style="margin-top: 0.5rem; width: 100%"
+                            >
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-card reveal">
+                        <div class="product-card-image">
+                            <img
+                                src="images/product.tablecloth.webp"
+                                alt="Скатерть льняная"
+                                loading="lazy"
+                            />
+                            <div class="product-badges">
+                                <span class="badge badge-hit">HIT</span>
+                            </div>
+                            <div class="product-quick-view">
+                                <a href="product.html" class="product-quick-btn">Подробнее</a>
+                            </div>
+                        </div>
+                        <div class="product-card-info">
+                            <h3 class="product-card-name">Скатерть «Натура» 150×220</h3>
+                            <div class="product-card-price">
+                                <span class="price-current">2 900 ₽</span>
+                            </div>
+                            <div class="product-colors">
+                                <span class="color-dot" style="background: #f5ede0"></span>
+                                <span class="color-dot" style="background: #d4c8b4"></span>
+                            </div>
+                            <button
+                                type="button"
+                                class="btn btn-outline add-to-cart-btn"
+                                style="margin-top: 0.5rem; width: 100%"
+                            >
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-card reveal reveal-delay-1">
+                        <div class="product-card-image">
+                            <img
+                                src="images/product.blouse.webp"
+                                alt="Блузка льняная"
+                                loading="lazy"
+                            />
+                            <div class="product-badges">
+                                <span class="badge badge-new">NEW</span>
+                            </div>
+                            <div class="product-quick-view">
+                                <a href="product.html" class="product-quick-btn">Подробнее</a>
+                            </div>
+                        </div>
+                        <div class="product-card-info">
+                            <h3 class="product-card-name">Блузка «Прованс»</h3>
+                            <div class="product-card-price">
+                                <span class="price-current">3 600 ₽</span>
+                            </div>
+                            <div class="product-colors">
+                                <span
+                                    class="color-dot"
+                                    style="background: #ffffff; border-color: #ddd"
+                                ></span>
+                                <span class="color-dot" style="background: #b8c4a8"></span>
+                                <span class="color-dot" style="background: #e8c4a0"></span>
+                            </div>
+                            <button
+                                type="button"
+                                class="btn btn-outline add-to-cart-btn"
+                                style="margin-top: 0.5rem; width: 100%"
+                            >
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-card reveal reveal-delay-2">
+                        <div class="product-card-image">
+                            <img src="images/towels.webp" alt="Полотенце льняное" loading="lazy" />
+                            <div class="product-badges">
+                                <span class="badge badge-sale">SALE</span>
+                            </div>
+                            <div class="product-quick-view">
+                                <a href="product.html" class="product-quick-btn">Подробнее</a>
+                            </div>
+                        </div>
+                        <div class="product-card-info">
+                            <h3 class="product-card-name">Набор полотенец «Баня»</h3>
+                            <div class="product-card-price">
+                                <span class="price-current">1 800 ₽</span>
+                                <span class="price-old">2 400 ₽</span>
+                            </div>
+                            <div class="product-colors">
+                                <span class="color-dot" style="background: #e8ddd0"></span>
+                                <span class="color-dot" style="background: #a8b898"></span>
+                            </div>
+                            <button
+                                type="button"
+                                class="btn btn-outline add-to-cart-btn"
+                                style="margin-top: 0.5rem; width: 100%"
+                            >
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {{> footer }} {{> modals }}
+        <script type="module" src="/js/main.js"></script>
+    </body>
 </html>

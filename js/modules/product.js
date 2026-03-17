@@ -1,7 +1,6 @@
 import { normalizeProduct, formatPrice, resolveImageUrl, safeText } from './product-model.js';
 import { initAccordionGroup } from './accordion.js';
 
-const BASE = import.meta.env.BASE_URL || '/';
 const DATA_PRODUCTS_BASE = `${import.meta.env.BASE_URL || '/'}data/products/`;
 const CATEGORY_LABELS = {
     'home-textile': 'Домашний текстиль',
@@ -10,14 +9,14 @@ const CATEGORY_LABELS = {
     socks: 'Льняные носки',
     gifts: 'Подарки и сувениры',
     accessories: 'Аксессуары',
-    fabrics: 'Льняные ткани'
+    fabrics: 'Льняные ткани',
 };
 
 export function initProductPage() {
     // Подгружаем данные товара по id из URL
     const params = new URLSearchParams(window.location.search);
     const productId = params.get('id');
-    loadProduct(productId).catch(err => {
+    loadProduct(productId).catch((err) => {
         console.error('Product load error:', err);
         showProductLoadError();
     });
@@ -33,10 +32,10 @@ export function initProductPage() {
     // Color Selector UI Logic
     const colorOptions = document.querySelectorAll('.color-dot');
     const colorNameDisplay = document.getElementById('colorName');
-    
-    colorOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            colorOptions.forEach(btn => btn.classList.remove('active'));
+
+    colorOptions.forEach((option) => {
+        option.addEventListener('click', function () {
+            colorOptions.forEach((btn) => btn.classList.remove('active'));
             this.classList.add('active');
             if (colorNameDisplay) {
                 colorNameDisplay.textContent = this.dataset.color || '';
@@ -46,10 +45,10 @@ export function initProductPage() {
 
     // Size Selector UI Logic
     const sizeBtns = document.querySelectorAll('.size-btn');
-    sizeBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
+    sizeBtns.forEach((btn) => {
+        btn.addEventListener('click', function (e) {
             e.preventDefault();
-            sizeBtns.forEach(b => b.classList.remove('active'));
+            sizeBtns.forEach((b) => b.classList.remove('active'));
             this.classList.add('active');
         });
     });
@@ -105,7 +104,7 @@ async function loadProduct(id) {
         throw new Error(`Cannot load category file ${cat}.json: HTTP ${catResp.status}`);
     }
     const products = await catResp.json();
-    const product = products.find(p => p.id === resolvedId);
+    const product = products.find((p) => p.id === resolvedId);
     if (!product) {
         throw new Error(`Product not found in category file ${cat}.json for ${resolvedId}`);
     }
@@ -144,7 +143,7 @@ function renderProduct(rawProduct, cat) {
     }
     if (!images.length) return;
 
-    const srcs = images.map(src => resolveImageUrl(src));
+    const srcs = images.map((src) => resolveImageUrl(src));
 
     const mainSrc = srcs[0];
     const thumbs = srcs.slice(1);
@@ -180,16 +179,14 @@ function renderProduct(rawProduct, cat) {
 
     if (thumbs.length) {
         const mainImg = galleryRoot.querySelector('#productMainImg');
-        const thumbBtns = Array.from(
-            galleryRoot.querySelectorAll('.product-thumb')
-        );
-        thumbBtns.forEach(btn => {
+        const thumbBtns = Array.from(galleryRoot.querySelectorAll('.product-thumb'));
+        thumbBtns.forEach((btn) => {
             btn.addEventListener('click', () => {
                 const src = btn.getAttribute('data-src');
                 if (src && mainImg) {
                     mainImg.setAttribute('src', src);
                 }
-                thumbBtns.forEach(b => b.classList.remove('active'));
+                thumbBtns.forEach((b) => b.classList.remove('active'));
                 btn.classList.add('active');
             });
         });
@@ -203,13 +200,15 @@ function showProductLoadError() {
     if (titleEl) titleEl.textContent = 'Товар временно недоступен';
     if (priceEl) priceEl.textContent = '—';
     if (galleryRoot) {
-        galleryRoot.innerHTML = '<div class="category-empty">Не удалось загрузить карточку товара. Попробуйте позже.</div>';
+        galleryRoot.innerHTML =
+            '<div class="category-empty">Не удалось загрузить карточку товара. Попробуйте позже.</div>';
     }
 }
 
-function escapeHtml(s) {
-    if (s == null) return '';
-    const div = document.createElement('div');
-    div.textContent = s;
-    return div.innerHTML;
-}
+// Legacy utility kept for reference; not used in current renderer.
+// function escapeHtml(s) {
+//     if (s == null) return '';
+//     const div = document.createElement('div');
+//     div.textContent = s;
+//     return div.innerHTML;
+// }

@@ -6,7 +6,6 @@ import {
     addItem,
     removeItem,
     updateItemQuantity,
-    cartSubtotal,
 } from './cart-service.js';
 
 const DELIVERY_PRICES = { cdek: 350, post: 300, courier: 600 };
@@ -18,10 +17,14 @@ export function initCart() {
 
     // Attach to add to cart buttons
     const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
-    addToCartBtns.forEach(btn => {
+    addToCartBtns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
             // Support both old grid layout and new split-screen layout
-            const card = e.target.closest('.product-card') || e.target.closest('.product-info') || e.target.closest('.product-info-sticky') || e.target.closest('.product-detail-grid');
+            const card =
+                e.target.closest('.product-card') ||
+                e.target.closest('.product-info') ||
+                e.target.closest('.product-info-sticky') ||
+                e.target.closest('.product-detail-grid');
             if (!card) return;
 
             let product = {
@@ -29,13 +32,17 @@ export function initCart() {
                 name: 'Product',
                 price: 0,
                 img: '',
-                quantity: 1
+                quantity: 1,
             };
 
-            const nameEl = card.querySelector('.product-card-name, .product-title, .product-title-premium');
+            const nameEl = card.querySelector(
+                '.product-card-name, .product-title, .product-title-premium'
+            );
             if (nameEl) product.name = nameEl.textContent.trim();
 
-            const priceEl = card.querySelector('.price-current, .product-price, .product-price-premium');
+            const priceEl = card.querySelector(
+                '.price-current, .product-price, .product-price-premium'
+            );
             if (priceEl) {
                 // Parse integer from string like '3 400 ₽'
                 product.price = parseInt(priceEl.textContent.replace(/\D/g, ''), 10) || 0;
@@ -44,14 +51,14 @@ export function initCart() {
             // For product page, image is in gallery, which is outside info block
             const formContainer = e.target.closest('.product-split'); // new layout
             const gridContainer = e.target.closest('.product-detail-grid'); // old layout
-            
+
             let imgEl = card.querySelector('img'); // For catalog cards
             if (!imgEl && formContainer) {
                 imgEl = formContainer.querySelector('#productMainImg');
             } else if (!imgEl && gridContainer) {
                 imgEl = gridContainer.querySelector('#productMainImg');
             }
-            
+
             if (imgEl) product.img = imgEl.src;
 
             // Prefer explicit product id from dataset or URL.
@@ -63,11 +70,12 @@ export function initCart() {
                 product.id = urlId;
             } else {
                 // Deterministic fallback for legacy static cards without product id.
-                product.id = 'name_' + btoa(unescape(encodeURIComponent(product.name))).replace(/=+$/, '');
+                product.id =
+                    'name_' + btoa(unescape(encodeURIComponent(product.name))).replace(/=+$/, '');
             }
 
             addToCart(product);
-            
+
             // Show feedback using toast and minicart instead of button text
             showToast(`«${product.name}» добавлено в корзину`);
             openMiniCart();
@@ -89,9 +97,9 @@ function showToast(message) {
     const toast = document.createElement('div');
     toast.className = 'toast reveal'; // simple animation class
     toast.innerHTML = `<i class="fas fa-check-circle"></i> <span>${message}</span>`;
-    
+
     container.appendChild(toast);
-    
+
     // Trigger reflow for animation
     setTimeout(() => toast.classList.add('toast--visible'), 10);
 
@@ -106,7 +114,7 @@ function initMiniCart() {
     const overlay = document.getElementById('cartOverlay');
     const closeBtn = document.getElementById('cartDrawerClose');
 
-    cartLinks.forEach(link => {
+    cartLinks.forEach((link) => {
         link.addEventListener('click', (e) => {
             // Only prevent default and open drawer if not on cart page
             if (!window.location.pathname.includes('cart.html')) {
@@ -137,7 +145,7 @@ function renderMiniCart() {
     if (!container) return;
 
     const cart = getCart();
-    
+
     if (cart.length === 0) {
         container.innerHTML = '<div class="cart-drawer-empty">Ваша корзина пуста</div>';
         if (totalEl) totalEl.textContent = '0 ₽';
@@ -147,7 +155,7 @@ function renderMiniCart() {
     let html = '';
     let total = 0;
 
-    cart.forEach(item => {
+    cart.forEach((item) => {
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
         html += `
@@ -201,7 +209,7 @@ export function updateCartIcon() {
     const cart = getCart();
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     const badges = document.querySelectorAll('.cart-badge');
-    badges.forEach(badge => {
+    badges.forEach((badge) => {
         badge.textContent = totalItems;
         if (totalItems > 0) {
             badge.style.display = 'flex';
@@ -214,13 +222,13 @@ export function updateCartIcon() {
 export function renderCartPage() {
     const cartContainer = document.querySelector('.cart-items:not(.cart-drawer-items)');
     const summarySubtotal = document.getElementById('cart-subtotal');
-    const summaryTotal = document.getElementById('cart-total');
     if (!cartContainer) return;
 
     const cart = getCart();
-    
+
     if (cart.length === 0) {
-        cartContainer.innerHTML = '<p class="cart-empty-message">Ваша корзина пуста. <a href="catalog.html">Перейти к покупкам</a></p>';
+        cartContainer.innerHTML =
+            '<p class="cart-empty-message">Ваша корзина пуста. <a href="catalog.html">Перейти к покупкам</a></p>';
         if (summarySubtotal) summarySubtotal.textContent = '0 ₽';
         const countEl = document.getElementById('cart-item-count');
         if (countEl) countEl.textContent = 'Товары';
@@ -238,7 +246,7 @@ export function renderCartPage() {
     let html = '';
     let total = 0;
 
-    cart.forEach(item => {
+    cart.forEach((item) => {
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
         html += `
@@ -271,7 +279,7 @@ export function renderCartPage() {
 
     if (summarySubtotal) summarySubtotal.textContent = formatPrice(total);
     updateCheckoutSummary(total);
-    
+
     // Re-enable checkout button
     const checkoutBtn = document.querySelector('.checkout-summary-box .btn');
     if (checkoutBtn) {
@@ -288,9 +296,9 @@ function attachCartPageListeners() {
     const cartContainer = document.querySelector('.cart-items:not(.cart-drawer-items)');
     if (!cartContainer) return;
 
-    cartContainer.querySelectorAll('.cart-item').forEach(itemEl => {
+    cartContainer.querySelectorAll('.cart-item').forEach((itemEl) => {
         const id = itemEl.dataset.id;
-        
+
         const minusBtn = itemEl.querySelector('.qty-btn.minus');
         const plusBtn = itemEl.querySelector('.qty-btn.plus');
         const input = itemEl.querySelector('.qty-input');
@@ -317,7 +325,8 @@ function attachCartPageListeners() {
 }
 
 function pluralize(n, one, few, many) {
-    const mod10 = n % 10, mod100 = n % 100;
+    const mod10 = n % 10,
+        mod100 = n % 100;
     if (mod100 >= 11 && mod100 <= 14) return `${n} ${many}`;
     if (mod10 === 1) return `${n} ${one}`;
     if (mod10 >= 2 && mod10 <= 4) return `${n} ${few}`;
@@ -336,14 +345,15 @@ function updateCheckoutSummary(subtotal) {
     let deliveryCost = DELIVERY_PRICES.cdek;
     if (deliveryRadios.length) {
         const checked = document.querySelector('input[name="delivery"]:checked');
-        if (checked && DELIVERY_PRICES[checked.value] !== undefined) deliveryCost = DELIVERY_PRICES[checked.value];
+        if (checked && DELIVERY_PRICES[checked.value] !== undefined)
+            deliveryCost = DELIVERY_PRICES[checked.value];
     }
     if (deliveryEl) deliveryEl.textContent = formatPrice(deliveryCost);
     if (totalEl) totalEl.textContent = formatPrice(subtotal + deliveryCost);
 }
 
 function initCartPageDelivery() {
-    document.querySelectorAll('input[name="delivery"]').forEach(radio => {
+    document.querySelectorAll('input[name="delivery"]').forEach((radio) => {
         radio.addEventListener('change', () => {
             const cart = getCart();
             const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);

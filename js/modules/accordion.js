@@ -8,19 +8,17 @@ export function initAccordionGroup({
     const triggers = document.querySelectorAll(triggerSelector);
     if (!triggers.length) return;
 
-    const container = containerSelector
-        ? document.querySelector(containerSelector)
-        : document;
+    const container = containerSelector ? document.querySelector(containerSelector) : document;
 
     const allTriggers = container.querySelectorAll(triggerSelector);
 
-    allTriggers.forEach(trigger => {
+    allTriggers.forEach((trigger) => {
         trigger.addEventListener('click', () => {
             const body = trigger.nextElementSibling;
             const isActive = trigger.classList.contains(triggerActiveClass);
 
             if (closeOthers) {
-                allTriggers.forEach(t => {
+                allTriggers.forEach((t) => {
                     if (t === trigger) return;
                     t.classList.remove(triggerActiveClass);
                     const b = t.nextElementSibling;
@@ -40,4 +38,3 @@ export function initAccordionGroup({
         });
     });
 }
-

@@ -1,109 +1,180 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Блог о натуральном льне — Нжен ЛЁН. Советы, уход, новости о льняных изделиях."
+        />
+        <title>Блог — Нжен ЛЁН</title>
+        <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+        <link rel="stylesheet" href="styles.css?v=2.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Блог о натуральном льне — Нжен ЛЁН. Советы, уход, новости о льняных изделиях.">
-    <title>Блог — Нжен ЛЁН</title>
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <link rel="stylesheet" href="styles.css?v=2.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-</head>
+    <body>
+        {{> header }}
 
-<body>
-    {{> header }}
-
-    <section class="dlv-hero">
-        <div class="container">
-            <div class="breadcrumbs">
-                <a href="index.html">Главная</a>
-                <span>/</span>
-                <span>Блог</span>
+        <section class="dlv-hero">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <a href="index.html">Главная</a>
+                    <span>/</span>
+                    <span>Блог</span>
+                </div>
+                <h1 class="dlv-hero-title">Блог</h1>
+                <p class="dlv-hero-subtitle">
+                    Статьи о натуральном льне, уходе за вещами и новости от Нжен ЛЁН
+                </p>
             </div>
-            <h1 class="dlv-hero-title">Блог</h1>
-            <p class="dlv-hero-subtitle">Статьи о натуральном льне, уходе за вещами и новости от Нжен ЛЁН</p>
-        </div>
-    </section>
+        </section>
 
-    <section class="section">
-        <div class="container">
-            <div class="blog-grid">
-                <a href="#" class="blog-card reveal">
-                    <div class="blog-card-image"><img
-                            src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80" alt="Скатерть">
-                    </div>
-                    <div class="blog-card-body">
-                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 10 января 2026</div>
-                        <h3 class="blog-card-title">Как ухаживать за льняными скатертями</h3>
-                        <p class="blog-card-excerpt">Правильная стирка, глажка и хранение помогут сохранить ваши льняные изделия в идеальном состоянии долгие годы.</p>
-                        <span class="blog-card-link">Читать статью <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </a>
-                <a href="#" class="blog-card reveal reveal-delay-1">
-                    <div class="blog-card-image"><img
-                            src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80" alt="Ткань">
-                    </div>
-                    <div class="blog-card-body">
-                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 5 января 2026</div>
-                        <h3 class="blog-card-title">Тренды лето-осень 2026: лён в моде</h3>
-                        <p class="blog-card-excerpt">Обзор главных трендов сезона: натуральные ткани, спокойные оттенки и экологичная мода в каждой детали.</p>
-                        <span class="blog-card-link">Читать статью <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </a>
-                <a href="#" class="blog-card reveal reveal-delay-2">
-                    <div class="blog-card-image"><img
-                            src="https://images.unsplash.com/photo-1616627561950-9f746e330187?w=600&q=80" alt="Постельное бельё">
-                    </div>
-                    <div class="blog-card-body">
-                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 28 декабря 2025</div>
-                        <h3 class="blog-card-title">Почему постельное бельё из льна: польза для сна</h3>
-                        <p class="blog-card-excerpt">5 причин выбрать льняное постельное бельё для здорового сна и комфорта в любое время года.</p>
-                        <span class="blog-card-link">Читать статью <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </a>
-                <a href="#" class="blog-card reveal">
-                    <div class="blog-card-image"><img
-                            src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80" alt="Одежда">
-                    </div>
-                    <div class="blog-card-body">
-                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 20 декабря 2025</div>
-                        <h3 class="blog-card-title">Льняная одежда: как сочетать с базой гардероба</h3>
-                        <p class="blog-card-excerpt">Универсальные образы с льняными блузами, брюками и платьями для офиса и выходных.</p>
-                        <span class="blog-card-link">Читать статью <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </a>
-                <a href="#" class="blog-card reveal reveal-delay-1">
-                    <div class="blog-card-image"><img
-                            src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&q=80" alt="Полотенца">
-                    </div>
-                    <div class="blog-card-body">
-                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 15 декабря 2025</div>
-                        <h3 class="blog-card-title">Что выбрать: полотенца из льна или хлопка</h3>
-                        <p class="blog-card-excerpt">Сравнение материалов по впитываемости, долговечности и уходу за тканью.</p>
-                        <span class="blog-card-link">Читать статью <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </a>
-                <a href="#" class="blog-card reveal reveal-delay-2">
-                    <div class="blog-card-image"><img
-                            src="https://images.unsplash.com/photo-1516826957135-700dedea698c?w=600&q=80" alt="Интерьер">
-                    </div>
-                    <div class="blog-card-body">
-                        <div class="blog-card-date"><i class="fas fa-calendar"></i> 8 декабря 2025</div>
-                        <h3 class="blog-card-title">Лён в интерьере: идеи для уютного дома</h3>
-                        <p class="blog-card-excerpt">Как добавить льняной текстиль в декор и создать атмосферу тепла и натуральности.</p>
-                        <span class="blog-card-link">Читать статью <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </a>
+        <section class="section">
+            <div class="container">
+                <div class="blog-grid">
+                    <a href="#" class="blog-card reveal">
+                        <div class="blog-card-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80"
+                                alt="Скатерть"
+                            />
+                        </div>
+                        <div class="blog-card-body">
+                            <div class="blog-card-date">
+                                <i class="fas fa-calendar"></i> 10 января 2026
+                            </div>
+                            <h3 class="blog-card-title">Как ухаживать за льняными скатертями</h3>
+                            <p class="blog-card-excerpt">
+                                Правильная стирка, глажка и хранение помогут сохранить ваши льняные
+                                изделия в идеальном состоянии долгие годы.
+                            </p>
+                            <span class="blog-card-link"
+                                >Читать статью <i class="fas fa-arrow-right"></i
+                            ></span>
+                        </div>
+                    </a>
+                    <a href="#" class="blog-card reveal reveal-delay-1">
+                        <div class="blog-card-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80"
+                                alt="Ткань"
+                            />
+                        </div>
+                        <div class="blog-card-body">
+                            <div class="blog-card-date">
+                                <i class="fas fa-calendar"></i> 5 января 2026
+                            </div>
+                            <h3 class="blog-card-title">Тренды лето-осень 2026: лён в моде</h3>
+                            <p class="blog-card-excerpt">
+                                Обзор главных трендов сезона: натуральные ткани, спокойные оттенки и
+                                экологичная мода в каждой детали.
+                            </p>
+                            <span class="blog-card-link"
+                                >Читать статью <i class="fas fa-arrow-right"></i
+                            ></span>
+                        </div>
+                    </a>
+                    <a href="#" class="blog-card reveal reveal-delay-2">
+                        <div class="blog-card-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1616627561950-9f746e330187?w=600&q=80"
+                                alt="Постельное бельё"
+                            />
+                        </div>
+                        <div class="blog-card-body">
+                            <div class="blog-card-date">
+                                <i class="fas fa-calendar"></i> 28 декабря 2025
+                            </div>
+                            <h3 class="blog-card-title">
+                                Почему постельное бельё из льна: польза для сна
+                            </h3>
+                            <p class="blog-card-excerpt">
+                                5 причин выбрать льняное постельное бельё для здорового сна и
+                                комфорта в любое время года.
+                            </p>
+                            <span class="blog-card-link"
+                                >Читать статью <i class="fas fa-arrow-right"></i
+                            ></span>
+                        </div>
+                    </a>
+                    <a href="#" class="blog-card reveal">
+                        <div class="blog-card-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80"
+                                alt="Одежда"
+                            />
+                        </div>
+                        <div class="blog-card-body">
+                            <div class="blog-card-date">
+                                <i class="fas fa-calendar"></i> 20 декабря 2025
+                            </div>
+                            <h3 class="blog-card-title">
+                                Льняная одежда: как сочетать с базой гардероба
+                            </h3>
+                            <p class="blog-card-excerpt">
+                                Универсальные образы с льняными блузами, брюками и платьями для
+                                офиса и выходных.
+                            </p>
+                            <span class="blog-card-link"
+                                >Читать статью <i class="fas fa-arrow-right"></i
+                            ></span>
+                        </div>
+                    </a>
+                    <a href="#" class="blog-card reveal reveal-delay-1">
+                        <div class="blog-card-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&q=80"
+                                alt="Полотенца"
+                            />
+                        </div>
+                        <div class="blog-card-body">
+                            <div class="blog-card-date">
+                                <i class="fas fa-calendar"></i> 15 декабря 2025
+                            </div>
+                            <h3 class="blog-card-title">
+                                Что выбрать: полотенца из льна или хлопка
+                            </h3>
+                            <p class="blog-card-excerpt">
+                                Сравнение материалов по впитываемости, долговечности и уходу за
+                                тканью.
+                            </p>
+                            <span class="blog-card-link"
+                                >Читать статью <i class="fas fa-arrow-right"></i
+                            ></span>
+                        </div>
+                    </a>
+                    <a href="#" class="blog-card reveal reveal-delay-2">
+                        <div class="blog-card-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1516826957135-700dedea698c?w=600&q=80"
+                                alt="Интерьер"
+                            />
+                        </div>
+                        <div class="blog-card-body">
+                            <div class="blog-card-date">
+                                <i class="fas fa-calendar"></i> 8 декабря 2025
+                            </div>
+                            <h3 class="blog-card-title">Лён в интерьере: идеи для уютного дома</h3>
+                            <p class="blog-card-excerpt">
+                                Как добавить льняной текстиль в декор и создать атмосферу тепла и
+                                натуральности.
+                            </p>
+                            <span class="blog-card-link"
+                                >Читать статью <i class="fas fa-arrow-right"></i
+                            ></span>
+                        </div>
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    {{> footer }}
-    {{> modals }}
-    <script type="module" src="/js/main.js"></script>
-</body>
-
+        {{> footer }} {{> modals }}
+        <script type="module" src="/js/main.js"></script>
+    </body>
 </html>
