@@ -31,19 +31,19 @@ export function initSliders() {
 
         productsSlider.addEventListener('mousedown', (e) => {
             isDown = true;
-            productsSlider.style.cursor = 'grabbing';
+            productsSlider.classList.replace('slider--grab', 'slider--grabbing');
             startX = e.pageX - productsSlider.offsetLeft;
             scrollLeft = productsSlider.scrollLeft;
         });
 
         productsSlider.addEventListener('mouseleave', () => {
             isDown = false;
-            productsSlider.style.cursor = 'grab';
+            productsSlider.classList.replace('slider--grabbing', 'slider--grab');
         });
 
         productsSlider.addEventListener('mouseup', () => {
             isDown = false;
-            productsSlider.style.cursor = 'grab';
+            productsSlider.classList.replace('slider--grabbing', 'slider--grab');
         });
 
         productsSlider.addEventListener('mousemove', (e) => {
@@ -54,6 +54,6 @@ export function initSliders() {
             productsSlider.scrollLeft = scrollLeft - walk;
         });
 
-        productsSlider.style.cursor = 'grab';
+        productsSlider.classList.add('slider--grab');
     }
 }

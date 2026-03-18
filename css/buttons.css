@@ -75,3 +75,17 @@
 .btn:hover i {
     transform: translateX(4px);
 }
+
+.btn-block {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Slider grab cursors */
+.slider--grab {
+    cursor: grab;
+}
+.slider--grabbing {
+    cursor: grabbing;
+}

@@ -43,61 +43,24 @@
                             <h1 class="product-title-premium" id="productTitle">Название товара</h1>
                             <div class="product-price-premium" id="productPrice">0 ₽</div>
 
-                            <p class="product-desc-premium">
-                                Элегантное платье из 100% натурального европейского льна высшего
-                                качества. Классический силуэт подчёркивает фигуру, а дышащая
-                                текстура ткани делает платье невероятно комфортным для ежедневного
-                                ношения.
-                            </p>
+                            <p class="product-desc-premium" id="productDesc"></p>
 
                             <form class="product-form" id="addToCartForm">
-                                <div class="option-group">
+                                <div class="option-group" id="colorGroup" style="display: none">
                                     <div class="option-label-wrap">
                                         <span class="option-label"
-                                            >Цвет <span id="colorName">Бежевый</span></span
-                                        >
-                                    </div>
-                                    <div class="size-selector" id="colorSelector">
-                                        <span
-                                            class="color-dot active"
-                                            style="background: #c4a882"
-                                            data-color="Бежевый"
-                                            title="Бежевый"
-                                        ></span>
-                                        <span
-                                            class="color-dot"
-                                            style="background: #7b8f6b"
-                                            data-color="Зелёный"
-                                            title="Зелёный"
-                                        ></span>
-                                        <span
-                                            class="color-dot"
-                                            style="background: #e8ddd0"
-                                            data-color="Молочный"
-                                            title="Молочный"
+                                            >Цвет <span id="colorName"></span
                                         ></span>
                                     </div>
+                                    <div class="size-selector" id="colorSelector"></div>
                                 </div>
 
-                                <div class="option-group">
+                                <div class="option-group" id="sizeGroup" style="display: none">
                                     <div class="option-label-wrap">
                                         <span class="option-label">Размер</span>
                                         <a href="#" class="size-guide-link">Таблица размеров</a>
                                     </div>
-                                    <div class="size-selector" id="sizeSelector">
-                                        <button type="button" class="size-btn" data-size="XS">
-                                            XS
-                                        </button>
-                                        <button type="button" class="size-btn" data-size="S">
-                                            S
-                                        </button>
-                                        <button type="button" class="size-btn active" data-size="M">
-                                            M
-                                        </button>
-                                        <button type="button" class="size-btn" data-size="L">
-                                            L
-                                        </button>
-                                    </div>
+                                    <div class="size-selector" id="sizeSelector"></div>
                                 </div>
 
                                 <div class="product-actions-premium">
@@ -148,22 +111,14 @@
                                     </button>
                                     <div class="accordion-body">
                                         <div class="accordion-body-inner">
-                                            <table class="specs-table">
+                                            <table class="specs-table" id="specsTable">
                                                 <tr>
                                                     <td>Состав</td>
                                                     <td>100% умягченный лён</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Плотность</td>
-                                                    <td>185 г/м²</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Длина</td>
-                                                    <td>Миди (115 см)</td>
-                                                </tr>
-                                                <tr>
                                                     <td>Производство</td>
-                                                    <td>Собственный цех (Россия)</td>
+                                                    <td>Оршанский льнокомбинат (Беларусь)</td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -222,92 +177,13 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="relatedSection" style="display: none">
             <div class="container">
                 <div class="section-header reveal">
                     <h2 class="section-title">Похожие товары</h2>
                     <p class="section-subtitle">Вам также может понравиться</p>
                 </div>
-                <div class="new-products-grid">
-                    <div class="product-card reveal">
-                        <div class="product-card-image">
-                            <img
-                                src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80"
-                                alt="Сарафан"
-                            />
-                            <div class="product-badges">
-                                <span class="badge badge-hit">HIT</span>
-                            </div>
-                            <div class="product-quick-view">
-                                <a href="product.html" class="product-quick-btn">Подробнее</a>
-                            </div>
-                        </div>
-                        <div class="product-card-info">
-                            <h3 class="product-card-name">Сарафан «Солнце»</h3>
-                            <div class="product-card-price">
-                                <span class="price-current">4 200 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card reveal reveal-delay-1">
-                        <div class="product-card-image">
-                            <img
-                                src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a3d?w=600&q=80"
-                                alt="Блузка"
-                            />
-                            <div class="product-quick-view">
-                                <a href="product.html" class="product-quick-btn">Подробнее</a>
-                            </div>
-                        </div>
-                        <div class="product-card-info">
-                            <h3 class="product-card-name">Блузка «Прованс»</h3>
-                            <div class="product-card-price">
-                                <span class="price-current">3 600 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card reveal reveal-delay-2">
-                        <div class="product-card-image">
-                            <img
-                                src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80"
-                                alt="Брюки"
-                            />
-                            <div class="product-badges">
-                                <span class="badge badge-new">NEW</span>
-                            </div>
-                            <div class="product-quick-view">
-                                <a href="product.html" class="product-quick-btn">Подробнее</a>
-                            </div>
-                        </div>
-                        <div class="product-card-info">
-                            <h3 class="product-card-name">Брюки «Летний бриз»</h3>
-                            <div class="product-card-price">
-                                <span class="price-current">3 400 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card reveal reveal-delay-3">
-                        <div class="product-card-image">
-                            <img
-                                src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80"
-                                alt="Юбка"
-                            />
-                            <div class="product-badges">
-                                <span class="badge badge-sale">SALE</span>
-                            </div>
-                            <div class="product-quick-view">
-                                <a href="product.html" class="product-quick-btn">Подробнее</a>
-                            </div>
-                        </div>
-                        <div class="product-card-info">
-                            <h3 class="product-card-name">Юбка «Маркиза»</h3>
-                            <div class="product-card-price">
-                                <span class="price-current">2 800 ₽</span
-                                ><span class="price-old">3 500 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="new-products-grid" id="relatedGrid"></div>
             </div>
         </section>
 

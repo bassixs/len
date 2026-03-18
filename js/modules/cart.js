@@ -1,5 +1,6 @@
 import { formatPrice } from './product-model.js';
 import { openLayer, closeLayer } from './ui-shell.js';
+import { showToast } from './toast.js';
 import {
     getCart as getStoredCart,
     saveCart as saveStoredCart,
@@ -127,26 +128,7 @@ export function initCart() {
     }
 }
 
-// ===== TOAST & MINICART LOGIC =====
-
-function showToast(message) {
-    let container = document.getElementById('toastContainer');
-    if (!container) return; // Assuming it's in modals.html
-
-    const toast = document.createElement('div');
-    toast.className = 'toast reveal'; // simple animation class
-    toast.innerHTML = `<i class="fas fa-check-circle"></i> <span>${message}</span>`;
-
-    container.appendChild(toast);
-
-    // Trigger reflow for animation
-    setTimeout(() => toast.classList.add('toast--visible'), 10);
-
-    setTimeout(() => {
-        toast.classList.remove('toast--visible');
-        setTimeout(() => toast.remove(), 300); // Wait for fade out
-    }, 3000);
-}
+// ===== MINICART LOGIC =====
 
 function initMiniCart() {
     const cartLinks = document.querySelectorAll('.header-cart');

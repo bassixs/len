@@ -1,5 +1,6 @@
 import { normalizeProduct, formatPrice, resolveImageUrl, safeText } from './product-model.js';
 import { openLayer, closeLayer } from './ui-shell.js';
+import { showToast } from './toast.js';
 
 function sortProducts(products, sortKey) {
     if (!sortKey) return products;
@@ -90,6 +91,7 @@ export function initCatalog() {
                 console.error('Error loading catalog index:', error);
                 catalogGrid.innerHTML =
                     '<p class="catalog-empty">Не удалось загрузить каталог. Попробуйте позже.</p>';
+                showToast('Ошибка загрузки каталога', 'error');
             });
     }
 }

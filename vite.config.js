@@ -9,6 +9,9 @@ export default defineConfig({
             partialDirectory: resolve(__dirname, 'partials'),
         }),
     ],
+    test: {
+        environment: 'happy-dom',
+    },
     build: {
         rollupOptions: {
             input: {

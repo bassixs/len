@@ -4,6 +4,7 @@
  * Состояние фильтров и сортировки сохраняется в URL.
  */
 import { normalizeProduct, formatPrice, resolveImageUrl, safeText } from './product-model.js';
+import { showToast } from './toast.js';
 
 const PER_PAGE = 24;
 const DATA_BASE = (import.meta.env.BASE_URL || '/') + 'data/products/';
@@ -287,6 +288,7 @@ export function initCategoryProducts() {
             console.error('Category products load error:', err);
             grid.innerHTML =
                 '<p class="category-empty">Не удалось загрузить товары. Попробуйте позже.</p>';
+            showToast('Не удалось загрузить товары категории', 'error');
         });
 }
 

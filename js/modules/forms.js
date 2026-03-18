@@ -55,11 +55,13 @@ export function initForms() {
             const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-check"></i> Принято!';
             btn.disabled = true;
+            btn.classList.add('btn--submitting');
             setTimeout(() => {
                 closeModal();
                 setTimeout(() => {
                     btn.innerHTML = originalText;
                     btn.disabled = false;
+                    btn.classList.remove('btn--submitting');
                     callFormHero.reset();
                 }, 300);
             }, 1500);
