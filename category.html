@@ -46,17 +46,14 @@
                     </div>
 
                     <div class="ch-ref-filters">
-                        <div class="ch-ref-dropdown">
-                            ВСЕ ТОВАРЫ <i class="fas fa-chevron-down"></i>
+                        <div id="sortContainer" class="ch-ref-filter-slot">
+                            <!-- select сортировки подставляется из category-products.js -->
                         </div>
-                        <div class="ch-ref-dropdown">ЦЕНА <i class="fas fa-chevron-down"></i></div>
-                        <div class="ch-ref-dropdown">ЦВЕТ <i class="fas fa-chevron-down"></i></div>
-                        <div class="ch-ref-view">
-                            ОТОБРАЖЕНИЕ
-                            <button class="active" data-view="grid" title="Сетка 3 колонки">
-                                3
-                            </button>
-                            <button data-view="grid4" title="Сетка 4 колонки">4</button>
+                        <div id="priceFilterContainer" class="ch-ref-filter-slot">
+                            <!-- фильтр цены подставляется из category-products.js -->
+                        </div>
+                        <div class="ch-ref-result">
+                            <span class="ch-ref-result-count"></span>
                         </div>
                     </div>
                 </div>

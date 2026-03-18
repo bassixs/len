@@ -1,6 +1,26 @@
 import { normalizeProduct, formatPrice, resolveImageUrl, safeText } from './product-model.js';
 import { openLayer, closeLayer } from './ui-shell.js';
 
+function sortProducts(products, sortKey) {
+    if (!sortKey) return products;
+    const sorted = [...products];
+    switch (sortKey) {
+        case 'price_asc':
+            sorted.sort((a, b) => a.price - b.price);
+            break;
+        case 'price_desc':
+            sorted.sort((a, b) => b.price - a.price);
+            break;
+        case 'name_asc':
+            sorted.sort((a, b) => a.name.localeCompare(b.name, 'ru'));
+            break;
+        case 'name_desc':
+            sorted.sort((a, b) => b.name.localeCompare(a.name, 'ru'));
+            break;
+    }
+    return sorted;
+}
+
 export function initCatalog() {
     // ===== CATEGORY PAGE — FILTER GROUPS =====
     document.querySelectorAll('.filter-group-title').forEach((title) => {
@@ -14,7 +34,6 @@ export function initCatalog() {
         });
     });
 
-    // Open first few filter groups by default
     document.querySelectorAll('.filter-group-body').forEach((body, i) => {
         if (i < 3) body.classList.add('open');
     });
@@ -45,17 +64,27 @@ export function initCatalog() {
     // ===== DYNAMIC PRODUCT RENDERING (из data/products/index.json + preview) =====
     const catalogGrid = document.querySelector('.catalog-grid');
     if (catalogGrid) {
-        const base = import.meta.env.BASE_URL || '/';
         const dataBase = (import.meta.env.BASE_URL || '/') + 'data/products/';
         fetch(dataBase + 'index.json')
             .then((response) => response.json())
             .then((index) => {
-                const preview = Array.isArray(index.preview) ? index.preview : [];
+                const preview = Array.isArray(index.preview)
+                    ? index.preview.map(normalizeProduct)
+                    : [];
                 const total = Number.isFinite(Number(index.total))
                     ? Number(index.total)
                     : preview.length;
-                renderProducts(preview, catalogGrid, base);
+
                 updateCatalogCount(total);
+                renderProducts(preview, catalogGrid);
+
+                const sortSelect = document.getElementById('catalogSortMain');
+                if (sortSelect) {
+                    sortSelect.addEventListener('change', () => {
+                        const sorted = sortProducts(preview, sortSelect.value);
+                        renderProducts(sorted, catalogGrid);
+                    });
+                }
             })
             .catch((error) => {
                 console.error('Error loading catalog index:', error);

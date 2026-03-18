@@ -7,6 +7,7 @@ import {
     removeItem,
     updateItemQuantity,
     getCartTotals,
+    getFreeDeliveryHint,
 } from './cart-service.js';
 
 const DELIVERY_PRICES = { cdek: 350, post: 300, courier: 600 };
@@ -80,7 +81,8 @@ export function initCart() {
 
             // Selected size (if any)
             const activeSizeBtn =
-                card.querySelector('.size-btn.active') || document.querySelector('.size-btn.active');
+                card.querySelector('.size-btn.active') ||
+                document.querySelector('.size-btn.active');
             if (activeSizeBtn) {
                 product.selectedSize =
                     activeSizeBtn.dataset.size || activeSizeBtn.textContent.trim() || '';
@@ -88,7 +90,8 @@ export function initCart() {
 
             // Selected color (if any)
             const activeColorDot =
-                card.querySelector('.color-dot.active') || document.querySelector('.color-dot.active');
+                card.querySelector('.color-dot.active') ||
+                document.querySelector('.color-dot.active');
             if (activeColorDot) {
                 product.selectedColor =
                     activeColorDot.dataset.color ||
@@ -185,6 +188,7 @@ function renderMiniCart() {
     if (cart.length === 0) {
         container.innerHTML = '<div class="cart-drawer-empty">Ваша корзина пуста</div>';
         if (totalEl) totalEl.textContent = '0 ₽';
+        renderMiniCartHint(0);
         return;
     }
 
@@ -214,6 +218,31 @@ function renderMiniCart() {
 
     container.innerHTML = html;
     if (totalEl) totalEl.textContent = formatPrice(total);
+    renderMiniCartHint(total);
+}
+
+function renderMiniCartHint(subtotal) {
+    const el = document.getElementById('cartDrawerHint');
+    if (!el) return;
+
+    const hint = getFreeDeliveryHint(subtotal);
+
+    if (subtotal <= 0) {
+        el.innerHTML = '';
+        el.className = 'cart-drawer-hint';
+        return;
+    }
+
+    if (hint.eligible) {
+        el.className = 'cart-drawer-hint cart-drawer-hint--reached';
+        el.innerHTML =
+            '<i class="fas fa-check-circle"></i> Доставка СДЭК — <strong>бесплатно!</strong>';
+    } else {
+        el.className = 'cart-drawer-hint';
+        el.innerHTML =
+            `До бесплатной доставки: <strong>${formatPrice(hint.remaining)}</strong>` +
+            `<div class="cart-drawer-hint-bar"><div class="cart-drawer-hint-bar-fill" style="width:${hint.progress}%"></div></div>`;
+    }
 }
 
 export function getCart() {
@@ -276,12 +305,10 @@ export function renderCartPage() {
         const countEl = document.getElementById('cart-item-count');
         if (countEl) countEl.textContent = 'Товары';
         updateCheckoutSummary(0);
-        // Disable checkout button
         const checkoutBtn = document.querySelector('.checkout-summary-box .btn');
         if (checkoutBtn) {
             checkoutBtn.disabled = true;
-            checkoutBtn.style.opacity = '0.5';
-            checkoutBtn.style.cursor = 'not-allowed';
+            checkoutBtn.classList.add('btn--disabled');
         }
         return;
     }
@@ -327,12 +354,10 @@ export function renderCartPage() {
     if (summarySubtotal) summarySubtotal.textContent = formatPrice(total);
     updateCheckoutSummary(total);
 
-    // Re-enable checkout button
     const checkoutBtn = document.querySelector('.checkout-summary-box .btn');
     if (checkoutBtn) {
         checkoutBtn.disabled = false;
-        checkoutBtn.style.opacity = '1';
-        checkoutBtn.style.cursor = 'pointer';
+        checkoutBtn.classList.remove('btn--disabled');
     }
 
     // Attach event listeners for the newly rendered buttons
@@ -393,10 +418,45 @@ function updateCheckoutSummary(_subtotal) {
     const totals = getCartTotals(cart, method, DELIVERY_PRICES);
 
     if (deliveryEl) {
-        deliveryEl.textContent = totals.subtotal === 0 ? '—' : formatPrice(totals.delivery);
+        if (totals.subtotal === 0) {
+            deliveryEl.textContent = '—';
+            deliveryEl.classList.remove('delivery-free-label');
+        } else if (totals.delivery === 0) {
+            deliveryEl.textContent = 'Бесплатно';
+            deliveryEl.classList.add('delivery-free-label');
+        } else {
+            deliveryEl.textContent = formatPrice(totals.delivery);
+            deliveryEl.classList.remove('delivery-free-label');
+        }
     }
     if (totalEl) {
         totalEl.textContent = formatPrice(totals.total);
+    }
+
+    renderFreeDeliveryHint(totals.subtotal);
+}
+
+function renderFreeDeliveryHint(subtotal) {
+    const container = document.getElementById('freeDeliveryHint');
+    if (!container) return;
+
+    const hint = getFreeDeliveryHint(subtotal);
+
+    if (subtotal <= 0) {
+        container.innerHTML = '';
+        container.className = 'free-delivery-hint';
+        return;
+    }
+
+    if (hint.eligible) {
+        container.className = 'free-delivery-hint free-delivery-hint--reached';
+        container.innerHTML =
+            '<i class="fas fa-check-circle"></i> Доставка СДЭК — <strong>бесплатно!</strong>';
+    } else {
+        container.className = 'free-delivery-hint';
+        container.innerHTML =
+            `До бесплатной доставки СДЭК осталось <strong>${formatPrice(hint.remaining)}</strong>` +
+            `<div class="free-delivery-bar"><div class="free-delivery-bar-fill" style="width:${hint.progress}%"></div></div>`;
     }
 }
 

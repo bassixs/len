@@ -468,6 +468,99 @@
     font-weight: 500;
 }
 
+.ch-ref-filter-slot {
+    display: flex;
+    align-items: center;
+}
+
+.ch-ref-result {
+    font-size: 0.8rem;
+    color: var(--c-text-light);
+    margin-left: auto;
+}
+
+.catalog-sort-select {
+    font-family: var(--ff-body);
+    font-size: 0.82rem;
+    color: var(--c-dark);
+    background: var(--c-white);
+    border: 1px solid var(--c-cream-dark);
+    border-radius: var(--radius-sm);
+    padding: 0.45rem 2rem 0.45rem 0.7rem;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.6rem center;
+}
+
+.catalog-sort-select:focus {
+    outline: none;
+    border-color: var(--c-sage);
+}
+
+.price-filter-form {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.price-filter-input {
+    width: 72px;
+    padding: 0.4rem 0.5rem;
+    font-family: var(--ff-body);
+    font-size: 0.82rem;
+    border: 1px solid var(--c-cream-dark);
+    border-radius: var(--radius-sm);
+    text-align: center;
+    color: var(--c-dark);
+}
+
+.price-filter-input:focus {
+    outline: none;
+    border-color: var(--c-sage);
+}
+
+.price-filter-input::-webkit-outer-spin-button,
+.price-filter-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.price-filter-sep {
+    color: var(--c-text-light);
+    font-size: 0.8rem;
+}
+
+.btn-sm {
+    font-family: var(--ff-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.btn-primary-sm {
+    background: var(--c-sage);
+    color: var(--c-white);
+}
+
+.btn-primary-sm:hover {
+    background: var(--c-sage-dark);
+}
+
+.price-filter-reset {
+    background: transparent;
+    color: var(--c-text-light);
+}
+
+.price-filter-reset:hover {
+    color: var(--c-dark);
+}
+
 @media (max-width: 900px) {
     .ch-ref-toolbar {
         flex-direction: column;

@@ -68,3 +68,12 @@ export function getCartTotals(cart, method, basePrices) {
     return { subtotal, delivery, total, itemsCount };
 }
 
+const FREE_DELIVERY_THRESHOLD = 5000;
+
+export function getFreeDeliveryHint(subtotal) {
+    if (subtotal <= 0) return { eligible: false, remaining: FREE_DELIVERY_THRESHOLD, progress: 0 };
+    if (subtotal >= FREE_DELIVERY_THRESHOLD) return { eligible: true, remaining: 0, progress: 100 };
+    const remaining = FREE_DELIVERY_THRESHOLD - subtotal;
+    const progress = Math.round((subtotal / FREE_DELIVERY_THRESHOLD) * 100);
+    return { eligible: false, remaining, progress };
+}

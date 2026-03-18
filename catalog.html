@@ -26,12 +26,23 @@
                 <h1 class="ch-title reveal">Каталог</h1>
                 <p class="ch-count reveal reveal-delay-1">Все изделия (120+)</p>
                 <div class="ch-toolbar reveal reveal-delay-2">
-                    <a href="catalog.html" class="ch-subcat active">Все категории</a>
-                    <a href="category.html?cat=home-textile" class="ch-subcat">Домашний текстиль</a>
-                    <a href="category.html?cat=women" class="ch-subcat">Женская одежда</a>
-                    <a href="category.html?cat=men" class="ch-subcat">Мужская одежда</a>
-                    <a href="category.html?cat=accessories" class="ch-subcat">Аксессуары</a>
-                    <a href="category.html?cat=gifts" class="ch-subcat">Подарки</a>
+                    <div class="ch-toolbar-cats">
+                        <a href="catalog.html" class="ch-subcat active">Все категории</a>
+                        <a href="category.html?cat=home-textile" class="ch-subcat"
+                            >Домашний текстиль</a
+                        >
+                        <a href="category.html?cat=women" class="ch-subcat">Женская одежда</a>
+                        <a href="category.html?cat=men" class="ch-subcat">Мужская одежда</a>
+                        <a href="category.html?cat=accessories" class="ch-subcat">Аксессуары</a>
+                        <a href="category.html?cat=gifts" class="ch-subcat">Подарки</a>
+                    </div>
+                    <select id="catalogSortMain" class="catalog-sort-select">
+                        <option value="">По умолчанию</option>
+                        <option value="price_asc">Цена: по возрастанию</option>
+                        <option value="price_desc">Цена: по убыванию</option>
+                        <option value="name_asc">Название: А — Я</option>
+                        <option value="name_desc">Название: Я — А</option>
+                    </select>
                 </div>
             </div>
         </section>
