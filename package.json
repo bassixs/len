@@ -1,7 +1,6 @@
 {
     "name": "len",
     "version": "1.0.0",
-    "main": "script.js",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
