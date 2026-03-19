@@ -96,6 +96,11 @@ export function initCatalog() {
     }
 }
 
+function isSafeHexColor(value) {
+    const c = String(value ?? '').trim();
+    return /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(c);
+}
+
 function updateCatalogCount(total) {
     const el = document.querySelector('.ch-count');
     if (el && total > 0) el.textContent = `Все изделия (${total}+)`;
@@ -143,9 +148,12 @@ function renderProducts(products, container) {
                 ${product.colors
                     .map((color) => {
                         const c = String(color).trim();
-                        const isWhite = c.toUpperCase() === '#FFFFFF';
+                        const safeBg = isSafeHexColor(c) ? c : '';
+                        const isWhite = safeBg.toUpperCase() === '#FFFFFF';
                         const extraStyle = isWhite ? 'border-color:#ddd' : '';
-                        return `<span class="color-dot" style="background:${c}; ${extraStyle}"></span>`;
+                        return safeBg
+                            ? `<span class="color-dot" style="background:${safeBg}; ${extraStyle}"></span>`
+                            : `<span class="color-dot"></span>`;
                     })
                     .join('')}
             </div>`;
@@ -163,7 +171,7 @@ function renderProducts(products, container) {
                 product.id || ''
             )}">
                 <div class="product-card-image">
-                    <img src="${imgSrc}" loading="lazy" alt="${name}">
+                    <img src="${safeText(imgSrc)}" loading="lazy" alt="${name}">
                     ${badgesHtml}
                     ${sizesHtml}
                     <div class="product-quick-view">

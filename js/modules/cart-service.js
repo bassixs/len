@@ -2,12 +2,34 @@ import { formatPrice } from './product-model.js';
 
 const STORAGE_KEY = 'njen_cart';
 
+function makeCartKey({ id = '', selectedSize = '', selectedColor = '' } = {}) {
+    // Stable key for a unique cart line (product + size + color).
+    // Encode components to avoid delimiter collisions.
+    return [id, selectedSize, selectedColor]
+        .map((v) => encodeURIComponent(String(v ?? '')))
+        .join('|');
+}
+
 export function getCart() {
     try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) return [];
         const parsed = JSON.parse(raw);
-        return Array.isArray(parsed) ? parsed : [];
+        const cart = Array.isArray(parsed) ? parsed : [];
+        // Migration: older cart items may miss selectedSize/selectedColor/cartKey.
+        return cart.map((item) => {
+            const selectedSize = item?.selectedSize ?? '';
+            const selectedColor = item?.selectedColor ?? '';
+            const id = item?.id ?? '';
+            const cartKey = item?.cartKey || makeCartKey({ id, selectedSize, selectedColor });
+            return {
+                ...item,
+                id,
+                selectedSize,
+                selectedColor,
+                cartKey,
+            };
+        });
     } catch {
         return [];
     }
@@ -18,29 +40,25 @@ export function saveCart(cart) {
 }
 
 export function addItem(cart, product) {
-    const existing = cart.find(
-        (item) =>
-            item.id === product.id &&
-            item.selectedSize === product.selectedSize &&
-            item.selectedColor === product.selectedColor
-    );
+    const cartKey = makeCartKey(product);
+    const existing = cart.find((item) => item.cartKey === cartKey || makeCartKey(item) === cartKey);
     if (existing) {
         existing.quantity += 1;
     } else {
-        cart.push({ ...product, quantity: product.quantity ?? 1 });
+        cart.push({ ...product, quantity: product.quantity ?? 1, cartKey });
     }
     return cart;
 }
 
-export function removeItem(cart, id) {
-    return cart.filter((item) => item.id !== id);
+export function removeItem(cart, cartKey) {
+    return cart.filter((item) => item.cartKey !== cartKey);
 }
 
-export function updateItemQuantity(cart, id, quantity) {
+export function updateItemQuantity(cart, cartKey, quantity) {
     if (quantity <= 0) {
-        return removeItem(cart, id);
+        return removeItem(cart, cartKey);
     }
-    return cart.map((item) => (item.id === id ? { ...item, quantity } : item));
+    return cart.map((item) => (item.cartKey === cartKey ? { ...item, quantity } : item));
 }
 
 export function cartSubtotal(cart) {
@@ -77,3 +95,5 @@ export function getFreeDeliveryHint(subtotal) {
     const progress = Math.round((subtotal / FREE_DELIVERY_THRESHOLD) * 100);
     return { eligible: false, remaining, progress };
 }
+
+export { makeCartKey };

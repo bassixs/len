@@ -15,6 +15,11 @@ const CATEGORY_LABELS = {
     fabrics: 'Льняные ткани',
 };
 
+function isSafeHexColor(value) {
+    const c = String(value ?? '').trim();
+    return /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(c);
+}
+
 export function initProductPage() {
     const params = new URLSearchParams(window.location.search);
     const productId = params.get('id');
@@ -127,7 +132,7 @@ function renderGallery(rawProduct, product) {
 
     const mainHtml = `
         <div class="product-main-image">
-            <img src="${mainSrc}" alt="${safeText(product.name || '')}" id="productMainImg">
+            <img src="${safeText(mainSrc)}" alt="${safeText(product.name || '')}" id="productMainImg">
         </div>
     `;
 
@@ -138,8 +143,10 @@ function renderGallery(rawProduct, product) {
                 ${thumbs
                     .map(
                         (src, i) =>
-                            `<button class="product-thumb${i === 0 ? ' active' : ''}" type="button" data-src="${src}">
-                                <img src="${src}" alt="${safeText(product.name || '')}">
+                            `<button class="product-thumb${i === 0 ? ' active' : ''}" type="button" data-src="${safeText(
+                                src
+                            )}">
+                                <img src="${safeText(src)}" alt="${safeText(product.name || '')}">
                             </button>`
                     )
                     .join('')}
@@ -174,9 +181,15 @@ function renderOptions(product) {
         colorSelector.innerHTML = product.colors
             .map((c, i) => {
                 const color = String(c).trim();
-                const isWhite = color.toUpperCase() === '#FFFFFF';
+                const safeBg = isSafeHexColor(color) ? color : '';
+                const isWhite = safeBg.toUpperCase() === '#FFFFFF';
                 const border = isWhite ? 'border-color:#ddd;' : '';
-                return `<span class="color-dot${i === 0 ? ' active' : ''}" style="background:${color};${border}" data-color="${safeText(color)}" title="${safeText(color)}"></span>`;
+                const styleAttr = safeBg
+                    ? `style="background:${safeBg};${border}"`
+                    : '';
+                return `<span class="color-dot${i === 0 ? ' active' : ''}" ${styleAttr} data-color="${safeText(
+                    color
+                )}" title="${safeText(color)}"></span>`;
             })
             .join('');
 
@@ -274,7 +287,7 @@ function renderRelated(allProducts, currentId, _cat) {
             return `
             <div class="product-card reveal reveal-delay-${delay}">
                 <div class="product-card-image">
-                    <img src="${imgSrc}" loading="lazy" alt="${name}">
+                    <img src="${safeText(imgSrc)}" loading="lazy" alt="${name}">
                     <div class="product-quick-view">
                         <a href="product.html?id=${encodeURIComponent(p.id)}" class="product-quick-btn">Подробнее</a>
                     </div>

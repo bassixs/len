@@ -129,7 +129,7 @@ function renderCard(product) {
     return `
     <div class="product-card reveal" data-sub="${safeText(product.subCategory)}" data-product-id="${safeText(product.id)}">
       <div class="product-card-image">
-        <img src="${imgSrc}" loading="lazy" alt="${name}">
+        <img src="${safeText(imgSrc)}" loading="lazy" alt="${name}">
         <div class="product-quick-view">
           <a href="product.html?id=${encodeURIComponent(product.id)}" class="product-quick-btn">Подробнее</a>
         </div>

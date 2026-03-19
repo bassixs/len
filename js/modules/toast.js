@@ -19,7 +19,14 @@ export function showToast(message, type = 'success') {
     const icon = ICON_MAP[type] || ICON_MAP.success;
     const el = document.createElement('div');
     el.className = `toast toast--${type}`;
-    el.innerHTML = `<i class="fas ${icon}"></i> <span>${message}</span>`;
+    const iconEl = document.createElement('i');
+    iconEl.className = `fas ${icon}`;
+    const textEl = document.createElement('span');
+    // XSS protection: write user-provided text via textContent.
+    textEl.textContent = String(message);
+    el.appendChild(iconEl);
+    el.appendChild(document.createTextNode(' '));
+    el.appendChild(textEl);
 
     container.appendChild(el);
 

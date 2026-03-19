@@ -3,6 +3,9 @@ import { normalizeProduct, resolveImageUrl, safeText } from './product-model.js'
 const BASE = import.meta.env.BASE_URL || '/';
 const DATA_PRODUCTS_BASE = `${BASE}data/products/`;
 
+let indexJsonPromise = null;
+let previewProductsPromise = null;
+
 function normalizeName(value) {
     return String(value || '')
         .toLowerCase()
@@ -22,11 +25,7 @@ function isPlaceholderImage(src) {
 }
 
 async function loadAllProducts() {
-    const indexResp = await fetch(`${DATA_PRODUCTS_BASE}index.json`);
-    if (!indexResp.ok) {
-        throw new Error(`Cannot load index.json: HTTP ${indexResp.status}`);
-    }
-    const index = await indexResp.json();
+    const index = await loadIndexJson();
     const categories = Array.isArray(index.categories)
         ? index.categories.map((c) => c.id).filter(Boolean)
         : [];
@@ -44,13 +43,25 @@ async function loadAllProducts() {
     return products;
 }
 
+async function loadIndexJson() {
+    if (indexJsonPromise) return indexJsonPromise;
+    indexJsonPromise = (async () => {
+        const indexResp = await fetch(`${DATA_PRODUCTS_BASE}index.json`);
+        if (!indexResp.ok) {
+            throw new Error(`Cannot load index.json: HTTP ${indexResp.status}`);
+        }
+        return indexResp.json();
+    })();
+    return indexJsonPromise;
+}
+
 async function loadIndexPreview() {
-    const resp = await fetch(`${DATA_PRODUCTS_BASE}index.json`);
-    if (!resp.ok) {
-        throw new Error(`Cannot load index.json: HTTP ${resp.status}`);
-    }
-    const index = await resp.json();
-    return Array.isArray(index.preview) ? index.preview : [];
+    if (previewProductsPromise) return previewProductsPromise;
+    previewProductsPromise = (async () => {
+        const index = await loadIndexJson();
+        return Array.isArray(index.preview) ? index.preview : [];
+    })();
+    return previewProductsPromise;
 }
 
 function createLookup(products) {

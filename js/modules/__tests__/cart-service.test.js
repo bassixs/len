@@ -7,6 +7,7 @@ import {
     getDeliveryCost,
     getCartTotals,
     getFreeDeliveryHint,
+    makeCartKey,
 } from '../cart-service.js';
 
 const item = (overrides = {}) => ({
@@ -17,6 +18,11 @@ const item = (overrides = {}) => ({
     selectedSize: '',
     selectedColor: '',
     ...overrides,
+    cartKey: makeCartKey({
+        id: overrides.id ?? 'p1',
+        selectedSize: overrides.selectedSize ?? '',
+        selectedColor: overrides.selectedColor ?? '',
+    }),
 });
 
 // ── addItem ─────────────────────────────────────────────────────────
@@ -51,20 +57,30 @@ describe('addItem', () => {
 // ── removeItem ──────────────────────────────────────────────────────
 
 describe('removeItem', () => {
-    it('removes item by id', () => {
+    it('removes item by cartKey (product+size+color)', () => {
         const cart = [item(), item({ id: 'p2' })];
-        const result = removeItem(cart, 'p1');
+        const key = makeCartKey(item());
+        const result = removeItem(cart, key);
         expect(result).toHaveLength(1);
         expect(result[0].id).toBe('p2');
     });
 
     it('returns empty array when removing last item', () => {
-        expect(removeItem([item()], 'p1')).toEqual([]);
+        const key = makeCartKey(item());
+        expect(removeItem([item()], key)).toEqual([]);
     });
 
     it('returns cart unchanged when id not found', () => {
         const cart = [item()];
         expect(removeItem(cart, 'nope')).toHaveLength(1);
+    });
+
+    it('does not remove other variants with same id', () => {
+        const cart = [item({ selectedSize: 'S' }), item({ selectedSize: 'M' })];
+        const keyToRemove = makeCartKey(item({ selectedSize: 'S' }));
+        const result = removeItem(cart, keyToRemove);
+        expect(result).toHaveLength(1);
+        expect(result[0].selectedSize).toBe('M');
     });
 });
 
@@ -73,14 +89,16 @@ describe('removeItem', () => {
 describe('updateItemQuantity', () => {
     it('updates quantity of matching item', () => {
         const cart = [item({ quantity: 1 })];
-        const result = updateItemQuantity(cart, 'p1', 5);
+        const key = makeCartKey(item());
+        const result = updateItemQuantity(cart, key, 5);
         expect(result[0].quantity).toBe(5);
     });
 
     it('removes item when quantity ≤ 0', () => {
         const cart = [item()];
-        expect(updateItemQuantity(cart, 'p1', 0)).toEqual([]);
-        expect(updateItemQuantity([item()], 'p1', -1)).toEqual([]);
+        const key = makeCartKey(item());
+        expect(updateItemQuantity(cart, key, 0)).toEqual([]);
+        expect(updateItemQuantity([item()], key, -1)).toEqual([]);
     });
 });
 

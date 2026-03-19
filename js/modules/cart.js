@@ -13,6 +13,18 @@ import {
 
 const DELIVERY_PRICES = { cdek: 350, post: 300, courier: 600 };
 
+function sanitizeImageSrc(src) {
+    const s = String(src ?? '');
+    // Allow only safe URL schemes/paths for img.src.
+    if (/^https?:\/\//i.test(s)) return s;
+    if (s.startsWith('/') || s.startsWith('./') || s.startsWith('../')) return s;
+    return '';
+}
+
+function isMiniCartOpen() {
+    return Boolean(document.querySelector('#cartDrawer.is-open'));
+}
+
 export function initCart() {
     updateCartIcon();
     initMiniCart();
@@ -81,18 +93,18 @@ export function initCart() {
             }
 
             // Selected size (if any)
-            const activeSizeBtn =
-                card.querySelector('.size-btn.active') ||
-                document.querySelector('.size-btn.active');
+            // Scope to the current product UI to avoid picking "active" controls from other cards.
+            const pickerRoot = formContainer || gridContainer || card;
+            const activeSizeBtn = pickerRoot ? pickerRoot.querySelector('.size-btn.active') : null;
             if (activeSizeBtn) {
                 product.selectedSize =
                     activeSizeBtn.dataset.size || activeSizeBtn.textContent.trim() || '';
             }
 
             // Selected color (if any)
-            const activeColorDot =
-                card.querySelector('.color-dot.active') ||
-                document.querySelector('.color-dot.active');
+            const activeColorDot = pickerRoot
+                ? pickerRoot.querySelector('.color-dot.active')
+                : null;
             if (activeColorDot) {
                 product.selectedColor =
                     activeColorDot.dataset.color ||
@@ -174,8 +186,9 @@ function renderMiniCart() {
         return;
     }
 
-    let html = '';
     let total = 0;
+    container.innerHTML = '';
+    const frag = document.createDocumentFragment();
 
     cart.forEach((item) => {
         const itemTotal = item.price * item.quantity;
@@ -183,22 +196,40 @@ function renderMiniCart() {
         const meta = [];
         if (item.selectedSize) meta.push(`Размер: ${item.selectedSize}`);
         if (item.selectedColor) meta.push(`Цвет: ${item.selectedColor}`);
-        const metaHtml = meta.length
-            ? `<div class="cart-drawer-meta">${meta.join(' · ')}</div>`
-            : '';
-        html += `
-            <div class="cart-drawer-item">
-                <img src="${item.img}" alt="${item.name}" class="cart-drawer-img">
-                <div class="cart-drawer-info">
-                    <h4 class="cart-drawer-name">${item.name}</h4>
-                    ${metaHtml}
-                    <div class="cart-drawer-price">${formatPrice(item.price)} x ${item.quantity}</div>
-                </div>
-            </div>
-        `;
+        const itemEl = document.createElement('div');
+        itemEl.className = 'cart-drawer-item';
+
+        const imgEl = document.createElement('img');
+        imgEl.className = 'cart-drawer-img';
+        imgEl.src = sanitizeImageSrc(item.img);
+        imgEl.alt = String(item.name ?? '');
+        itemEl.appendChild(imgEl);
+
+        const infoEl = document.createElement('div');
+        infoEl.className = 'cart-drawer-info';
+
+        const nameEl = document.createElement('h4');
+        nameEl.className = 'cart-drawer-name';
+        nameEl.textContent = String(item.name ?? '');
+        infoEl.appendChild(nameEl);
+
+        if (meta.length) {
+            const metaEl = document.createElement('div');
+            metaEl.className = 'cart-drawer-meta';
+            metaEl.textContent = meta.join(' · ');
+            infoEl.appendChild(metaEl);
+        }
+
+        const priceEl = document.createElement('div');
+        priceEl.className = 'cart-drawer-price';
+        priceEl.textContent = `${formatPrice(item.price)} x ${item.quantity}`;
+        infoEl.appendChild(priceEl);
+
+        itemEl.appendChild(infoEl);
+        frag.appendChild(itemEl);
     });
 
-    container.innerHTML = html;
+    container.appendChild(frag);
     if (totalEl) totalEl.textContent = formatPrice(total);
     renderMiniCartHint(total);
 }
@@ -241,22 +272,26 @@ export function addToCart(product) {
     saveCart(cart);
 }
 
-export function removeFromCart(id) {
-    const cart = removeItem(getStoredCart(), id);
+export function removeFromCart(cartKey) {
+    const cart = removeItem(getStoredCart(), cartKey);
     saveCart(cart);
     if (document.querySelector('.cart-items:not(.cart-drawer-items)')) {
         renderCartPage();
     }
-    renderMiniCart();
+    if (isMiniCartOpen()) {
+        renderMiniCart();
+    }
 }
 
-export function updateQuantity(id, quantity) {
-    const cart = updateItemQuantity(getStoredCart(), id, quantity);
+export function updateQuantity(cartKey, quantity) {
+    const cart = updateItemQuantity(getStoredCart(), cartKey, quantity);
     saveCart(cart);
     if (document.querySelector('.cart-items:not(.cart-drawer-items)')) {
         renderCartPage();
     }
-    renderMiniCart();
+    if (isMiniCartOpen()) {
+        renderMiniCart();
+    }
 }
 
 export function updateCartIcon() {
@@ -295,8 +330,9 @@ export function renderCartPage() {
         return;
     }
 
-    let html = '';
     let total = 0;
+    cartContainer.innerHTML = '';
+    const frag = document.createDocumentFragment();
 
     cart.forEach((item) => {
         const itemTotal = item.price * item.quantity;
@@ -304,30 +340,86 @@ export function renderCartPage() {
         const meta = [];
         if (item.selectedSize) meta.push(`Размер: ${item.selectedSize}`);
         if (item.selectedColor) meta.push(`Цвет: ${item.selectedColor}`);
-        const metaHtml = meta.length ? meta.join(' · ') : '';
-        html += `
-            <div class="cart-item" data-id="${item.id}">
-                <div class="cart-item-image">
-                    <img src="${item.img}" alt="${item.name}">
-                </div>
-                <div class="cart-item-info">
-                    <h3 class="cart-item-name">${item.name}</h3>
-                    <div class="cart-item-meta">${metaHtml}</div>
-                    <div class="cart-item-qty">
-                        <button class="qty-btn minus" aria-label="Уменьшить">−</button>
-                        <input type="number" class="qty-input" value="${item.quantity}" min="1" aria-label="Количество">
-                        <button class="qty-btn plus" aria-label="Увеличить">+</button>
-                    </div>
-                </div>
-                <div class="cart-item-price-wrapper">
-                    <div class="cart-item-price">${formatPrice(itemTotal)}</div>
-                    <button class="cart-item-remove" aria-label="Удалить"><i class="fas fa-times"></i></button>
-                </div>
-            </div>
-        `;
+
+        const itemEl = document.createElement('div');
+        itemEl.className = 'cart-item';
+        itemEl.dataset.cartKey = String(item.cartKey ?? '');
+
+        const imgWrap = document.createElement('div');
+        imgWrap.className = 'cart-item-image';
+        const imgEl = document.createElement('img');
+        imgEl.src = sanitizeImageSrc(item.img);
+        imgEl.alt = String(item.name ?? '');
+        imgWrap.appendChild(imgEl);
+        itemEl.appendChild(imgWrap);
+
+        const infoEl = document.createElement('div');
+        infoEl.className = 'cart-item-info';
+
+        const nameEl = document.createElement('h3');
+        nameEl.className = 'cart-item-name';
+        nameEl.textContent = String(item.name ?? '');
+        infoEl.appendChild(nameEl);
+
+        if (meta.length) {
+            const metaEl = document.createElement('div');
+            metaEl.className = 'cart-item-meta';
+            metaEl.textContent = meta.join(' · ');
+            infoEl.appendChild(metaEl);
+        }
+
+        const qtyEl = document.createElement('div');
+        qtyEl.className = 'cart-item-qty';
+
+        const minusBtn = document.createElement('button');
+        minusBtn.type = 'button';
+        minusBtn.className = 'qty-btn minus';
+        minusBtn.setAttribute('aria-label', 'Уменьшить');
+        minusBtn.textContent = '−';
+
+        const inputEl = document.createElement('input');
+        inputEl.type = 'number';
+        inputEl.className = 'qty-input';
+        inputEl.value = String(item.quantity ?? 1);
+        inputEl.min = '1';
+        inputEl.setAttribute('aria-label', 'Количество');
+
+        const plusBtn = document.createElement('button');
+        plusBtn.type = 'button';
+        plusBtn.className = 'qty-btn plus';
+        plusBtn.setAttribute('aria-label', 'Увеличить');
+        plusBtn.textContent = '+';
+
+        qtyEl.appendChild(minusBtn);
+        qtyEl.appendChild(inputEl);
+        qtyEl.appendChild(plusBtn);
+        infoEl.appendChild(qtyEl);
+
+        itemEl.appendChild(infoEl);
+
+        const priceWrap = document.createElement('div');
+        priceWrap.className = 'cart-item-price-wrapper';
+
+        const priceLine = document.createElement('div');
+        priceLine.className = 'cart-item-price';
+        priceLine.textContent = formatPrice(itemTotal);
+
+        const removeBtn = document.createElement('button');
+        removeBtn.type = 'button';
+        removeBtn.className = 'cart-item-remove';
+        removeBtn.setAttribute('aria-label', 'Удалить');
+        const timesIcon = document.createElement('i');
+        timesIcon.className = 'fas fa-times';
+        removeBtn.appendChild(timesIcon);
+
+        priceWrap.appendChild(priceLine);
+        priceWrap.appendChild(removeBtn);
+        itemEl.appendChild(priceWrap);
+
+        frag.appendChild(itemEl);
     });
 
-    cartContainer.innerHTML = html;
+    cartContainer.appendChild(frag);
 
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     const countEl = document.getElementById('cart-item-count');
@@ -351,29 +443,32 @@ function attachCartPageListeners() {
     if (!cartContainer) return;
 
     cartContainer.querySelectorAll('.cart-item').forEach((itemEl) => {
-        const id = itemEl.dataset.id;
+        const cartKey = itemEl.dataset.cartKey;
+        if (!cartKey) return;
 
         const minusBtn = itemEl.querySelector('.qty-btn.minus');
         const plusBtn = itemEl.querySelector('.qty-btn.plus');
         const input = itemEl.querySelector('.qty-input');
         const removeBtn = itemEl.querySelector('.cart-item-remove');
 
+        if (!minusBtn || !plusBtn || !input || !removeBtn) return;
+
         minusBtn.addEventListener('click', () => {
-            updateQuantity(id, parseInt(input.value, 10) - 1);
+            updateQuantity(cartKey, parseInt(input.value, 10) - 1);
         });
 
         plusBtn.addEventListener('click', () => {
-            updateQuantity(id, parseInt(input.value, 10) + 1);
+            updateQuantity(cartKey, parseInt(input.value, 10) + 1);
         });
 
         input.addEventListener('change', (e) => {
             let val = parseInt(e.target.value, 10);
             if (isNaN(val) || val < 1) val = 1;
-            updateQuantity(id, val);
+            updateQuantity(cartKey, val);
         });
 
         removeBtn.addEventListener('click', () => {
-            removeFromCart(id);
+            removeFromCart(cartKey);
         });
     });
 }
