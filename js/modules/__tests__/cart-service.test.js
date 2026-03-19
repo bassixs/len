@@ -106,7 +106,10 @@ describe('updateItemQuantity', () => {
 
 describe('cartSubtotal', () => {
     it('sums price × quantity for all items', () => {
-        const cart = [item({ price: 1000, quantity: 2 }), item({ id: 'p2', price: 500, quantity: 3 })];
+        const cart = [
+            item({ price: 1000, quantity: 2 }),
+            item({ id: 'p2', price: 500, quantity: 3 }),
+        ];
         expect(cartSubtotal(cart)).toBe(3500);
     });
 

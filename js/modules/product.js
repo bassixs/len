@@ -184,9 +184,7 @@ function renderOptions(product) {
                 const safeBg = isSafeHexColor(color) ? color : '';
                 const isWhite = safeBg.toUpperCase() === '#FFFFFF';
                 const border = isWhite ? 'border-color:#ddd;' : '';
-                const styleAttr = safeBg
-                    ? `style="background:${safeBg};${border}"`
-                    : '';
+                const styleAttr = safeBg ? `style="background:${safeBg};${border}"` : '';
                 return `<span class="color-dot${i === 0 ? ' active' : ''}" ${styleAttr} data-color="${safeText(
                     color
                 )}" title="${safeText(color)}"></span>`;

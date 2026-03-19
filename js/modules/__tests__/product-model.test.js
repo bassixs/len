@@ -99,9 +99,7 @@ describe('resolveImageUrl', () => {
     });
 
     it('falls back for unsafe schemes', () => {
-        expect(resolveImageUrl('javascript:alert(1)')).toContain(
-            'images/product.tablecloth.webp'
-        );
+        expect(resolveImageUrl('javascript:alert(1)')).toContain('images/product.tablecloth.webp');
         expect(resolveImageUrl('data:image/svg+xml,<svg></svg>')).toContain(
             'images/product.tablecloth.webp'
         );

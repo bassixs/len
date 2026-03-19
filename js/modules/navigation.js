@@ -25,7 +25,6 @@ export function initNavigation() {
         } else {
             header.classList.remove('hero-visible');
         }
-
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
