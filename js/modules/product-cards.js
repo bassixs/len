@@ -159,12 +159,20 @@ async function enrichProductCards() {
 }
 
 export function initProductCards() {
-    enrichProductCards().catch((err) => {
-        console.error('Product cards enrich error:', err);
-    });
+    enrichProductCards()
+        .then(() => {
+            // One delayed pass for asynchronously rendered sections,
+            // but only when there are still unresolved cards.
+            const remaining = Array.from(document.querySelectorAll('.product-card')).filter(
+                needsEnrichment
+            ).length;
+            if (!remaining) return;
 
-    // One delayed pass for asynchronously rendered sections.
-    setTimeout(() => {
-        enrichProductCards().catch(() => {});
-    }, 1200);
+            setTimeout(() => {
+                enrichProductCards().catch(() => {});
+            }, 1200);
+        })
+        .catch((err) => {
+            console.error('Product cards enrich error:', err);
+        });
 }

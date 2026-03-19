@@ -97,6 +97,15 @@ describe('resolveImageUrl', () => {
         const url = resolveImageUrl('/images/bar.jpg');
         expect(url).toContain('images/bar.jpg');
     });
+
+    it('falls back for unsafe schemes', () => {
+        expect(resolveImageUrl('javascript:alert(1)')).toContain(
+            'images/product.tablecloth.webp'
+        );
+        expect(resolveImageUrl('data:image/svg+xml,<svg></svg>')).toContain(
+            'images/product.tablecloth.webp'
+        );
+    });
 });
 
 // ── safeText ────────────────────────────────────────────────────────

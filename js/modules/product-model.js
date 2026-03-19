@@ -37,14 +37,47 @@ export function formatPrice(value) {
     return `${num.toLocaleString('ru-RU')} ₽`;
 }
 
+function getFallbackImageUrl() {
+    return `${BASE}images/product.tablecloth.webp`;
+}
+
+function isSafeUrlString(value) {
+    const s = String(value ?? '').trim();
+    if (!s) return false;
+
+    // Disallow obvious injection vectors.
+    if (/[<>"'`\\\s]/.test(s)) return false;
+
+    // block scheme-less URL like //evil.com/...
+    if (s.startsWith('//')) return false;
+
+    // Allow only http/https absolute URLs.
+    if (/^https?:\/\//i.test(s)) return true;
+
+    // Deny other schemes: data:, javascript:, vbscript:, etc.
+    if (s.includes(':')) return false;
+
+    // Allow relative paths only.
+    if (
+        s.startsWith('/') ||
+        s.startsWith('./') ||
+        s.startsWith('../') ||
+        /^[a-zA-Z0-9_./%-?&#=+]+$/.test(s)
+    ) {
+        return true;
+    }
+
+    return false;
+}
+
 export function resolveImageUrl(image) {
-    if (!image) {
-        return `${BASE}images/product.tablecloth.webp`;
-    }
-    if (typeof image === 'string' && image.startsWith('http')) {
-        return image;
-    }
-    return `${BASE}${String(image).replace(/^\//, '')}`;
+    if (!image) return getFallbackImageUrl();
+    const s = String(image).trim();
+
+    if (!isSafeUrlString(s)) return getFallbackImageUrl();
+
+    if (/^https?:\/\//i.test(s)) return s;
+    return `${BASE}${s.replace(/^\//, '')}`;
 }
 
 export function safeText(value) {

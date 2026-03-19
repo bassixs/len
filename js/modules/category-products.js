@@ -188,6 +188,7 @@ export function initCategoryProducts() {
             buildPriceFilter(state.priceFrom, state.priceTo);
 
             let currentPage = 1;
+            let processedList = [];
 
             function getProcessed() {
                 let list = products;
@@ -200,7 +201,7 @@ export function initCategoryProducts() {
             }
 
             function render(append = false) {
-                const list = getProcessed();
+                const list = processedList;
                 const start = (currentPage - 1) * PER_PAGE;
                 const slice = list.slice(start, start + PER_PAGE);
                 const html = slice.map(renderCard).join('');
@@ -235,6 +236,7 @@ export function initCategoryProducts() {
             function resetAndRender() {
                 currentPage = 1;
                 writeUrlState(state);
+                processedList = getProcessed();
                 render();
             }
 
@@ -282,6 +284,7 @@ export function initCategoryProducts() {
                 }
             }
 
+            processedList = getProcessed();
             render();
         })
         .catch((err) => {
@@ -317,7 +320,8 @@ function buildSubcatTabs(subcatsEl, counts, total, activeSub) {
         a.href = '#';
         a.className = 'ch-ref-subcat' + (activeSub === key ? ' active' : '');
         a.dataset.filter = key;
-        a.innerHTML = `${label.toUpperCase()} <span>(${counts[key]})</span>`;
+        // XSS protection: label comes from data keys, so must be escaped for HTML context.
+        a.innerHTML = `${safeText(label.toUpperCase())} <span>(${counts[key]})</span>`;
         subcatsEl.appendChild(a);
     });
 }
