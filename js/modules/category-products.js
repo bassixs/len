@@ -5,9 +5,66 @@
  */
 import { normalizeProduct, formatPrice, resolveImageUrl, safeText } from './product-model.js';
 import { showToast } from './toast.js';
+import { fetchAllWooCategories, fetchAllWooProducts } from './woo-client.js';
+import { wooProductToCard } from './woo-map.js';
 
 const PER_PAGE = 24;
 const DATA_BASE = (import.meta.env.BASE_URL || '/') + 'data/products/';
+const USE_WOO = import.meta.env.VITE_USE_WOO === 'true';
+const WOO_LIST_FIELDS = 'id,name,price,regular_price,sale_price,images,sku,categories';
+const DEFAULT_WOO_CATEGORY_BY_SITE = {
+    'home-textile': 24,
+    women: 370,
+    men: 352,
+    socks: 567,
+    gifts: 592,
+    accessories: 16,
+    fabrics: 654,
+};
+
+const CAT_ALIAS_CANDIDATES = {
+    'home-textile': [
+        'home-textile',
+        'home-textiles',
+        'textile',
+        'domashnij-tekstil',
+        'домашний-текстиль',
+    ],
+    women: [
+        'women',
+        'woman',
+        'womens',
+        'female',
+        'zhenskaya-odezhda',
+        'zhenskaya',
+        'для-женщин',
+        'для женщин',
+    ],
+    men: ['men', 'male', 'mens', 'muzhskaya-odezhda', 'muzhskaya', 'для-мужчин', 'для мужчин'],
+    socks: ['socks', 'noski', 'linen-socks', 'льняные-носки'],
+    gifts: [
+        'gifts',
+        'gift',
+        'souvenirs',
+        'podarki',
+        'suveniry',
+        'подарки',
+        'подарки-и-сувениры',
+        'игрушки-и-сувениры',
+    ],
+    accessories: ['accessories', 'accessory', 'aksessuary', 'аксессуары'],
+    fabrics: ['fabrics', 'fabric', 'tkani', 'linen-fabric', 'ткани', 'льняные-ткани'],
+};
+
+const SITE_CATEGORY_TITLES = {
+    'home-textile': 'Домашний текстиль',
+    women: 'Женская одежда',
+    men: 'Мужская одежда',
+    socks: 'Льняные носки',
+    gifts: 'Подарки и сувениры',
+    accessories: 'Аксессуары',
+    fabrics: 'Льняные ткани',
+};
 
 const SUBCAT_LABELS = {
     'kitchen-towel': 'Полотенца кухонные',
@@ -126,12 +183,15 @@ function renderCard(product) {
         priceHtml += `<span class="price-old">${formatPrice(product.oldPrice)}</span>`;
     }
 
+    const idParam = encodeURIComponent(product.id || '');
+    const detailHref = USE_WOO ? `product.html?woo=${idParam}` : `product.html?id=${idParam}`;
+
     return `
     <div class="product-card reveal" data-sub="${safeText(product.subCategory)}" data-product-id="${safeText(product.id)}">
       <div class="product-card-image">
         <img src="${safeText(imgSrc)}" loading="lazy" alt="${name}">
         <div class="product-quick-view">
-          <a href="product.html?id=${encodeURIComponent(product.id)}" class="product-quick-btn">Подробнее</a>
+          <a href="${detailHref}" class="product-quick-btn">Подробнее</a>
         </div>
       </div>
       <div class="product-card-info">
@@ -151,27 +211,188 @@ function buildSubcatCounts(products) {
     return map;
 }
 
+function asInt(value) {
+    const n = parseInt(String(value || '').trim(), 10);
+    return Number.isFinite(n) && n > 0 ? n : 0;
+}
+
+function safeDecodeSlug(value) {
+    const s = String(value || '').trim();
+    if (!s) return '';
+    try {
+        return decodeURIComponent(s);
+    } catch {
+        return s;
+    }
+}
+
+function normalizeCategoryName(value) {
+    return String(value || '')
+        .toLowerCase()
+        .replace(/[«»"'`]/g, '')
+        .replace(/[_-]+/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function normalizeSubcatKey(value) {
+    return safeDecodeSlug(value).trim();
+}
+
+function humanizeSubcatLabel(value) {
+    const decoded = normalizeSubcatKey(value);
+    if (!decoded) return '';
+    return decoded.replace(/[_-]+/g, ' ');
+}
+
+function findWooCategoryBySiteSlug(categories, siteCatSlug, explicitWooCatId) {
+    const byId = asInt(explicitWooCatId);
+    if (byId) {
+        const found = categories.find((c) => Number(c?.id) === byId);
+        if (found) return found;
+    }
+
+    const direct = categories.find((c) => {
+        const raw = String(c?.slug || '');
+        const decoded = safeDecodeSlug(raw);
+        return raw === siteCatSlug || decoded === siteCatSlug;
+    });
+    if (direct) return direct;
+
+    const aliases = CAT_ALIAS_CANDIDATES[siteCatSlug] || [siteCatSlug];
+    const lowerAliases = aliases.map((s) => s.toLowerCase());
+    const byAlias = categories.find(
+        (c) =>
+            lowerAliases.includes(String(c?.slug || '').toLowerCase()) ||
+            lowerAliases.includes(safeDecodeSlug(c?.slug).toLowerCase())
+    );
+    if (byAlias) return byAlias;
+
+    const expectedTitle = normalizeCategoryName(SITE_CATEGORY_TITLES[siteCatSlug] || '');
+    if (expectedTitle) {
+        const byName = categories
+            .filter((c) => normalizeCategoryName(c?.name || '').includes(expectedTitle))
+            .sort((a, b) => Number(b?.count || 0) - Number(a?.count || 0));
+        if (byName[0]) return byName[0];
+    }
+
+    if (siteCatSlug === 'gifts') {
+        const giftCandidates = categories
+            .filter((c) => {
+                const n = normalizeCategoryName(c?.name || '');
+                const s = normalizeCategoryName(safeDecodeSlug(c?.slug || ''));
+                return (
+                    n.includes('подар') ||
+                    n.includes('сувенир') ||
+                    n.includes('игруш') ||
+                    s.includes('подар') ||
+                    s.includes('сувенир') ||
+                    s.includes('игруш')
+                );
+            })
+            .sort((a, b) => Number(b?.count || 0) - Number(a?.count || 0));
+        if (giftCandidates[0]) return giftCandidates[0];
+    }
+
+    return null;
+}
+
+function mapWooProductToCategoryCard(rawWooProduct, selectedWooCategoryId, siteCatSlug) {
+    const mapped = wooProductToCard(rawWooProduct);
+    if (!mapped) return null;
+
+    const categories = Array.isArray(rawWooProduct?.categories) ? rawWooProduct.categories : [];
+    const selectedId = Number(selectedWooCategoryId || 0);
+    const child = categories.find((c) => Number(c?.parent || 0) === selectedId);
+    const fallbackSub = categories.find((c) => Number(c?.id || 0) !== selectedId);
+    const selectedSub = child || fallbackSub;
+    const subKey = selectedSub
+        ? normalizeSubcatKey(selectedSub.slug || selectedSub.name || '')
+        : '';
+
+    return normalizeProduct({
+        ...mapped,
+        category: siteCatSlug,
+        subCategory: subKey,
+    });
+}
+
+async function loadCategoryProductsFromWoo(siteCatSlug, explicitWooCatId) {
+    const { categories } = await fetchAllWooCategories();
+    const selectedCategory = findWooCategoryBySiteSlug(categories, siteCatSlug, explicitWooCatId);
+    if (!selectedCategory) {
+        return {
+            products: [],
+            selectedCategory: null,
+        };
+    }
+
+    const { products: wooProducts } = await fetchAllWooProducts(30, {
+        category: selectedCategory.id,
+        fields: WOO_LIST_FIELDS,
+    });
+    let sourceProducts = wooProducts;
+
+    // Some Woo setups keep products only in child categories.
+    // If parent category is empty, aggregate children.
+    if (!sourceProducts.length) {
+        const children = categories.filter(
+            (c) => Number(c?.parent || 0) === Number(selectedCategory.id)
+        );
+        if (children.length) {
+            const chunks = await Promise.all(
+                children.map((child) =>
+                    fetchAllWooProducts(30, {
+                        category: child.id,
+                        fields: WOO_LIST_FIELDS,
+                    }).then((r) => r.products)
+                )
+            );
+            const dedup = new Map();
+            chunks.flat().forEach((p) => {
+                const id = String(p?.id || '');
+                if (id) dedup.set(id, p);
+            });
+            sourceProducts = Array.from(dedup.values());
+        }
+    }
+
+    const cards = sourceProducts
+        .map((raw) => mapWooProductToCategoryCard(raw, selectedCategory.id, siteCatSlug))
+        .filter(Boolean);
+
+    return {
+        products: cards,
+        selectedCategory,
+    };
+}
+
 export function initCategoryProducts() {
     const grid = document.getElementById('categoryGrid');
     if (!grid) return;
 
     const state = readUrlState();
+    const params = new URLSearchParams(window.location.search);
+    const explicitWooCatId = params.get('woo_cat') || DEFAULT_WOO_CATEGORY_BY_SITE[state.cat] || '';
     const countEl = document.querySelector('.ch-ref-count');
     const subcatsEl = document.querySelector('.ch-ref-subcats');
 
     grid.innerHTML = '<div class="category-loading">Загрузка товаров…</div>';
 
-    const url = DATA_BASE + encodeURIComponent(state.cat) + '.json';
-    fetch(url)
-        .then((r) => {
-            if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
-            return r.json();
-        })
-        .then((allProducts) => {
-            const products = allProducts
-                .filter((p) => (p.category || '') === state.cat)
-                .map(normalizeProduct);
+    const loadPromise = USE_WOO
+        ? loadCategoryProductsFromWoo(state.cat, explicitWooCatId).then((result) => result.products)
+        : (async () => {
+              const url = DATA_BASE + encodeURIComponent(state.cat) + '.json';
+              const r = await fetch(url);
+              if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
+              const allProducts = await r.json();
+              return allProducts
+                  .filter((p) => (p.category || '') === state.cat)
+                  .map(normalizeProduct);
+          })();
 
+    loadPromise
+        .then((products) => {
             if (!products.length) {
                 grid.innerHTML = '<p class="category-empty">В этой категории пока нет товаров.</p>';
                 if (countEl) countEl.textContent = '(0 товаров)';
@@ -315,7 +536,7 @@ function buildSubcatTabs(subcatsEl, counts, total, activeSub) {
 
     Object.keys(counts).forEach((key) => {
         if (key === 'all') return;
-        const label = SUBCAT_LABELS[key] || key;
+        const label = SUBCAT_LABELS[key] || humanizeSubcatLabel(key) || key;
         const a = document.createElement('a');
         a.href = '#';
         a.className = 'ch-ref-subcat' + (activeSub === key ? ' active' : '');

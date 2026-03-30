@@ -65,7 +65,7 @@
                 <div class="category-filters"></div>
 
                 <div class="category-products-grid" id="categoryGrid">
-                    <!-- Товары из data/products/{cat}.json через category-products.js -->
+                    <!-- Товары рендерятся через category-products.js (Woo или JSON fallback) -->
                 </div>
                 <div id="categoryPagination" class="category-pagination"></div>
             </div>
@@ -92,7 +92,10 @@
                     return;
                 }
 
-                const data = categories[cat] || categories['home-textile'];
+                const data = categories[cat] || {
+                    title: 'Категория',
+                    subtitle: 'Изделия из натурального льна',
+                };
 
                 // Update page title and meta
                 document.title = data.title + ' — нжен ЛЁН';

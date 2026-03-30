@@ -1,6 +1,11 @@
 import { normalizeProduct, formatPrice, resolveImageUrl, safeText } from './product-model.js';
 import { openLayer, closeLayer } from './ui-shell.js';
 import { showToast } from './toast.js';
+import { fetchAllWooProducts } from './woo-client.js';
+import { wooProductToCard } from './woo-map.js';
+
+const USE_WOO = import.meta.env.VITE_USE_WOO === 'true';
+const WOO_LIST_FIELDS = 'id,name,price,regular_price,sale_price,images,sku,categories';
 
 function sortProducts(products, sortKey) {
     if (!sortKey) return products;
@@ -62,37 +67,62 @@ export function initCatalog() {
         });
     });
 
-    // ===== DYNAMIC PRODUCT RENDERING (из data/products/index.json + preview) =====
+    // ===== DYNAMIC PRODUCT RENDERING: Woo или data/products/index.json =====
     const catalogGrid = document.querySelector('.catalog-grid');
     if (catalogGrid) {
-        const dataBase = (import.meta.env.BASE_URL || '/') + 'data/products/';
-        fetch(dataBase + 'index.json')
-            .then((response) => response.json())
-            .then((index) => {
-                const preview = Array.isArray(index.preview)
-                    ? index.preview.map(normalizeProduct)
-                    : [];
-                const total = Number.isFinite(Number(index.total))
-                    ? Number(index.total)
-                    : preview.length;
+        if (USE_WOO) {
+            fetchAllWooProducts(30, { fields: WOO_LIST_FIELDS })
+                .then(({ products, total }) => {
+                    const preview = products
+                        .map((p) => normalizeProduct(wooProductToCard(p)))
+                        .filter((p) => p.name);
+                    updateCatalogCount(total || preview.length);
+                    renderProducts(preview, catalogGrid);
 
-                updateCatalogCount(total);
-                renderProducts(preview, catalogGrid);
+                    const sortSelect = document.getElementById('catalogSortMain');
+                    if (sortSelect) {
+                        sortSelect.addEventListener('change', () => {
+                            const sorted = sortProducts(preview, sortSelect.value);
+                            renderProducts(sorted, catalogGrid);
+                        });
+                    }
+                })
+                .catch((error) => {
+                    console.error('Woo catalog:', error);
+                    catalogGrid.innerHTML =
+                        '<p class="catalog-empty">Не удалось загрузить каталог из магазина. Проверьте .env.local и npm run dev.</p>';
+                    showToast('Ошибка загрузки каталога (Woo)', 'error');
+                });
+        } else {
+            const dataBase = (import.meta.env.BASE_URL || '/') + 'data/products/';
+            fetch(dataBase + 'index.json')
+                .then((response) => response.json())
+                .then((index) => {
+                    const preview = Array.isArray(index.preview)
+                        ? index.preview.map(normalizeProduct)
+                        : [];
+                    const total = Number.isFinite(Number(index.total))
+                        ? Number(index.total)
+                        : preview.length;
 
-                const sortSelect = document.getElementById('catalogSortMain');
-                if (sortSelect) {
-                    sortSelect.addEventListener('change', () => {
-                        const sorted = sortProducts(preview, sortSelect.value);
-                        renderProducts(sorted, catalogGrid);
-                    });
-                }
-            })
-            .catch((error) => {
-                console.error('Error loading catalog index:', error);
-                catalogGrid.innerHTML =
-                    '<p class="catalog-empty">Не удалось загрузить каталог. Попробуйте позже.</p>';
-                showToast('Ошибка загрузки каталога', 'error');
-            });
+                    updateCatalogCount(total);
+                    renderProducts(preview, catalogGrid);
+
+                    const sortSelect = document.getElementById('catalogSortMain');
+                    if (sortSelect) {
+                        sortSelect.addEventListener('change', () => {
+                            const sorted = sortProducts(preview, sortSelect.value);
+                            renderProducts(sorted, catalogGrid);
+                        });
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error loading catalog index:', error);
+                    catalogGrid.innerHTML =
+                        '<p class="catalog-empty">Не удалось загрузить каталог. Попробуйте позже.</p>';
+                    showToast('Ошибка загрузки каталога', 'error');
+                });
+        }
     }
 }
 
@@ -165,6 +195,9 @@ function renderProducts(products, container) {
             }
 
             const idParam = encodeURIComponent(product.id || '');
+            const detailHref = USE_WOO
+                ? `product.html?woo=${idParam}`
+                : `product.html?id=${idParam}`;
 
             return `
             <div class="product-card reveal reveal-delay-${delay}" data-product-id="${safeText(
@@ -175,7 +208,7 @@ function renderProducts(products, container) {
                     ${badgesHtml}
                     ${sizesHtml}
                     <div class="product-quick-view">
-                        <a href="product.html?id=${idParam}" class="product-quick-btn">Подробнее</a>
+                        <a href="${detailHref}" class="product-quick-btn">Подробнее</a>
                     </div>
                 </div>
                 <div class="product-card-info">

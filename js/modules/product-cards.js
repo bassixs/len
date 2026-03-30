@@ -1,7 +1,11 @@
 import { normalizeProduct, resolveImageUrl, safeText } from './product-model.js';
+import { fetchWooProducts } from './woo-client.js';
+import { wooProductToCard } from './woo-map.js';
 
 const BASE = import.meta.env.BASE_URL || '/';
 const DATA_PRODUCTS_BASE = `${BASE}data/products/`;
+const USE_WOO = import.meta.env.VITE_USE_WOO === 'true';
+const WOO_LIST_FIELDS = 'id,name,price,regular_price,sale_price,images,sku,categories';
 
 let indexJsonPromise = null;
 let previewProductsPromise = null;
@@ -98,7 +102,10 @@ function applyCardData(card, rawProduct, fallbackId) {
     });
 
     card.querySelectorAll('.product-quick-btn').forEach((link) => {
-        link.setAttribute('href', `product.html?id=${encodeURIComponent(resolvedId)}`);
+        const href = USE_WOO
+            ? `product.html?woo=${encodeURIComponent(resolvedId)}`
+            : `product.html?id=${encodeURIComponent(resolvedId)}`;
+        link.setAttribute('href', href);
     });
 
     const img = card.querySelector('.product-card-image img');
@@ -158,7 +165,70 @@ async function enrichProductCards() {
     enrichCardsFromLookup(unresolved, allLookup, allProducts, allFallbackId);
 }
 
+function renderWooSliderCard(product) {
+    const imgSrc = resolveImageUrl(product.image);
+    const name = safeText(product.name);
+    const currentPrice = Number(product.price || 0).toLocaleString('ru-RU');
+    const oldPrice =
+        product.oldPrice != null
+            ? `<span class="price-old">${Number(product.oldPrice).toLocaleString('ru-RU')} ₽</span>`
+            : '';
+    const href = `product.html?woo=${encodeURIComponent(product.id)}`;
+
+    return `
+        <div class="product-card" data-product-id="${safeText(product.id)}">
+            <div class="product-card-image">
+                <img src="${safeText(imgSrc)}" alt="${name}" loading="lazy" />
+                <div class="product-quick-view">
+                    <a href="${href}" class="product-quick-btn">Подробнее</a>
+                </div>
+            </div>
+            <div class="product-card-info">
+                <h3 class="product-card-name">${name}</h3>
+                <div class="product-card-price">
+                    <span class="price-current">${currentPrice} ₽</span>${oldPrice}
+                </div>
+                <button
+                    type="button"
+                    class="btn btn-outline add-to-cart-btn"
+                    data-product-id="${safeText(product.id)}"
+                    style="margin-top: 0.5rem; width: 100%"
+                >
+                    В корзину
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+async function hydrateHomepageCardsFromWoo() {
+    const slider = document.getElementById('productsSlider');
+    if (!slider) return false;
+
+    const { products } = await fetchWooProducts({
+        page: 1,
+        perPage: 12,
+        orderBy: 'date',
+        order: 'desc',
+        fields: WOO_LIST_FIELDS,
+    });
+    const cards = products
+        .map((p) => normalizeProduct(wooProductToCard(p)))
+        .filter((p) => p.id && p.name);
+    if (!cards.length) return false;
+
+    slider.innerHTML = cards.slice(0, 8).map(renderWooSliderCard).join('');
+    return true;
+}
+
 export function initProductCards() {
+    if (USE_WOO) {
+        hydrateHomepageCardsFromWoo().catch((err) => {
+            console.error('Woo homepage cards error:', err);
+        });
+        return;
+    }
+
     enrichProductCards()
         .then(() => {
             // One delayed pass for asynchronously rendered sections,

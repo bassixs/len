@@ -4,6 +4,8 @@ import { showToast } from './toast.js';
 
 const DATA_PRODUCTS_BASE = `${import.meta.env.BASE_URL || '/'}data/products/`;
 const RELATED_COUNT = 4;
+const USE_WOO = import.meta.env.VITE_USE_WOO === 'true';
+const WOO_LIST_FIELDS = 'id,name,price,regular_price,sale_price,images,sku,categories';
 
 const CATEGORY_LABELS = {
     'home-textile': 'Домашний текстиль',
@@ -22,13 +24,22 @@ function isSafeHexColor(value) {
 
 export function initProductPage() {
     const params = new URLSearchParams(window.location.search);
-    const productId = params.get('id');
+    const wooId = params.get('woo');
 
-    loadProduct(productId).catch((err) => {
-        console.error('Product load error:', err);
-        showProductLoadError();
-        showToast('Не удалось загрузить карточку товара', 'error');
-    });
+    if (USE_WOO && wooId) {
+        loadWooProductPage(wooId).catch((err) => {
+            console.error('Woo product load error:', err);
+            showProductLoadError();
+            showToast('Не удалось загрузить карточку товара', 'error');
+        });
+    } else {
+        const productId = params.get('id');
+        loadProduct(productId).catch((err) => {
+            console.error('Product load error:', err);
+            showProductLoadError();
+            showToast('Не удалось загрузить карточку товара', 'error');
+        });
+    }
 
     initAccordionGroup({
         triggerSelector: '.accordion-head',
@@ -53,6 +64,61 @@ export function initProductPage() {
             let val = parseInt(qtyInput.value) || 1;
             if (val < parseInt(qtyInput.max || 10)) qtyInput.value = val + 1;
         });
+    }
+}
+
+async function loadWooProductPage(wooId) {
+    const { fetchWooProduct, fetchWooProducts } = await import('./woo-client.js');
+    const { wooProductToPageRaw, wooProductToCard } = await import('./woo-map.js');
+
+    const p = await fetchWooProduct(wooId);
+    const raw = wooProductToPageRaw(p);
+    if (!raw) throw new Error('Invalid Woo product');
+
+    renderProduct(raw, 'home-textile');
+
+    const section = document.getElementById('relatedSection');
+    const grid = document.getElementById('relatedGrid');
+    if (section && grid) {
+        const { products } = await fetchWooProducts({
+            page: 1,
+            perPage: 12,
+            category: raw.wooCategoryId || '',
+            exclude: [wooId],
+            fields: WOO_LIST_FIELDS,
+        });
+        const others = products.filter((x) => String(x.id) !== String(wooId));
+        const picks = others
+            .slice(0, RELATED_COUNT)
+            .map((x) => normalizeProduct(wooProductToCard(x)));
+        grid.innerHTML = picks
+            .map((prod, i) => {
+                const imgSrc = resolveImageUrl(prod.image);
+                const name = safeText(prod.name);
+                const delay = (i % 4) + 1;
+                let priceHtml = `<span class="price-current">${formatPrice(prod.price)}</span>`;
+                if (prod.oldPrice != null) {
+                    priceHtml += `<span class="price-old">${formatPrice(prod.oldPrice)}</span>`;
+                }
+                const href = USE_WOO
+                    ? `product.html?woo=${encodeURIComponent(prod.id)}`
+                    : `product.html?id=${encodeURIComponent(prod.id)}`;
+                return `
+            <div class="product-card reveal reveal-delay-${delay}">
+                <div class="product-card-image">
+                    <img src="${safeText(imgSrc)}" loading="lazy" alt="${name}">
+                    <div class="product-quick-view">
+                        <a href="${href}" class="product-quick-btn">Подробнее</a>
+                    </div>
+                </div>
+                <div class="product-card-info">
+                    <h3 class="product-card-name">${name}</h3>
+                    <div class="product-card-price">${priceHtml}</div>
+                </div>
+            </div>`;
+            })
+            .join('');
+        section.style.display = '';
     }
 }
 
@@ -98,16 +164,25 @@ function renderProduct(rawProduct, cat) {
 
     const categoryCrumb = document.querySelector('.breadcrumbs a[href*="category.html"]');
     if (categoryCrumb) {
-        categoryCrumb.href = `category.html?cat=${encodeURIComponent(cat)}`;
-        categoryCrumb.textContent = CATEGORY_LABELS[cat] || 'Категория';
+        if (rawProduct.wooCategoryName) {
+            const wooCat = Number(rawProduct.wooCategoryId || 0);
+            const catParam = rawProduct.wooCategorySlug || '';
+            categoryCrumb.href = wooCat
+                ? `category.html?cat=${encodeURIComponent(catParam || 'home-textile')}&woo_cat=${wooCat}`
+                : 'catalog.html';
+            categoryCrumb.textContent = rawProduct.wooCategoryName;
+        } else {
+            categoryCrumb.href = `category.html?cat=${encodeURIComponent(cat)}`;
+            categoryCrumb.textContent = CATEGORY_LABELS[cat] || 'Категория';
+        }
     }
     const lastCrumb = document.querySelector('.breadcrumbs span:last-child');
     if (lastCrumb) lastCrumb.textContent = product.name || '';
 
     renderGallery(rawProduct, product);
     renderOptions(product);
-    renderSpecs(product);
-    renderDescription(product);
+    renderSpecs(product, rawProduct);
+    renderDescription(product, rawProduct);
 
     const addBtn = document.querySelector('.add-to-cart-btn');
     if (addBtn) addBtn.dataset.productId = product.id || '';
@@ -230,7 +305,7 @@ function renderOptions(product) {
 
 // ===== SPECS (SKU, category) =====
 
-function renderSpecs(product) {
+function renderSpecs(product, rawProduct = {}) {
     const table = document.getElementById('specsTable');
     if (!table) return;
 
@@ -239,7 +314,10 @@ function renderSpecs(product) {
         row.innerHTML = `<td>Артикул</td><td>${safeText(product.sku)}</td>`;
     }
 
-    if (product.category) {
+    if (rawProduct.wooCategoryName) {
+        const row = table.insertRow(-1);
+        row.innerHTML = `<td>Категория</td><td>${safeText(rawProduct.wooCategoryName)}</td>`;
+    } else if (product.category) {
         const label = CATEGORY_LABELS[product.category] || product.category;
         const row = table.insertRow(-1);
         row.innerHTML = `<td>Категория</td><td>${safeText(label)}</td>`;
@@ -248,14 +326,18 @@ function renderSpecs(product) {
 
 // ===== DESCRIPTION =====
 
-function renderDescription(_product) {
+function renderDescription(_product, rawProduct = {}) {
     const descEl = document.getElementById('productDesc');
     if (!descEl) return;
 
-    descEl.textContent =
-        'Изделие из 100% натурального льна. ' +
-        'Лён обладает высокой терморегуляцией, отводит влагу и позволяет коже дышать. ' +
-        'Натуральные оттенки гармонично дополняют любой образ.';
+    if (rawProduct.wooHtmlDescription) {
+        descEl.innerHTML = rawProduct.wooHtmlDescription;
+    } else {
+        descEl.textContent =
+            'Изделие из 100% натурального льна. ' +
+            'Лён обладает высокой терморегуляцией, отводит влагу и позволяет коже дышать. ' +
+            'Натуральные оттенки гармонично дополняют любой образ.';
+    }
 }
 
 // ===== RELATED PRODUCTS =====
