@@ -9,18 +9,10 @@ import { fetchAllWooCategories, fetchWooProducts } from './woo-client.js';
 import { wooProductToCard } from './woo-map.js';
 
 const PER_PAGE = 24;
+const WOO_FETCH_PAGE_SIZE = 100;
 const DATA_BASE = (import.meta.env.BASE_URL || '/') + 'data/products/';
 const USE_WOO = import.meta.env.VITE_USE_WOO === 'true';
-const WOO_LIST_FIELDS = 'id,name,price,regular_price,sale_price,images,sku,categories';
-const DEFAULT_WOO_CATEGORY_BY_SITE = {
-    'home-textile': 24,
-    women: 370,
-    men: 352,
-    socks: 567,
-    gifts: 592,
-    accessories: 16,
-    fabrics: 654,
-};
+const WOO_LIST_FIELDS = 'id,name,price,regular_price,sale_price,images,sku,categories,stock_status';
 
 const CAT_ALIAS_CANDIDATES = {
     'home-textile': [
@@ -185,11 +177,15 @@ function renderCard(product) {
 
     const idParam = encodeURIComponent(product.id || '');
     const detailHref = USE_WOO ? `product.html?woo=${idParam}` : `product.html?id=${idParam}`;
+    const outOfStockBadge = product.inStock
+        ? ''
+        : '<div class="product-badges"><span class="badge badge-out">Нет в наличии</span></div>';
 
     return `
     <div class="product-card reveal" data-sub="${safeText(product.subCategory)}" data-product-id="${safeText(product.id)}">
       <div class="product-card-image">
         <img src="${safeText(imgSrc)}" loading="lazy" alt="${name}">
+        ${outOfStockBadge}
         <div class="product-quick-view">
           <a href="${detailHref}" class="product-quick-btn">Подробнее</a>
         </div>
@@ -261,19 +257,43 @@ function findWooCategoryBySiteSlug(categories, siteCatSlug, explicitWooCatId) {
 
     const aliases = CAT_ALIAS_CANDIDATES[siteCatSlug] || [siteCatSlug];
     const lowerAliases = aliases.map((s) => s.toLowerCase());
-    const byAlias = categories.find(
-        (c) =>
-            lowerAliases.includes(String(c?.slug || '').toLowerCase()) ||
-            lowerAliases.includes(safeDecodeSlug(c?.slug).toLowerCase())
-    );
-    if (byAlias) return byAlias;
+    const byAlias = categories
+        .filter(
+            (c) =>
+                lowerAliases.includes(String(c?.slug || '').toLowerCase()) ||
+                lowerAliases.includes(safeDecodeSlug(c?.slug).toLowerCase()) ||
+                lowerAliases.includes(normalizeCategoryName(c?.name || ''))
+        )
+        .sort((a, b) => Number(b?.count || 0) - Number(a?.count || 0));
+    if (byAlias[0]) return byAlias[0];
+
+    const byAliasInName = categories
+        .filter((c) => {
+            const n = normalizeCategoryName(c?.name || '');
+            const s = normalizeCategoryName(safeDecodeSlug(c?.slug || ''));
+            return lowerAliases.some((alias) => n.includes(alias) || s.includes(alias));
+        })
+        .sort((a, b) => Number(b?.count || 0) - Number(a?.count || 0));
+    if (byAliasInName[0]) return byAliasInName[0];
+
+    const byName = categories
+        .filter((c) => {
+            const categoryName = normalizeCategoryName(c?.name || '');
+            const categorySlug = normalizeCategoryName(safeDecodeSlug(c?.slug || ''));
+            return (
+                lowerAliases.some((alias) => categoryName.includes(alias) || categorySlug.includes(alias)) ||
+                normalizeCategoryName(SITE_CATEGORY_TITLES[siteCatSlug] || '') === categoryName
+            );
+        })
+        .sort((a, b) => Number(b?.count || 0) - Number(a?.count || 0));
+    if (byName[0]) return byName[0];
 
     const expectedTitle = normalizeCategoryName(SITE_CATEGORY_TITLES[siteCatSlug] || '');
     if (expectedTitle) {
-        const byName = categories
+        const byExpectedTitle = categories
             .filter((c) => normalizeCategoryName(c?.name || '').includes(expectedTitle))
             .sort((a, b) => Number(b?.count || 0) - Number(a?.count || 0));
-        if (byName[0]) return byName[0];
+        if (byExpectedTitle[0]) return byExpectedTitle[0];
     }
 
     if (siteCatSlug === 'gifts') {
@@ -317,7 +337,40 @@ function mapWooProductToCategoryCard(rawWooProduct, selectedWooCategoryId, siteC
     });
 }
 
+function mergeUniqueProducts(prevProducts, nextProducts) {
+    const seen = new Set(prevProducts.map((p) => String(p?.id || '')));
+    const merged = [...prevProducts];
+    nextProducts.forEach((p) => {
+        const id = String(p?.id || '');
+        if (!id || seen.has(id)) return;
+        seen.add(id);
+        merged.push(p);
+    });
+    return merged;
+}
+
+function shouldRefreshHeaderTotal(total) {
+    return Number.isFinite(total) && total > 0;
+}
+
+function getHeaderTotal(useWoo, wooTotal, productsLength) {
+    if (useWoo && shouldRefreshHeaderTotal(wooTotal)) return wooTotal;
+    return productsLength;
+}
+
+function getHeaderTotalText(total) {
+    return `(${total} ${pluralize(total, 'товар', 'товара', 'товаров')})`;
+}
+
 async function resolveWooCategory(siteCatSlug, explicitWooCatId) {
+    const byId = asInt(explicitWooCatId);
+    if (byId) {
+        return {
+            selectedCategory: { id: byId },
+            selectedCategoryId: byId,
+        };
+    }
+
     const { categories } = await fetchAllWooCategories();
     const selectedCategory = findWooCategoryBySiteSlug(categories, siteCatSlug, explicitWooCatId);
     return {
@@ -332,11 +385,12 @@ export function initCategoryProducts() {
 
     const state = readUrlState();
     const params = new URLSearchParams(window.location.search);
-    const explicitWooCatId = params.get('woo_cat') || DEFAULT_WOO_CATEGORY_BY_SITE[state.cat] || '';
+    const explicitWooCatId = params.get('woo_cat') || '';
     const countEl = document.querySelector('.ch-ref-count');
     const subcatsEl = document.querySelector('.ch-ref-subcats');
 
     grid.innerHTML = '<div class="category-loading">Загрузка товаров…</div>';
+    if (countEl) countEl.textContent = '(...)';
 
     let wooTotal = 0;
     let wooPage = 1;
@@ -350,7 +404,7 @@ export function initCategoryProducts() {
               if (!selectedWooCategoryId) return { products: [] };
               const { products: firstPageProducts, total } = await fetchWooProducts({
                   page: 1,
-                  perPage: PER_PAGE,
+                  perPage: WOO_FETCH_PAGE_SIZE,
                   category: selectedWooCategoryId,
                   fields: WOO_LIST_FIELDS,
               });
@@ -384,9 +438,8 @@ export function initCategoryProducts() {
             }
 
             const counts = buildSubcatCounts(products);
-            const totalForHeader = USE_WOO && wooTotal > 0 ? wooTotal : products.length;
-            const word = pluralize(totalForHeader, 'товар', 'товара', 'товаров');
-            if (countEl) countEl.textContent = `(${totalForHeader} ${word})`;
+            const totalForHeader = getHeaderTotal(USE_WOO, wooTotal, products.length);
+            if (countEl) countEl.textContent = getHeaderTotalText(totalForHeader);
 
             buildSubcatTabs(subcatsEl, counts, totalForHeader, state.sub);
             buildSortDropdown(state.sort);
@@ -411,7 +464,7 @@ export function initCategoryProducts() {
                 try {
                     const { products: pageProducts, total } = await fetchWooProducts({
                         page: wooPage,
-                        perPage: PER_PAGE,
+                        perPage: WOO_FETCH_PAGE_SIZE,
                         category: selectedWooCategoryId,
                         fields: WOO_LIST_FIELDS,
                     });
@@ -425,11 +478,11 @@ export function initCategoryProducts() {
                         return false;
                     }
 
-                    products.push(...cards);
+                    products = mergeUniqueProducts(products, cards);
                     wooTotal = Number(total || wooTotal || 0);
                     wooPage += 1;
                     wooHasMore =
-                        wooTotal > 0 ? products.length < wooTotal : cards.length === PER_PAGE;
+                        wooTotal > 0 ? products.length < wooTotal : cards.length === WOO_FETCH_PAGE_SIZE;
                     return true;
                 } catch (e) {
                     console.error('Category next page load error:', e);
@@ -438,6 +491,22 @@ export function initCategoryProducts() {
                 } finally {
                     wooLoading = false;
                 }
+            }
+
+            async function hydrateAllWooPagesInBackground() {
+                if (!USE_WOO) return;
+                let changed = false;
+                while (wooHasMore) {
+                    const loaded = await fetchNextWooPage();
+                    if (!loaded) break;
+                    changed = true;
+                }
+                if (!changed) return;
+                const headerTotal = getHeaderTotal(USE_WOO, wooTotal, products.length);
+                if (countEl) countEl.textContent = getHeaderTotalText(headerTotal);
+                buildSubcatTabs(subcatsEl, buildSubcatCounts(products), headerTotal, state.sub);
+                processedList = getProcessed();
+                render();
             }
 
             function render() {
@@ -466,10 +535,9 @@ export function initCategoryProducts() {
                                     const loaded = await fetchNextWooPage();
                                     if (!loaded) return;
                                 }
-                                const headerTotal =
-                                    USE_WOO && wooTotal > 0 ? wooTotal : products.length;
+                                const headerTotal = getHeaderTotal(USE_WOO, wooTotal, products.length);
                                 if (countEl) {
-                                    countEl.textContent = `(${headerTotal} ${pluralize(headerTotal, 'товар', 'товара', 'товаров')})`;
+                                    countEl.textContent = getHeaderTotalText(headerTotal);
                                 }
                                 currentPage += 1;
                                 processedList = getProcessed();
@@ -504,9 +572,9 @@ export function initCategoryProducts() {
                         processedList = getProcessed();
                     }
                 }
-                const headerTotal = USE_WOO && wooTotal > 0 ? wooTotal : products.length;
+                const headerTotal = getHeaderTotal(USE_WOO, wooTotal, products.length);
                 if (countEl) {
-                    countEl.textContent = `(${headerTotal} ${pluralize(headerTotal, 'товар', 'товара', 'товаров')})`;
+                    countEl.textContent = getHeaderTotalText(headerTotal);
                 }
                 buildSubcatTabs(subcatsEl, buildSubcatCounts(products), headerTotal, state.sub);
                 render();
@@ -558,6 +626,7 @@ export function initCategoryProducts() {
 
             processedList = getProcessed();
             render();
+            hydrateAllWooPagesInBackground();
         })
         .catch((err) => {
             console.error('Category products load error:', err);

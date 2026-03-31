@@ -5,7 +5,7 @@ import { showToast } from './toast.js';
 const DATA_PRODUCTS_BASE = `${import.meta.env.BASE_URL || '/'}data/products/`;
 const RELATED_COUNT = 4;
 const USE_WOO = import.meta.env.VITE_USE_WOO === 'true';
-const WOO_LIST_FIELDS = 'id,name,price,regular_price,sale_price,images,sku,categories';
+const WOO_LIST_FIELDS = 'id,name,price,regular_price,sale_price,images,sku,categories,stock_status';
 
 const CATEGORY_LABELS = {
     'home-textile': 'Домашний текстиль',
@@ -103,10 +103,14 @@ async function loadWooProductPage(wooId) {
                 const href = USE_WOO
                     ? `product.html?woo=${encodeURIComponent(prod.id)}`
                     : `product.html?id=${encodeURIComponent(prod.id)}`;
+                const stockBadge = !prod.inStock
+                    ? '<div class="product-badges"><span class="badge badge-out">Нет в наличии</span></div>'
+                    : '';
                 return `
             <div class="product-card reveal reveal-delay-${delay}">
                 <div class="product-card-image">
                     <img src="${safeText(imgSrc)}" loading="lazy" alt="${name}">
+                    ${stockBadge}
                     <div class="product-quick-view">
                         <a href="${href}" class="product-quick-btn">Подробнее</a>
                     </div>
@@ -180,12 +184,44 @@ function renderProduct(rawProduct, cat) {
     if (lastCrumb) lastCrumb.textContent = product.name || '';
 
     renderGallery(rawProduct, product);
+    renderStockState(product);
     renderOptions(product);
     renderSpecs(product, rawProduct);
     renderDescription(product, rawProduct);
 
     const addBtn = document.querySelector('.add-to-cart-btn');
     if (addBtn) addBtn.dataset.productId = product.id || '';
+}
+
+function renderStockState(product) {
+    const priceEl = document.getElementById('productPrice');
+    if (!priceEl) return;
+
+    let statusEl = document.getElementById('productStockStatus');
+    if (!statusEl) {
+        statusEl = document.createElement('div');
+        statusEl.id = 'productStockStatus';
+        statusEl.className = 'product-stock-status';
+        priceEl.insertAdjacentElement('afterend', statusEl);
+    }
+
+    const isOutOfStock = !product.inStock;
+    statusEl.textContent = isOutOfStock ? 'Нет в наличии' : 'В наличии';
+    statusEl.classList.toggle('is-out', isOutOfStock);
+    statusEl.classList.toggle('is-in', !isOutOfStock);
+
+    const addBtn = document.querySelector('.add-to-cart-btn');
+    if (addBtn) {
+        addBtn.disabled = isOutOfStock;
+        addBtn.textContent = isOutOfStock ? 'Нет в наличии' : 'В КОРЗИНУ';
+    }
+
+    const qtyInput = document.getElementById('qtyInput');
+    const qtyMinus = document.getElementById('qtyMinus');
+    const qtyPlus = document.getElementById('qtyPlus');
+    if (qtyInput) qtyInput.disabled = isOutOfStock;
+    if (qtyMinus) qtyMinus.disabled = isOutOfStock;
+    if (qtyPlus) qtyPlus.disabled = isOutOfStock;
 }
 
 // ===== GALLERY =====
@@ -363,11 +399,15 @@ function renderRelated(allProducts, currentId, _cat) {
             if (p.oldPrice != null) {
                 priceHtml += `<span class="price-old">${formatPrice(p.oldPrice)}</span>`;
             }
+            const stockBadge = !p.inStock
+                ? '<div class="product-badges"><span class="badge badge-out">Нет в наличии</span></div>'
+                : '';
 
             return `
             <div class="product-card reveal reveal-delay-${delay}">
                 <div class="product-card-image">
                     <img src="${safeText(imgSrc)}" loading="lazy" alt="${name}">
+                    ${stockBadge}
                     <div class="product-quick-view">
                         <a href="product.html?id=${encodeURIComponent(p.id)}" class="product-quick-btn">Подробнее</a>
                     </div>

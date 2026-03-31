@@ -14,6 +14,8 @@ export function normalizeProduct(raw = {}) {
         subCategory = '',
         sku = '',
         url = '',
+        stockStatus = '',
+        inStock = true,
     } = raw;
 
     return {
@@ -29,6 +31,8 @@ export function normalizeProduct(raw = {}) {
         subCategory: String(subCategory || ''),
         sku: String(sku || ''),
         url: String(url || ''),
+        stockStatus: String(stockStatus || ''),
+        inStock: Boolean(inStock),
     };
 }
 

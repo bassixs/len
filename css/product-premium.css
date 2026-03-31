@@ -45,6 +45,21 @@
     letter-spacing: -0.02em;
 }
 
+.product-stock-status {
+    margin-top: -1.2rem;
+    margin-bottom: 1.8rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.product-stock-status.is-in {
+    color: var(--c-sage-dark);
+}
+
+.product-stock-status.is-out {
+    color: #8d6e63;
+}
+
 .product-desc-premium {
     font-size: 1rem;
     line-height: 1.6;

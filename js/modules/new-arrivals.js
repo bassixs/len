@@ -4,7 +4,7 @@ import { fetchWooProducts } from './woo-client.js';
 import { wooProductToCard } from './woo-map.js';
 
 const USE_WOO = import.meta.env.VITE_USE_WOO === 'true';
-const WOO_LIST_FIELDS = 'id,name,price,regular_price,sale_price,images,sku,categories';
+const WOO_LIST_FIELDS = 'id,name,price,regular_price,sale_price,images,sku,categories,stock_status';
 
 function shuffle(items) {
     const arr = [...items];
@@ -26,13 +26,17 @@ function renderCard(raw, index) {
         product.oldPrice != null
             ? `<span class="price-old">${formatPrice(product.oldPrice)}</span>`
             : '';
+    const isOutOfStock = !product.inStock;
+    const stockBadge = isOutOfStock
+        ? '<span class="badge badge-out">Нет в наличии</span>'
+        : '<span class="badge badge-new">NEW</span>';
 
     return `
         <div class="product-card reveal reveal-delay-${delay}" data-product-id="${safeText(product.id)}">
             <div class="product-card-image">
                 <img src="${safeText(imgSrc)}" loading="lazy" alt="${name}" />
                 <div class="product-badges">
-                    <span class="badge badge-new">NEW</span>
+                    ${stockBadge}
                 </div>
                 <div class="product-quick-view">
                     <a href="${detailHref}" class="product-quick-btn">Подробнее</a>
@@ -48,8 +52,9 @@ function renderCard(raw, index) {
                     class="btn btn-outline add-to-cart-btn"
                     data-product-id="${safeText(product.id)}"
                     style="margin-top: 0.5rem; width: 100%"
+                    ${isOutOfStock ? 'disabled' : ''}
                 >
-                    В корзину
+                    ${isOutOfStock ? 'Нет в наличии' : 'В корзину'}
                 </button>
             </div>
         </div>

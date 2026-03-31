@@ -32,6 +32,8 @@ export function wooProductToCard(p) {
         subCategory: subCategory ? String(subCategory.slug || '') : '',
         sku: String(p.sku || ''),
         url: '',
+        stockStatus: String(p.stock_status || ''),
+        inStock: String(p.stock_status || '').toLowerCase() === 'instock',
         wooCategories: categories.map((c) => ({
             id: Number(c?.id || 0),
             name: String(c?.name || ''),
@@ -67,6 +69,8 @@ export function wooProductToPageRaw(p) {
         subCategory: '',
         sku: String(p.sku || ''),
         url: '',
+        stockStatus: String(p.stock_status || ''),
+        inStock: String(p.stock_status || '').toLowerCase() === 'instock',
         wooHtmlDescription,
         wooCategoryId: cat ? Number(cat.id || 0) : 0,
         wooCategorySlug: cat ? String(cat.slug || '') : '',

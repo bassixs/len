@@ -6,7 +6,7 @@ import { wooProductToCard } from './woo-map.js';
 
 const USE_WOO = import.meta.env.VITE_USE_WOO === 'true';
 const PER_PAGE = 24;
-const WOO_LIST_FIELDS = 'id,name,price,regular_price,sale_price,images,sku,categories';
+const WOO_LIST_FIELDS = 'id,name,price,regular_price,sale_price,images,sku,categories,stock_status';
 
 function sortProducts(products, sortKey) {
     if (!sortKey) return products;
@@ -216,14 +216,22 @@ function renderProducts(products, container) {
             const name = safeText(product.name);
 
             let badgesHtml = '';
-            if (product.badges.length > 0) {
+            const badgeList = [...product.badges];
+            if (!product.inStock) {
+                badgeList.unshift('Нет в наличии');
+            }
+            if (badgeList.length > 0) {
                 badgesHtml = `<div class="product-badges">
-                ${product.badges
+                ${badgeList
                     .map(
-                        (b) =>
-                            `<span class="badge badge-${safeText(String(b).toLowerCase())}">${safeText(
-                                b
-                            )}</span>`
+                        (b) => {
+                            const key = String(b).toLowerCase();
+                            const cls =
+                                key === 'нет в наличии'
+                                    ? 'badge badge-out'
+                                    : `badge badge-${safeText(key)}`;
+                            return `<span class="${cls}">${safeText(b)}</span>`;
+                        }
                     )
                     .join('')}
             </div>`;
