@@ -5,7 +5,7 @@
  */
 import { normalizeProduct, formatPrice, resolveImageUrl, safeText } from './product-model.js';
 import { showToast } from './toast.js';
-import { fetchAllWooCategories, fetchAllWooProducts } from './woo-client.js';
+import { fetchAllWooCategories, fetchWooProducts } from './woo-client.js';
 import { wooProductToCard } from './woo-map.js';
 
 const PER_PAGE = 24;
@@ -317,53 +317,12 @@ function mapWooProductToCategoryCard(rawWooProduct, selectedWooCategoryId, siteC
     });
 }
 
-async function loadCategoryProductsFromWoo(siteCatSlug, explicitWooCatId) {
+async function resolveWooCategory(siteCatSlug, explicitWooCatId) {
     const { categories } = await fetchAllWooCategories();
     const selectedCategory = findWooCategoryBySiteSlug(categories, siteCatSlug, explicitWooCatId);
-    if (!selectedCategory) {
-        return {
-            products: [],
-            selectedCategory: null,
-        };
-    }
-
-    const { products: wooProducts } = await fetchAllWooProducts(30, {
-        category: selectedCategory.id,
-        fields: WOO_LIST_FIELDS,
-    });
-    let sourceProducts = wooProducts;
-
-    // Some Woo setups keep products only in child categories.
-    // If parent category is empty, aggregate children.
-    if (!sourceProducts.length) {
-        const children = categories.filter(
-            (c) => Number(c?.parent || 0) === Number(selectedCategory.id)
-        );
-        if (children.length) {
-            const chunks = await Promise.all(
-                children.map((child) =>
-                    fetchAllWooProducts(30, {
-                        category: child.id,
-                        fields: WOO_LIST_FIELDS,
-                    }).then((r) => r.products)
-                )
-            );
-            const dedup = new Map();
-            chunks.flat().forEach((p) => {
-                const id = String(p?.id || '');
-                if (id) dedup.set(id, p);
-            });
-            sourceProducts = Array.from(dedup.values());
-        }
-    }
-
-    const cards = sourceProducts
-        .map((raw) => mapWooProductToCategoryCard(raw, selectedCategory.id, siteCatSlug))
-        .filter(Boolean);
-
     return {
-        products: cards,
         selectedCategory,
+        selectedCategoryId: Number(selectedCategory?.id || 0),
     };
 }
 
@@ -379,20 +338,45 @@ export function initCategoryProducts() {
 
     grid.innerHTML = '<div class="category-loading">Загрузка товаров…</div>';
 
+    let wooTotal = 0;
+    let wooPage = 1;
+    let wooHasMore = false;
+    let wooLoading = false;
+    let selectedWooCategoryId = 0;
+
     const loadPromise = USE_WOO
-        ? loadCategoryProductsFromWoo(state.cat, explicitWooCatId).then((result) => result.products)
+        ? resolveWooCategory(state.cat, explicitWooCatId).then(async ({ selectedCategoryId }) => {
+              selectedWooCategoryId = selectedCategoryId;
+              if (!selectedWooCategoryId) return { products: [] };
+              const { products: firstPageProducts, total } = await fetchWooProducts({
+                  page: 1,
+                  perPage: PER_PAGE,
+                  category: selectedWooCategoryId,
+                  fields: WOO_LIST_FIELDS,
+              });
+              const cards = firstPageProducts
+                  .map((raw) => mapWooProductToCategoryCard(raw, selectedWooCategoryId, state.cat))
+                  .filter(Boolean);
+              wooTotal = Number(total || 0);
+              wooPage = 2;
+              wooHasMore = wooTotal > cards.length;
+              return { products: cards };
+          })
         : (async () => {
               const url = DATA_BASE + encodeURIComponent(state.cat) + '.json';
               const r = await fetch(url);
               if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
               const allProducts = await r.json();
-              return allProducts
-                  .filter((p) => (p.category || '') === state.cat)
-                  .map(normalizeProduct);
+              return {
+                  products: allProducts
+                      .filter((p) => (p.category || '') === state.cat)
+                      .map(normalizeProduct),
+              };
           })();
 
     loadPromise
-        .then((products) => {
+        .then((payload) => {
+            let products = payload.products || [];
             if (!products.length) {
                 grid.innerHTML = '<p class="category-empty">В этой категории пока нет товаров.</p>';
                 if (countEl) countEl.textContent = '(0 товаров)';
@@ -400,11 +384,11 @@ export function initCategoryProducts() {
             }
 
             const counts = buildSubcatCounts(products);
-            const total = products.length;
-            const word = pluralize(total, 'товар', 'товара', 'товаров');
-            if (countEl) countEl.textContent = `(${total} ${word})`;
+            const totalForHeader = USE_WOO && wooTotal > 0 ? wooTotal : products.length;
+            const word = pluralize(totalForHeader, 'товар', 'товара', 'товаров');
+            if (countEl) countEl.textContent = `(${totalForHeader} ${word})`;
 
-            buildSubcatTabs(subcatsEl, counts, total, state.sub);
+            buildSubcatTabs(subcatsEl, counts, totalForHeader, state.sub);
             buildSortDropdown(state.sort);
             buildPriceFilter(state.priceFrom, state.priceTo);
 
@@ -421,27 +405,81 @@ export function initCategoryProducts() {
                 return list;
             }
 
-            function render(append = false) {
+            async function fetchNextWooPage() {
+                if (!USE_WOO || !selectedWooCategoryId || !wooHasMore || wooLoading) return false;
+                wooLoading = true;
+                try {
+                    const { products: pageProducts, total } = await fetchWooProducts({
+                        page: wooPage,
+                        perPage: PER_PAGE,
+                        category: selectedWooCategoryId,
+                        fields: WOO_LIST_FIELDS,
+                    });
+                    const cards = pageProducts
+                        .map((raw) =>
+                            mapWooProductToCategoryCard(raw, selectedWooCategoryId, state.cat)
+                        )
+                        .filter(Boolean);
+                    if (!cards.length) {
+                        wooHasMore = false;
+                        return false;
+                    }
+
+                    products.push(...cards);
+                    wooTotal = Number(total || wooTotal || 0);
+                    wooPage += 1;
+                    wooHasMore =
+                        wooTotal > 0 ? products.length < wooTotal : cards.length === PER_PAGE;
+                    return true;
+                } catch (e) {
+                    console.error('Category next page load error:', e);
+                    wooHasMore = false;
+                    return false;
+                } finally {
+                    wooLoading = false;
+                }
+            }
+
+            function render() {
                 const list = processedList;
                 const start = (currentPage - 1) * PER_PAGE;
                 const slice = list.slice(start, start + PER_PAGE);
                 const html = slice.map(renderCard).join('');
-                if (append) grid.insertAdjacentHTML('beforeend', html);
-                else
-                    grid.innerHTML =
-                        html || '<p class="category-empty">Нет товаров по заданным параметрам.</p>';
+                grid.innerHTML =
+                    html || '<p class="category-empty">Нет товаров по заданным параметрам.</p>';
 
                 const paginationEl = document.getElementById('categoryPagination');
                 if (paginationEl) {
-                    const hasMore = start + slice.length < list.length;
+                    const hasMoreLocal = start + slice.length < list.length;
+                    const hasMoreRemote = USE_WOO && wooHasMore;
+                    const hasMore = hasMoreLocal || hasMoreRemote;
                     if (hasMore) {
                         paginationEl.innerHTML =
                             '<button type="button" class="btn btn-outline-dark category-load-more">Показать ещё</button>';
+                        const button = paginationEl.querySelector('.category-load-more');
+                        if (button && wooLoading) button.disabled = true;
                         paginationEl
                             .querySelector('.category-load-more')
-                            .addEventListener('click', () => {
+                            .addEventListener('click', async () => {
+                                if (wooLoading) return;
+                                if (!hasMoreLocal && hasMoreRemote) {
+                                    const loaded = await fetchNextWooPage();
+                                    if (!loaded) return;
+                                }
+                                const headerTotal =
+                                    USE_WOO && wooTotal > 0 ? wooTotal : products.length;
+                                if (countEl) {
+                                    countEl.textContent = `(${headerTotal} ${pluralize(headerTotal, 'товар', 'товара', 'товаров')})`;
+                                }
                                 currentPage += 1;
-                                render(true);
+                                processedList = getProcessed();
+                                buildSubcatTabs(
+                                    subcatsEl,
+                                    buildSubcatCounts(products),
+                                    headerTotal,
+                                    state.sub
+                                );
+                                render();
                             });
                     } else {
                         paginationEl.innerHTML = '';
@@ -454,10 +492,23 @@ export function initCategoryProducts() {
                 }
             }
 
-            function resetAndRender() {
+            async function resetAndRender() {
                 currentPage = 1;
                 writeUrlState(state);
                 processedList = getProcessed();
+                if (USE_WOO && !processedList.length && wooHasMore) {
+                    // If filter emptied current subset, try loading extra pages before showing empty state.
+                    for (let i = 0; i < 3 && !processedList.length && wooHasMore; i += 1) {
+                        const loaded = await fetchNextWooPage();
+                        if (!loaded) break;
+                        processedList = getProcessed();
+                    }
+                }
+                const headerTotal = USE_WOO && wooTotal > 0 ? wooTotal : products.length;
+                if (countEl) {
+                    countEl.textContent = `(${headerTotal} ${pluralize(headerTotal, 'товар', 'товара', 'товаров')})`;
+                }
+                buildSubcatTabs(subcatsEl, buildSubcatCounts(products), headerTotal, state.sub);
                 render();
             }
 

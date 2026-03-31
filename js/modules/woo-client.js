@@ -95,7 +95,8 @@ export async function fetchAllWooProducts(maxPages = 30, options = {}) {
         });
         total = t;
         all.push(...products);
-        if (!products.length || products.length < 100 || page >= maxPages) break;
+        if (!products.length || page >= maxPages) break;
+        if (Number.isFinite(total) && total > 0 && all.length >= total) break;
         page += 1;
     }
     return { products: all, total };

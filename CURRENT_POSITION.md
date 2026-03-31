@@ -1,81 +1,62 @@
-# Текущее положение проекта (фронтенд-прототип)
+# Текущее положение проекта (март 2026)
 
-## Дерево проекта
+## Коротко
+
+Проект уже не просто прототип: это **рабочий headless-фронтенд на Vite**, который берет данные каталога из **WooCommerce REST API** через путь `'/api/wc'`.
+
+Локальные JSON в `public/data/` оставлены как облегченный fallback и метаданные, но источник правды по товарам — Woo.
+
+## Текущий статус интеграции
+
+- `catalog.html` грузит товары из Woo при `VITE_USE_WOO=true`.
+- `product.html?woo=<id>` открывает карточку по Woo ID.
+- `category.html` грузит товары категории из Woo, поддерживает фильтры/сортировку/цену/пагинацию.
+- Для проблемных категорий на проде добавлено жесткое сопоставление `cat -> woo_cat`:
+    - `home-textile -> 24`
+    - `women -> 370`
+    - `men -> 352`
+    - `socks -> 567`
+    - `gifts -> 592`
+    - `accessories -> 16`
+    - `fabrics -> 654`
+- Главный блок карточек на `index.html` в Woo-режиме также наполняется через API.
+
+## Архитектура (актуально)
 
 ```txt
 len/
-├── public/
-│   └── data/
-│       └── products/
-│           ├── index.json
-│           ├── *.json            (товары по категориям)
-│           └── (много данных под карточки)
-│   └── images/                (картинки товаров/каталогов)
-├── partials/
-│   ├── header.html
-│   ├── footer.html
-│   └── modals.html
-├── css/
-│   ├── base.css
-│   ├── buttons.css
-│   ├── header.css
-│   ├── pages.css
-│   ├── cart-drawer.css
-│   ├── product-premium.css
-│   ├── responsive.css
-│   └── (остальные стили блоков)
 ├── js/
 │   ├── main.js
 │   └── modules/
+│       ├── woo-client.js        (запросы к /api/wc, категории/товары)
+│       ├── woo-map.js           (маппинг Woo -> формат фронта)
+│       ├── catalog.js           (листинг каталога, Woo/JSON fallback)
+│       ├── category-products.js (категории, фильтры, пагинация, Woo mapping)
+│       ├── product.js           (карточка, ?woo=ID, related)
+│       ├── product-cards.js     (карточки на главной/секции)
 │       ├── product-model.js
 │       ├── cart-service.js
-│       ├── toast.js
-│       ├── ui-shell.js
-│       ├── accordion.js
-│       ├── navigation.js
-│       ├── catalog.js
-│       ├── category-products.js
-│       ├── product-cards.js
-│       ├── product.js
 │       ├── cart.js
-│       ├── forms.js
-│       ├── animations.js
-│       ├── sliders.js
 │       └── __tests__/
-│           ├── product-model.test.js
-│           ├── cart-service.test.js
-│           └── smoke.test.js
-├── *.html (страницы сайта)
-│   ├── index.html, catalog.html, category.html, product.html, cart.html …
-│   └── delivery.html, contacts.html, blog.html, services.html, thanks.html, 404.html …
-├── styles.css
-├── vite.config.js
-├── package.json
-└── package-lock.json
+├── public/
+│   ├── data/                    (облегченный fallback)
+│   └── images/                  (UI ассеты; не медиатека Woo)
+├── partials/
+├── *.html
+├── vite.config.js               (dev proxy /api/wc -> Woo)
+├── .env.example
+└── PROJECT_OVERVIEW.md
 ```
 
-## Что за проект
+## Важные оговорки
 
-Это **Vite-мультистраничный фронтенд-прототип**: страницы (каталог/категория/карточка/корзина/checkout) рендерятся из данных в `public/data/products/*.json` и используют модульную архитектуру JS.
+- На проде Vite-прокси нет: должен быть серверный прокси `'/api/wc'`.
+- В текущем прод-стенде это сделано через `.htaccess` rewrite.
+- Ключи Woo, которые попадали в URL/скрины, нужно периодически перевыпускать.
+- Корзина пока в основном клиентская (localStorage), без полноценного checkout-потока Woo Store API.
 
-## Что за что отвечает (основные роли)
+## Что считать «готово»
 
-- `js/main.js`: при `DOMContentLoaded` запускает нужные `init*` модули только если соответствующие элементы страницы существуют в DOM.
-- `js/modules/product-model.js`: чистые утилиты товара без DOM (`normalizeProduct`, `formatPrice`, `resolveImageUrl`, `safeText`).
-- `js/modules/cart-service.js`: business-логика корзины без DOM (хранилище, итоги, доставка, подсказка бесплатной доставки).
-- `js/modules/cart.js`: UI корзины + мини-корзина (drawer) + checkout-сводка (включая free-delivery hint).
-- `js/modules/catalog.js`: главная витрина/каталог-страница (загрузка превью из `index.json`, сортировка превью).
-- `js/modules/category-products.js`: страница категории (фильтры/сортировка/цена, состояние в URL, пагинация, рендер сетки).
-- `js/modules/product.js`: карточка товара (загрузка товара по `id`, галерея, опции размер/цвет, характеристики, похожие товары, обработка ошибок).
-- `js/modules/product-cards.js`: “обогащение” статичных карточек на страницах (подстановка id/ссылок/картинок из JSON).
-- `js/modules/ui-shell.js`: “слои” UI (модалки/меню/мини-корзина), Escape и блокировка скролла.
-- `js/modules/accordion.js`: общий аккордеон для блоков на странице.
-- `js/modules/forms.js`: обработчики форм (контакты, “заказать звонок”, FAQ-аккордеон).
-- `js/modules/toast.js`: тосты уведомлений (`success/error/warning`) — отображаются в `toastContainer` (контейнер в `partials/modals.html`).
-- `js/modules/sliders.js`: горизонтальный слайдер с drag/cursor-классами (`slider--grab` / `slider--grabbing`).
-- `css/*`: стили отдельных блоков и UI states (кнопки, тосты, хинты бесплатной доставки и т.д.).
-
-## Примечание
-
-Если понадобится, могу сделать отдельный документ: “Целевая структура под WordPress + WooCommerce” (папки/плагины/кастомные компоненты) в таком же формате дерева.
-
+- Каталог и карточки товаров работают от Woo.
+- Категории (включая `women`, `men`, `gifts`) работают от Woo после фикса маппинга.
+- Сборка/линт проходят локально.

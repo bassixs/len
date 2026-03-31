@@ -1,10 +1,11 @@
 import { normalizeProduct, formatPrice, resolveImageUrl, safeText } from './product-model.js';
 import { openLayer, closeLayer } from './ui-shell.js';
 import { showToast } from './toast.js';
-import { fetchAllWooProducts } from './woo-client.js';
+import { fetchWooProducts } from './woo-client.js';
 import { wooProductToCard } from './woo-map.js';
 
 const USE_WOO = import.meta.env.VITE_USE_WOO === 'true';
+const PER_PAGE = 24;
 const WOO_LIST_FIELDS = 'id,name,price,regular_price,sale_price,images,sku,categories';
 
 function sortProducts(products, sortKey) {
@@ -70,29 +71,88 @@ export function initCatalog() {
     // ===== DYNAMIC PRODUCT RENDERING: Woo или data/products/index.json =====
     const catalogGrid = document.querySelector('.catalog-grid');
     if (catalogGrid) {
+        catalogGrid.innerHTML = '<div class="catalog-loading">Загрузка каталога...</div>';
         if (USE_WOO) {
-            fetchAllWooProducts(30, { fields: WOO_LIST_FIELDS })
-                .then(({ products, total }) => {
-                    const preview = products
+            let page = 1;
+            let total = 0;
+            let loading = false;
+            let hasMore = true;
+            let activeSort = '';
+            const loadedProducts = [];
+            const paginationEl = document.getElementById('catalogPagination');
+
+            const updatePagination = () => {
+                if (!paginationEl) return;
+                if (!hasMore) {
+                    paginationEl.innerHTML = '';
+                    return;
+                }
+                paginationEl.innerHTML =
+                    '<button type="button" class="btn btn-outline-dark catalog-load-more">Показать ещё</button>';
+                const btn = paginationEl.querySelector('.catalog-load-more');
+                if (!btn) return;
+                btn.disabled = loading;
+                btn.textContent = loading ? 'Загрузка...' : 'Показать ещё';
+                btn.addEventListener('click', () => {
+                    if (loading) return;
+                    loadPage();
+                });
+            };
+
+            const renderCurrent = () => {
+                const list = activeSort ? sortProducts(loadedProducts, activeSort) : loadedProducts;
+                renderProducts(list, catalogGrid);
+            };
+
+            const loadPage = async () => {
+                loading = true;
+                updatePagination();
+                try {
+                    const { products, total: responseTotal } = await fetchWooProducts({
+                        page,
+                        perPage: PER_PAGE,
+                        fields: WOO_LIST_FIELDS,
+                    });
+
+                    total = responseTotal || total;
+                    const mapped = products
                         .map((p) => normalizeProduct(wooProductToCard(p)))
                         .filter((p) => p.name);
-                    updateCatalogCount(total || preview.length);
-                    renderProducts(preview, catalogGrid);
+                    loadedProducts.push(...mapped);
 
-                    const sortSelect = document.getElementById('catalogSortMain');
-                    if (sortSelect) {
-                        sortSelect.addEventListener('change', () => {
-                            const sorted = sortProducts(preview, sortSelect.value);
-                            renderProducts(sorted, catalogGrid);
-                        });
+                    if (total > 0) {
+                        hasMore = loadedProducts.length < total;
+                    } else {
+                        hasMore = mapped.length > 0;
                     }
-                })
-                .catch((error) => {
+
+                    updateCatalogCount(total, loadedProducts.length);
+                    renderCurrent();
+                    page += 1;
+                } catch (error) {
                     console.error('Woo catalog:', error);
-                    catalogGrid.innerHTML =
-                        '<p class="catalog-empty">Не удалось загрузить каталог из магазина. Проверьте .env.local и npm run dev.</p>';
-                    showToast('Ошибка загрузки каталога (Woo)', 'error');
+                    if (!loadedProducts.length) {
+                        catalogGrid.innerHTML =
+                            '<p class="catalog-empty">Не удалось загрузить каталог из магазина. Попробуйте позже.</p>';
+                        showToast('Ошибка загрузки каталога (Woo)', 'error');
+                    } else {
+                        hasMore = false;
+                    }
+                } finally {
+                    loading = false;
+                    updatePagination();
+                }
+            };
+
+            const sortSelect = document.getElementById('catalogSortMain');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', () => {
+                    activeSort = sortSelect.value;
+                    renderCurrent();
                 });
+            }
+
+            loadPage();
         } else {
             const dataBase = (import.meta.env.BASE_URL || '/') + 'data/products/';
             fetch(dataBase + 'index.json')
@@ -105,7 +165,7 @@ export function initCatalog() {
                         ? Number(index.total)
                         : preview.length;
 
-                    updateCatalogCount(total);
+                    updateCatalogCount(total, preview.length);
                     renderProducts(preview, catalogGrid);
 
                     const sortSelect = document.getElementById('catalogSortMain');
@@ -131,9 +191,15 @@ function isSafeHexColor(value) {
     return /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(c);
 }
 
-function updateCatalogCount(total) {
+function updateCatalogCount(total, loadedCount) {
     const el = document.querySelector('.ch-count');
-    if (el && total > 0) el.textContent = `Все изделия (${total}+)`;
+    if (!el) return;
+    if (Number.isFinite(Number(total)) && Number(total) > 0) {
+        el.textContent = `Все изделия (${Number(total)})`;
+        return;
+    }
+    const loaded = Number.isFinite(Number(loadedCount)) ? Number(loadedCount) : 0;
+    el.textContent = loaded > 0 ? `Все изделия (${loaded}+)` : 'Все изделия (...)';
 }
 
 function renderProducts(products, container) {
