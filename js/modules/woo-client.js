@@ -4,12 +4,73 @@
  */
 
 const BASE = '/api/wc';
+const DEFAULT_CACHE_TTL_MS = 30 * 1000;
+const responseCache = new Map();
+const inflightRequests = new Map();
 
 function appendIfPresent(params, key, value) {
     if (value == null) return;
     const s = String(value).trim();
     if (!s) return;
     params.set(key, s);
+}
+
+function nowMs() {
+    return Date.now();
+}
+
+function getCached(url) {
+    const hit = responseCache.get(url);
+    if (!hit) return null;
+    if (hit.expiresAt <= nowMs()) {
+        responseCache.delete(url);
+        return null;
+    }
+    return hit.payload;
+}
+
+function setCached(url, payload, ttlMs) {
+    responseCache.set(url, {
+        expiresAt: nowMs() + Math.max(0, Number(ttlMs) || 0),
+        payload,
+    });
+}
+
+async function fetchJson(url, { ttlMs = DEFAULT_CACHE_TTL_MS, useCache = true } = {}) {
+    if (useCache) {
+        const cached = getCached(url);
+        if (cached) return cached;
+    }
+
+    const inflight = inflightRequests.get(url);
+    if (inflight) return inflight;
+
+    const req = (async () => {
+        const res = await fetch(url);
+        if (!res.ok) {
+            const t = await res.text();
+            throw new Error(`Woo HTTP ${res.status}: ${t.slice(0, 200)}`);
+        }
+        const totalRaw = res.headers.get('X-WP-Total');
+        const totalPagesRaw = res.headers.get('X-WP-TotalPages');
+        const json = await res.json();
+        const payload = {
+            json,
+            headers: {
+                total: totalRaw ? parseInt(totalRaw, 10) : 0,
+                totalPages: totalPagesRaw ? parseInt(totalPagesRaw, 10) : 0,
+            },
+        };
+        if (useCache && ttlMs > 0) setCached(url, payload, ttlMs);
+        return payload;
+    })();
+
+    inflightRequests.set(url, req);
+    try {
+        return await req;
+    } finally {
+        inflightRequests.delete(url);
+    }
 }
 
 export async function fetchWooProducts({
@@ -22,6 +83,8 @@ export async function fetchWooProducts({
     featured = null,
     exclude = [],
     fields = '',
+    ttlMs = DEFAULT_CACHE_TTL_MS,
+    useCache = true,
 } = {}) {
     const q = new URLSearchParams({
         page: String(page),
@@ -39,26 +102,34 @@ export async function fetchWooProducts({
     }
     appendIfPresent(q, '_fields', fields);
 
-    const res = await fetch(`${BASE}/products?${q}`);
-    if (!res.ok) {
-        const t = await res.text();
-        throw new Error(`Woo products HTTP ${res.status}: ${t.slice(0, 200)}`);
-    }
-    const total = res.headers.get('X-WP-Total');
-    const products = await res.json();
+    const url = `${BASE}/products?${q}`;
+    const { json, headers } = await fetchJson(url, { ttlMs, useCache });
+    const products = json;
     return {
         products: Array.isArray(products) ? products : [],
-        total: total ? parseInt(total, 10) : products.length,
+        total: headers.total > 0 ? headers.total : products.length,
     };
 }
 
 export async function fetchWooProduct(id) {
-    const res = await fetch(`${BASE}/products/${encodeURIComponent(id)}`);
-    if (!res.ok) {
-        const t = await res.text();
-        throw new Error(`Woo product HTTP ${res.status}: ${t.slice(0, 200)}`);
-    }
-    return res.json();
+    const q = new URLSearchParams({
+        _fields: [
+            'id',
+            'name',
+            'price',
+            'regular_price',
+            'sale_price',
+            'images',
+            'sku',
+            'categories',
+            'stock_status',
+            'description',
+            'short_description',
+        ].join(','),
+    });
+    const url = `${BASE}/products/${encodeURIComponent(id)}?${q}`;
+    const { json } = await fetchJson(url, { ttlMs: 5 * 60 * 1000, useCache: true });
+    return json;
 }
 
 export async function fetchWooCategories({ page = 1, perPage = 100, search = '' } = {}) {
@@ -69,16 +140,12 @@ export async function fetchWooCategories({ page = 1, perPage = 100, search = '' 
     });
     appendIfPresent(q, 'search', search);
 
-    const res = await fetch(`${BASE}/products/categories?${q}`);
-    if (!res.ok) {
-        const t = await res.text();
-        throw new Error(`Woo categories HTTP ${res.status}: ${t.slice(0, 200)}`);
-    }
-    const total = res.headers.get('X-WP-Total');
-    const categories = await res.json();
+    const url = `${BASE}/products/categories?${q}`;
+    const { json, headers } = await fetchJson(url, { ttlMs: 5 * 60 * 1000, useCache: true });
+    const categories = json;
     return {
         categories: Array.isArray(categories) ? categories : [],
-        total: total ? parseInt(total, 10) : categories.length,
+        total: headers.total > 0 ? headers.total : categories.length,
     };
 }
 

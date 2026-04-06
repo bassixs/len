@@ -24,35 +24,99 @@
         <section class="catalog-hero-minimal">
             <div class="container">
                 <h1 class="ch-title reveal">Каталог</h1>
-                <p class="ch-count reveal reveal-delay-1">Все изделия (...)</p>
-                <div class="ch-toolbar reveal reveal-delay-2">
-                    <div class="ch-toolbar-cats">
-                        <a href="catalog.html" class="ch-subcat active">Все категории</a>
-                        <a href="category.html?cat=home-textile" class="ch-subcat"
-                            >Домашний текстиль</a
-                        >
-                        <a href="category.html?cat=women" class="ch-subcat">Женская одежда</a>
-                        <a href="category.html?cat=men" class="ch-subcat">Мужская одежда</a>
-                        <a href="category.html?cat=accessories" class="ch-subcat">Аксессуары</a>
-                        <a href="category.html?cat=gifts" class="ch-subcat">Подарки</a>
-                    </div>
-                    <select id="catalogSortMain" class="catalog-sort-select">
-                        <option value="">По умолчанию</option>
-                        <option value="price_asc">Цена: по возрастанию</option>
-                        <option value="price_desc">Цена: по убыванию</option>
-                        <option value="name_asc">Название: А — Я</option>
-                        <option value="name_desc">Название: Я — А</option>
-                    </select>
-                </div>
+                <p class="ch-count reveal reveal-delay-1">Выберите раздел каталога</p>
             </div>
         </section>
 
-        <section class="section">
+        <section class="section collections">
             <div class="container">
-                <div class="catalog-grid">
-                    <div class="catalog-loading">Загрузка каталога...</div>
+                <div class="collections-grid">
+                    <a href="category.html?cat=women" class="collection-card reveal reveal-delay-1">
+                        <div
+                            class="collection-card-bg"
+                            style="background-image: url('/images/collection.women.webp')"
+                        ></div>
+                        <div class="collection-card-content">
+                            <div class="collection-card-label">Коллекция</div>
+                            <h3 class="collection-card-title">Женская одежда</h3>
+                            <div class="collection-card-count">Платья, блузки, юбки</div>
+                        </div>
+                        <div class="collection-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+
+                    <a href="category.html?cat=men" class="collection-card reveal reveal-delay-2">
+                        <div
+                            class="collection-card-bg"
+                            style="background-image: url('/images/collection.men.webp')"
+                        ></div>
+                        <div class="collection-card-content">
+                            <div class="collection-card-label">Коллекция</div>
+                            <h3 class="collection-card-title">Мужская одежда</h3>
+                            <div class="collection-card-count">Сорочки, брюки, пиджаки</div>
+                        </div>
+                        <div class="collection-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+
+                    <a
+                        href="category.html?cat=home-textile"
+                        class="collection-card reveal reveal-delay-3"
+                    >
+                        <div
+                            class="collection-card-bg"
+                            style="background-image: url('/images/collection.home.webp')"
+                        ></div>
+                        <div class="collection-card-content">
+                            <div class="collection-card-label">Коллекция</div>
+                            <h3 class="collection-card-title">Домашний текстиль</h3>
+                            <div class="collection-card-count">
+                                Постельное белье, полотенца, скатерти
+                            </div>
+                        </div>
+                        <div class="collection-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+
+                    <a href="category.html?cat=gifts" class="collection-card reveal reveal-delay-1">
+                        <div
+                            class="collection-card-bg"
+                            style="background-image: url('/images/collection.gifts.webp')"
+                        ></div>
+                        <div class="collection-card-content">
+                            <div class="collection-card-label">Коллекция</div>
+                            <h3 class="collection-card-title">Подарки и сувениры</h3>
+                            <div class="collection-card-count">Игрушки, наборы, декор</div>
+                        </div>
+                        <div class="collection-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+
+                    <a
+                        href="category.html?cat=accessories"
+                        class="collection-card reveal reveal-delay-2"
+                    >
+                        <div
+                            class="collection-card-bg"
+                            style="background-image: url('/images/collection.accessories.webp')"
+                        ></div>
+                        <div class="collection-card-content">
+                            <div class="collection-card-label">Коллекция</div>
+                            <h3 class="collection-card-title">Аксессуары</h3>
+                            <div class="collection-card-count">Сумки, украшения, шляпы</div>
+                        </div>
+                        <div class="collection-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+
+                    <a href="category.html?cat=fabrics" class="collection-card reveal reveal-delay-3">
+                        <div
+                            class="collection-card-bg"
+                            style="background-image: url('/images/collection.fabrics.webp')"
+                        ></div>
+                        <div class="collection-card-content">
+                            <div class="collection-card-label">Коллекция</div>
+                            <h3 class="collection-card-title">Ткани</h3>
+                            <div class="collection-card-count">Натуральный лен для шитья</div>
+                        </div>
+                        <div class="collection-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </a>
                 </div>
-                <div id="catalogPagination" class="category-pagination"></div>
             </div>
         </section>
 

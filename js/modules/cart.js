@@ -83,6 +83,7 @@ export function initCart() {
                 e.target.closest('.product-card') ||
                 e.target.closest('.product-info') ||
                 e.target.closest('.product-info-sticky') ||
+                e.target.closest('.product-gallery-stack') ||
                 e.target.closest('.product-detail-grid');
             if (!card) return;
 

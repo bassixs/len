@@ -223,16 +223,14 @@ function renderProducts(products, container) {
             if (badgeList.length > 0) {
                 badgesHtml = `<div class="product-badges">
                 ${badgeList
-                    .map(
-                        (b) => {
-                            const key = String(b).toLowerCase();
-                            const cls =
-                                key === 'нет в наличии'
-                                    ? 'badge badge-out'
-                                    : `badge badge-${safeText(key)}`;
-                            return `<span class="${cls}">${safeText(b)}</span>`;
-                        }
-                    )
+                    .map((b) => {
+                        const key = String(b).toLowerCase();
+                        const cls =
+                            key === 'нет в наличии'
+                                ? 'badge badge-out'
+                                : `badge badge-${safeText(key)}`;
+                        return `<span class="${cls}">${safeText(b)}</span>`;
+                    })
                     .join('')}
             </div>`;
             }

@@ -11,6 +11,36 @@ function parsePrice(p) {
     return { price: Number.isFinite(regular) ? regular : 0, oldPrice: null };
 }
 
+function extractMaxWidthFromSrcset(srcset) {
+    const s = String(srcset || '');
+    if (!s) return 0;
+    const matches = Array.from(s.matchAll(/(\d+)\s*w/g));
+    if (!matches.length) return 0;
+    return matches.reduce((max, m) => Math.max(max, Number(m[1] || 0)), 0);
+}
+
+function pickBestMainAndGallery(imagesRaw) {
+    const images = Array.isArray(imagesRaw)
+        ? imagesRaw.filter((i) => i && i.src).map((i) => ({ src: i.src, srcset: i.srcset }))
+        : [];
+    if (!images.length) return { main: '', gallery: [] };
+    if (images.length === 1) return { main: images[0].src, gallery: [] };
+
+    let bestIdx = 0;
+    let bestScore = -1;
+    images.forEach((img, idx) => {
+        const score = extractMaxWidthFromSrcset(img.srcset);
+        if (score > bestScore) {
+            bestScore = score;
+            bestIdx = idx;
+        }
+    });
+
+    const main = images[bestIdx]?.src || images[0].src;
+    const gallery = images.filter((_, idx) => idx !== bestIdx).map((img) => img.src);
+    return { main, gallery };
+}
+
 /** Карточка каталога (как normalizeProduct) */
 export function wooProductToCard(p) {
     if (!p || typeof p !== 'object') return null;
@@ -47,7 +77,7 @@ export function wooProductToCard(p) {
 export function wooProductToPageRaw(p) {
     if (!p || typeof p !== 'object') return null;
     const { price, oldPrice } = parsePrice(p);
-    const imgs = Array.isArray(p.images) ? p.images.map((i) => i?.src).filter(Boolean) : [];
+    const { main, gallery } = pickBestMainAndGallery(p.images);
     const cat = Array.isArray(p.categories) && p.categories[0] ? p.categories[0] : null;
     const shortDesc = String(p.short_description || '').trim();
     const longDesc = String(p.description || '').trim();
@@ -60,8 +90,8 @@ export function wooProductToPageRaw(p) {
         name: String(p.name || ''),
         price,
         oldPrice,
-        image: imgs[0] || '',
-        gallery: imgs.slice(1),
+        image: main || '',
+        gallery,
         badges: [],
         sizes: [],
         colors: [],

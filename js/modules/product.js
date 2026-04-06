@@ -238,51 +238,64 @@ function renderGallery(rawProduct, product) {
     if (!images.length) return;
 
     const srcs = images.map((src) => resolveImageUrl(src));
-    const mainSrc = srcs[0];
-    const thumbs = srcs.slice(1);
+    let currentIndex = 0;
 
     const mainHtml = `
-        <div class="product-main-image">
-            <img src="${safeText(mainSrc)}" alt="${safeText(product.name || '')}" id="productMainImg">
+        <div class="product-main-image-wrap">
+            <div class="product-main-image">
+                <img src="${safeText(srcs[0])}" alt="${safeText(product.name || '')}" id="productMainImg" fetchpriority="high" decoding="async">
+            </div>
+            <button class="product-gallery-nav prev" type="button" id="galleryPrev" aria-label="Предыдущее фото">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="product-gallery-nav next" type="button" id="galleryNext" aria-label="Следующее фото">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
     `;
 
-    let thumbsHtml = '';
-    if (thumbs.length) {
-        thumbsHtml = `
-            <div class="product-thumbs">
-                ${thumbs
-                    .map(
-                        (src, i) =>
-                            `<button class="product-thumb${i === 0 ? ' active' : ''}" type="button" data-src="${safeText(
-                                src
-                            )}">
-                                <img src="${safeText(src)}" alt="${safeText(product.name || '')}">
-                            </button>`
-                    )
-                    .join('')}
-            </div>
-        `;
-    }
+    galleryRoot.innerHTML = mainHtml;
 
-    galleryRoot.innerHTML = mainHtml + thumbsHtml;
+    const mainImg = galleryRoot.querySelector('#productMainImg');
+    const prevBtn = galleryRoot.querySelector('#galleryPrev');
+    const nextBtn = galleryRoot.querySelector('#galleryNext');
 
-    if (thumbs.length) {
-        const mainImg = galleryRoot.querySelector('#productMainImg');
-        const thumbBtns = Array.from(galleryRoot.querySelectorAll('.product-thumb'));
-        thumbBtns.forEach((btn) => {
-            btn.addEventListener('click', () => {
-                if (mainImg) mainImg.setAttribute('src', btn.getAttribute('data-src'));
-                thumbBtns.forEach((b) => b.classList.remove('active'));
-                btn.classList.add('active');
-            });
-        });
+    const syncGallery = () => {
+        if (!mainImg) return;
+        mainImg.setAttribute('src', srcs[currentIndex]);
+    };
+
+    const slide = (step) => {
+        if (srcs.length <= 1) return;
+        currentIndex = (currentIndex + step + srcs.length) % srcs.length;
+        syncGallery();
+    };
+
+    if (prevBtn) prevBtn.addEventListener('click', () => slide(-1));
+    if (nextBtn) nextBtn.addEventListener('click', () => slide(1));
+
+    // Keyboard navigation for better desktop UX.
+    galleryRoot.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            slide(-1);
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            slide(1);
+        }
+    });
+    galleryRoot.setAttribute('tabindex', '0');
+
+    if (srcs.length <= 1) {
+        if (prevBtn) prevBtn.style.display = 'none';
+        if (nextBtn) nextBtn.style.display = 'none';
     }
 }
 
 // ===== OPTIONS (colors, sizes) =====
 
 function renderOptions(product) {
+    const formEl = document.getElementById('addToCartForm');
     const colorGroup = document.getElementById('colorGroup');
     const colorSelector = document.getElementById('colorSelector');
     const colorNameEl = document.getElementById('colorName');
@@ -337,6 +350,14 @@ function renderOptions(product) {
             });
         });
     }
+
+    // If both option groups are hidden, collapse empty form space.
+    if (formEl) {
+        const hasVisibleOptions = Array.from(formEl.querySelectorAll('.option-group')).some(
+            (group) => group.style.display !== 'none'
+        );
+        formEl.classList.toggle('is-empty', !hasVisibleOptions);
+    }
 }
 
 // ===== SPECS (SKU, category) =====
@@ -374,6 +395,28 @@ function renderDescription(_product, rawProduct = {}) {
             'Лён обладает высокой терморегуляцией, отводит влагу и позволяет коже дышать. ' +
             'Натуральные оттенки гармонично дополняют любой образ.';
     }
+
+    const toggleBtn = document.getElementById('productDescToggle');
+    if (!toggleBtn) return;
+
+    const MAX_COLLAPSED_CHARS = 420;
+    const plainText = (descEl.textContent || '').replace(/\s+/g, ' ').trim();
+    const needsCollapse = plainText.length > MAX_COLLAPSED_CHARS;
+
+    if (!needsCollapse) {
+        descEl.classList.remove('is-collapsed');
+        toggleBtn.hidden = true;
+        return;
+    }
+
+    toggleBtn.hidden = false;
+    descEl.classList.add('is-collapsed');
+    toggleBtn.textContent = 'Показать полностью';
+
+    toggleBtn.onclick = () => {
+        const collapsed = descEl.classList.toggle('is-collapsed');
+        toggleBtn.textContent = collapsed ? 'Показать полностью' : 'Свернуть';
+    };
 }
 
 // ===== RELATED PRODUCTS =====
