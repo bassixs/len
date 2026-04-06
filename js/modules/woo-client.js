@@ -78,6 +78,7 @@ export async function fetchWooProducts({
     perPage = 100,
     search = '',
     category = '',
+    stockStatus = '',
     orderBy = '',
     order = '',
     featured = null,
@@ -93,6 +94,7 @@ export async function fetchWooProducts({
     });
     appendIfPresent(q, 'search', search);
     appendIfPresent(q, 'category', category);
+    appendIfPresent(q, 'stock_status', stockStatus);
     appendIfPresent(q, 'orderby', orderBy);
     appendIfPresent(q, 'order', order);
     if (featured === true) q.set('featured', 'true');

@@ -33,3 +33,6 @@ public/data/products_migrated.json
 # Скрипты и документация (локально)
 scripts/
 docs/
+
+# Локальный серверный proxy с секретами Woo ключей
+api-wc-proxy.php

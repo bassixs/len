@@ -211,16 +211,34 @@ async function hydrateHomepageCardsFromWoo() {
     const slider = document.getElementById('productsSlider');
     if (!slider) return false;
 
-    const { products } = await fetchWooProducts({
-        page: 1,
-        perPage: 12,
-        orderBy: 'date',
-        order: 'desc',
-        fields: WOO_LIST_FIELDS,
-    });
-    const cards = products
-        .map((p) => normalizeProduct(wooProductToCard(p)))
-        .filter((p) => p.id && p.name);
+    const cards = [];
+    const seenIds = new Set();
+    const maxPages = 4;
+    const perPage = 24;
+
+    for (let page = 1; page <= maxPages && cards.length < 8; page += 1) {
+        const { products } = await fetchWooProducts({
+            page,
+            perPage,
+            orderBy: 'date',
+            order: 'desc',
+            stockStatus: 'instock',
+            fields: WOO_LIST_FIELDS,
+        });
+        const mapped = products
+            .map((p) => normalizeProduct(wooProductToCard(p)))
+            .filter((p) => p.id && p.name && p.inStock);
+
+        for (const p of mapped) {
+            if (seenIds.has(p.id)) continue;
+            seenIds.add(p.id);
+            cards.push(p);
+            if (cards.length >= 8) break;
+        }
+
+        if (!products.length) break;
+    }
+
     if (!cards.length) return false;
 
     slider.innerHTML = cards.slice(0, 8).map(renderWooSliderCard).join('');
@@ -229,9 +247,18 @@ async function hydrateHomepageCardsFromWoo() {
 
 export function initProductCards() {
     if (USE_WOO) {
-        hydrateHomepageCardsFromWoo().catch((err) => {
-            console.error('Woo homepage cards error:', err);
-        });
+        hydrateHomepageCardsFromWoo()
+            .then((ok) => {
+                if (!ok) {
+                    const slider = document.getElementById('productsSlider');
+                    if (slider) slider.innerHTML = '';
+                }
+            })
+            .catch((err) => {
+                console.error('Woo homepage cards error:', err);
+                const slider = document.getElementById('productsSlider');
+                if (slider) slider.innerHTML = '';
+            });
         return;
     }
 
