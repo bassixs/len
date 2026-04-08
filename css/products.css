@@ -39,6 +39,45 @@
     border-color: rgba(107, 127, 62, 0.15);
 }
 
+.product-card-skeleton {
+    pointer-events: none;
+}
+
+.product-card-skeleton .product-card-image,
+.skeleton-line {
+    background: linear-gradient(
+        90deg,
+        rgba(232, 228, 218, 0.9) 25%,
+        rgba(246, 244, 237, 0.95) 50%,
+        rgba(232, 228, 218, 0.9) 75%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.15s linear infinite;
+}
+
+.skeleton-line {
+    height: 14px;
+    border-radius: 8px;
+}
+
+.skeleton-line-title {
+    width: 78%;
+    margin-bottom: 0.75rem;
+}
+
+.skeleton-line-price {
+    width: 42%;
+}
+
+@keyframes skeleton-shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
 .product-card-image {
     position: relative;
     aspect-ratio: 3/4;

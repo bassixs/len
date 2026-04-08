@@ -59,6 +59,8 @@ async function fetchJson(url, { ttlMs = DEFAULT_CACHE_TTL_MS, useCache = true } 
             headers: {
                 total: totalRaw ? parseInt(totalRaw, 10) : 0,
                 totalPages: totalPagesRaw ? parseInt(totalPagesRaw, 10) : 0,
+                hasTotalHeader: Boolean(totalRaw),
+                hasTotalPagesHeader: Boolean(totalPagesRaw),
             },
         };
         if (useCache && ttlMs > 0) setCached(url, payload, ttlMs);
@@ -110,6 +112,7 @@ export async function fetchWooProducts({
     return {
         products: Array.isArray(products) ? products : [],
         total: headers.total > 0 ? headers.total : products.length,
+        hasTotalHeader: Boolean(headers.hasTotalHeader),
     };
 }
 
@@ -134,13 +137,20 @@ export async function fetchWooProduct(id) {
     return json;
 }
 
-export async function fetchWooCategories({ page = 1, perPage = 100, search = '' } = {}) {
+export async function fetchWooCategories({
+    page = 1,
+    perPage = 100,
+    search = '',
+    parent = '',
+    hideEmpty = true,
+} = {}) {
     const q = new URLSearchParams({
         page: String(page),
         per_page: String(Math.min(perPage, 100)),
-        hide_empty: 'true',
+        hide_empty: hideEmpty ? 'true' : 'false',
     });
     appendIfPresent(q, 'search', search);
+    appendIfPresent(q, 'parent', parent);
 
     const url = `${BASE}/products/categories?${q}`;
     const { json, headers } = await fetchJson(url, { ttlMs: 5 * 60 * 1000, useCache: true });
